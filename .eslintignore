@@ -1,0 +1,15 @@
+node_modules
+dist
+.angular
+out-tsc
+coverage
+*.js
+!eslint.config.mjs
+*.mjs
+!*.config.mjs
+.git
+.vscode
+.idea
+*.log
+src/app/api/auth/
+src/app/api/links/

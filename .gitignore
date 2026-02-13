@@ -19,6 +19,7 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+.claude/
 
 # Visual Studio Code
 .vscode/*
@@ -40,3 +41,12 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Generated API clients
+src/app/api/auth/
+src/app/api/links/
+!src/app/api/auth/.gitkeep
+!src/app/api/links/.gitkeep
+
+*storybook.log
+storybook-static

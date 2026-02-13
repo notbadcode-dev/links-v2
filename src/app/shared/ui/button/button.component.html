@@ -1,0 +1,13 @@
+<button
+  mat-raised-button
+  color="primary"
+  [disabled]="isDisabled()"
+  [matTooltip]="effectiveTooltip()"
+  [attr.tabindex]="tabindex() ?? null"
+  (click)="handleClick($event)"
+>
+  @if (icon()) {
+    <mat-icon>{{ icon() }}</mat-icon>
+  }
+  {{ title() }}
+</button>

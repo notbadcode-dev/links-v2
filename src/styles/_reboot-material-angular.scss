@@ -1,0 +1,20 @@
+// ============================================================
+// Material Angular Reboot — Notion/GitHub Grayscale
+// Import this single file in styles.scss
+// ============================================================
+
+// Foundation
+@forward './reboot-variables';
+
+// System-level overrides (must come first for cascade)
+@use './reboot-material-angular-system';
+
+// Typography
+@use './reboot-material-angular-typography';
+
+// Component-specific overrides
+@use './reboot-material-angular-button';
+@use './reboot-material-angular-form-field';
+@use './reboot-material-angular-card';
+@use './reboot-material-angular-tooltip';
+@use './reboot-material-angular-icon';
