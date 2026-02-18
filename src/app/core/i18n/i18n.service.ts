@@ -1,21 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { forkJoin, map, Observable } from 'rxjs';
+import { I18N_CONSTANTS } from './i18n.constants';
 import { ILanguage, TTranslationParams, TTranslationPath } from './i18n.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class I18nService {
-  private static readonly _fallbackLanguage: ILanguage = {
-    code: 'en',
-    name: 'English',
-    flag: '🇺🇸',
-  };
-  public readonly availableLanguages: ILanguage[] = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-  ];
+  private static readonly _fallbackLanguage: ILanguage = I18N_CONSTANTS.DEFAULT_LANGUAGE;
+  public readonly availableLanguages: ILanguage[] = I18N_CONSTANTS.LANGUAGES;
   private readonly _translocoService: TranslocoService = inject(TranslocoService);
 
   public get currentLanguage(): string {

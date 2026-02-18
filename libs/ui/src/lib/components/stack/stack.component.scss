@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
 
-  // Gaps
   &.gap-none {
     gap: 0;
   }
@@ -19,7 +18,6 @@
     gap: 2rem;
   }
 
-  // Alignments
   &.align-start {
     align-items: flex-start;
   }

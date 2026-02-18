@@ -1,135 +1,190 @@
 ---
-name: InputWrapperDirective
-selector: null
-type: directive
-category: wrapper
-standalone: false
-changeDetection: null
-wraps: null
-extends: null
-implements:
-  - ControlValueAccessor
-import: "@app/shared/ui/wrappers/input-wrapper"
-generic: "T = string, C extends IInputWrapperConfig = IInputWrapperConfig"
-abstract: true
-inputs:
-  - name: label
-    type: string
-    required: false
-  - name: hideInternalLabel
-    type: boolean
-    required: false
-    default: true
-  - name: hideExternalLabel
-    type: boolean
-    required: false
-    default: false
-  - name: placeholder
-    type: string
-    required: false
-    default: ""
-  - name: required
-    type: boolean
-    required: false
-    default: false
-  - name: icon
-    type: string
-    required: false
-  - name: hint
-    type: string
-    required: false
-  - name: errorMessage
-    type: string
-    required: false
-  - name: tabindex
-    type: number
-    required: false
-  - name: config
-    type: IInputWrapperConfig
-    required: false
-outputs: []
+name: Input Wrapper System
+type: system
+category: wrappers
+description: Form field components built on InputWrapperDirective with ControlValueAccessor integration
+components:
+  - name: InputTextWrapperComponent
+    selector: input-text-wrapper
+    extends: "InputWrapperDirective<string, IInputTextWrapperConfig>"
+    value_type: string
+    extra_inputs:
+      - { name: type, type: EInputTextWrapperType, required: false, default: TEXT, description: HTML input type }
+    enums:
+      EInputTextWrapperType: [TEXT, EMAIL, PASSWORD, URL]
+  - name: InputPasswordWrapperComponent
+    selector: input-password-wrapper
+    extends: "InputWrapperDirective<string, IInputTextWrapperConfig>"
+    value_type: string
+    description: Password field with show/hide toggle button
+base:
+  name: InputWrapperDirective
+  abstract: true
+  extends: BaseDirective
+  implements: ControlValueAccessor
+  integrations:
+    - { token: DISABLE_ON_LOADING, optional: true, description: Auto-disables during loading state }
+  common_inputs:
+    - { name: label, type: "string | undefined" }
+    - { name: placeholder, type: "string | undefined" }
+    - { name: required, type: "boolean | undefined" }
+    - { name: icon, type: "string | undefined", description: Material Icons prefix }
+    - { name: hint, type: "string | undefined" }
+    - { name: errorMessage, type: "string | undefined" }
+    - { name: tabindex, type: "number | undefined" }
+    - { name: hideInternalLabel, type: "boolean | undefined", default: true }
+    - { name: hideExternalLabel, type: "boolean | undefined", default: false }
+    - { name: config, type: IInputWrapperConfig, description: Config object alternative to individual inputs }
+interfaces:
+  IInputWrapperConfig:
+    - { name: label, type: string, required: true }
+    - { name: hideInternalLabel, type: boolean, required: false, default: true }
+    - { name: hideExternalLabel, type: boolean, required: false, default: false }
+    - { name: placeholder, type: string, required: false }
+    - { name: required, type: boolean, required: false }
+    - { name: icon, type: string, required: false }
+    - { name: hint, type: string, required: false }
+    - { name: errorMessage, type: string, required: false }
+    - { name: tabindex, type: number, required: false }
+  IInputTextWrapperConfig:
+    extends: IInputWrapperConfig
+    extra:
+      - { name: type, type: EInputTextWrapperType, required: false }
 ---
 
-# InputWrapper Directive (Base)
+# Input Wrappers
 
-Directiva abstracta base para todos los componentes de input. Implementa `ControlValueAccessor` y proporciona funcionalidad comun.
+Sistema de campos de formulario construido sobre `InputWrapperDirective`, que implementa `ControlValueAccessor` para integrarse nativamente con Angular Reactive Forms.
 
-## Proposito
+## Componentes disponibles
 
-Esta clase base permite:
-- Reutilizacion de codigo: la logica de `ControlValueAccessor` se implementa una sola vez
-- Consistencia: todos los inputs tienen el mismo comportamiento y API
-- Escalabilidad: facil creacion de nuevos tipos de inputs
+| Selector | Descripción |
+|---|---|
+| `<input-text-wrapper>` | Campo de texto genérico (`text`, `email`, `url`) |
+| `<input-password-wrapper>` | Campo de contraseña con toggle de visibilidad |
+| `<checkbox-wrapper>` | Checkbox (ver [README propio](../checkbox-wrapper/README.md)) |
 
-## Uso
+---
 
-### Crear un nuevo componente de input
+## InputWrapperDirective (base abstracta)
 
-```typescript
-import { Component, forwardRef, input } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { InputWrapperDirective } from '../input-wrapper.directive';
+Todos los wrappers de input extienden esta directiva. Provee:
+- Implementación de `ControlValueAccessor` (integración con `FormControl` / `formControlName`)
+- Gestión del estado `disabled` (manual + via `DISABLE_ON_LOADING` token)
+- Sistema dual de configuración: inputs directos **o** objeto `config`
 
-@Component({
-  selector: 'input-custom-wrapper',
-  templateUrl: './input-custom-wrapper.component.html',
-  standalone: true,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputCustomWrapperComponent),
-      multi: true,
-    },
-  ],
-})
-export class InputCustomWrapperComponent extends InputWrapperDirective<YourType> {
-  readonly customInput = input<string>();
-}
+### Inputs comunes
+
+| Input | Tipo | Descripción |
+|---|---|---|
+| `label` | `string` | Etiqueta del campo |
+| `placeholder` | `string` | Placeholder del input |
+| `required` | `boolean` | Marca el campo como requerido |
+| `icon` | `string` | Icono prefijo (nombre Material Icons) |
+| `hint` | `string` | Texto de ayuda debajo del campo |
+| `errorMessage` | `string` | Mensaje de error personalizado |
+| `tabindex` | `number` | Índice de tabulación |
+| `hideInternalLabel` | `boolean` | Oculta el label dentro del `mat-form-field` |
+| `hideExternalLabel` | `boolean` | Oculta el label externo encima del campo |
+| `config` | `IInputWrapperConfig` | Objeto que agrupa todos los inputs anteriores |
+
+---
+
+## InputTextWrapperComponent
+
+### Selector
+
+```html
+<input-text-wrapper>
 ```
 
-## Inputs comunes (heredados por todos)
+### Inputs adicionales
 
-| Input               | Tipo                  | Default     | Descripcion                                      |
-| ------------------- | --------------------- | ----------- | ------------------------------------------------ |
-| `label`             | `string`              | -           | Etiqueta del input                               |
-| `hideInternalLabel`  | `boolean`            | `true`      | Ocultar label interno del mat-form-field         |
-| `hideExternalLabel`  | `boolean`            | `false`     | Ocultar label externo sobre el input             |
-| `placeholder`       | `string`              | `''`        | Texto de placeholder                             |
-| `required`          | `boolean`             | `false`     | Si el input es requerido                         |
-| `icon`              | `string`              | -           | Nombre del icono de Material Icons               |
-| `hint`              | `string`              | -           | Texto de ayuda debajo del input                  |
-| `errorMessage`      | `string`              | -           | Mensaje de error cuando es invalido              |
-| `tabindex`          | `number \| undefined` | -           | Orden de tabulacion del input                    |
-| `config`            | `IInputWrapperConfig` | -           | Configuracion alternativa via objeto             |
+| Input | Tipo | Default | Descripción |
+|---|---|---|---|
+| `type` | `EInputTextWrapperType` | `TEXT` | Tipo del input HTML |
 
-## Signals internos
+### `EInputTextWrapperType`
 
-| Signal       | Tipo             | Descripcion                  |
-| ------------ | ---------------- | ---------------------------- |
-| `value`      | `Signal<T\|null>`| Valor actual del input       |
-| `isDisabled` | `Signal<boolean>`| Estado deshabilitado         |
+`TEXT` · `EMAIL` · `PASSWORD` · `URL`
 
-## Metodos
+---
 
-| Metodo              | Descripcion                                              |
-| ------------------- | -------------------------------------------------------- |
-| `writeValue`        | Escribe un nuevo valor (llamado por Angular Forms)       |
-| `registerOnChange`  | Registra callback para cambios de valor                  |
-| `registerOnTouched` | Registra callback para evento blur                       |
-| `setDisabledState`  | Habilita o deshabilita el input                          |
-| `onChange`          | Maneja cambio de valor (puede ser sobrescrito)           |
-| `onBlur`            | Maneja evento blur, marca el input como touched          |
+## InputPasswordWrapperComponent
 
-## Componentes que extienden de InputWrapperDirective
+### Selector
 
-- **input-text-wrapper**: `InputWrapperDirective<string, IInputTextWrapperConfig>`
-- **input-password-wrapper**: `InputWrapperDirective<string, IInputTextWrapperConfig>`
-- **checkbox-wrapper**: `InputWrapperDirective<boolean>`
+```html
+<input-password-wrapper>
+```
 
-## Caracteristicas
+Campo de contraseña con botón de ojo para alternar visibilidad entre `password` y `text`.
 
-- Directiva abstracta generica `InputWrapperDirective<T, C>`
-- Implementa `ControlValueAccessor`
-- Inputs configurables via propiedades individuales o via objeto `config`
-- Computed signals para resolver valores efectivos (input individual > config > default)
-- Compatible con Reactive Forms y Template-driven Forms
+---
+
+## Uso con Reactive Forms
+
+### Con `formControlName`
+
+```html
+<ui-form-container [formGroup]="form" (formSubmit)="onSubmit()">
+  <input-text-wrapper
+    formControlName="email"
+    label="Correo electrónico"
+    [type]="EInputTextWrapperType.EMAIL"
+    icon="email"
+    placeholder="tu@email.com"
+    [required]="true"
+  />
+
+  <input-password-wrapper
+    formControlName="password"
+    label="Contraseña"
+    [required]="true"
+  />
+</ui-form-container>
+```
+
+### Con objeto `config` (recomendado para formularios complejos)
+
+```typescript
+public readonly emailConfig: IInputTextWrapperConfig = {
+  label: 'Correo electrónico',
+  placeholder: 'tu@email.com',
+  required: true,
+  icon: 'email',
+  type: EInputTextWrapperType.EMAIL,
+};
+```
+
+```html
+<input-text-wrapper formControlName="email" [config]="emailConfig" />
+```
+
+### Con `FormControl` directo
+
+```html
+<input-text-wrapper [formControl]="searchControl" label="Buscar" />
+```
+
+---
+
+## `IInputWrapperConfig`
+
+```typescript
+interface IInputWrapperConfig {
+  label: string;
+  hideInternalLabel?: boolean;  // default: true
+  hideExternalLabel?: boolean;  // default: false
+  placeholder?: string;
+  required?: boolean;
+  icon?: string;
+  hint?: string;
+  errorMessage?: string;
+  tabindex?: number;
+}
+
+interface IInputTextWrapperConfig extends IInputWrapperConfig {
+  type?: EInputTextWrapperType;
+}
+```

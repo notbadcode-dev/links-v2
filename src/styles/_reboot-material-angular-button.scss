@@ -1,11 +1,7 @@
 @use './reboot-variables' as rv;
 
-// ============================================================
-// MatButton — GitHub-style flat buttons
-// ============================================================
-
 html {
-  // Filled (mat-flat-button)
+
   --mat-button-filled-container-color: #{rv.$reboot-primary};
   --mat-button-filled-label-text-color: #{rv.$reboot-on-primary};
   --mat-button-filled-container-shape: #{rv.$reboot-border-radius-sm};
@@ -19,7 +15,6 @@ html {
   --mat-button-filled-disabled-container-color: #{rv.$reboot-gray-150};
   --mat-button-filled-disabled-label-text-color: #{rv.$reboot-gray-400};
 
-  // Protected / Raised (mat-raised-button) — flatten
   --mat-button-protected-container-color: #{rv.$reboot-primary};
   --mat-button-protected-label-text-color: #{rv.$reboot-on-primary};
   --mat-button-protected-container-shape: #{rv.$reboot-border-radius-sm};
@@ -36,7 +31,6 @@ html {
   --mat-button-protected-disabled-container-color: #{rv.$reboot-gray-150};
   --mat-button-protected-disabled-label-text-color: #{rv.$reboot-gray-400};
 
-  // Outlined (mat-stroked-button)
   --mat-button-outlined-container-shape: #{rv.$reboot-border-radius-sm};
   --mat-button-outlined-outline-color: #{rv.$reboot-outline};
   --mat-button-outlined-outline-width: #{rv.$reboot-border-width};
@@ -50,7 +44,6 @@ html {
   --mat-button-outlined-disabled-label-text-color: #{rv.$reboot-gray-400};
   --mat-button-outlined-disabled-outline-color: #{rv.$reboot-gray-200};
 
-  // Text (mat-button)
   --mat-button-text-label-text-color: #{rv.$reboot-gray-700};
   --mat-button-text-state-layer-color: #{rv.$reboot-gray-900};
   --mat-button-text-container-shape: #{rv.$reboot-border-radius-sm};
@@ -59,7 +52,6 @@ html {
   --mat-button-text-label-text-weight: #{rv.$reboot-font-weight-medium};
   --mat-button-text-label-text-tracking: normal;
 
-  // Tonal
   --mat-button-tonal-container-color: #{rv.$reboot-gray-100};
   --mat-button-tonal-label-text-color: #{rv.$reboot-gray-800};
   --mat-button-tonal-container-shape: #{rv.$reboot-border-radius-sm};
@@ -76,4 +68,8 @@ html {
     border-color rv.$reboot-transition;
   text-transform: none !important;
   letter-spacing: normal !important;
+
+  .mat-icon {
+    color: inherit;
+  }
 }

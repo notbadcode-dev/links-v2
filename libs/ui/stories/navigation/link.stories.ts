@@ -1,4 +1,5 @@
 import { RouterTestingModule } from '@angular/router/testing';
+import { moduleMetadata } from '@storybook/angular';
 import type { Meta, StoryObj } from '@storybook/angular';
 
 import { LinkComponent } from '@libs/ui';
@@ -8,11 +9,9 @@ const meta: Meta<LinkComponent> = {
   component: LinkComponent,
   tags: ['autodocs'],
   decorators: [
-    {
-      moduleMetadata: {
-        imports: [RouterTestingModule],
-      },
-    },
+    moduleMetadata({
+      imports: [RouterTestingModule],
+    }),
   ],
   argTypes: {
     route: {

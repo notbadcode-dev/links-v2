@@ -3,12 +3,13 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: async () => await import('./features/auth/login').then((m) => m.LoginComponent),
+    loadComponent: async () =>
+      await import('./features/auth/pages/login').then((m) => m.LoginComponent),
   },
   {
     path: 'signup',
     loadComponent: async () =>
-      await import('./features/auth/signup').then((m) => m.SignupComponent),
+      await import('./features/auth/pages/signup').then((m) => m.SignupComponent),
   },
   {
     path: 'dashboard',

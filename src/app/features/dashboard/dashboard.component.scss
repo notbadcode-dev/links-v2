@@ -1,49 +1,50 @@
 .dashboard-header {
-  margin-bottom: 2rem;
+  margin-bottom: var(--ui-space-6);
   h2 {
-    font-weight: 700;
-    margin-bottom: 0.25rem;
+    font-weight: var(--ui-font-weight-bold);
+    margin-bottom: var(--ui-space-1);
   }
   p {
-    color: #57606a;
+    color: var(--ui-color-text-muted);
   }
 }
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: var(--ui-space-4);
+  margin-bottom: var(--ui-space-6);
 }
 
 .stat-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #e1e4e8;
+  background: var(--ui-color-surface);
+  padding: var(--ui-space-5);
+  border-radius: var(--ui-radius-md);
+  border: var(--ui-border-width) solid var(--ui-border-subtle);
+  box-shadow: var(--ui-shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--ui-space-2);
 
   .label {
-    color: #57606a;
-    font-size: 0.875rem;
-    font-weight: 600;
+    color: var(--ui-color-text-muted);
+    font-size: var(--ui-font-size-base);
+    font-weight: var(--ui-font-weight-semibold);
   }
 
   .value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #3d17ff;
+    font-size: var(--ui-font-size-xl);
+    font-weight: var(--ui-font-weight-bold);
+    color: var(--ui-color-primary);
   }
 }
 
 .demo-section {
   h3 {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: #57606a;
-    margin-bottom: 1rem;
+    font-size: var(--ui-font-size-base);
+    font-weight: var(--ui-font-weight-bold);
+    color: var(--ui-color-text-muted);
+    margin-bottom: var(--ui-space-4);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }

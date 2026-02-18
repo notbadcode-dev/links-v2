@@ -7,7 +7,24 @@
 }
 
 button {
-  mat-icon {
-    margin-right: 0.5rem;
+  .button-wrapper__content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-wrapper__content:not(.button-wrapper__content--icon-only) {
+    gap: 0.5rem;
+  }
+
+  .button-wrapper__icon {
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
   }
 }

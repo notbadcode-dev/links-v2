@@ -1,5 +1,5 @@
 :host {
   display: inline-block;
-  font-size: 0.875rem;
-  color: var(--gray-600, #4b5563);
+  font-size: var(--ui-font-size-base);
+  color: var(--ui-color-text-muted);
 }

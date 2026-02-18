@@ -1,19 +1,14 @@
 import { isDevMode, Provider } from '@angular/core';
 import { provideTransloco } from '@jsverse/transloco';
+import { I18N_CONSTANTS } from './i18n.constants';
 import { II18nConfig } from './i18n.types';
 import { TranslocoHttpLoader } from './transloco-loader';
 
-/**
- * I18n Configuration Provider
- *
- * Provides the translation system configuration in a centralized way.
- * This function encapsulates the specific translation library setup.
- */
 export function provideI18n(config?: Partial<II18nConfig>): Provider[] {
   const defaultConfig: II18nConfig = {
-    defaultLang: 'en',
-    fallbackLang: 'en',
-    availableLangs: ['en', 'es'],
+    defaultLang: I18N_CONSTANTS.DEFAULT_LANGUAGE.code,
+    fallbackLang: I18N_CONSTANTS.DEFAULT_LANGUAGE.code,
+    availableLangs: I18N_CONSTANTS.AVAILABLE_LANG_CODES,
     logMissingKeys: isDevMode(),
   };
 
@@ -41,20 +36,12 @@ export function provideI18n(config?: Partial<II18nConfig>): Provider[] {
   ];
 }
 
-/**
- * Provides a scoped translation configuration for a component
- * @param scope The scope name (e.g., 'auth', 'dashboard')
- */
 export function provideI18nScope(scope: string): Provider {
-  // This is a wrapper around Transloco's provideTranslocoScope
-  // In the future, we can replace this with our own implementation
+
   return {
     provide: `I18N_SCOPE_${scope.toUpperCase()}`,
     useValue: scope,
   };
 }
 
-/**
- * Injectable token for scope configuration (if needed)
- */
 export const I18N_SCOPE_TOKEN = 'I18N_SCOPE_TOKEN';

@@ -1,26 +1,28 @@
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { moduleMetadata } from '@storybook/angular';
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { InputTextWrapperComponent } from '@libs/ui';
+import { EInputTextWrapperType, InputTextWrapperComponent } from '@libs/ui';
 
 const meta: Meta<InputTextWrapperComponent> = {
   title: 'UI Components/InputTextWrapper',
   component: InputTextWrapperComponent,
   tags: ['autodocs'],
+  decorators: [
+    moduleMetadata({
+      imports: [ReactiveFormsModule],
+    }),
+  ],
   argTypes: {
     type: {
       control: 'select',
-      options: ['text', 'email', 'password', 'url', 'tel'],
-    },
-    disabled: {
-      control: 'boolean',
+      options: Object.values(EInputTextWrapperType),
     },
     required: {
       control: 'boolean',
     },
   },
-  args: {
-    // valueChanged: fn(),
-  },
+  args: {},
 };
 
 export default meta;
@@ -37,7 +39,7 @@ export const WithIcon: TStory = {
   args: {
     label: 'Email',
     placeholder: 'ejemplo@email.com',
-    type: 'email',
+    type: EInputTextWrapperType.EMAIL,
     icon: 'email',
   },
 };
@@ -45,7 +47,7 @@ export const WithIcon: TStory = {
 export const WithHint: TStory = {
   args: {
     label: 'Contraseña',
-    type: 'password',
+    type: EInputTextWrapperType.PASSWORD,
     icon: 'lock',
     hint: 'Mínimo 8 caracteres',
     required: true,
@@ -55,7 +57,7 @@ export const WithHint: TStory = {
 export const WithError: TStory = {
   args: {
     label: 'Email',
-    type: 'email',
+    type: EInputTextWrapperType.EMAIL,
     icon: 'email',
     errorMessage: 'Email inválido',
     required: true,
@@ -63,10 +65,21 @@ export const WithError: TStory = {
 };
 
 export const Disabled: TStory = {
+  render: (args) => ({
+    props: {
+      ...args,
+      disabledControl: new FormControl({ value: 'admin@example.com', disabled: true }),
+    },
+    template: `
+      <input-text-wrapper
+        [formControl]="disabledControl"
+        [label]="label"
+        [icon]="icon">
+      </input-text-wrapper>
+    `,
+  }),
   args: {
     label: 'Usuario',
-    value: 'admin@example.com',
-    disabled: true,
     icon: 'person',
   },
 };
@@ -79,20 +92,10 @@ export const Search: TStory = {
   },
 };
 
-export const Phone: TStory = {
-  args: {
-    label: 'Teléfono',
-    type: 'tel',
-    placeholder: '+1 (555) 000-0000',
-    icon: 'phone',
-    hint: 'Formato: +1 (555) 000-0000',
-  },
-};
-
 export const URL: TStory = {
   args: {
     label: 'Sitio Web',
-    type: 'url',
+    type: EInputTextWrapperType.URL,
     placeholder: 'https://ejemplo.com',
     icon: 'link',
     hint: 'Incluya http:// o https://',

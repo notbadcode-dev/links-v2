@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
+import { fn } from 'storybook/test';
 
 import { ITreeNode, TreeWrapperComponent } from '@libs/ui';
 
@@ -85,10 +85,9 @@ const meta: Meta<TreeWrapperComponent> = {
   },
   args: {
     dataSource: sampleData,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-    nodeSelected: fn() as (() => void) | undefined,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-    nodeToggle: fn() as (() => void) | undefined,
+
+    nodeSelected: fn() as (e: ITreeNode<unknown>) => void,
+    nodeToggle: fn() as (e: { node: ITreeNode<unknown>; expanded: boolean }) => void,
   },
 };
 

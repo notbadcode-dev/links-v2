@@ -1,6 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { moduleMetadata } from '@storybook/angular';
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
 
 import { InputPasswordWrapperComponent } from '@libs/ui';
 
@@ -9,11 +9,9 @@ const meta: Meta<InputPasswordWrapperComponent> = {
   component: InputPasswordWrapperComponent,
   tags: ['autodocs'],
   decorators: [
-    {
-      moduleMetadata: {
-        imports: [ReactiveFormsModule],
-      },
-    },
+    moduleMetadata({
+      imports: [ReactiveFormsModule],
+    }),
   ],
   argTypes: {
     label: {
@@ -36,24 +34,16 @@ const meta: Meta<InputPasswordWrapperComponent> = {
       control: 'text',
       description: 'Error message to display',
     },
-    disabled: {
-      control: 'boolean',
-      description: 'Disable input interaction',
-    },
   },
   args: {
     label: 'Password',
     placeholder: 'Enter your password',
     required: false,
-    disabled: false,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-    valueChanged: fn() as () => void,
   },
   render: (args) => ({
     props: {
       ...args,
       passwordControl: new FormControl(''),
-      onValueChanged: args.valueChanged as (() => void) | undefined,
     },
     template: `
       <input-password-wrapper
@@ -62,9 +52,7 @@ const meta: Meta<InputPasswordWrapperComponent> = {
         [placeholder]="placeholder"
         [required]="required"
         [hint]="hint"
-        [errorMessage]="errorMessage"
-        [disabled]="disabled"
-        (valueChanged)="onValueChanged($event)">
+        [errorMessage]="errorMessage">
       </input-password-wrapper>
     `,
   }),
@@ -114,10 +102,22 @@ export const ConfirmPassword: TStory = {
 };
 
 export const Disabled: TStory = {
+  render: (args) => ({
+    props: {
+      ...args,
+      passwordControl: new FormControl({ value: '', disabled: true }),
+    },
+    template: `
+      <input-password-wrapper
+        [formControl]="passwordControl"
+        [label]="label"
+        [placeholder]="placeholder">
+      </input-password-wrapper>
+    `,
+  }),
   args: {
     label: 'Password',
     placeholder: 'Password field disabled',
-    disabled: true,
   },
 };
 

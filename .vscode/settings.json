@@ -82,5 +82,8 @@
     "**/.angular": true,
     "**/out-tsc": true,
     "**/coverage": true
-  }
+  },
+  "cSpell.words": [
+    "transloco"
+  ]
 }

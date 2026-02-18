@@ -91,15 +91,12 @@ describe('ButtonWrapperComponent', () => {
       clickCount++;
     });
 
-    // First click
     component.handleClick(new MouseEvent('click'));
     expect(clickCount).toBe(1);
 
-    // Immediate second click should be ignored
     component.handleClick(new MouseEvent('click'));
     expect(clickCount).toBe(1);
 
-    // After microtask (queueMicrotask in component), processing should be false
     setTimeout(() => {
       component.handleClick(new MouseEvent('click'));
       expect(clickCount).toBe(2);

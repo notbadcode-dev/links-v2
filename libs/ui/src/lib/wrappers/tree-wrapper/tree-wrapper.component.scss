@@ -3,39 +3,39 @@
 
   .mat-tree-node,
   .mat-nested-tree-node {
-    color: #1f2328;
-    font-size: 0.8125rem; // Compact size 13px
-    min-height: 28px; // Ultra-compact height
+    color: var(--ui-color-text);
+    font-size: var(--ui-font-size-sm);
+    min-height: var(--ui-size-control-sm);
   }
 
   .node-content {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    gap: var(--ui-space-2);
+    padding: var(--ui-space-1) var(--ui-space-2);
+    border-radius: var(--ui-radius-xs);
     cursor: pointer;
     flex: 1;
-    transition: background 0.2s ease;
+    transition: background var(--ui-transition-base);
 
     &:hover {
-      background: rgba(0, 0, 0, 0.04);
+      background: var(--ui-color-hover-muted);
     }
 
     &.selected {
-      background: rgba(61, 23, 255, 0.08);
-      color: var(--primary-color, #3d17ff);
-      font-weight: 600;
+      background: var(--ui-color-primary-soft);
+      color: var(--ui-color-primary);
+      font-weight: var(--ui-font-weight-semibold);
     }
 
     .node-icon {
-      font-size: 1.125rem;
+      font-size: var(--ui-font-size-lg);
       width: 1.25rem;
       height: 1.25rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #57606a;
+      color: var(--ui-color-text-muted);
     }
 
     .icon-placeholder {
@@ -48,14 +48,14 @@
   }
 
   ::ng-deep .mat-icon-button {
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+    width: var(--ui-size-icon-lg);
+    height: var(--ui-size-icon-lg);
+    line-height: var(--ui-size-icon-lg);
 
     .mat-icon {
-      font-size: 1.125rem;
-      width: 1.125rem;
-      height: 1.125rem;
+      font-size: var(--ui-font-size-lg);
+      width: var(--ui-font-size-lg);
+      height: var(--ui-font-size-lg);
     }
   }
 

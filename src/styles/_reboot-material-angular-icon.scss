@@ -1,9 +1,5 @@
 @use './reboot-variables' as rv;
 
-// ============================================================
-// MatIcon — Inherit color, compact size
-// ============================================================
-
 html {
   --mat-icon-color: #{rv.$reboot-gray-600};
 }

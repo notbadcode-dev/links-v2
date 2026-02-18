@@ -5,7 +5,11 @@
 export type { ApiNullResponse } from './models/api-null-response';
 export type { ApiResponseMessageModel } from './models/api-response-message-model';
 export type { ApiResponseWrapper } from './models/api-response-wrapper';
+export type { AuthCredentialsRequest } from './models/auth-credentials-request';
+export type { EApiResponseMessageType } from './models/e-api-response-message-type';
+export type { EPaginatedOrder } from './models/e-paginated-order';
 export type { LoginRequest } from './models/login-request';
 export type { LoginResponse } from './models/login-response';
+export type { PaginatedRequest } from './models/paginated-request';
 export type { RefreshRequest } from './models/refresh-request';
 export type { RegisterRequest } from './models/register-request';

@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { CardWrapperComponent, ECardWrapperAlignHeader, ECardWrapperAppearance } from '@libs/ui';
+import {
+  ButtonWrapperComponent,
+  CardWrapperComponent,
+  ECardWrapperAlignHeader,
+  ECardWrapperAppearance,
+} from '@libs/ui';
 
 const meta: Meta<CardWrapperComponent> = {
   title: 'UI Wrappers/CardWrapper',
@@ -37,6 +42,9 @@ const meta: Meta<CardWrapperComponent> = {
   },
   render: (args) => ({
     props: args,
+    moduleMetadata: {
+      imports: [ButtonWrapperComponent],
+    },
     template: `
       <card-wrapper
         [title]="title"
@@ -46,12 +54,10 @@ const meta: Meta<CardWrapperComponent> = {
         [customClass]="customClass">
         <div style="padding: 16px;">
           <p>This is the card content area. You can put any content here, including text, images, forms, or other components.</p>
-          <button style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin-right: 8px;">
-            Primary Action
-          </button>
-          <button style="background: #6c757d; color: white; border: none; padding: 8px 16px; border-radius: 4px;">
-            Secondary Action
-          </button>
+          <div style="display: flex; gap: 8px;">
+            <button-wrapper title="Primary Action"></button-wrapper>
+            <button-wrapper title="Secondary Action" variant="stroked"></button-wrapper>
+          </div>
         </div>
       </card-wrapper>
     `,

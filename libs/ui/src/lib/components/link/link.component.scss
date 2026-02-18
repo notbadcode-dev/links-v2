@@ -3,11 +3,11 @@
 }
 
 .ui-link {
-  color: var(--primary-color, #3d17ff); // Fallback to the blue seen in login component
+  color: var(--ui-color-primary);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: var(--ui-font-weight-bold);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--ui-transition-base);
 
   &:hover {
     text-decoration: underline;

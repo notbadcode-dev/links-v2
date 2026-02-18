@@ -1,148 +1,79 @@
 ---
 name: DropdownWrapperComponent
+type: wrapper
+category: wrappers
 selector: dropdown-wrapper
-type: component
-category: wrapper
-standalone: true
-changeDetection: OnPush
-wraps: MatMenuModule
+description: Material Design dropdown menu with named slot content projection for trigger and items
 extends: BaseDirective
-implements: []
-import: '@libs/ui'
 inputs:
-  - name: trigger
-    type: EDropdownWrapperTrigger
-    required: false
-    default: click
-  - name: position
-    type: EDropdownWrapperPosition
-    required: false
-    default: below
-  - name: disabled
-    type: boolean
-    required: false
-    default: false
-  - name: customClass
-    type: string
-    required: false
-    default: ''
+  - { name: trigger, type: EDropdownWrapperTrigger, required: false, default: CLICK, description: How the menu is activated }
+  - { name: position, type: EDropdownWrapperPosition, required: false, default: BELOW, description: Menu position relative to trigger }
+  - { name: disabled, type: boolean, required: false, default: false, description: Disables the trigger button }
+  - { name: customClass, type: string, required: false, default: "''", description: Additional CSS class on trigger button }
 outputs:
-  - name: itemSelected
-    type: any
+  - { name: itemSelected, type: unknown, description: Emitted when onItemClick(item) is called programmatically }
+slots:
+  - { name: "slot=trigger", description: Visible content that opens the menu on click }
+  - { name: "slot=content", description: Menu items rendered inside MatMenu }
+enums:
+  EDropdownWrapperTrigger: [CLICK, HOVER]
+  EDropdownWrapperPosition: [BELOW, ABOVE]
 ---
 
-# DropdownWrapper Component
+# DropdownWrapperComponent
 
-Componente wrapper que envuelve Angular Material Menu para proporcionar funcionalidad de dropdown con slots para contenido personalizable.
+Menú desplegable de Material Design con trigger y contenido por slots.
 
-## Uso
-
-### Importar
-
-```typescript
-import { DropdownWrapperComponent } from '@libs/ui';
-```
-
-### Ejemplo básico
+## Selector
 
 ```html
 <dropdown-wrapper>
-  <ng-container slot="trigger"> Click me </ng-container>
-
-  <ng-container slot="content">
-    <button class="dropdown-item">Option 1</button>
-    <button class="dropdown-item">Option 2</button>
-  </ng-container>
-</dropdown-wrapper>
 ```
 
-### Con icono en el trigger
+## Propósito
+
+Encapsula `MatMenu` usando content projection con `slot="trigger"` y `slot="content"`, desacoplando el trigger visual del contenido del menú.
+
+## API
+
+| Input | Tipo | Default | Descripción |
+|---|---|---|---|
+| `trigger` | `EDropdownWrapperTrigger` | `CLICK` | Cómo se activa el menú |
+| `position` | `EDropdownWrapperPosition` | `BELOW` | Posición relativa al trigger |
+| `disabled` | `boolean` | `false` | Deshabilita el trigger |
+| `customClass` | `string` | `''` | Clase CSS adicional para el botón trigger |
+
+| Output | Tipo | Descripción |
+|---|---|---|
+| `itemSelected` | `unknown` | Se emite cuando se llama a `onItemClick(item)` internamente |
+
+### `EDropdownWrapperTrigger`
+
+`CLICK` · `HOVER`
+
+### `EDropdownWrapperPosition`
+
+`BELOW` · `ABOVE`
+
+## Slots
+
+| Slot | Descripción |
+|---|---|
+| `slot="trigger"` | Contenido visible que abre el menú al hacer click |
+| `slot="content"` | Elementos del menú (ítems, botones, etc.) |
+
+## Uso
 
 ```html
 <dropdown-wrapper>
   <ng-container slot="trigger">
-    <icon-wrapper icon="settings" />
-    Settings
+    <icon-wrapper icon="more_vert" />
+    Opciones
   </ng-container>
 
   <ng-container slot="content">
-    <button class="dropdown-item">Preferences</button>
-    <button class="dropdown-item">Profile</button>
+    <button class="dropdown-item" (click)="onEdit()">Editar</button>
+    <button class="dropdown-item" (click)="onDelete()">Eliminar</button>
   </ng-container>
 </dropdown-wrapper>
 ```
-
-### Configuración avanzada
-
-```html
-<dropdown-wrapper
-  [trigger]="EDropdownWrapperTrigger.CLICK"
-  [position]="EDropdownWrapperPosition.ABOVE"
-  [disabled]="false"
-  customClass="custom-dropdown"
-  (itemSelected)="onItemSelected($event)"
->
-  <ng-container slot="trigger"> Custom Trigger </ng-container>
-
-  <ng-container slot="content">
-    <!-- Content -->
-  </ng-container>
-</dropdown-wrapper>
-```
-
-## Slots
-
-| Slot      | Descripción                                      |
-| --------- | ------------------------------------------------ |
-| `trigger` | Contenido que actúa como disparador del dropdown |
-| `content` | Contenido del menú dropdown                      |
-
-## Inputs
-
-| Input         | Tipo                       | Default   | Descripción                                        |
-| ------------- | -------------------------- | --------- | -------------------------------------------------- |
-| `trigger`     | `EDropdownWrapperTrigger`  | `'click'` | Cómo se activa el dropdown: `'click' \| 'hover'`   |
-| `position`    | `EDropdownWrapperPosition` | `'below'` | Posición relativa al trigger: `'below' \| 'above'` |
-| `disabled`    | `boolean`                  | `false`   | Si el dropdown está deshabilitado                  |
-| `customClass` | `string`                   | `''`      | Clase CSS personalizada para el botón trigger      |
-
-## Outputs
-
-| Output         | Tipo  | Descripción                                                   |
-| -------------- | ----- | ------------------------------------------------------------- |
-| `itemSelected` | `any` | Emite cuando se selecciona un elemento (usar en el contenido) |
-
-## Estilos CSS
-
-```scss
-.dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
-}
-
-.dropdown-item:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-}
-
-.dropdown-item.active {
-  font-weight: 600;
-  background-color: rgba(0, 0, 0, 0.08);
-}
-```
-
-## Características
-
-- Standalone component
-- OnPush change detection
-- Integración con Angular Material Menu
-- Slots personalizables para trigger y content
-- Soporte para diferentes posiciones
-- Eventos de selección
-- Clases CSS personalizables

@@ -4,7 +4,6 @@ import { NOTIFICATION_CONSTANTS } from './notification.constants';
 import { ENotificationType } from './notification.enum';
 import { INotification, INotificationConfig } from './notification.interface';
 
-// Constants for ID generation
 const ID_GENERATION_CONSTANTS = {
   RANDOM_STRING_BASE: 36,
   RANDOM_STRING_START_INDEX: 2,

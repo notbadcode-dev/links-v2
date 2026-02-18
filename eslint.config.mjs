@@ -1,32 +1,18 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+
 import storybook from "eslint-plugin-storybook";
 
-// @ts-check
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import angular from '@angular-eslint/eslint-plugin';
 import angularTemplate from '@angular-eslint/eslint-plugin-template';
 import angularTemplateParser from '@angular-eslint/template-parser';
+import importPlugin from 'eslint-plugin-import';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 
 export default tseslint.config({
   ignores: [
-    'node_modules/**',
-    'dist/**',
-    '.angular/**',
-    'out-tsc/**',
-    'coverage/**',
-    '*.js',
-    '*.mjs',
-    '!eslint.config.mjs',
-  ],
-}, // Base configurations
-eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // TypeScript files configuration
-{
-  files: ['**/*.ts'],
+    'node_modules*.ts'],
   languageOptions: {
     parser: tseslint.parser,
     parserOptions: {
@@ -39,17 +25,13 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
   plugins: {
     '@typescript-eslint': tseslint.plugin,
     '@angular-eslint': angular,
+    import: importPlugin,
     prettier: prettier,
   },
   rules: {
-    // ═══════════════════════════════════════════════════════════
-    // PRETTIER INTEGRATION
-    // ═══════════════════════════════════════════════════════════
+
     'prettier/prettier': 'error',
 
-    // ═══════════════════════════════════════════════════════════
-    // TYPESCRIPT - TYPE SAFETY
-    // ═══════════════════════════════════════════════════════════
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-unsafe-assignment': 'error',
     '@typescript-eslint/no-unsafe-call': 'error',
@@ -57,9 +39,6 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
     '@typescript-eslint/no-unsafe-return': 'error',
     '@typescript-eslint/no-unsafe-argument': 'error',
 
-    // ═══════════════════════════════════════════════════════════
-    // TYPESCRIPT - EXPLICIT TYPES
-    // ═══════════════════════════════════════════════════════════
     '@typescript-eslint/explicit-function-return-type': [
       'error',
       {
@@ -93,41 +72,38 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
       },
     ],
 
-    // ═══════════════════════════════════════════════════════════
-    // TYPESCRIPT - NAMING CONVENTIONS
-    // ═══════════════════════════════════════════════════════════
     '@typescript-eslint/naming-convention': [
       'error',
-      // Default: camelCase
+
       {
         selector: 'default',
         format: ['camelCase'],
         leadingUnderscore: 'allow',
         trailingUnderscore: 'forbid',
       },
-      // Variables: camelCase, UPPER_CASE (constants), PascalCase (components)
+
       {
         selector: 'variable',
         format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
         leadingUnderscore: 'allow',
       },
-      // Parameters: camelCase
+
       {
         selector: 'parameter',
         format: ['camelCase'],
         leadingUnderscore: 'allow',
       },
-      // Functions: camelCase
+
       {
         selector: 'function',
         format: ['camelCase'],
       },
-      // Classes: PascalCase
+
       {
         selector: 'class',
         format: ['PascalCase'],
       },
-      // Interfaces: PascalCase starting with 'I'
+
       {
         selector: 'interface',
         format: ['PascalCase'],
@@ -136,7 +112,7 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
           match: true,
         },
       },
-      // Type Aliases: PascalCase starting with 'T'
+
       {
         selector: 'typeAlias',
         format: ['PascalCase'],
@@ -145,7 +121,7 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
           match: true,
         },
       },
-      // Enums: PascalCase starting with 'E'
+
       {
         selector: 'enum',
         format: ['PascalCase'],
@@ -154,12 +130,12 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
           match: true,
         },
       },
-      // Enum Members: PascalCase or UPPER_CASE
+
       {
         selector: 'enumMember',
         format: ['PascalCase', 'UPPER_CASE'],
       },
-      // Type Parameters (Generics): PascalCase starting with 'T'
+
       {
         selector: 'typeParameter',
         format: ['PascalCase'],
@@ -168,44 +144,44 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
           match: true,
         },
       },
-      // Properties: allow any (for APIs, etc.)
+
       {
         selector: 'property',
         format: null,
       },
-      // Private properties: camelCase with leading underscore
+
       {
         selector: 'property',
         modifiers: ['private'],
         format: ['camelCase'],
         leadingUnderscore: 'require',
       },
-      // Protected properties: camelCase with leading underscore
+
       {
         selector: 'property',
         modifiers: ['protected'],
         format: ['camelCase'],
         leadingUnderscore: 'require',
       },
-      // Static readonly: UPPER_CASE
+
       {
         selector: 'property',
         modifiers: ['static', 'readonly'],
         format: ['UPPER_CASE'],
       },
-      // Methods: camelCase
+
       {
         selector: 'method',
         format: ['camelCase'],
       },
-      // Private methods: camelCase with leading underscore
+
       {
         selector: 'method',
         modifiers: ['private'],
         format: ['camelCase'],
         leadingUnderscore: 'require',
       },
-      // Protected methods: camelCase with leading underscore
+
       {
         selector: 'method',
         modifiers: ['protected'],
@@ -214,9 +190,6 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
       },
     ],
 
-    // ═══════════════════════════════════════════════════════════
-    // TYPESCRIPT - CODE QUALITY
-    // ═══════════════════════════════════════════════════════════
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
@@ -249,23 +222,18 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
     '@typescript-eslint/no-unnecessary-condition': 'error',
     '@typescript-eslint/prefer-literal-enum-member': 'error',
 
-    // ═══════════════════════════════════════════════════════════
-    // TYPESCRIPT - MEMBER ORDERING
-    // ═══════════════════════════════════════════════════════════
     '@typescript-eslint/member-ordering': [
       'error',
       {
         default: [
-          // Index signature
+
           'signature',
           'call-signature',
 
-          // Static
           'public-static-field',
           'protected-static-field',
           'private-static-field',
 
-          // Fields
           'public-decorated-field',
           'protected-decorated-field',
           'private-decorated-field',
@@ -277,12 +245,10 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
           'public-abstract-field',
           'protected-abstract-field',
 
-          // Constructors
           'public-constructor',
           'protected-constructor',
           'private-constructor',
 
-          // Getters/Setters
           'public-static-get',
           'protected-static-get',
           'private-static-get',
@@ -313,7 +279,6 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
           'public-abstract-set',
           'protected-abstract-set',
 
-          // Methods
           'public-static-method',
           'protected-static-method',
           'private-static-method',
@@ -332,9 +297,6 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
       },
     ],
 
-    // ═══════════════════════════════════════════════════════════
-    // ANGULAR - COMPONENT & DIRECTIVE RULES
-    // ═══════════════════════════════════════════════════════════
     '@angular-eslint/component-class-suffix': [
       'error',
       {
@@ -370,9 +332,6 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
       },
     ],
 
-    // ═══════════════════════════════════════════════════════════
-    // ANGULAR - BEST PRACTICES
-    // ═══════════════════════════════════════════════════════════
     '@angular-eslint/no-input-rename': 'error',
     '@angular-eslint/no-output-rename': 'error',
     '@angular-eslint/no-output-on-prefix': 'error',
@@ -387,9 +346,6 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
     '@angular-eslint/no-conflicting-lifecycle': 'error',
     '@angular-eslint/no-empty-lifecycle-method': 'error',
 
-    // ═══════════════════════════════════════════════════════════
-    // ANGULAR - METADATA
-    // ═══════════════════════════════════════════════════════════
     '@angular-eslint/no-inputs-metadata-property': 'error',
     '@angular-eslint/no-outputs-metadata-property': 'error',
     '@angular-eslint/no-queries-metadata-property': 'error',
@@ -402,24 +358,15 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
       },
     ],
 
-    // ═══════════════════════════════════════════════════════════
-    // ANGULAR - MODERN FEATURES
-    // ═══════════════════════════════════════════════════════════
     '@angular-eslint/prefer-standalone': 'warn',
     '@angular-eslint/prefer-signals': 'warn',
     '@angular-eslint/no-forward-ref': 'warn',
 
-    // ═══════════════════════════════════════════════════════════
-    // ANGULAR - INLINE DECLARATIONS
-    // ═══════════════════════════════════════════════════════════
     '@angular-eslint/component-max-inline-declarations': [
       'error',
       { template: 0, styles: 0, animations: 0 },
     ],
 
-    // ═══════════════════════════════════════════════════════════
-    // GENERAL - BEST PRACTICES
-    // ═══════════════════════════════════════════════════════════
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-debugger': 'error',
     'no-alert': 'error',
@@ -440,9 +387,6 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
     'object-shorthand': ['error', 'always'],
     'quote-props': ['error', 'as-needed'],
 
-    // ═══════════════════════════════════════════════════════════
-    // GENERAL - CODE QUALITY
-    // ═══════════════════════════════════════════════════════════
     eqeqeq: ['error', 'always', { null: 'ignore' }],
     curly: ['error', 'all'],
     'no-eval': 'error',
@@ -457,73 +401,27 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
     'no-nested-ternary': 'error',
     'no-unneeded-ternary': 'error',
 
-    // ═══════════════════════════════════════════════════════════
-    // GENERAL - IMPORTS
-    // ═══════════════════════════════════════════════════════════
     'no-duplicate-imports': 'error',
-    'sort-imports': [
+    'import/order': [
       'error',
       {
-        ignoreCase: true,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-      },
-    ],
-
-    // ═══════════════════════════════════════════════════════════
-    // GENERAL - COMPLEXITY
-    // ═══════════════════════════════════════════════════════════
-    complexity: ['warn', 15],
-    'max-depth': ['error', 4],
-    'max-lines': [
-      'warn',
-      {
-        max: 500,
-        skipBlankLines: true,
-        skipComments: true,
-      },
-    ],
-    'max-lines-per-function': [
-      'warn',
-      {
-        max: 150,
-        skipBlankLines: true,
-        skipComments: true,
-      },
-    ],
-    'max-params': ['error', 5],
-    'max-nested-callbacks': ['error', 4],
-
-    // ═══════════════════════════════════════════════════════════
-    // GENERAL - DISABLED BASE RULES (use TypeScript versions)
-    // ═══════════════════════════════════════════════════════════
-    'no-useless-constructor': 'off',
-    '@typescript-eslint/no-useless-constructor': 'error',
-    'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': 'error',
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': [
-      'error',
-      {
-        functions: false,
-        classes: true,
-        variables: true,
-      },
-    ],
-    'no-return-await': 'off',
-    '@typescript-eslint/return-await': ['error', 'always'],
-  },
-},
-// Test files configuration
-{
-  files: ['**/*.spec.ts'],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          ['parent', 'sibling', 'index'],
+          'object',
+          'type',
+        ],
+        pathGroups: [
+          {
+            pattern: '@app*.spec.ts'],
   rules: {
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'off',
   },
-}, // HTML template files configuration
+},
 {
   files: ['**/*.html'],
   languageOptions: {
@@ -533,9 +431,7 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
     '@angular-eslint/template': angularTemplate,
   },
   rules: {
-    // ═══════════════════════════════════════════════════════════
-    // ANGULAR TEMPLATES - SYNTAX
-    // ═══════════════════════════════════════════════════════════
+
     '@angular-eslint/template/banana-in-box': 'error',
     '@angular-eslint/template/no-negated-async': 'error',
     '@angular-eslint/template/eqeqeq': [
@@ -547,21 +443,12 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
     '@angular-eslint/template/prefer-self-closing-tags': 'error',
     '@angular-eslint/template/prefer-ngsrc': 'error',
 
-    // ═══════════════════════════════════════════════════════════
-    // ANGULAR TEMPLATES - PERFORMANCE
-    // ═══════════════════════════════════════════════════════════
     '@angular-eslint/template/use-track-by-function': 'warn',
     '@angular-eslint/template/no-call-expression': 'warn',
 
-    // ═══════════════════════════════════════════════════════════
-    // ANGULAR TEMPLATES - QUALITY
-    // ═══════════════════════════════════════════════════════════
     '@angular-eslint/template/no-duplicate-attributes': 'error',
     '@angular-eslint/template/no-positive-tabindex': 'error',
 
-    // ═══════════════════════════════════════════════════════════
-    // ANGULAR TEMPLATES - COMPLEXITY
-    // ═══════════════════════════════════════════════════════════
     '@angular-eslint/template/conditional-complexity': [
       'warn',
       {

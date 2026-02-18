@@ -14,7 +14,7 @@ import { InputWrapperDirective } from '../input-wrapper/input-wrapper.directive'
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      // eslint-disable-next-line @angular-eslint/no-forward-ref
+
       useExisting: forwardRef(() => CheckboxWrapperComponent),
       multi: true,
     },

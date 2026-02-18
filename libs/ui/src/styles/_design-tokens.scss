@@ -1,0 +1,85 @@
+:root {
+  --ui-font-family-base:
+    'Mona Sans Variable',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Helvetica,
+    Arial,
+    sans-serif;
+  --ui-font-size-xs: 0.75rem;
+  --ui-font-size-sm: 0.8125rem;
+  --ui-font-size-base: 0.875rem;
+  --ui-font-size-md: 1rem;
+  --ui-font-size-lg: 1.125rem;
+  --ui-font-size-xl: 1.5rem;
+  --ui-font-size-2xl: 1.875rem;
+  --ui-font-weight-regular: 400;
+  --ui-font-weight-medium: 500;
+  --ui-font-weight-semibold: 600;
+  --ui-font-weight-bold: 700;
+  --ui-line-height-tight: 1.2;
+  --ui-line-height-base: 1.4;
+
+  --ui-space-1: 0.25rem;
+  --ui-space-2: 0.5rem;
+  --ui-space-3: 0.75rem;
+  --ui-space-4: 1rem;
+  --ui-space-5: 1.5rem;
+  --ui-space-6: 2rem;
+  --ui-space-7: 3rem;
+
+  --ui-radius-xs: 4px;
+  --ui-radius-sm: 6px;
+  --ui-radius-md: 8px;
+  --ui-radius-lg: 12px;
+  --ui-radius-full: 9999px;
+
+  --ui-size-icon-sm: 18px;
+  --ui-size-icon-md: 20px;
+  --ui-size-icon-lg: 24px;
+  --ui-size-control-sm: 28px;
+  --ui-size-control-md: 36px;
+  --ui-size-sidebar: 280px;
+  --ui-size-navbar: 56px;
+
+  --ui-border-width: 1px;
+  --ui-border-subtle: #e1e4e8;
+  --ui-border-strong: #d1d5da;
+
+  --ui-color-canvas: #fafbfc;
+  --ui-color-surface: #ffffff;
+  --ui-color-surface-alt: #f6f8fa;
+  --ui-color-text: #1f2328;
+  --ui-color-text-strong: #1a1a1a;
+  --ui-color-text-muted: #57606a;
+  --ui-color-text-soft: #959da5;
+  --ui-color-primary: #3d17ff;
+  --ui-color-primary-soft: rgba(61, 23, 255, 0.08);
+  --ui-color-primary-soft-bg: #eef2ff;
+  --ui-color-primary-soft-fg: #4f46e5;
+  --ui-color-hover-muted: rgba(0, 0, 0, 0.04);
+  --ui-color-active-muted: rgba(0, 0, 0, 0.08);
+
+  --ui-color-success-bg: #f0fdf4;
+  --ui-color-success-border: #bbf7d0;
+  --ui-color-success-text: #166534;
+  --ui-color-success-icon: #16a34a;
+  --ui-color-error-bg: #fef2f2;
+  --ui-color-error-border: #fecaca;
+  --ui-color-error-text: #991b1b;
+  --ui-color-error-icon: #dc2626;
+  --ui-color-warning-bg: #fffbeb;
+  --ui-color-warning-border: #fde68a;
+  --ui-color-warning-text: #92400e;
+  --ui-color-warning-icon: #d97706;
+  --ui-color-info-bg: #eff6ff;
+  --ui-color-info-border: #bfdbfe;
+  --ui-color-info-text: #1e40af;
+  --ui-color-info-icon: #2563eb;
+
+  --ui-shadow-sm: 0 1px 2px rgba(27, 31, 35, 0.04);
+  --ui-shadow-md: 0 1px 5px rgba(27, 31, 35, 0.08);
+  --ui-transition-fast: 150ms ease;
+  --ui-transition-base: 200ms ease;
+}

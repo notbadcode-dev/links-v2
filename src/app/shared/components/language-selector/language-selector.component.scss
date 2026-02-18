@@ -5,22 +5,23 @@
 .dropdown-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
+  gap: var(--ui-space-2);
+  padding: var(--ui-space-3) var(--ui-space-4);
   cursor: pointer;
   border: none;
   background: none;
   width: 100%;
   text-align: left;
-  font-size: 0.875rem;
-  transition: background-color 0.15s ease;
+  font-size: var(--ui-font-size-base);
+  color: var(--ui-color-text);
+  transition: background-color var(--ui-transition-fast);
 }
 
 .dropdown-item:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--ui-color-hover-muted);
 }
 
 .dropdown-item.active {
-  font-weight: 600;
-  background-color: rgba(0, 0, 0, 0.08);
+  font-weight: var(--ui-font-weight-semibold);
+  background-color: var(--ui-color-active-muted);
 }

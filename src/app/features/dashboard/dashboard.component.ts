@@ -53,6 +53,6 @@ export class DashboardComponent extends BaseDirective {
   ];
 
   public onCategorySelect(_node: ITreeNode): void {
-    // Selection is handled by parent feature state in a future iteration.
+
   }
 }

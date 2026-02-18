@@ -1,117 +1,79 @@
 ---
 name: CheckboxWrapperComponent
+type: wrapper
+category: wrappers
 selector: checkbox-wrapper
-type: component
-category: wrapper
-standalone: true
-changeDetection: OnPush
-wraps: MatCheckboxModule
-extends: InputWrapperDirective<boolean>
-implements:
-  - ControlValueAccessor
-import: "@app/shared/ui"
-inputs:
-  - name: label
-    type: string
-    required: false
-  - name: placeholder
-    type: string
-    required: false
-  - name: required
-    type: boolean
-    required: false
-    default: false
-  - name: icon
-    type: string
-    required: false
-  - name: hint
-    type: string
-    required: false
-  - name: errorMessage
-    type: string
-    required: false
-  - name: tabindex
-    type: number
-    required: false
-  - name: config
-    type: IInputWrapperConfig
-    required: false
-outputs: []
+description: Material Design checkbox integrated with Angular Reactive Forms via ControlValueAccessor
+extends: "InputWrapperDirective<boolean>"
+implements: ControlValueAccessor
+integrations:
+  - { token: DISABLE_ON_LOADING, optional: true, description: Auto-disables during loading state }
+value_type: boolean
+inherits_inputs_from: InputWrapperDirective
+key_inputs:
+  - { name: label, type: "string | undefined", description: Checkbox label text }
+  - { name: required, type: "boolean | undefined", description: Marks field as required }
+  - { name: config, type: IInputWrapperConfig, description: Config object alternative to individual inputs }
 ---
 
-# CheckboxWrapper Component
+# CheckboxWrapperComponent
 
-Componente wrapper que envuelve Angular Material Checkbox e implementa `ControlValueAccessor` para integracion con Angular Forms.
+Checkbox de Material Design integrado con Angular Reactive Forms.
+
+## Selector
+
+```html
+<checkbox-wrapper>
+```
+
+## Propósito
+
+Encapsula `MatCheckbox` implementando `ControlValueAccessor`. Hereda toda la API de `InputWrapperDirective`, incluyendo soporte para deshabilitar con `DISABLE_ON_LOADING`.
+
+## API
+
+Hereda todos los inputs de [`InputWrapperDirective`](../input-wrapper/README.md).
+
+Los más relevantes:
+
+| Input | Tipo | Descripción |
+|---|---|---|
+| `label` | `string` | Texto visible junto al checkbox |
+| `required` | `boolean` | Marca el campo como requerido |
+| `config` | `IInputWrapperConfig` | Alternativa al paso individual de inputs |
 
 ## Uso
 
-### Importar
+### Con `FormControl` directo
 
-```typescript
-import { CheckboxWrapperComponent } from '@app/shared/ui';
+```html
+<checkbox-wrapper
+  label="Recuérdame"
+  [formControl]="rememberMeControl"
+/>
 ```
 
-### Con Reactive Forms
+### Con `formControlName`
 
-```typescript
-@Component({
-  standalone: true,
-  imports: [ReactiveFormsModule, CheckboxWrapperComponent],
-  template: `
-    <form [formGroup]="form">
-      <checkbox-wrapper
-        label="Acepto los terminos"
-        [required]="true"
-        formControlName="terms"
-      />
-    </form>
-  `,
-})
-export class MyComponent {
-  form = new FormGroup({
-    terms: new FormControl(false, [Validators.requiredTrue]),
-  });
-}
+```html
+<ui-form-container [formGroup]="form" (formSubmit)="onSubmit()">
+  <checkbox-wrapper
+    label="Acepto los términos y condiciones"
+    formControlName="acceptTerms"
+    [required]="true"
+  />
+</ui-form-container>
 ```
 
-### Con ngModel
+### Con config object
 
 ```typescript
-@Component({
-  standalone: true,
-  imports: [FormsModule, CheckboxWrapperComponent],
-  template: `
-    <checkbox-wrapper
-      label="Recordarme"
-      [(ngModel)]="rememberMe"
-    />
-  `,
-})
-export class MyComponent {
-  rememberMe = false;
-}
+public readonly termsConfig: IInputWrapperConfig = {
+  label: 'Acepto los términos',
+  required: true,
+};
 ```
 
-## Inputs
-
-| Input          | Tipo                  | Default | Descripcion                                   |
-| -------------- | --------------------- | ------- | --------------------------------------------- |
-| `label`        | `string`              | -       | Texto que se muestra junto al checkbox        |
-| `placeholder`  | `string`              | -       | Texto de placeholder                          |
-| `required`     | `boolean`             | `false` | Si el checkbox es requerido                   |
-| `icon`         | `string`              | -       | Nombre del icono de Material Icons            |
-| `hint`         | `string`              | -       | Texto de ayuda                                |
-| `errorMessage` | `string`              | -       | Mensaje de error cuando es invalido           |
-| `tabindex`     | `number \| undefined` | -       | Orden de tabulacion                           |
-| `config`       | `IInputWrapperConfig` | -       | Configuracion alternativa via objeto          |
-
-## Caracteristicas
-
-- Standalone component
-- OnPush change detection
-- Implementa `ControlValueAccessor` (hereda de `InputWrapperDirective<boolean>`)
-- Compatible con Reactive Forms y Template-driven Forms
-- Integracion con Angular Material Checkbox
-- Soporte para validaciones de Angular Forms
-- Estados touched/dirty/pristine
-- Estado deshabilitado
+```html
+<checkbox-wrapper formControlName="terms" [config]="termsConfig" />
+```

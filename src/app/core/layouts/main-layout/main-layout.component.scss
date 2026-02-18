@@ -3,10 +3,10 @@
   grid-template-areas:
     'nav nav'
     'main sidebar';
-  grid-template-rows: 56px 1fr;
-  grid-template-columns: 1fr 280px;
+  grid-template-rows: var(--ui-size-navbar) 1fr;
+  grid-template-columns: 1fr var(--ui-size-sidebar);
   min-height: 100vh;
-  background-color: #fafbfc;
+  background-color: var(--ui-color-canvas);
 }
 
 .top-navbar {
@@ -14,9 +14,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.5rem;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e1e4e8;
+  padding: 0 var(--ui-space-5);
+  background-color: var(--ui-color-surface);
+  border-bottom: var(--ui-border-width) solid var(--ui-border-subtle);
   z-index: 10;
   position: sticky;
   top: 0;
@@ -24,19 +24,19 @@
   .nav-brand {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--ui-space-3);
 
     .brand-logo {
-      color: #3d17ff;
-      font-size: 24px;
-      width: 24px;
-      height: 24px;
+      color: var(--ui-color-primary);
+      font-size: var(--ui-size-icon-lg);
+      width: var(--ui-size-icon-lg);
+      height: var(--ui-size-icon-lg);
     }
 
     .brand-name {
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: #1a1a1a;
+      font-size: var(--ui-font-size-lg);
+      font-weight: var(--ui-font-weight-bold);
+      color: var(--ui-color-text-strong);
       letter-spacing: -0.01em;
     }
   }
@@ -44,50 +44,50 @@
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--ui-space-2);
 
     button {
-      color: #57606a;
+      color: var(--ui-color-text-muted);
     }
   }
 }
 
 .right-sidebar {
   grid-area: sidebar;
-  background-color: #ffffff;
-  border-left: 1px solid #e1e4e8;
+  background-color: var(--ui-color-surface);
+  border-left: var(--ui-border-width) solid var(--ui-border-subtle);
   position: sticky;
-  top: 56px;
-  height: calc(100vh - 56px);
+  top: var(--ui-size-navbar);
+  height: calc(100vh - var(--ui-size-navbar));
   overflow-y: auto;
 
   .sidebar-content {
-    padding: 1.5rem;
+    padding: var(--ui-space-5);
 
     .sidebar-header {
-      margin-bottom: 1rem;
+      margin-bottom: var(--ui-space-4);
 
       h3 {
-        font-size: 0.875rem;
-        font-weight: 700;
+        font-size: var(--ui-font-size-base);
+        font-weight: var(--ui-font-weight-bold);
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: #57606a;
+        color: var(--ui-color-text-muted);
       }
     }
 
     .empty-state {
-      font-size: 0.875rem;
-      color: #959da5;
+      font-size: var(--ui-font-size-base);
+      color: var(--ui-color-text-soft);
       text-align: center;
-      margin-top: 2rem;
+      margin-top: var(--ui-space-6);
     }
   }
 }
 
 .main-content {
   grid-area: main;
-  padding: 2rem;
+  padding: var(--ui-space-6);
   overflow-y: auto;
 }
 

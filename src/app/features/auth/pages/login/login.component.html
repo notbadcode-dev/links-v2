@@ -6,7 +6,7 @@
           <icon-wrapper [icon]="icons.APP.LOGO" />
         </ui-icon-circle>
 
-        <ui-title [title]="t('auth.login.title')" [subtitle]="t('auth.login.subtitle')" />
+        <ui-title [title]="t(i18nKeys.TITLE)" [subtitle]="t(i18nKeys.SUBTITLE)" />
       </ui-stack>
     </ui-page-header>
 
@@ -26,14 +26,14 @@
           />
 
           <ui-form-row [align]="EAlign.BETWEEN">
-            <checkbox-wrapper [label]="t('auth.login.form.remember_me')" formControlName="rememberMe" />
+            <checkbox-wrapper [label]="t(i18nKeys.FORM.REMEMBER_ME)" formControlName="rememberMe" />
 
-            <ui-link [route]="routes.FORGOT_PASSWORD" [label]="t('auth.login.form.forgot_password')" />
+            <ui-link [route]="routes.FORGOT_PASSWORD" [label]="t(i18nKeys.FORM.FORGOT_PASSWORD)" />
           </ui-form-row>
 
           <button-wrapper
             disableOnLoading
-            [title]="t('auth.login.form.submit_button')"
+            [title]="t(i18nKeys.FORM.SUBMIT_BUTTON)"
             [fullWidth]="true"
             [disabled]="loginForm.invalid"
             [variant]="EButtonWrapperVariant.FLAT"
@@ -44,8 +44,8 @@
 
     <ui-page-footer>
       <ui-inline-text>
-        {{ t('common.actions.back') }}
-        <ui-link [route]="routes.SIGNUP" [label]="t('common.actions.submit')" />
+        {{ t(i18nKeys.FOOTER.NO_ACCOUNT) }}
+        <ui-link [route]="routes.SIGNUP" [label]="t(i18nKeys.FOOTER.SIGN_UP_LINK)" />
       </ui-inline-text>
     </ui-page-footer>
   </ui-page>

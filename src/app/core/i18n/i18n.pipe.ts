@@ -3,16 +3,10 @@ import { Subject, takeUntil } from 'rxjs';
 import { I18nService } from './i18n.service';
 import { TTranslationParams, TTranslationPath } from './i18n.types';
 
-/**
- * I18n Pipe Wrapper
- *
- * Custom pipe that wraps the translation functionality to provide
- * a consistent interface across the application.
- */
 @Pipe({
   name: 'i18n',
   standalone: true,
-  pure: false, // Impure pipe to react to language changes
+  pure: false,
 })
 export class I18nPipe implements PipeTransform, OnDestroy {
   private readonly _destroy$: Subject<void> = new Subject<void>();
@@ -20,7 +14,7 @@ export class I18nPipe implements PipeTransform, OnDestroy {
   private readonly _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   constructor() {
-    // Listen for language changes and trigger change detection
+
     this._i18nService.langChanges$.pipe(takeUntil(this._destroy$)).subscribe(() => {
       this._cdr.markForCheck();
     });

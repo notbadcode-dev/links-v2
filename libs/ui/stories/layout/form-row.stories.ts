@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { EAlign, FormRowComponent } from '@libs/ui';
+import { ButtonWrapperComponent, EAlign, FormRowComponent } from '@libs/ui';
 
 const meta: Meta<FormRowComponent> = {
   title: 'UI Components/FormRow',
@@ -54,14 +54,15 @@ export const WithMultipleElements: TStory = {
   },
   render: (args) => ({
     props: args,
+    moduleMetadata: {
+      imports: [ButtonWrapperComponent],
+    },
     template: `
       <ui-form-row [align]="align">
         <label style="margin-right: 16px; min-width: 100px;">Full Name:</label>
         <input type="text" placeholder="First" style="margin-right: 8px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
         <input type="text" placeholder="Last" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-        <button style="margin-left: 8px; padding: 8px 12px; background: #28a745; color: white; border: none; border-radius: 4px;">
-          Verify
-        </button>
+        <button-wrapper style="margin-left: 8px;" title="Verify" variant="flat"></button-wrapper>
       </ui-form-row>
     `,
   }),

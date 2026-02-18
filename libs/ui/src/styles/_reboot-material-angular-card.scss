@@ -1,28 +1,21 @@
 @use './reboot-variables' as rv;
 
-// ============================================================
-// MatCard — Flat with subtle border, no elevation
-// ============================================================
-
 html {
-  // Elevated
+
   --mat-card-elevated-container-color: #{rv.$reboot-white};
   --mat-card-elevated-container-elevation: #{rv.$reboot-shadow-none};
   --mat-card-elevated-container-shape: #{rv.$reboot-border-radius-md};
 
-  // Outlined
   --mat-card-outlined-container-color: #{rv.$reboot-white};
   --mat-card-outlined-outline-color: #{rv.$reboot-outline-variant};
   --mat-card-outlined-outline-width: #{rv.$reboot-border-width};
   --mat-card-outlined-container-elevation: #{rv.$reboot-shadow-none};
   --mat-card-outlined-container-shape: #{rv.$reboot-border-radius-md};
 
-  // Filled
   --mat-card-filled-container-color: #{rv.$reboot-gray-50};
   --mat-card-filled-container-elevation: #{rv.$reboot-shadow-none};
   --mat-card-filled-container-shape: #{rv.$reboot-border-radius-md};
 
-  // Typography
   --mat-card-title-text-size: #{rv.$reboot-font-size-lg};
   --mat-card-title-text-weight: #{rv.$reboot-font-weight-bold};
   --mat-card-title-text-tracking: normal;
@@ -31,7 +24,6 @@ html {
   --mat-card-subtitle-text-weight: #{rv.$reboot-font-weight-regular};
 }
 
-// Border for elevated cards (since we removed box-shadow)
 .mat-mdc-card:not(.mat-mdc-card-outlined) {
   border: rv.$reboot-border-width solid rv.$reboot-outline-variant;
 }

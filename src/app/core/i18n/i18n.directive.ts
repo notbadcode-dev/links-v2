@@ -13,13 +13,6 @@ import { startWith, Subject, switchMap, takeUntil } from 'rxjs';
 import { I18nService } from './i18n.service';
 import { TTranslationParams } from './i18n.types';
 
-/**
- * I18n Directive Wrapper
- *
- * Custom directive that wraps the translation functionality to provide
- * a consistent interface. This directive provides a translation function
- * to the template context.
- */
 @Directive({
   selector: '[i18n]',
   standalone: true,
@@ -59,7 +52,6 @@ export class I18nDirective implements OnInit, OnDestroy {
   private _renderTemplate(): void {
     this._viewContainer.clear();
 
-    // Create translation function for template
     const translateFn = (key: string, params?: TTranslationParams): string => {
       const scope = this.i18n();
       const normalizedScope = scope?.trim();
@@ -83,11 +75,10 @@ export class I18nDirective implements OnInit, OnDestroy {
       return this._i18nService.translate(key, params, normalizedScope);
     };
 
-    // Create context with translation function
     const scope = this.i18n();
     const context: II18nTemplateContext = {
       $implicit: translateFn,
-      t: translateFn, // Alias for shorter syntax
+      t: translateFn,
       currentLang: this._i18nService.currentLanguage,
       ...(scope !== undefined ? { scope } : {}),
     };

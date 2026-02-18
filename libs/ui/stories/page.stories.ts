@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { EPageLayout, PageComponent } from '@libs/ui';
+import { ButtonWrapperComponent, EPageLayout, PageComponent } from '@libs/ui';
 
 const meta: Meta<PageComponent> = {
   title: 'UI Components/Page',
@@ -96,15 +96,16 @@ export const BodyOnly: TStory = {
   },
   render: (args) => ({
     props: args,
+    moduleMetadata: {
+      imports: [ButtonWrapperComponent],
+    },
     template: `
       <ui-page [layout]="layout">
         <ui-page-body>
           <div style="padding: 32px; text-align: center;">
             <h2>Content Only Page</h2>
             <p>This page only has body content, no header or footer.</p>
-            <button style="padding: 12px 24px; background: #28a745; color: white; border: none; border-radius: 4px;">
-              Action Button
-            </button>
+            <button-wrapper title="Action Button" variant="flat"></button-wrapper>
           </div>
         </ui-page-body>
       </ui-page>

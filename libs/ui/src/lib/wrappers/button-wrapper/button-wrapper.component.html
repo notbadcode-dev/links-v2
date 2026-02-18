@@ -22,8 +22,12 @@
 }
 
 <ng-template #buttonInner>
-  @if (icon()) {
-    <mat-icon>{{ icon() }}</mat-icon>
-  }
-  {{ title() }}
+  <span class="button-wrapper__content" [class.button-wrapper__content--icon-only]="icon() && !title()">
+    @if (icon()) {
+      <mat-icon class="button-wrapper__icon">{{ icon() }}</mat-icon>
+    }
+    @if (title()) {
+      <span class="button-wrapper__label">{{ title() }}</span>
+    }
+  </span>
 </ng-template>

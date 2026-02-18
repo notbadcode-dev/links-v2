@@ -35,6 +35,6 @@ export class LanguageSelectorComponent {
   private _getCurrentLanguage(): ILanguage {
     const currentLang = this._currentLang();
     const foundLang = this._availableLanguages.find((l: ILanguage) => l.code === currentLang);
-    return foundLang || this._availableLanguages[0]!;
+    return foundLang ?? this._availableLanguages[0]!;
   }
 }

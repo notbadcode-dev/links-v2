@@ -1,16 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { I18nDirective } from '@app/core/i18n';
-import { provideTranslocoScope } from '@jsverse/transloco';
+import { TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
 
 import { ICONS_CONSTANTS } from '@app/constants/icons.constants';
+import { COMMON_KEYS } from '@app/constants/i18n-keys.constants';
 import { PATTERNS_CONSTANTS } from '@app/constants/pattern.constants';
-import { VALIDATION_KEYS_CONSTANTS } from '@app/constants/validation.constants';
+import { VALIDATION_CONSTANTS, VALIDATION_KEYS_CONSTANTS } from '@app/constants/validation.constants';
 import { DisableOnLoadingDirective } from '@app/core/directives/disable-on-loading.directive';
-import { AUTH_CONSTANTS } from '@app/features/auth/constants/auth.constants';
-import { SIGNUP_CONSTANTS } from '@app/features/auth/constants/signup.constants';
+import { AUTH_FORM_KEYS } from '@app/features/auth/constants/auth-form-keys.constants';
 import { ISignupForm } from '@app/features/auth/interfaces/auth.interfaces';
 import {
   BaseDirective,
@@ -47,10 +47,6 @@ import {
 })
 export class SignupComponent extends BaseDirective {
   public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;
-  public readonly nameConfig: IInputTextWrapperConfig = this._getNameConfig();
-  public readonly emailConfig: IInputTextWrapperConfig = this._getEmailConfig();
-  public readonly passwordConfig: IInputTextWrapperConfig = this._getPasswordConfig();
-
   public readonly EButtonWrapperVariant: typeof EButtonWrapperVariant = EButtonWrapperVariant;
 
   public readonly signupForm: FormGroup<TFormGroupType<ISignupForm>> = new FormGroup<
@@ -68,15 +64,45 @@ export class SignupComponent extends BaseDirective {
       nonNullable: true,
       validators: [
         Validators.required,
-        Validators.minLength(AUTH_CONSTANTS.VALIDATION.MIN_PASSWORD_LENGTH),
+        Validators.minLength(VALIDATION_CONSTANTS.MIN_PASSWORD_LENGTH),
       ],
     }),
   });
 
+  private readonly _translocoService: TranslocoService = inject(TranslocoService);
+
+  public get nameConfig(): IInputTextWrapperConfig {
+    return {
+      label: this._translocoService.translate(AUTH_FORM_KEYS.NAME.LABEL),
+      icon: ICONS_CONSTANTS.AUTH.USER,
+      placeholder: this._translocoService.translate(AUTH_FORM_KEYS.NAME.PLACEHOLDER),
+      required: true,
+    };
+  }
+
+  public get emailConfig(): IInputTextWrapperConfig {
+    return {
+      label: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.LABEL),
+      icon: ICONS_CONSTANTS.AUTH.EMAIL,
+      placeholder: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.PLACEHOLDER),
+      type: EInputTextWrapperType.EMAIL,
+      required: true,
+    };
+  }
+
+  public get passwordConfig(): IInputTextWrapperConfig {
+    return {
+      label: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.LABEL),
+      icon: ICONS_CONSTANTS.AUTH.PASSWORD,
+      placeholder: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.PLACEHOLDER),
+      required: true,
+    };
+  }
+
   public get nameErrorMessage(): string {
     const control = this.signupForm.get('name');
     if (control?.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {
-      return SIGNUP_CONSTANTS.ERROR_MESSAGES.NAME_REQUIRED;
+      return this._translocoService.translate(COMMON_KEYS.VALIDATION.REQUIRED);
     }
     return '';
   }
@@ -85,11 +111,11 @@ export class SignupComponent extends BaseDirective {
     const control = this.signupForm.get('email');
 
     if (control?.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {
-      return SIGNUP_CONSTANTS.ERROR_MESSAGES.EMAIL_REQUIRED;
+      return this._translocoService.translate(COMMON_KEYS.VALIDATION.REQUIRED);
     }
 
     if (control?.hasError(VALIDATION_KEYS_CONSTANTS.PATTERN)) {
-      return SIGNUP_CONSTANTS.ERROR_MESSAGES.EMAIL_INVALID;
+      return this._translocoService.translate(COMMON_KEYS.VALIDATION.INVALID_EMAIL);
     }
     return '';
   }
@@ -98,11 +124,11 @@ export class SignupComponent extends BaseDirective {
     const control = this.signupForm.get('password');
 
     if (control?.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {
-      return SIGNUP_CONSTANTS.ERROR_MESSAGES.PASSWORD_REQUIRED;
+      return this._translocoService.translate(COMMON_KEYS.VALIDATION.REQUIRED);
     }
 
     if (control?.hasError(VALIDATION_KEYS_CONSTANTS.MIN_LENGTH)) {
-      return SIGNUP_CONSTANTS.ERROR_MESSAGES.PASSWORD_MIN_LENGTH;
+      return this._translocoService.translate(COMMON_KEYS.VALIDATION.MIN_LENGTH);
     }
 
     return '';
@@ -112,35 +138,5 @@ export class SignupComponent extends BaseDirective {
     if (this.signupForm.invalid) {
       this.signupForm.markAllAsTouched();
     }
-
-    // TODO: Implement signup logic
-  }
-
-  private _getNameConfig(): IInputTextWrapperConfig {
-    return {
-      label: SIGNUP_CONSTANTS.NAME.LABEL,
-      icon: SIGNUP_CONSTANTS.NAME.ICON,
-      placeholder: SIGNUP_CONSTANTS.NAME.PLACEHOLDER,
-      required: true,
-    };
-  }
-
-  private _getEmailConfig(): IInputTextWrapperConfig {
-    return {
-      label: SIGNUP_CONSTANTS.EMAIL.LABEL,
-      icon: SIGNUP_CONSTANTS.EMAIL.ICON,
-      placeholder: SIGNUP_CONSTANTS.EMAIL.PLACEHOLDER,
-      type: EInputTextWrapperType.EMAIL,
-      required: true,
-    };
-  }
-
-  private _getPasswordConfig(): IInputTextWrapperConfig {
-    return {
-      label: SIGNUP_CONSTANTS.PASSWORD.LABEL,
-      icon: SIGNUP_CONSTANTS.PASSWORD.ICON,
-      placeholder: SIGNUP_CONSTANTS.PASSWORD.PLACEHOLDER,
-      required: true,
-    };
   }
 }

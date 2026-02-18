@@ -4,15 +4,15 @@
 }
 
 .ui-title {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: var(--gray-900, #111827);
-  margin: 0 0 0.5rem 0;
-  line-height: 1.2;
+  font-size: var(--ui-font-size-2xl);
+  font-weight: var(--ui-font-weight-bold);
+  color: var(--ui-color-text-strong);
+  margin: 0 0 var(--ui-space-2) 0;
+  line-height: var(--ui-line-height-tight);
 }
 
 .ui-subtitle {
-  font-size: 0.875rem;
-  color: var(--gray-500, #6b7280);
+  font-size: var(--ui-font-size-base);
+  color: var(--ui-color-text-muted);
   margin: 0;
 }

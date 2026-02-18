@@ -1,53 +1,44 @@
 {
+  "form": {
+    "email": {
+      "label": "Correo electrónico",
+      "placeholder": "nombre@empresa.com"
+    },
+    "password": {
+      "label": "Contraseña",
+      "placeholder": "••••••••"
+    },
+    "name": {
+      "label": "Nombre completo",
+      "placeholder": "Juan García"
+    }
+  },
   "login": {
     "title": "Inicia sesión en tu cuenta",
     "subtitle": "¡Bienvenido de nuevo! Por favor, introduce tus datos",
     "form": {
-      "email_label": "Dirección de email",
-      "email_placeholder": "Introduce tu email",
-      "password_label": "Contraseña",
-      "password_placeholder": "Introduce tu contraseña",
       "remember_me": "Recordarme",
       "forgot_password": "¿Olvidaste tu contraseña?",
       "submit_button": "Iniciar sesión"
     },
     "messages": {
-      "success": "Sesión iniciada correctamente",
-      "invalid_credentials": "Email o contraseña incorrectos",
-      "account_locked": "Cuenta bloqueada temporalmente"
+      "success": "¡Inicio de sesión exitoso! Redirigiendo al dashboard...",
+      "failed": "Error al iniciar sesión. Por favor, verifica tus credenciales."
+    },
+    "footer": {
+      "no_account": "¿No tienes una cuenta?",
+      "sign_up_link": "Regístrate"
     }
   },
   "signup": {
     "title": "Crea tu cuenta",
     "subtitle": "Comienza con tu cuenta gratuita",
     "form": {
-      "name_label": "Nombre completo",
-      "name_placeholder": "Introduce tu nombre completo",
-      "email_label": "Dirección de email",
-      "email_placeholder": "Introduce tu email",
-      "password_label": "Contraseña",
-      "password_placeholder": "Crea una contraseña",
       "submit_button": "Crear cuenta"
-    },
-    "messages": {
-      "success": "Cuenta creada correctamente",
-      "email_exists": "Ya existe una cuenta con este email"
     },
     "footer": {
       "already_have_account": "¿Ya tienes una cuenta?",
       "sign_in_link": "Iniciar sesión"
-    }
-  },
-  "forgot_password": {
-    "title": "Restablece tu contraseña",
-    "subtitle": "Introduce tu email para recibir un enlace de restablecimiento",
-    "form": {
-      "email_label": "Dirección de email",
-      "submit_button": "Enviar enlace de restablecimiento"
-    },
-    "messages": {
-      "success": "Enlace de restablecimiento enviado a tu email",
-      "email_not_found": "No se encontró ninguna cuenta con este email"
     }
   }
 }

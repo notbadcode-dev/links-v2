@@ -1,8 +1,7 @@
 <mat-tree
   [dataSource]="dataSource()"
   [childrenAccessor]="childrenAccessor"
-  class="tree-wrapper"
-  [class]="config()?.customClass"
+  [class]="'tree-wrapper ' + (config()?.customClass ?? '')"
 >
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
     <button mat-icon-button disabled></button>
@@ -33,7 +32,7 @@
       </div>
     </div>
     <div [class.tree-invisible]="!node.isExpanded" role="group">
-      <ng-container matTreeNodeOutlet></ng-container>
+      <ng-container matTreeNodeOutlet />
     </div>
   </mat-nested-tree-node>
 </mat-tree>

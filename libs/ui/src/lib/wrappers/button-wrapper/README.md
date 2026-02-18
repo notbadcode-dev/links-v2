@@ -1,136 +1,89 @@
 ---
 name: ButtonWrapperComponent
+type: wrapper
+category: wrappers
 selector: button-wrapper
-type: component
-category: wrapper
-standalone: true
-changeDetection: OnPush
-wraps: MatButtonModule
-extends: null
-implements: []
-import: "@app/shared/ui"
+description: Material Design button with variants, icon, tooltip and double-click protection
+extends: BaseDirective
+integrations:
+  - { token: DISABLE_ON_LOADING, optional: true, description: Auto-disables during loading state }
 inputs:
-  - name: title
-    type: string
-    required: true
-  - name: tooltip
-    type: string
-    required: false
-  - name: icon
-    type: string
-    required: false
-  - name: variant
-    type: EButtonWrapperVariant
-    required: false
-    default: raised
-  - name: color
-    type: EButtonWrapperColor
-    required: false
-    default: primary
-  - name: disabled
-    type: boolean
-    required: false
-    default: false
-  - name: fullWidth
-    type: boolean
-    required: false
-    default: false
-  - name: tabindex
-    type: number
-    required: false
+  - { name: title, type: string, required: true, description: Button label text }
+  - { name: variant, type: EButtonWrapperVariant, required: false, default: RAISED, description: Visual style }
+  - { name: color, type: EButtonWrapperColor, required: false, default: PRIMARY, description: Material color theme }
+  - { name: icon, type: "string | undefined", required: false, description: Material Icons name displayed before text }
+  - { name: tooltip, type: "string | undefined", required: false, description: Tooltip text, defaults to title }
+  - { name: disabled, type: boolean, required: false, default: false, description: Manually disables the button }
+  - { name: fullWidth, type: boolean, required: false, default: false, description: Stretches button to full container width }
+  - { name: tabindex, type: "number | undefined", required: false, description: Tab navigation index }
 outputs:
-  - name: clicked
-    type: Event
+  - { name: clicked, type: Event, description: Emitted on click when not disabled or processing }
+enums:
+  EButtonWrapperVariant: [RAISED, FLAT, STROKED, BASIC]
+  EButtonWrapperColor: [PRIMARY, ACCENT, WARN]
 ---
 
-# ButtonWrapper Component
+# ButtonWrapperComponent
 
-Componente wrapper que envuelve Angular Material Button con tooltip, iconos y proteccion anti-double-click.
+Botón de Material Design con variantes, icono, tooltip y protección contra doble-click.
+
+## Selector
+
+```html
+<button-wrapper>
+```
+
+## Propósito
+
+Encapsula `MatButton` con lógica adicional:
+- Cuatro variantes visuales (`raised`, `flat`, `stroked`, `basic`).
+- Deshabilita automáticamente si `DISABLE_ON_LOADING` token está activo.
+- Protege contra doble submit usando un flag `_isProcessing` con `queueMicrotask`.
+
+## API
+
+| Input | Tipo | Requerido | Default | Descripción |
+|---|---|---|---|---|
+| `title` | `string` | ✅ | — | Texto visible del botón |
+| `variant` | `EButtonWrapperVariant` | ❌ | `RAISED` | Estilo visual del botón |
+| `color` | `EButtonWrapperColor` | ❌ | `PRIMARY` | Color Material |
+| `icon` | `string` | ❌ | — | Icono Material antes del texto |
+| `tooltip` | `string` | ❌ | `title` | Texto del tooltip (usa `title` si no se especifica) |
+| `disabled` | `boolean` | ❌ | `false` | Deshabilita el botón |
+| `fullWidth` | `boolean` | ❌ | `false` | Ocupa todo el ancho disponible |
+| `tabindex` | `number` | ❌ | — | Índice de tabulación |
+
+| Output | Tipo | Descripción |
+|---|---|---|
+| `clicked` | `Event` | Se emite al hacer click (solo si no está deshabilitado) |
+
+### `EButtonWrapperVariant`
+
+`RAISED` · `FLAT` · `STROKED` · `BASIC`
+
+### `EButtonWrapperColor`
+
+`PRIMARY` · `ACCENT` · `WARN`
 
 ## Uso
 
-### Importar
-
-```typescript
-import { ButtonWrapperComponent } from '@app/shared/ui';
-```
-
-### Ejemplo basico
-
 ```html
-<button-wrapper
-  title="Guardar"
-  (clicked)="onSave($event)"
-/>
-```
+<!-- Botón primario simple -->
+<button-wrapper title="Guardar" (clicked)="onSave()" />
 
-### Con icono
-
-```html
+<!-- Con icono y variante stroked -->
 <button-wrapper
   title="Eliminar"
   icon="delete"
-  color="warn"
-  (clicked)="onDelete($event)"
+  [variant]="EButtonWrapperVariant.STROKED"
+  [color]="EButtonWrapperColor.WARN"
+  (clicked)="onDelete()"
 />
-```
 
-### Con tooltip personalizado
-
-```html
-<button-wrapper
-  title="Editar"
-  tooltip="Editar este registro"
-  icon="edit"
-  (clicked)="onEdit($event)"
-/>
-```
-
-### Variantes de estilo
-
-```html
-<button-wrapper title="Raised" variant="raised" />
-<button-wrapper title="Flat" variant="flat" />
-<button-wrapper title="Stroked" variant="stroked" />
-<button-wrapper title="Basic" variant="basic" />
-```
-
-### Ancho completo
-
-```html
+<!-- Botón de submit deshabilitado -->
 <button-wrapper
   title="Enviar"
+  [disabled]="form.invalid"
   [fullWidth]="true"
-  [disabled]="!form.valid"
-  (clicked)="onSubmit($event)"
 />
 ```
-
-## Inputs
-
-| Input       | Tipo                    | Default     | Descripcion                                          |
-| ----------- | ----------------------- | ----------- | ---------------------------------------------------- |
-| `title`     | `string`                | -           | **Requerido**. Texto del boton                       |
-| `tooltip`   | `string`                | `title`     | Tooltip personalizado (si no se proporciona usa title)|
-| `icon`      | `string`                | -           | Nombre del icono de Material Icons                   |
-| `variant`   | `EButtonWrapperVariant` | `'raised'`  | Estilo: `'raised' \| 'flat' \| 'stroked' \| 'basic'`|
-| `color`     | `EButtonWrapperColor`   | `'primary'` | Color: `'primary' \| 'accent' \| 'warn'`            |
-| `disabled`  | `boolean`               | `false`     | Deshabilitar boton                                   |
-| `fullWidth` | `boolean`               | `false`     | Boton ancho completo                                 |
-| `tabindex`  | `number \| undefined`   | -           | Orden de tabulacion del boton                        |
-
-## Outputs
-
-| Output    | Tipo    | Descripcion                                            |
-| --------- | ------- | ------------------------------------------------------ |
-| `clicked` | `Event` | Emite cuando se hace click (con proteccion anti-double-click) |
-
-## Caracteristicas
-
-- Standalone component
-- OnPush change detection
-- Integracion con Angular Material Button
-- Proteccion anti-double-click con `queueMicrotask`
-- Tooltip automatico (usa `title` como fallback)
-- Soporte para iconos de Material Icons
-- Multiples variantes de estilo via `ButtonWrapperBaseDirective`

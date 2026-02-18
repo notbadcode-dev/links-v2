@@ -1,7 +1,7 @@
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { FormContainerComponent } from '@libs/ui';
+import { ButtonWrapperComponent, FormContainerComponent } from '@libs/ui';
 
 const meta: Meta<FormContainerComponent> = {
   title: 'UI Components/FormContainer',
@@ -34,13 +34,11 @@ const meta: Meta<FormContainerComponent> = {
           <label>Name:</label>
           <input type="text" formControlName="name" style="width: 100%; padding: 8px; margin: 4px 0;">
         </div>
-        <button type="submit" style="margin-top: 16px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px;">
-          Submit
-        </button>
+        <button-wrapper title="Submit" style="margin-top: 16px;"></button-wrapper>
       </ui-form-container>
     `,
     moduleMetadata: {
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, ButtonWrapperComponent],
     },
   }),
 };
@@ -59,7 +57,7 @@ export const WithValidation: TStory = {
           email: new FormControl('', { validators: [] }),
           name: new FormControl('', { validators: [] }),
         });
-        // Mark as touched to show validation state
+
         form.markAllAsTouched();
         return form;
       })(),
@@ -85,13 +83,11 @@ export const WithValidation: TStory = {
             Name is required
           </div>
         </div>
-        <button type="submit" style="margin-top: 16px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px;">
-          Submit
-        </button>
+        <button-wrapper title="Submit" style="margin-top: 16px;"></button-wrapper>
       </ui-form-container>
     `,
     moduleMetadata: {
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, ButtonWrapperComponent],
     },
   }),
 };

@@ -1,11 +1,10 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+
+
 {
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
 
-    // Strict Type Checking
     "strict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -15,7 +14,6 @@
     "strictPropertyInitialization": true,
     "alwaysStrict": true,
 
-    // Additional Checks
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -27,7 +25,6 @@
     "allowUnusedLabels": false,
     "exactOptionalPropertyTypes": true,
 
-    // Module Resolution
     "baseUrl": ".",
     "paths": {
       "@app/*": ["src/app/*"],
@@ -42,17 +39,14 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
 
-    // Emit
     "declaration": false,
     "declarationMap": false,
     "sourceMap": true,
     "removeComments": true,
     "noEmitOnError": true,
 
-    // Interop Constraints
     "experimentalDecorators": true,
 
-    // Language and Environment
     "target": "ES2022",
     "module": "ES2022",
     "lib": ["ES2022", "dom"],

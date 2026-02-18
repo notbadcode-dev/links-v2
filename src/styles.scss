@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
-@use 'reboot-material-angular';
+@use './styles/design-tokens';
+@use './styles/reboot-material-angular';
 
 @use '@fontsource-variable/mona-sans';
 

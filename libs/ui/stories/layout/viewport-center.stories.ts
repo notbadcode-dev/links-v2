@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { ViewportCenterComponent } from '@libs/ui';
+import { ButtonWrapperComponent, ViewportCenterComponent } from '@libs/ui';
 
 const meta: Meta<ViewportCenterComponent> = {
   title: 'UI Components/ViewportCenter',
@@ -30,15 +30,16 @@ export const Basic: TStory = {};
 export const WithCard: TStory = {
   render: (args) => ({
     props: args,
+    moduleMetadata: {
+      imports: [ButtonWrapperComponent],
+    },
     template: `
       <viewport-center>
         <div style="background: white; padding: 32px; border-radius: 8px; border: 1px solid #e1e4e8; max-width: 400px;">
           <h3 style="margin: 0 0 16px 0;">Login Form</h3>
           <input type="email" placeholder="Email" style="width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid #ddd; border-radius: 4px;">
           <input type="password" placeholder="Password" style="width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid #ddd; border-radius: 4px;">
-          <button style="width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 4px;">
-            Sign In
-          </button>
+          <button-wrapper title="Sign In" [fullWidth]="true"></button-wrapper>
         </div>
       </viewport-center>
     `,
@@ -48,6 +49,9 @@ export const WithCard: TStory = {
 export const WithMultipleElements: TStory = {
   render: (args) => ({
     props: args,
+    moduleMetadata: {
+      imports: [ButtonWrapperComponent],
+    },
     template: `
       <viewport-center>
         <div style="text-align: center;">
@@ -58,9 +62,7 @@ export const WithMultipleElements: TStory = {
           <div style="background: #fff3cd; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
             <strong>Note:</strong> This is additional information
           </div>
-          <button style="padding: 12px 24px; background: #28a745; color: white; border: none; border-radius: 4px;">
-            Get Started
-          </button>
+          <button-wrapper title="Get Started" variant="flat"></button-wrapper>
         </div>
       </viewport-center>
     `,

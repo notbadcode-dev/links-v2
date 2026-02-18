@@ -1,6 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { moduleMetadata } from '@storybook/angular';
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
 
 import { CheckboxWrapperComponent } from '@libs/ui';
 
@@ -9,11 +9,9 @@ const meta: Meta<CheckboxWrapperComponent> = {
   component: CheckboxWrapperComponent,
   tags: ['autodocs'],
   decorators: [
-    {
-      moduleMetadata: {
-        imports: [ReactiveFormsModule],
-      },
-    },
+    moduleMetadata({
+      imports: [ReactiveFormsModule],
+    }),
   ],
   argTypes: {
     label: {
@@ -32,23 +30,15 @@ const meta: Meta<CheckboxWrapperComponent> = {
       control: 'text',
       description: 'Error message to display',
     },
-    disabled: {
-      control: 'boolean',
-      description: 'Disable checkbox interaction',
-    },
   },
   args: {
     label: 'Accept terms and conditions',
     required: false,
-    disabled: false,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-    valueChanged: fn() as () => void,
   },
   render: (args) => ({
     props: {
       ...args,
       checkboxControl: new FormControl(false),
-      onValueChanged: args.valueChanged as (() => void) | undefined,
     },
     template: `
       <checkbox-wrapper
@@ -56,9 +46,7 @@ const meta: Meta<CheckboxWrapperComponent> = {
         [label]="label"
         [required]="required"
         [hint]="hint"
-        [errorMessage]="errorMessage"
-        [disabled]="disabled"
-        (valueChanged)="onValueChanged($event)">
+        [errorMessage]="errorMessage">
       </checkbox-wrapper>
     `,
   }),
@@ -96,9 +84,20 @@ export const WithError: TStory = {
 };
 
 export const Disabled: TStory = {
+  render: (args) => ({
+    props: {
+      ...args,
+      checkboxControl: new FormControl({ value: false, disabled: true }),
+    },
+    template: `
+      <checkbox-wrapper
+        [formControl]="checkboxControl"
+        [label]="label">
+      </checkbox-wrapper>
+    `,
+  }),
   args: {
     label: 'Disabled option',
-    disabled: true,
   },
 };
 
@@ -107,14 +106,12 @@ export const PreChecked: TStory = {
     props: {
       ...args,
       preCheckedControl: new FormControl(true),
-      onValueChanged: args.valueChanged as () => void,
     },
     template: `
       <checkbox-wrapper
         [formControl]="preCheckedControl"
         [label]="label"
-        [hint]="hint"
-        (valueChanged)="onValueChanged($event)">
+        [hint]="hint">
       </checkbox-wrapper>
     `,
   }),

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
+import { fn } from 'storybook/test';
 
 import { ButtonWrapperComponent, EButtonWrapperColor, EButtonWrapperVariant } from '@libs/ui';
 
@@ -45,7 +45,7 @@ const meta: Meta<ButtonWrapperComponent> = {
     color: EButtonWrapperColor.PRIMARY,
     disabled: false,
     fullWidth: false,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+
     clicked: fn() as () => void,
   },
 };

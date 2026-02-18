@@ -3,11 +3,12 @@
   flex-direction: column;
   gap: 2px;
   width: 100%;
+  font-family: var(--ui-font-family-base);
 
   .form-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #1f2328;
+    font-size: var(--ui-font-size-xs);
+    font-weight: var(--ui-font-weight-semibold);
+    color: var(--ui-color-text);
     margin-left: 0.0625rem;
   }
 

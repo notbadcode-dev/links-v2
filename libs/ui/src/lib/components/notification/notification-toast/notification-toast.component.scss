@@ -1,82 +1,83 @@
 :host {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: 1px solid;
+  gap: var(--ui-space-3);
+  padding: var(--ui-space-3) var(--ui-space-4);
+  border-radius: var(--ui-radius-md);
+  border: var(--ui-border-width) solid;
   min-width: 320px;
   max-width: 420px;
-  animation: notification-slide-in 200ms ease-out;
+  font-family: var(--ui-font-family-base);
+  animation: notification-slide-in var(--ui-transition-base) ease-out;
 
   &.notification-toast--success {
-    background-color: #f0fdf4;
-    border-color: #bbf7d0;
-    color: #166534;
+    background-color: var(--ui-color-success-bg);
+    border-color: var(--ui-color-success-border);
+    color: var(--ui-color-success-text);
 
     .notification-toast__icon {
-      color: #16a34a;
+      color: var(--ui-color-success-icon);
     }
   }
 
   &.notification-toast--error {
-    background-color: #fef2f2;
-    border-color: #fecaca;
-    color: #991b1b;
+    background-color: var(--ui-color-error-bg);
+    border-color: var(--ui-color-error-border);
+    color: var(--ui-color-error-text);
 
     .notification-toast__icon {
-      color: #dc2626;
+      color: var(--ui-color-error-icon);
     }
   }
 
   &.notification-toast--warning {
-    background-color: #fffbeb;
-    border-color: #fde68a;
-    color: #92400e;
+    background-color: var(--ui-color-warning-bg);
+    border-color: var(--ui-color-warning-border);
+    color: var(--ui-color-warning-text);
 
     .notification-toast__icon {
-      color: #d97706;
+      color: var(--ui-color-warning-icon);
     }
   }
 
   &.notification-toast--info {
-    background-color: #eff6ff;
-    border-color: #bfdbfe;
-    color: #1e40af;
+    background-color: var(--ui-color-info-bg);
+    border-color: var(--ui-color-info-border);
+    color: var(--ui-color-info-text);
 
     .notification-toast__icon {
-      color: #2563eb;
+      color: var(--ui-color-info-icon);
     }
   }
 }
 
 .notification-toast__icon {
   flex-shrink: 0;
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
+  font-size: var(--ui-size-icon-md);
+  width: var(--ui-size-icon-md);
+  height: var(--ui-size-icon-md);
 }
 
 .notification-toast__message {
   flex: 1;
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: var(--ui-font-size-base);
+  font-weight: var(--ui-font-weight-medium);
+  line-height: var(--ui-line-height-base);
 }
 
 .notification-toast__close {
   flex-shrink: 0;
-  --mdc-icon-button-state-layer-size: 28px;
-  --mdc-icon-button-icon-size: 18px;
+  --mdc-icon-button-state-layer-size: var(--ui-size-control-sm);
+  --mdc-icon-button-icon-size: var(--ui-size-icon-sm);
 }
 
 @keyframes notification-slide-in {
   from {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }

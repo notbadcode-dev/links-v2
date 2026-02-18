@@ -8,12 +8,15 @@
   flex-direction: column;
   min-height: 100vh;
 
-  // Layout Centered (for Auth)
   &.layout-centered {
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
-    background: radial-gradient(circle at top right, #f8f7ff, #ffffff);
+    padding: var(--ui-space-6) var(--ui-space-4);
+    background: radial-gradient(
+      circle at top right,
+      var(--ui-color-canvas),
+      var(--ui-color-surface)
+    );
 
     .ui-page__body {
       width: 100%;
@@ -21,18 +24,17 @@
     }
 
     .ui-page__header {
-      margin-bottom: 2rem;
+      margin-bottom: var(--ui-space-6);
       text-align: center;
     }
 
     .ui-page__footer {
-      margin-top: 2rem;
+      margin-top: var(--ui-space-6);
       text-align: center;
     }
   }
 
-  // Layout Default
   &.layout-default {
-    // Standard layout styles
+
   }
 }

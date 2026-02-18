@@ -32,7 +32,7 @@ const PASSWORD_ICONS = {
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      // eslint-disable-next-line @angular-eslint/no-forward-ref
+
       useExisting: forwardRef(() => InputPasswordWrapperComponent),
       multi: true,
     },
