@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ICONS_CONSTANTS } from '@app/constants/icons.constants';
-import { I18nDirective } from '@app/core/i18n';
 import { provideTranslocoScope } from '@jsverse/transloco';
 
 import { BaseDirective, CardWrapperComponent, ITreeNode, TreeWrapperComponent } from '@libs/ui';
@@ -10,7 +9,7 @@ import { DASHBOARD_CONSTANTS } from './constants/dashboard.constants';
   selector: 'dashboard',
   standalone: true,
   providers: [provideTranslocoScope('dashboard')],
-  imports: [CardWrapperComponent, TreeWrapperComponent, I18nDirective],
+  imports: [CardWrapperComponent, TreeWrapperComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

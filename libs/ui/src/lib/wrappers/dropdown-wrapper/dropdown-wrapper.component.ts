@@ -6,7 +6,6 @@ import {
   InputSignal,
   output,
   OutputEmitterRef,
-  Type,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -19,11 +18,7 @@ import { EDropdownWrapperPosition, EDropdownWrapperTrigger } from './dropdown-wr
   styleUrl: './dropdown-wrapper.component.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CommonModule,
-    MatMenuModule,
-    MatButtonModule,
-  ] as const satisfies readonly Type<unknown>[],
+  imports: [CommonModule, MatMenuModule, MatButtonModule],
 })
 export class DropdownWrapperComponent extends BaseDirective {
   public readonly trigger: InputSignal<EDropdownWrapperTrigger> = input<EDropdownWrapperTrigger>(

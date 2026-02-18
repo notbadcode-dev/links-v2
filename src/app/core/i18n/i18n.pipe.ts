@@ -18,9 +18,6 @@ export class I18nPipe implements PipeTransform, OnDestroy {
   private readonly _destroy$: Subject<void> = new Subject<void>();
   private readonly _i18nService: I18nService = inject(I18nService);
   private readonly _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
-  private _lastKey: string = '';
-  private _lastParams: TTranslationParams = {};
-  private _lastScope?: string;
 
   constructor() {
     // Listen for language changes and trigger change detection
@@ -33,11 +30,6 @@ export class I18nPipe implements PipeTransform, OnDestroy {
     if (!key) {
       return '';
     }
-
-    // Cache the last values for performance
-    this._lastKey = key;
-    this._lastParams = params ?? {};
-    this._lastScope = scope;
 
     return this._i18nService.translate(key, params, scope);
   }

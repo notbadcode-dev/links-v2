@@ -1,7 +1,7 @@
 import { isDevMode, Provider } from '@angular/core';
 import { provideTransloco } from '@jsverse/transloco';
 import { II18nConfig } from './i18n.types';
-import { TranslocoHttpLoader, TranslocoScopeLoader } from './transloco-loader';
+import { TranslocoHttpLoader } from './transloco-loader';
 
 /**
  * I18n Configuration Provider
@@ -18,6 +18,13 @@ export function provideI18n(config?: Partial<II18nConfig>): Provider[] {
   };
 
   const mergedConfig = { ...defaultConfig, ...config };
+  const missingHandler =
+    mergedConfig.logMissingKeys === undefined
+      ? { useFallbackTranslation: true }
+      : {
+          logMissingKey: mergedConfig.logMissingKeys,
+          useFallbackTranslation: true,
+        };
 
   return [
     provideTransloco({
@@ -25,15 +32,11 @@ export function provideI18n(config?: Partial<II18nConfig>): Provider[] {
         availableLangs: mergedConfig.availableLangs,
         defaultLang: mergedConfig.defaultLang,
         fallbackLang: mergedConfig.fallbackLang,
-        missingHandler: {
-          logMissingKey: mergedConfig.logMissingKeys,
-          useFallbackTranslation: true,
-        },
+        missingHandler,
         reRenderOnLangChange: true,
         prodMode: !isDevMode(),
       },
       loader: TranslocoHttpLoader,
-      scopeLoader: TranslocoScopeLoader,
     }),
   ];
 }

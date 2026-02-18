@@ -9,7 +9,7 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { startWith, Subject, switchMap, takeUntil } from 'rxjs';
 import { I18nService } from './i18n.service';
 import { TTranslationParams } from './i18n.types';
 
@@ -25,7 +25,7 @@ import { TTranslationParams } from './i18n.types';
   standalone: true,
 })
 export class I18nDirective implements OnInit, OnDestroy {
-  public readonly scope: InputSignal<string | undefined> = input<string>();
+  public readonly i18n: InputSignal<string | undefined> = input<string>();
 
   private readonly _destroy$: Subject<void> = new Subject<void>();
   private readonly _i18nService: I18nService = inject(I18nService);
@@ -35,12 +35,20 @@ export class I18nDirective implements OnInit, OnDestroy {
   private readonly _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   public ngOnInit(): void {
-    this._renderTemplate();
-
-    // Re-render when language changes
-    this._i18nService.langChanges$.pipe(takeUntil(this._destroy$)).subscribe(() => {
-      this._renderTemplate();
-    });
+    this._i18nService.langChanges$
+      .pipe(
+        startWith(this._i18nService.currentLanguage),
+        switchMap(() => this._i18nService.loadTranslations(this.i18n())),
+        takeUntil(this._destroy$),
+      )
+      .subscribe({
+        next: () => {
+          this._renderTemplate();
+        },
+        error: () => {
+          this._renderTemplate();
+        },
+      });
   }
 
   public ngOnDestroy(): void {
@@ -53,15 +61,35 @@ export class I18nDirective implements OnInit, OnDestroy {
 
     // Create translation function for template
     const translateFn = (key: string, params?: TTranslationParams): string => {
-      return this._i18nService.translate(key, params, this.scope());
+      const scope = this.i18n();
+      const normalizedScope = scope?.trim();
+
+      if (normalizedScope === undefined || normalizedScope.length === 0) {
+        return this._i18nService.translate(key, params);
+      }
+
+      if (key.startsWith(`${normalizedScope}.`)) {
+        return this._i18nService.translate(
+          key.slice(normalizedScope.length + 1),
+          params,
+          normalizedScope,
+        );
+      }
+
+      if (key.startsWith('common.') || key.startsWith('navigation.')) {
+        return this._i18nService.translate(key, params);
+      }
+
+      return this._i18nService.translate(key, params, normalizedScope);
     };
 
     // Create context with translation function
+    const scope = this.i18n();
     const context: II18nTemplateContext = {
       $implicit: translateFn,
       t: translateFn, // Alias for shorter syntax
       currentLang: this._i18nService.currentLanguage,
-      scope: this.scope(),
+      ...(scope !== undefined ? { scope } : {}),
     };
 
     this._viewContainer.createEmbeddedView(this._templateRef, context);
