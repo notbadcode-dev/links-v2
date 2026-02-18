@@ -1,0 +1,31 @@
+<div class="layout-wrapper">
+  <nav class="top-navbar">
+    <div class="nav-brand">
+      <mat-icon class="brand-logo">{{ icons.APP.LOGO }}</mat-icon>
+      <span class="brand-name">Bookmarks</span>
+    </div>
+    <div class="nav-actions">
+      <button mat-icon-button aria-label="Notifications">
+        <mat-icon>{{ icons.NAV.NOTIFICATIONS }}</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="User profile">
+        <mat-icon>{{ icons.NAV.ACCOUNT }}</mat-icon>
+      </button>
+    </div>
+  </nav>
+
+  <aside class="right-sidebar">
+    <div class="sidebar-content">
+      <header class="sidebar-header">
+        <h3>Activity</h3>
+      </header>
+      <div class="sidebar-items">
+        <p class="empty-state">No recent activity</p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

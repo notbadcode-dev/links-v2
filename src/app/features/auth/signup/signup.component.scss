@@ -1,0 +1,13 @@
+@use '../login/login.component.scss';
+
+.signup-container {
+  @extend .login-container !optional;
+}
+
+.signup-header {
+  @extend .login-header !optional;
+}
+
+::ng-deep .signup-card {
+  @extend .login-card !optional;
+}

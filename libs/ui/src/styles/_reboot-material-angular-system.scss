@@ -1,0 +1,76 @@
+@use './reboot-variables' as rv;
+
+html {
+  // Surface
+  --mat-sys-background: #{rv.$reboot-gray-50};
+  --mat-sys-surface: #{rv.$reboot-surface};
+  --mat-sys-surface-dim: #{rv.$reboot-surface-dim};
+  --mat-sys-surface-bright: #{rv.$reboot-white};
+  --mat-sys-surface-container: #{rv.$reboot-surface-container};
+  --mat-sys-surface-container-low: #{rv.$reboot-gray-50};
+  --mat-sys-surface-container-high: #{rv.$reboot-gray-150};
+  --mat-sys-surface-container-highest: #{rv.$reboot-gray-200};
+  --mat-sys-surface-container-lowest: #{rv.$reboot-white};
+  --mat-sys-surface-variant: #{rv.$reboot-gray-100};
+  --mat-sys-on-surface: #{rv.$reboot-on-surface};
+  --mat-sys-on-surface-variant: #{rv.$reboot-on-surface-variant};
+
+  // Primary
+  --mat-sys-primary: #{rv.$reboot-primary};
+  --mat-sys-on-primary: #{rv.$reboot-on-primary};
+  --mat-sys-primary-container: #{rv.$reboot-primary-container};
+  --mat-sys-on-primary-container: #{rv.$reboot-gray-800};
+  --mat-sys-primary-fixed: #{rv.$reboot-gray-200};
+  --mat-sys-primary-fixed-dim: #{rv.$reboot-gray-300};
+
+  // Secondary
+  --mat-sys-secondary: #{rv.$reboot-gray-600};
+  --mat-sys-on-secondary: #{rv.$reboot-white};
+  --mat-sys-secondary-container: #{rv.$reboot-gray-150};
+  --mat-sys-on-secondary-container: #{rv.$reboot-gray-700};
+
+  // Tertiary
+  --mat-sys-tertiary: #{rv.$reboot-gray-500};
+  --mat-sys-on-tertiary: #{rv.$reboot-white};
+  --mat-sys-tertiary-container: #{rv.$reboot-gray-150};
+  --mat-sys-on-tertiary-container: #{rv.$reboot-gray-700};
+
+  // Outline
+  --mat-sys-outline: #{rv.$reboot-outline};
+  --mat-sys-outline-variant: #{rv.$reboot-outline-variant};
+
+  // Error
+  --mat-sys-error: #{rv.$reboot-error};
+  --mat-sys-on-error: #{rv.$reboot-on-error};
+  --mat-sys-error-container: #ffeef0;
+  --mat-sys-on-error-container: #86181d;
+
+  // Inverse
+  --mat-sys-inverse-surface: #{rv.$reboot-gray-800};
+  --mat-sys-inverse-on-surface: #{rv.$reboot-gray-100};
+  --mat-sys-inverse-primary: #{rv.$reboot-gray-300};
+
+  // Scrim & shadow
+  --mat-sys-scrim: #{rv.$reboot-black};
+  --mat-sys-shadow: #{rv.$reboot-black};
+
+  // Shape
+  --mat-sys-corner-extra-small: #{rv.$reboot-border-radius-sm};
+  --mat-sys-corner-small: #{rv.$reboot-border-radius-sm};
+  --mat-sys-corner-medium: #{rv.$reboot-border-radius-md};
+  --mat-sys-corner-large: #{rv.$reboot-border-radius-lg};
+  --mat-sys-corner-full: 9999px;
+
+  // Elevation — flatten everything
+  --mat-sys-level0: 0;
+  --mat-sys-level1: 0;
+  --mat-sys-level2: 0;
+  --mat-sys-level3: 0;
+  --mat-sys-level4: 0;
+  --mat-sys-level5: 0;
+
+  // State layer — more subtle
+  --mat-sys-hover-state-layer-opacity: 0.04;
+  --mat-sys-focus-state-layer-opacity: 0.08;
+  --mat-sys-pressed-state-layer-opacity: 0.08;
+}

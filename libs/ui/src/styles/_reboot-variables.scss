@@ -1,0 +1,78 @@
+// ============================================================
+// GRAYSCALE PALETTE — Notion/GitHub inspired
+// ============================================================
+
+// Absolute extremes
+$reboot-white:     #ffffff;
+$reboot-black:     #1b1f23;
+
+// Surface scale (lightest → darkest)
+$reboot-gray-50:   #fafbfc;
+$reboot-gray-100:  #f6f8fa;
+$reboot-gray-150:  #eef1f5;
+$reboot-gray-200:  #e1e4e8;
+$reboot-gray-300:  #d1d5da;
+$reboot-gray-400:  #959da5;
+$reboot-gray-500:  #6a737d;
+$reboot-gray-600:  #586069;
+$reboot-gray-700:  #444d56;
+$reboot-gray-800:  #2f363d;
+$reboot-gray-900:  #24292e;
+
+// Semantic aliases
+$reboot-surface:            $reboot-white;
+$reboot-surface-dim:        $reboot-gray-50;
+$reboot-surface-container:  $reboot-gray-100;
+$reboot-on-surface:         $reboot-gray-900;
+$reboot-on-surface-variant: $reboot-gray-500;
+$reboot-outline:            $reboot-gray-300;
+$reboot-outline-variant:    $reboot-gray-200;
+
+// Primary (grayscale)
+$reboot-primary:            $reboot-gray-900;
+$reboot-on-primary:         $reboot-white;
+$reboot-primary-container:  $reboot-gray-100;
+
+// Accent (focus)
+$reboot-accent:       #0969da;
+$reboot-accent-muted: rgba(9, 105, 218, 0.3);
+
+// Error
+$reboot-error:       #cf222e;
+$reboot-error-muted: rgba(207, 34, 46, 0.3);
+$reboot-on-error:    $reboot-white;
+
+// ============================================================
+// SPACING & SIZING
+// ============================================================
+$reboot-input-height:       36px;
+$reboot-input-padding-h:    12px;
+$reboot-input-padding-v:    8px;
+$reboot-border-radius-sm:   6px;
+$reboot-border-radius-md:   8px;
+$reboot-border-radius-lg:   12px;
+$reboot-border-width:       1px;
+$reboot-focus-border-width: 2px;
+$reboot-transition:         150ms ease;
+$reboot-shadow-inset:       inset 0 1px 0 rgba(208, 215, 222, 0.2);
+$reboot-shadow-sm:          0 1px 2px rgba(27, 31, 35, 0.04);
+$reboot-shadow-md:          0 1px 5px rgba(27, 31, 35, 0.08);
+$reboot-shadow-none:        none;
+
+// ============================================================
+// TYPOGRAPHY
+// ============================================================
+$reboot-font-family:
+  'Mona Sans Variable', -apple-system, BlinkMacSystemFont,
+  'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+$reboot-font-family-mono:
+  ui-monospace, SFMono-Regular, 'SF Mono',
+  Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+$reboot-font-size-xs:       0.75rem;   // 12px
+$reboot-font-size-sm:       0.8125rem; // 13px
+$reboot-font-size-base:     0.875rem;  // 14px
+$reboot-font-size-md:       1rem;      // 16px
+$reboot-font-size-lg:       1.25rem;   // 20px
+$reboot-font-weight-regular: 400;
+$reboot-font-weight-medium:  500;
+$reboot-font-weight-bold:    600;

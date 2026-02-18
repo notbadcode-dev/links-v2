@@ -1,0 +1,10 @@
+<mat-checkbox
+  [required]="effectiveRequired()"
+  [disabled]="isDisabled()"
+  [attr.tabindex]="tabindex() ?? null"
+  [ngModel]="value()"
+  (ngModelChange)="onChange($event)"
+  (blur)="onBlur()"
+>
+  {{ label() }}
+</mat-checkbox>

@@ -1,0 +1,13 @@
+:host {
+  display: block;
+
+  .full-width {
+    width: 100%;
+  }
+}
+
+button {
+  mat-icon {
+    margin-right: 0.5rem;
+  }
+}

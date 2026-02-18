@@ -1,0 +1,7 @@
+<button mat-button [matMenuTriggerFor]="dropdownMenu" [disabled]="disabled()" [class]="customClass()">
+  <ng-content select="[slot=trigger]" />
+</button>
+
+<mat-menu #dropdownMenu="matMenu" [yPosition]="position() === EDropdownWrapperPosition.BELOW ? 'below' : 'above'">
+  <ng-content select="[slot=content]" />
+</mat-menu>

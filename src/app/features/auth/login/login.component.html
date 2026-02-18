@@ -1,38 +1,52 @@
-<div class="login-container">
-  <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>Iniciar sesión</mat-card-title>
-    </mat-card-header>
+<ng-container *i18n="'auth'; let t">
+  <ui-page [layout]="EPageLayout.CENTERED">
+    <ui-page-header>
+      <ui-stack [align]="EAlign.CENTER" [gap]="ESpacing.MD">
+        <ui-icon-circle>
+          <icon-wrapper [icon]="icons.APP.LOGO" />
+        </ui-icon-circle>
 
-    <mat-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <input-text-wrapper
-          label="Email"
-          type="email"
-          icon="email"
-          placeholder="correo@ejemplo.com"
-          formControlName="email"
-          [required]="true"
-          [errorMessage]="emailErrorMessage"
-        />
+        <ui-title [title]="t('auth.login.title')" [subtitle]="t('auth.login.subtitle')" />
+      </ui-stack>
+    </ui-page-header>
 
-        <input-text-wrapper
-          label="Contraseña"
-          type="password"
-          icon="lock"
-          placeholder="Ingresa tu contraseña"
-          formControlName="password"
-          [required]="true"
-          [errorMessage]="passwordErrorMessage"
-        />
+    <ui-page-body>
+      <ui-surface [variant]="ESurfaceVariant.CARD" [padding]="ESpacing.LG">
+        <ui-form-container [formGroup]="loginForm" (formSubmit)="onSubmit()">
+          <input-text-wrapper
+            [config]="emailConfig"
+            [formControlName]="loginFormKeys.email"
+            [errorMessage]="emailErrorMessage"
+          />
 
-        <button-wrapper
-          title="Iniciar sesión"
-          icon="login"
-          [disabled]="loginForm.invalid || isLoading()"
-          (clicked)="onSubmit()"
-        />
-      </form>
-    </mat-card-content>
-  </mat-card>
-</div>
+          <input-password-wrapper
+            [config]="passwordConfig"
+            [formControlName]="loginFormKeys.password"
+            [errorMessage]="passwordErrorMessage"
+          />
+
+          <ui-form-row [align]="EAlign.BETWEEN">
+            <checkbox-wrapper [label]="t('auth.login.form.remember_me')" formControlName="rememberMe" />
+
+            <ui-link [route]="routes.FORGOT_PASSWORD" [label]="t('auth.login.form.forgot_password')" />
+          </ui-form-row>
+
+          <button-wrapper
+            disableOnLoading
+            [title]="t('auth.login.form.submit_button')"
+            [fullWidth]="true"
+            [disabled]="loginForm.invalid"
+            [variant]="EButtonWrapperVariant.FLAT"
+          />
+        </ui-form-container>
+      </ui-surface>
+    </ui-page-body>
+
+    <ui-page-footer>
+      <ui-inline-text>
+        {{ t('common.actions.back') }}
+        <ui-link [route]="routes.SIGNUP" [label]="t('common.actions.submit')" />
+      </ui-inline-text>
+    </ui-page-footer>
+  </ui-page>
+</ng-container>

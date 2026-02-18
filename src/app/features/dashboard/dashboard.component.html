@@ -1,0 +1,21 @@
+<div class="dashboard-header">
+  <h2>Welcome back!</h2>
+  <p>Here's what's happening with your bookmarks.</p>
+</div>
+<div class="dashboard-grid">
+  <div class="stat-card">
+    <span class="label">Total Links</span>
+    <span class="value">124</span>
+  </div>
+  <div class="stat-card">
+    <span class="label">Active Sessions</span>
+    <span class="value">12</span>
+  </div>
+</div>
+
+<div class="demo-section">
+  <h3>Categories (Tree Wrapper Demo)</h3>
+  <card-wrapper>
+    <tree-wrapper [dataSource]="categories" (nodeSelected)="onCategorySelect($event)" />
+  </card-wrapper>
+</div>

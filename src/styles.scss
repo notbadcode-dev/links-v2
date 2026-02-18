@@ -1,9 +1,7 @@
 @use '@angular/material' as mat;
-@use './styles/reboot-material-angular';
+@use 'reboot-material-angular';
 
 @use '@fontsource-variable/mona-sans';
-@use '@fontsource-variable/inter';
-@use '@fontsource-variable/jetbrains-mono';
 
 html {
   height: 100%;

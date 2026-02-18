@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.ui-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  // Layout Centered (for Auth)
+  &.layout-centered {
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: radial-gradient(circle at top right, #f8f7ff, #ffffff);
+
+    .ui-page__body {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .ui-page__header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .ui-page__footer {
+      margin-top: 2rem;
+      text-align: center;
+    }
+  }
+
+  // Layout Default
+  &.layout-default {
+    // Standard layout styles
+  }
+}

@@ -1,0 +1,17 @@
+:host {
+  display: block;
+
+  .header-align-center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .header-align-end {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  mat-card-content {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+  }
+}

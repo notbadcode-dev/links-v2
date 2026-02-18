@@ -1,0 +1,39 @@
+<mat-tree
+  [dataSource]="dataSource()"
+  [childrenAccessor]="childrenAccessor"
+  class="tree-wrapper"
+  [class]="config()?.customClass"
+>
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <button mat-icon-button disabled></button>
+    <div class="node-content leaf" (click)="onNodeClick(node)">
+      @if (node.icon) {
+        <mat-icon class="node-icon">{{ node.icon }}</mat-icon>
+      } @else {
+        <div class="icon-placeholder"></div>
+      }
+      <span class="node-label">{{ node.label }}</span>
+    </div>
+  </mat-tree-node>
+
+  <mat-nested-tree-node *matTreeNodeDef="let dataNode; when: hasChild" #node="matNestedTreeNode">
+    <div class="mat-tree-node">
+      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + dataNode.label">
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{ node.isExpanded ? expandedIcon() : collapsedIcon() }}
+        </mat-icon>
+      </button>
+      <div class="node-content branch" (click)="onNodeClick(dataNode)">
+        @if (dataNode.icon) {
+          <mat-icon class="node-icon">{{ dataNode.icon }}</mat-icon>
+        } @else {
+          <div class="icon-placeholder"></div>
+        }
+        <span class="node-label">{{ dataNode.label }}</span>
+      </div>
+    </div>
+    <div [class.tree-invisible]="!node.isExpanded" role="group">
+      <ng-container matTreeNodeOutlet></ng-container>
+    </div>
+  </mat-nested-tree-node>
+</mat-tree>

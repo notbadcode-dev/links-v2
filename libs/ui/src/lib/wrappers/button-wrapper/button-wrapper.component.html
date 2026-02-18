@@ -1,0 +1,29 @@
+@switch (variant()) {
+  @case (EButtonWrapperVariant.FLAT) {
+    <button mat-flat-button [buttonWrapperBase]="this" [color]="color()" [matTooltip]="effectiveTooltip()">
+      <ng-container *ngTemplateOutlet="buttonInner" />
+    </button>
+  }
+  @case (EButtonWrapperVariant.STROKED) {
+    <button mat-stroked-button [buttonWrapperBase]="this" [color]="color()" [matTooltip]="effectiveTooltip()">
+      <ng-container *ngTemplateOutlet="buttonInner" />
+    </button>
+  }
+  @case (EButtonWrapperVariant.BASIC) {
+    <button mat-button [buttonWrapperBase]="this" [color]="color()" [matTooltip]="effectiveTooltip()">
+      <ng-container *ngTemplateOutlet="buttonInner" />
+    </button>
+  }
+  @default {
+    <button mat-raised-button [buttonWrapperBase]="this" [color]="color()" [matTooltip]="effectiveTooltip()">
+      <ng-container *ngTemplateOutlet="buttonInner" />
+    </button>
+  }
+}
+
+<ng-template #buttonInner>
+  @if (icon()) {
+    <mat-icon>{{ icon() }}</mat-icon>
+  }
+  {{ title() }}
+</ng-template>

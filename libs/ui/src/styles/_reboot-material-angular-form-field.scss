@@ -1,0 +1,176 @@
+@use './reboot-variables' as rv;
+
+// ============================================================
+// MatFormField (outline) + MatInput — GitHub Primer-style
+// ============================================================
+
+html {
+  // Shape
+  --mat-form-field-outlined-container-shape: #{rv.$reboot-border-radius-sm};
+
+  // Sizing — GitHub uses ~32px height with 5px 12px padding
+  --mat-form-field-container-height: 32px;
+  --mat-form-field-container-vertical-padding: 5px;
+
+  // Outline colors
+  --mat-form-field-outlined-outline-color: #{rv.$reboot-outline};
+  --mat-form-field-outlined-outline-width: #{rv.$reboot-border-width};
+  --mat-form-field-outlined-hover-outline-color: #{rv.$reboot-gray-400};
+  --mat-form-field-outlined-focus-outline-color: #{rv.$reboot-accent};
+  --mat-form-field-outlined-focus-outline-width: #{rv.$reboot-border-width};
+
+  // Label (inside mat-form-field, not used in GitHub layout)
+  --mat-form-field-outlined-label-text-color: #{rv.$reboot-gray-500};
+  --mat-form-field-outlined-hover-label-text-color: #{rv.$reboot-gray-700};
+  --mat-form-field-outlined-focus-label-text-color: #{rv.$reboot-accent};
+
+  // Input text
+  --mat-form-field-outlined-input-text-color: #{rv.$reboot-on-surface};
+  --mat-form-field-outlined-input-text-placeholder-color: #{rv.$reboot-gray-400};
+
+  // Caret
+  --mat-form-field-outlined-caret-color: #{rv.$reboot-accent};
+
+  // Error
+  --mat-form-field-outlined-error-outline-color: #{rv.$reboot-error};
+  --mat-form-field-outlined-error-focus-outline-color: #{rv.$reboot-error};
+  --mat-form-field-outlined-error-hover-outline-color: #a71d2a;
+  --mat-form-field-outlined-error-label-text-color: #{rv.$reboot-error};
+  --mat-form-field-outlined-error-focus-label-text-color: #{rv.$reboot-error};
+  --mat-form-field-outlined-error-hover-label-text-color: #a71d2a;
+  --mat-form-field-error-text-color: #{rv.$reboot-error};
+
+  // Disabled
+  --mat-form-field-outlined-disabled-outline-color: #{rv.$reboot-gray-200};
+  --mat-form-field-outlined-disabled-input-text-color: #{rv.$reboot-gray-400};
+  --mat-form-field-outlined-disabled-label-text-color: #{rv.$reboot-gray-400};
+  --mat-form-field-disabled-input-text-placeholder-color: #{rv.$reboot-gray-300};
+
+  // Icons
+  --mat-form-field-leading-icon-color: #{rv.$reboot-gray-500};
+  --mat-form-field-trailing-icon-color: #{rv.$reboot-gray-500};
+  --mat-form-field-disabled-leading-icon-color: #{rv.$reboot-gray-300};
+  --mat-form-field-disabled-trailing-icon-color: #{rv.$reboot-gray-300};
+  --mat-form-field-error-trailing-icon-color: #{rv.$reboot-error};
+  --mat-form-field-error-focus-trailing-icon-color: #{rv.$reboot-error};
+
+  // Typography
+  --mat-form-field-container-text-size: #{rv.$reboot-font-size-base};
+  --mat-form-field-container-text-weight: #{rv.$reboot-font-weight-regular};
+  --mat-form-field-container-text-tracking: normal;
+  --mat-form-field-subscript-text-size: #{rv.$reboot-font-size-xs};
+  --mat-form-field-outlined-label-text-size: #{rv.$reboot-font-size-base};
+  --mat-form-field-outlined-label-text-weight: #{rv.$reboot-font-weight-regular};
+
+  // Select arrow
+  --mat-form-field-enabled-select-arrow-color: #{rv.$reboot-gray-500};
+  --mat-form-field-focus-select-arrow-color: #{rv.$reboot-accent};
+}
+
+// ============================================================
+// GitHub Primer compact sizing + visual overrides
+//
+// Angular Material component styles use ViewEncapsulation which
+// adds attribute selectors (~0,2,0 specificity). We need 0,3,0+
+// to reliably override from global CSS.
+// ============================================================
+.mat-mdc-form-field {
+  // Override hardcoded height:56px and padding:0 16px on .mdc-text-field--outlined
+  // Needs 0,3,0 specificity to beat component's 0,2,0
+  .mat-mdc-text-field-wrapper.mdc-text-field--outlined {
+    height: auto;
+    padding-left: rv.$reboot-input-padding-h;
+    padding-right: rv.$reboot-input-padding-h;
+  }
+
+  .mat-mdc-text-field-wrapper.mdc-text-field {
+    border-radius: rv.$reboot-border-radius-sm;
+    box-shadow: rv.$reboot-shadow-inset;
+    transition: box-shadow 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  // Override infix padding (Material uses --container-vertical-padding for
+  // outlined, but the default 56px min-height remains unless overridden)
+  .mdc-text-field--outlined .mat-mdc-form-field-infix,
+  .mdc-text-field--no-label .mat-mdc-form-field-infix {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-height: 32px;
+  }
+
+  // Focus glow
+  &.mat-focused .mat-mdc-text-field-wrapper.mdc-text-field {
+    box-shadow: rv.$reboot-shadow-inset, 0 0 0 3px rv.$reboot-accent-muted;
+  }
+
+  &.mat-form-field-invalid.mat-focused .mat-mdc-text-field-wrapper.mdc-text-field {
+    box-shadow: rv.$reboot-shadow-inset, 0 0 0 3px rv.$reboot-error-muted;
+  }
+
+  // Disabled background
+  &.mat-form-field-disabled .mat-mdc-text-field-wrapper.mdc-text-field {
+    background-color: rv.$reboot-gray-100;
+    cursor: not-allowed;
+  }
+
+  // Icon prefix — compact, subtle, always same width
+  .mat-mdc-form-field-icon-prefix {
+    padding: 0;
+
+    > .mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+      padding: 0 6px 0 0;
+      color: rv.$reboot-gray-400;
+    }
+  }
+
+  // Smooth border transitions
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__trailing,
+  .mdc-notched-outline__notch {
+    transition: border-color 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  }
+}
+
+// Hidden icon placeholder — keeps space reserved
+.form-field-icon--hidden {
+  visibility: hidden;
+}
+
+// ============================================================
+// GitHub Primer form layout classes
+// ============================================================
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-label {
+  font-size: rv.$reboot-font-size-base;
+  font-weight: rv.$reboot-font-weight-bold;
+  color: rv.$reboot-on-surface;
+  margin-bottom: 4px;
+}
+
+.form-required {
+  color: #e5534b;
+  font-size: 0.6em;
+  font-weight: rv.$reboot-font-weight-regular;
+  vertical-align: super;
+  margin-left: 3px;
+  opacity: 0.7;
+}
+
+.form-caption {
+  font-size: rv.$reboot-font-size-xs;
+  color: rv.$reboot-gray-500;
+  margin-top: 4px;
+
+  &--error {
+    color: rv.$reboot-error;
+  }
+}

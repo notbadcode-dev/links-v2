@@ -1,0 +1,82 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid;
+  min-width: 320px;
+  max-width: 420px;
+  animation: notification-slide-in 200ms ease-out;
+
+  &.notification-toast--success {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+    color: #166534;
+
+    .notification-toast__icon {
+      color: #16a34a;
+    }
+  }
+
+  &.notification-toast--error {
+    background-color: #fef2f2;
+    border-color: #fecaca;
+    color: #991b1b;
+
+    .notification-toast__icon {
+      color: #dc2626;
+    }
+  }
+
+  &.notification-toast--warning {
+    background-color: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+
+    .notification-toast__icon {
+      color: #d97706;
+    }
+  }
+
+  &.notification-toast--info {
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af;
+
+    .notification-toast__icon {
+      color: #2563eb;
+    }
+  }
+}
+
+.notification-toast__icon {
+  flex-shrink: 0;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.notification-toast__message {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.notification-toast__close {
+  flex-shrink: 0;
+  --mdc-icon-button-state-layer-size: 28px;
+  --mdc-icon-button-icon-size: 18px;
+}
+
+@keyframes notification-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

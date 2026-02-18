@@ -1,16 +1,49 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { I18nDirective } from '@app/core/i18n';
+import { provideTranslocoScope } from '@jsverse/transloco';
+import { tap } from 'rxjs';
 
+import { LoginResponse } from '@api/auth';
+import { ICONS_CONSTANTS } from '@app/constants/icons.constants';
+import { PATTERNS_CONSTANTS } from '@app/constants/pattern.constants';
+import { VALIDATION_KEYS_CONSTANTS } from '@app/constants/validation.constants';
+import { DisableOnLoadingDirective } from '@app/core/directives/disable-on-loading.directive';
+import { AUTH_CONSTANTS } from '@app/features/auth/constants/auth.constants';
+import { AuthHttpHelper } from '@app/features/auth/helpers';
+import { ILoginForm } from '@app/features/auth/interfaces/auth.interfaces';
 import {
-  ButtonComponent,
+  BaseDirective,
+  ButtonWrapperComponent,
+  CheckboxWrapperComponent,
+  createKeys,
+  EAlign,
+  EButtonWrapperVariant,
+  EInputTextWrapperType,
+  EPageLayout,
+  ESpacing,
+  ESurfaceVariant,
+  FormContainerComponent,
+  FormRowComponent,
+  IconCircleComponent,
+  IconWrapperComponent,
+  IInputTextWrapperConfig,
+  InlineTextComponent,
+  InputPasswordWrapperComponent,
   InputTextWrapperComponent,
-} from '../../../shared/ui';
+  LinkComponent,
+  NotificationService,
+  PageComponent,
+  StackComponent,
+  SurfaceComponent,
+  TFormGroupType,
+  TitleComponent,
+  UiPageSectionComponent,
+} from '@libs/ui';
+
+import { LOGIN_CONSTANTS } from '../constants/login.constants';
 
 @Component({
   selector: 'login',
@@ -18,55 +51,139 @@ import {
   styleUrl: './login.component.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideTranslocoScope('auth')],
   imports: [
     ReactiveFormsModule,
-    MatCardModule,
+    I18nDirective,
+    DisableOnLoadingDirective,
+
+    PageComponent,
+    UiPageSectionComponent,
+    StackComponent,
+    IconCircleComponent,
+    TitleComponent,
+    SurfaceComponent,
+    FormContainerComponent,
+    FormRowComponent,
+    InlineTextComponent,
+    LinkComponent,
+
+    IconWrapperComponent,
+    ButtonWrapperComponent,
+    CheckboxWrapperComponent,
+    InputPasswordWrapperComponent,
     InputTextWrapperComponent,
-    ButtonComponent,
   ],
 })
-export class LoginComponent {
-  readonly isLoading = signal(false);
+export class LoginComponent extends BaseDirective {
+  public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;
+  public readonly constants: typeof LOGIN_CONSTANTS = LOGIN_CONSTANTS;
+  public readonly routes: typeof AUTH_CONSTANTS.ROUTES = AUTH_CONSTANTS.ROUTES;
 
-  readonly loginForm = new FormGroup({
-    email: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.email],
-    }),
-    password: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(6)],
-    }),
-  });
+  public readonly EButtonWrapperVariant: typeof EButtonWrapperVariant = EButtonWrapperVariant;
+  public readonly EPageLayout: typeof EPageLayout = EPageLayout;
+  public readonly EAlign: typeof EAlign = EAlign;
+  public readonly ESpacing: typeof ESpacing = ESpacing;
+  public readonly ESurfaceVariant: typeof ESurfaceVariant = ESurfaceVariant;
 
-  get emailErrorMessage(): string {
+  public readonly loginFormKeys: Record<keyof ILoginForm, keyof ILoginForm> = createKeys(
+    this.constants.FORM.SCHEMA,
+  );
+
+  public readonly loginForm: FormGroup<TFormGroupType<ILoginForm>> = this._getFormConfig();
+
+  public readonly emailConfig: IInputTextWrapperConfig = this._getEmailConfig();
+  public readonly passwordConfig: IInputTextWrapperConfig = this._getPasswordConfig();
+
+  private readonly _authHttpHelper: AuthHttpHelper = inject(AuthHttpHelper);
+  private readonly _router: Router = inject(Router);
+  private readonly _notification: NotificationService = inject(NotificationService);
+
+  public get emailErrorMessage(): string {
     const control = this.loginForm.controls.email;
-    if (control.hasError('required')) return 'El email es requerido';
-    if (control.hasError('email')) return 'Ingresa un email válido';
+
+    if (control.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {
+      return LOGIN_CONSTANTS.ERROR_MESSAGES.EMAIL_REQUIRED;
+    }
+
+    if (control.hasError(VALIDATION_KEYS_CONSTANTS.PATTERN)) {
+      return LOGIN_CONSTANTS.ERROR_MESSAGES.EMAIL_INVALID;
+    }
     return '';
   }
 
-  get passwordErrorMessage(): string {
+  public get passwordErrorMessage(): string {
     const control = this.loginForm.controls.password;
-    if (control.hasError('required')) return 'La contraseña es requerida';
-    if (control.hasError('minlength')) return 'Mínimo 6 caracteres';
+
+    if (control.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {
+      return LOGIN_CONSTANTS.ERROR_MESSAGES.PASSWORD_REQUIRED;
+    }
+
+    if (control.hasError(VALIDATION_KEYS_CONSTANTS.MIN_LENGTH)) {
+      return LOGIN_CONSTANTS.ERROR_MESSAGES.PASSWORD_MIN_LENGTH;
+    }
     return '';
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
     }
 
-    this.isLoading.set(true);
+    const formData = this.loginForm.getRawValue();
 
-    const { email, password } = this.loginForm.getRawValue();
-    console.log('Login submitted:', { email, password });
+    this._authHttpHelper
+      .login(formData)
+      .pipe(
+        takeUntilDestroyed(this._destroyRef),
+        tap((response: LoginResponse) => {
+          if (response.accessToken && response.refreshToken) {
+            this._notification.success(LOGIN_CONSTANTS.MESSAGES.LOGIN_SUCCESS);
+            void this._router.navigate([this.routes.DASHBOARD]);
+          } else {
+            this._notification.error(LOGIN_CONSTANTS.MESSAGES.LOGIN_FAILED);
+          }
+        }),
+      )
+      .subscribe();
+  }
 
-    // TODO: Inyectar servicio de auth y llamar al backend
-    setTimeout(() => {
-      this.isLoading.set(false);
-    }, 1500);
+  private _getFormConfig(): FormGroup<TFormGroupType<ILoginForm>> {
+    return new FormGroup<TFormGroupType<ILoginForm>>({
+      email: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.EMAIL, {
+        nonNullable: true,
+        validators: [Validators.required, Validators.pattern(PATTERNS_CONSTANTS.EMAIL)],
+      }),
+      password: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.PASSWORD, {
+        nonNullable: true,
+        validators: [
+          Validators.required,
+          Validators.minLength(AUTH_CONSTANTS.VALIDATION.MIN_PASSWORD_LENGTH),
+        ],
+      }),
+      rememberMe: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.REMEMBER_ME, {
+        nonNullable: true,
+      }),
+    });
+  }
+
+  private _getEmailConfig(): IInputTextWrapperConfig {
+    return {
+      label: LOGIN_CONSTANTS.FORM.EMAIL.LABEL,
+      icon: LOGIN_CONSTANTS.FORM.EMAIL.ICON,
+      placeholder: LOGIN_CONSTANTS.FORM.EMAIL.PLACEHOLDER,
+      type: EInputTextWrapperType.EMAIL,
+      required: true,
+    };
+  }
+
+  private _getPasswordConfig(): IInputTextWrapperConfig {
+    return {
+      label: LOGIN_CONSTANTS.FORM.PASSWORD.LABEL,
+      icon: LOGIN_CONSTANTS.FORM.PASSWORD.ICON,
+      placeholder: LOGIN_CONSTANTS.FORM.PASSWORD.PLACEHOLDER,
+      required: true,
+    };
   }
 }

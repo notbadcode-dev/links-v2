@@ -1,0 +1,13 @@
+<div class="ui-page" [ngClass]="'layout-' + layout()">
+  <header class="ui-page__header">
+    <ng-content select="ui-page-header" />
+  </header>
+
+  <main class="ui-page__body">
+    <ng-content select="ui-page-body" />
+  </main>
+
+  <footer class="ui-page__footer">
+    <ng-content select="ui-page-footer" />
+  </footer>
+</div>

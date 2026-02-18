@@ -1,0 +1,45 @@
+{
+  "common": {
+    "actions": {
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "delete": "Eliminar",
+      "edit": "Editar",
+      "close": "Cerrar",
+      "search": "Buscar",
+      "filter": "Filtrar",
+      "load_more": "Cargar más",
+      "back": "Atrás",
+      "submit": "Enviar"
+    },
+    "labels": {
+      "name": "Nombre",
+      "email": "Email",
+      "password": "Contraseña",
+      "confirm_password": "Confirmar contraseña",
+      "description": "Descripción",
+      "created_at": "Creado",
+      "updated_at": "Actualizado"
+    },
+    "messages": {
+      "loading": "Cargando...",
+      "no_data": "No hay datos disponibles",
+      "error": "Ha ocurrido un error",
+      "success": "Operación completada con éxito",
+      "confirm_delete": "¿Estás seguro de que quieres eliminar este elemento?"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio",
+      "invalid_email": "Por favor, introduce una dirección de email válida",
+      "min_length": "Se requieren mínimo {{min}} caracteres",
+      "max_length": "Máximo {{max}} caracteres permitidos",
+      "passwords_dont_match": "Las contraseñas no coinciden"
+    }
+  },
+  "navigation": {
+    "dashboard": "Panel de control",
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión"
+  }
+}

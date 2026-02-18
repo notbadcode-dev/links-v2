@@ -1,0 +1,17 @@
+<dropdown-wrapper>
+  <ng-container slot="trigger">
+    <icon-wrapper icon="language" />
+    {{ i18nService.currentLanguageInfo.flag }} {{ i18nService.currentLanguage.toUpperCase() }}
+  </ng-container>
+
+  <ng-container slot="content">
+    <button
+      *ngFor="let lang of i18nService.availableLanguages"
+      class="dropdown-item"
+      [class.active]="i18nService.currentLanguage === lang.code"
+      (click)="setLanguage(lang.code)"
+    >
+      {{ lang.flag }} {{ lang.name }}
+    </button>
+  </ng-container>
+</dropdown-wrapper>

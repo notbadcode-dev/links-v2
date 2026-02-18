@@ -1,0 +1,53 @@
+<div class="i18n-examples">
+  <h2>I18n Wrapper Examples</h2>
+
+  <!-- Language selector -->
+  <div class="section">
+    <h3>Language Selector</h3>
+    <language-selector />
+    <p>Current language: {{ i18n.currentLanguageInfo.name }} {{ i18n.currentLanguageInfo.flag }}</p>
+  </div>
+
+  <!-- Using directive with scope -->
+  <div class="section">
+    <h3>Directive with Auth Scope</h3>
+    <ng-container *i18n="'auth'; let t">
+      <h4>{{ t('login.title') }}</h4>
+      <p>{{ t('login.subtitle') }}</p>
+      <button>{{ t('login.form.submit_button') }}</button>
+    </ng-container>
+  </div>
+
+  <!-- Using directive without scope (global) -->
+  <div class="section">
+    <h3>Directive with Global Keys</h3>
+    <ng-container *i18n="let t">
+      <button>{{ t('common.actions.save') }}</button>
+      <button>{{ t('common.actions.cancel') }}</button>
+      <p>{{ t('common.messages.loading') }}</p>
+    </ng-container>
+  </div>
+
+  <!-- Using pipe -->
+  <div class="section">
+    <h3>Pipe Usage</h3>
+    <p>{{ 'common.actions.save' | i18n }}</p>
+    <p>{{ 'auth.login.title' | i18n: {} : 'auth' }}</p>
+    <p>{{ 'common.validation.min_length' | i18n: { min: 8 } }}</p>
+  </div>
+
+  <!-- Using service directly -->
+  <div class="section">
+    <h3>Service Usage (TypeScript)</h3>
+    <p>Direct translation: {{ directTranslation }}</p>
+    <p>With parameters: {{ translationWithParams }}</p>
+    <p>Multiple keys: {{ multipleTranslations | json }}</p>
+  </div>
+
+  <!-- Using typed constants -->
+  <div class="section">
+    <h3>Typed Constants</h3>
+    <p>{{ commonKeys.ACTIONS.SAVE | i18n }}</p>
+    <p>{{ authKeys.LOGIN.TITLE | i18n: {} : 'auth' }}</p>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  // Gaps
+  &.gap-none {
+    gap: 0;
+  }
+  &.gap-sm {
+    gap: 0.5rem;
+  }
+  &.gap-md {
+    gap: 1rem;
+  }
+  &.gap-lg {
+    gap: 1.5rem;
+  }
+  &.gap-xl {
+    gap: 2rem;
+  }
+
+  // Alignments
+  &.align-start {
+    align-items: flex-start;
+  }
+  &.align-center {
+    align-items: center;
+  }
+  &.align-end {
+    align-items: flex-end;
+  }
+  &.align-stretch {
+    align-items: stretch;
+  }
+}

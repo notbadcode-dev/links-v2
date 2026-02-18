@@ -410,6 +410,14 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
     '@angular-eslint/no-forward-ref': 'warn',
 
     // ═══════════════════════════════════════════════════════════
+    // ANGULAR - INLINE DECLARATIONS
+    // ═══════════════════════════════════════════════════════════
+    '@angular-eslint/component-max-inline-declarations': [
+      'error',
+      { template: 0, styles: 0, animations: 0 },
+    ],
+
+    // ═══════════════════════════════════════════════════════════
     // GENERAL - BEST PRACTICES
     // ═══════════════════════════════════════════════════════════
     'no-console': ['warn', { allow: ['warn', 'error'] }],
@@ -506,6 +514,15 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
     'no-return-await': 'off',
     '@typescript-eslint/return-await': ['error', 'always'],
   },
+},
+// Test files configuration
+{
+  files: ['**/*.spec.ts'],
+  rules: {
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+  },
 }, // HTML template files configuration
 {
   files: ['**/*.html'],
@@ -558,4 +575,4 @@ eslint.configs.recommended, ...tseslint.configs.recommended, prettierConfig, // 
       },
     ],
   },
-}, storybook.configs["flat/recommended"]);
+}, ...storybook.configs["flat/recommended"]);

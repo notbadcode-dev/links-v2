@@ -1,0 +1,40 @@
+<ng-container *i18n="'auth'; let t">
+  <viewport-center>
+    <div class="signup-container">
+      <div class="signup-header">
+        <div class="logo-circle">
+          <mat-icon>{{ icons.APP.LOGO }}</mat-icon>
+        </div>
+        <h1>{{ t('auth.signup.title') }}</h1>
+        <p>{{ t('auth.signup.subtitle') }}</p>
+      </div>
+
+      <card-wrapper customClass="signup-card">
+        <form disableOnLoading [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <input-text-wrapper [config]="nameConfig" formControlName="name" [errorMessage]="nameErrorMessage" />
+
+          <input-text-wrapper [config]="emailConfig" formControlName="email" [errorMessage]="emailErrorMessage" />
+
+          <input-password-wrapper
+            [config]="passwordConfig"
+            formControlName="password"
+            [errorMessage]="passwordErrorMessage"
+          />
+
+          <button-wrapper
+            [title]="t('auth.signup.form.submit_button')"
+            [fullWidth]="true"
+            [disabled]="signupForm.invalid"
+            (clicked)="onSubmit()"
+            [variant]="EButtonWrapperVariant.FLAT"
+          />
+        </form>
+      </card-wrapper>
+
+      <p class="footer-text">
+        {{ t('auth.signup.footer.already_have_account') }}
+        <a routerLink="/login">{{ t('auth.signup.footer.sign_in_link') }}</a>
+      </p>
+    </div>
+  </viewport-center>
+</ng-container>

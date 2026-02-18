@@ -1,0 +1,15 @@
+:host {
+  display: inline-block;
+}
+
+.ui-link {
+  color: var(--primary-color, #3d17ff); // Fallback to the blue seen in login component
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

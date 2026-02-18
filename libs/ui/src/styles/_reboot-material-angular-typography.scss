@@ -1,0 +1,42 @@
+@use './reboot-variables' as rv;
+
+html {
+  --mat-sys-body-large-font: #{rv.$reboot-font-family};
+  --mat-sys-body-large-size: #{rv.$reboot-font-size-base};
+  --mat-sys-body-large-weight: #{rv.$reboot-font-weight-regular};
+  --mat-sys-body-large-tracking: normal;
+
+  --mat-sys-body-medium-font: #{rv.$reboot-font-family};
+  --mat-sys-body-medium-size: #{rv.$reboot-font-size-base};
+  --mat-sys-body-medium-weight: #{rv.$reboot-font-weight-regular};
+  --mat-sys-body-medium-tracking: normal;
+
+  --mat-sys-body-small-font: #{rv.$reboot-font-family};
+  --mat-sys-body-small-size: #{rv.$reboot-font-size-xs};
+  --mat-sys-body-small-weight: #{rv.$reboot-font-weight-regular};
+  --mat-sys-body-small-tracking: normal;
+
+  --mat-sys-label-large-font: #{rv.$reboot-font-family};
+  --mat-sys-label-large-size: #{rv.$reboot-font-size-base};
+  --mat-sys-label-large-weight: #{rv.$reboot-font-weight-medium};
+  --mat-sys-label-large-tracking: normal;
+
+  --mat-sys-title-large-font: #{rv.$reboot-font-family};
+  --mat-sys-title-large-size: #{rv.$reboot-font-size-lg};
+  --mat-sys-title-large-weight: #{rv.$reboot-font-weight-bold};
+  --mat-sys-title-large-tracking: normal;
+
+  --mat-sys-title-medium-font: #{rv.$reboot-font-family};
+  --mat-sys-title-medium-size: #{rv.$reboot-font-size-md};
+  --mat-sys-title-medium-weight: #{rv.$reboot-font-weight-medium};
+  --mat-sys-title-medium-tracking: normal;
+}
+
+body {
+  font-family: rv.$reboot-font-family;
+  font-size: rv.$reboot-font-size-base;
+  line-height: 1.5;
+  color: rv.$reboot-on-surface;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

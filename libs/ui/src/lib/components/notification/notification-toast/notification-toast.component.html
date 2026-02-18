@@ -1,0 +1,5 @@
+<mat-icon class="notification-toast__icon">{{ icon() }}</mat-icon>
+<span class="notification-toast__message">{{ notification().message }}</span>
+<button mat-icon-button class="notification-toast__close" (click)="onDismiss()">
+  <mat-icon>close</mat-icon>
+</button>

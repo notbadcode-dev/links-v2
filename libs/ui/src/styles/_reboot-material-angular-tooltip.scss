@@ -1,0 +1,14 @@
+@use './reboot-variables' as rv;
+
+// ============================================================
+// MatTooltip — Dark chip, GitHub-like
+// ============================================================
+
+html {
+  --mat-tooltip-container-color: #{rv.$reboot-gray-800};
+  --mat-tooltip-supporting-text-color: #{rv.$reboot-white};
+  --mat-tooltip-container-shape: #{rv.$reboot-border-radius-sm};
+  --mat-tooltip-supporting-text-size: #{rv.$reboot-font-size-xs};
+  --mat-tooltip-supporting-text-weight: #{rv.$reboot-font-weight-regular};
+  --mat-tooltip-supporting-text-tracking: normal;
+}

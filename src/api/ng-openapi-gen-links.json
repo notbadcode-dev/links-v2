@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/ng-openapi-gen/ng-openapi-gen-schema.json",
+  "input": "http://localhost:60201/docs-json",
+  "output": "src/api/links",
+  "ignoreUnusedModels": false,
+  "removeStaleFiles": false,
+  "modelIndex": true,
+  "serviceIndex": true,
+  "apiModule": false,
+  "enumStyle": "alias",
+  "templates": false,
+  "skipJsonSuffix": false,
+  "customizedResponseType": false
+}

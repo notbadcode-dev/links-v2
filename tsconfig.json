@@ -28,6 +28,12 @@
     "exactOptionalPropertyTypes": true,
 
     // Module Resolution
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@api/*": ["src/api/*"],
+      "@libs/ui": ["libs/ui/src/public-api.ts"]
+    },
     "skipLibCheck": true,
     "isolatedModules": true,
     "esModuleInterop": true,
@@ -45,7 +51,6 @@
 
     // Interop Constraints
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
 
     // Language and Environment
     "target": "ES2022",

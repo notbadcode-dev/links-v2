@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary-100, #eef2ff);
+  color: var(--primary-600, #4f46e5);
+}

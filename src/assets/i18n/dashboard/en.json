@@ -1,0 +1,26 @@
+{
+  "welcome": {
+    "title": "Welcome to your dashboard",
+    "subtitle": "Here's what's happening with your account today"
+  },
+  "stats": {
+    "total_links": "Total links",
+    "this_month": "This month",
+    "active": "Active",
+    "archived": "Archived"
+  },
+  "recent_activity": {
+    "title": "Recent activity",
+    "no_activity": "No recent activity",
+    "link_created": "Link created",
+    "link_updated": "Link updated",
+    "link_deleted": "Link deleted"
+  },
+  "quick_actions": {
+    "title": "Quick actions",
+    "create_link": "Create new link",
+    "import_bookmarks": "Import bookmarks",
+    "export_data": "Export data",
+    "view_analytics": "View analytics"
+  }
+}

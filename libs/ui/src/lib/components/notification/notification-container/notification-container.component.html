@@ -1,0 +1,6 @@
+@for (notification of notifications(); track notification.id) {
+  <notification-toast
+    [notification]="notification"
+    (dismissed)="onDismiss($event)"
+  />
+}

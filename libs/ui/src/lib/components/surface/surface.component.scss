@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  background-color: transparent;
+
+  &.variant-card {
+    background-color: white;
+    border-radius: 0.75rem; // xl
+    border: 1px solid rgba(229, 231, 235, 1); // gray-200
+  }
+
+  &.padding-none {
+    padding: 0;
+  }
+  &.padding-sm {
+    padding: 1rem;
+  }
+  &.padding-md {
+    padding: 1.5rem;
+  }
+  &.padding-lg {
+    padding: 2rem;
+  }
+  &.padding-xl {
+    padding: 3rem;
+  }
+}

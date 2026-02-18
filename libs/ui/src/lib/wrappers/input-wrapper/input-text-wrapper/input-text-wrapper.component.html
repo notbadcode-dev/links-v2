@@ -1,0 +1,33 @@
+@if (!effectiveHideExternalLabel()) {
+  <label class="form-label">{{ effectiveLabel() }}</label>
+}
+
+<mat-form-field appearance="outline">
+  @if (!effectiveHideInternalLabel()) {
+    <mat-label>{{ effectiveLabel() }}</mat-label>
+  }
+
+  @if (effectiveIcon()) {
+    <mat-icon matPrefix>{{ effectiveIcon() }}</mat-icon>
+  }
+
+  <input
+    matInput
+    [type]="effectiveType()"
+    [placeholder]="effectivePlaceholder()"
+    [required]="effectiveRequired()"
+    [disabled]="isDisabled()"
+    [attr.tabindex]="effectiveTabindex() ?? null"
+    [ngModel]="value()"
+    (ngModelChange)="onChange($event)"
+    (blur)="onBlur()"
+  />
+
+  @if (effectiveErrorMessage()) {
+    <mat-error>{{ effectiveErrorMessage() }}</mat-error>
+  }
+
+  @if (effectiveHint()) {
+    <mat-hint>{{ effectiveHint() }}</mat-hint>
+  }
+</mat-form-field>

@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+:host(.align-start) {
+  justify-content: flex-start;
+}
+:host(.align-between) {
+  justify-content: space-between;
+}
+:host(.align-end) {
+  justify-content: flex-end;
+}
