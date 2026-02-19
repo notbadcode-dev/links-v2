@@ -1,0 +1,65 @@
+name: Storybook Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-storybook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Upload Storybook static
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-static
+          path: storybook-static
+          if-no-files-found: error
+
+  test-storybook:
+    needs: build-storybook
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download Storybook static
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook-static
+          path: storybook-static
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Storybook smoke + interaction tests
+        run: npx --no-install start-server-and-test "http-server storybook-static --port 6006 --silent" http://127.0.0.1:6006 "npm run test:stories:smoke:ci && npm run test:stories:interaction:ci"

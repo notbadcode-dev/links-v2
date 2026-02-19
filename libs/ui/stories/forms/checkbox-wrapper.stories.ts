@@ -1,6 +1,7 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { moduleMetadata } from '@storybook/angular';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { CheckboxWrapperComponent } from '@libs/ui';
 
@@ -56,8 +57,17 @@ export default meta;
 type TStory = StoryObj<CheckboxWrapperComponent>;
 
 export const Basic: TStory = {
+  tags: ['interaction'],
   args: {
     label: 'I agree to the terms',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = await canvas.findByRole('checkbox', { name: /i agree to the terms/i });
+
+    await expect(checkbox).not.toBeChecked();
+    await userEvent.click(checkbox);
+    await expect(checkbox).toBeChecked();
   },
 };
 
@@ -84,6 +94,7 @@ export const WithError: TStory = {
 };
 
 export const Disabled: TStory = {
+  tags: ['interaction'],
   render: (args) => ({
     props: {
       ...args,
@@ -98,6 +109,12 @@ export const Disabled: TStory = {
   }),
   args: {
     label: 'Disabled option',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = await canvas.findByRole('checkbox', { name: /disabled option/i });
+
+    await expect(checkbox).toBeDisabled();
   },
 };
 

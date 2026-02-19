@@ -1,6 +1,7 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { moduleMetadata } from '@storybook/angular';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { EInputTextWrapperType, InputTextWrapperComponent } from '@libs/ui';
 
@@ -29,9 +30,18 @@ export default meta;
 type TStory = StoryObj<InputTextWrapperComponent>;
 
 export const Basic: TStory = {
+  tags: ['interaction'],
   args: {
     label: 'Nombre',
     placeholder: 'Ingrese su nombre',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = await canvas.findByPlaceholderText(/ingrese su nombre/i);
+
+    await userEvent.clear(input);
+    await userEvent.type(input, 'Bruno');
+    await expect(input).toHaveValue('Bruno');
   },
 };
 
@@ -65,6 +75,7 @@ export const WithError: TStory = {
 };
 
 export const Disabled: TStory = {
+  tags: ['interaction'],
   render: (args) => ({
     props: {
       ...args,
@@ -81,6 +92,12 @@ export const Disabled: TStory = {
   args: {
     label: 'Usuario',
     icon: 'person',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = await canvas.findByDisplayValue('admin@example.com');
+
+    await expect(input).toBeDisabled();
   },
 };
 

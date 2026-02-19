@@ -632,12 +632,12 @@
         },
         {
             "name": "AuthHealthControllerHealthz$Params",
-            "id": "interface-AuthHealthControllerHealthz$Params-d051c11c228b9949eec7c85188cde771c77f0593a6ddfbda6398b87692079c10d096a89e483dc799c16ed40964ebb4686f74a0658f1ce79495da8d2a8f5bd8a3",
-            "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
+            "id": "interface-AuthHealthControllerHealthz$Params-844128b8dacb0597ff1570174006424966190483d3ef0bd95c5fed9a1ddc939f82e7e7f1493f95c4982e14c0d87e34f56637dfc1100285e0fda8d147ab24b288",
+            "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { filter, map } from 'rxjs/operators';\nimport { StrictHttpResponse } from '../../strict-http-response';\nimport { RequestBuilder } from '../../request-builder';\n\nexport interface AuthHealthControllerHealthz$Params {\n}\n\nexport function authHealthControllerHealthz(http: HttpClient, rootUrl: string, params?: AuthHealthControllerHealthz$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {\n  const rb = new RequestBuilder(rootUrl, authHealthControllerHealthz.PATH, 'get');\n  if (params) {\n  }\n\n  return http.request(\n    rb.build({ responseType: 'text', accept: '*/*', context })\n  ).pipe(\n    filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),\n    map((r: HttpResponse<any>) => {\n      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;\n    })\n  );\n}\n\nauthHealthControllerHealthz.PATH = '/healthz';\n",
+            "sourceCode": "import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { filter, map } from 'rxjs/operators';\nimport { StrictHttpResponse } from '../../strict-http-response';\nimport { RequestBuilder } from '../../request-builder';\n\n\nexport interface AuthHealthControllerHealthz$Params {\n}\n\nexport function authHealthControllerHealthz(http: HttpClient, rootUrl: string, params?: AuthHealthControllerHealthz$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {\n  const rb = new RequestBuilder(rootUrl, authHealthControllerHealthz.PATH, 'get');\n  if (params) {\n  }\n\n  return http.request(\n    rb.build({ responseType: 'text', accept: '*/*', context })\n  ).pipe(\n    filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),\n    map((r: HttpResponse<any>) => {\n      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;\n    })\n  );\n}\n\nauthHealthControllerHealthz.PATH = '/healthz';\n",
             "properties": [],
             "indexSignatures": [],
             "methods": [],
@@ -645,12 +645,12 @@
         },
         {
             "name": "AuthHealthControllerHealthz$Params",
-            "id": "interface-AuthHealthControllerHealthz$Params-844128b8dacb0597ff1570174006424966190483d3ef0bd95c5fed9a1ddc939f82e7e7f1493f95c4982e14c0d87e34f56637dfc1100285e0fda8d147ab24b288-1",
-            "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
+            "id": "interface-AuthHealthControllerHealthz$Params-d051c11c228b9949eec7c85188cde771c77f0593a6ddfbda6398b87692079c10d096a89e483dc799c16ed40964ebb4686f74a0658f1ce79495da8d2a8f5bd8a3-1",
+            "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { filter, map } from 'rxjs/operators';\nimport { StrictHttpResponse } from '../../strict-http-response';\nimport { RequestBuilder } from '../../request-builder';\n\n\nexport interface AuthHealthControllerHealthz$Params {\n}\n\nexport function authHealthControllerHealthz(http: HttpClient, rootUrl: string, params?: AuthHealthControllerHealthz$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {\n  const rb = new RequestBuilder(rootUrl, authHealthControllerHealthz.PATH, 'get');\n  if (params) {\n  }\n\n  return http.request(\n    rb.build({ responseType: 'text', accept: '*/*', context })\n  ).pipe(\n    filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),\n    map((r: HttpResponse<any>) => {\n      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;\n    })\n  );\n}\n\nauthHealthControllerHealthz.PATH = '/healthz';\n",
+            "sourceCode": "import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { filter, map } from 'rxjs/operators';\nimport { StrictHttpResponse } from '../../strict-http-response';\nimport { RequestBuilder } from '../../request-builder';\n\nexport interface AuthHealthControllerHealthz$Params {\n}\n\nexport function authHealthControllerHealthz(http: HttpClient, rootUrl: string, params?: AuthHealthControllerHealthz$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {\n  const rb = new RequestBuilder(rootUrl, authHealthControllerHealthz.PATH, 'get');\n  if (params) {\n  }\n\n  return http.request(\n    rb.build({ responseType: 'text', accept: '*/*', context })\n  ).pipe(\n    filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),\n    map((r: HttpResponse<any>) => {\n      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;\n    })\n  );\n}\n\nauthHealthControllerHealthz.PATH = '/healthz';\n",
             "properties": [],
             "indexSignatures": [],
             "methods": [],
@@ -9800,7 +9800,7 @@
             },
             {
                 "name": "authHealthControllerHealthz",
-                "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
+                "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -9878,7 +9878,7 @@
             },
             {
                 "name": "authHealthControllerHealthz",
-                "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
+                "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -12444,10 +12444,10 @@
                     ]
                 }
             ],
-            "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts": [
+            "src/api/auth/fn/health/auth-health-controller-healthz.ts": [
                 {
                     "name": "authHealthControllerHealthz",
-                    "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
+                    "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -12524,10 +12524,10 @@
                     ]
                 }
             ],
-            "src/api/auth/fn/health/auth-health-controller-healthz.ts": [
+            "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts": [
                 {
                     "name": "authHealthControllerHealthz",
-                    "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
+                    "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,

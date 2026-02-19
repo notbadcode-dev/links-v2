@@ -1,6 +1,7 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { moduleMetadata } from '@storybook/angular';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { LinkComponent } from '@libs/ui';
 
@@ -33,9 +34,18 @@ export default meta;
 type TStory = StoryObj<LinkComponent>;
 
 export const Basic: TStory = {
+  tags: ['interaction'],
   args: {
     route: '/dashboard',
     label: 'Dashboard',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = await canvas.findByRole('link', { name: /dashboard/i });
+
+    await expect(link).toBeVisible();
+    await userEvent.click(link);
+    await expect(link).toHaveAttribute('href');
   },
 };
 

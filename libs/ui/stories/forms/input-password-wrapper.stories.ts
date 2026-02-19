@@ -1,6 +1,7 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { moduleMetadata } from '@storybook/angular';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { InputPasswordWrapperComponent } from '@libs/ui';
 
@@ -62,9 +63,18 @@ export default meta;
 type TStory = StoryObj<InputPasswordWrapperComponent>;
 
 export const Basic: TStory = {
+  tags: ['interaction'],
   args: {
     label: 'Password',
     placeholder: 'Enter your password',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = await canvas.findByPlaceholderText(/enter your password/i);
+
+    await userEvent.clear(input);
+    await userEvent.type(input, 'secret-123');
+    await expect(input).toHaveValue('secret-123');
   },
 };
 
@@ -102,6 +112,7 @@ export const ConfirmPassword: TStory = {
 };
 
 export const Disabled: TStory = {
+  tags: ['interaction'],
   render: (args) => ({
     props: {
       ...args,
@@ -118,6 +129,12 @@ export const Disabled: TStory = {
   args: {
     label: 'Password',
     placeholder: 'Password field disabled',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = await canvas.findByPlaceholderText(/password field disabled/i);
+
+    await expect(input).toBeDisabled();
   },
 };
 

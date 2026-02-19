@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from 'storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
 
 import { ButtonWrapperComponent, EButtonWrapperColor, EButtonWrapperVariant } from '@libs/ui';
 
@@ -54,8 +54,17 @@ export default meta;
 type TStory = StoryObj<ButtonWrapperComponent>;
 
 export const Basic: TStory = {
+  tags: ['interaction'],
   args: {
     title: 'Basic Button',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.findByRole('button', { name: /basic button/i });
+
+    await expect(button).toBeVisible();
+    await expect(button).toBeEnabled();
+    await userEvent.click(button);
   },
 };
 
@@ -111,9 +120,16 @@ export const WarnColor: TStory = {
 };
 
 export const Disabled: TStory = {
+  tags: ['interaction'],
   args: {
     title: 'Disabled Button',
     disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.findByRole('button', { name: /disabled button/i });
+
+    await expect(button).toBeDisabled();
   },
 };
 
