@@ -20,6 +20,7 @@ import { AUTH_FORM_KEYS } from '@app/features/auth/constants/auth-form-keys.cons
 import { LOGIN_KEYS } from '@app/features/auth/constants/login-keys.constants';
 import { AuthHttpHelper } from '@app/features/auth/helpers';
 import { ILoginForm } from '@app/features/auth/interfaces/auth.interfaces';
+import { pickRandomItem } from '@app/shared/utils/random.utils';
 import {
   BaseDirective,
   ButtonWrapperComponent,
@@ -101,6 +102,9 @@ export class LoginComponent extends BaseDirective {
   );
 
   public readonly loginForm: FormGroup<TFormGroupType<ILoginForm>> = this._getFormConfig();
+  public readonly submitButtonTooltipKey: (typeof LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS)[number] =
+    pickRandomItem(LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS) ??
+    LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS[0];
 
   private readonly _authHttpHelper: AuthHttpHelper = inject(AuthHttpHelper);
   private readonly _router: Router = inject(Router);

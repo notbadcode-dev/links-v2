@@ -19,7 +19,16 @@
     "form": {
       "remember_me": "Recordarme",
       "forgot_password": "¿Olvidaste tu contraseña?",
-      "submit_button": "Iniciar sesión"
+      "submit_button": "Iniciar sesión",
+      "tooltips": {
+        "submit_button": {
+          "option_1": "Entra y pon tus links bien finos.",
+          "option_2": "Accede y deja tu colección pulida.",
+          "option_3": "Vuelve y afina tu biblioteca.",
+          "option_4": "Entra y deja tus enlaces ready.",
+          "option_5": "Accede y deja tus links en modo pro."
+        }
+      }
     },
     "messages": {
       "success": "¡Inicio de sesión exitoso! Redirigiendo al dashboard...",

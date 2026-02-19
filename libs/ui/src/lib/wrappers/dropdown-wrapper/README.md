@@ -8,6 +8,7 @@ extends: BaseDirective
 inputs:
   - { name: trigger, type: EDropdownWrapperTrigger, required: false, default: CLICK, description: How the menu is activated }
   - { name: position, type: EDropdownWrapperPosition, required: false, default: BELOW, description: Menu position relative to trigger }
+  - { name: tooltip, type: string, required: false, default: "''", description: Tooltip text for trigger button }
   - { name: disabled, type: boolean, required: false, default: false, description: Disables the trigger button }
   - { name: customClass, type: string, required: false, default: "''", description: Additional CSS class on trigger button }
 outputs:
@@ -40,6 +41,7 @@ Encapsula `MatMenu` usando content projection con `slot="trigger"` y `slot="cont
 |---|---|---|---|
 | `trigger` | `EDropdownWrapperTrigger` | `CLICK` | Cómo se activa el menú |
 | `position` | `EDropdownWrapperPosition` | `BELOW` | Posición relativa al trigger |
+| `tooltip` | `string` | `''` | Tooltip del botón trigger |
 | `disabled` | `boolean` | `false` | Deshabilita el trigger |
 | `customClass` | `string` | `''` | Clase CSS adicional para el botón trigger |
 
@@ -65,7 +67,7 @@ Encapsula `MatMenu` usando content projection con `slot="trigger"` y `slot="cont
 ## Uso
 
 ```html
-<dropdown-wrapper>
+<dropdown-wrapper tooltip="Más acciones">
   <ng-container slot="trigger">
     <icon-wrapper icon="more_vert" />
     Opciones

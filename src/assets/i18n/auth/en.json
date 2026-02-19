@@ -19,7 +19,16 @@
     "form": {
       "remember_me": "Remember me",
       "forgot_password": "Forgot your password?",
-      "submit_button": "Sign in"
+      "submit_button": "Sign in",
+      "tooltips": {
+        "submit_button": {
+          "option_1": "Sign in and keep your links sharp.",
+          "option_2": "Access and leave your collection polished.",
+          "option_3": "Come back and fine-tune your library.",
+          "option_4": "Sign in and keep your links ready.",
+          "option_5": "Access and put your links in pro mode."
+        }
+      }
     },
     "messages": {
       "success": "Login successful! Redirecting to dashboard...",

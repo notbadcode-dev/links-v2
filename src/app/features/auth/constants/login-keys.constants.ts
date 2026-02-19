@@ -10,6 +10,15 @@ export const LOGIN_KEYS = {
     FORGOT_PASSWORD: `${LOGIN_KEYS_PREFIX}.form.forgot_password`,
     SUBMIT_BUTTON: `${LOGIN_KEYS_PREFIX}.form.submit_button`,
   },
+  TOOLTIPS: {
+    SUBMIT_BUTTON_OPTIONS: [
+      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_1`,
+      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_2`,
+      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_3`,
+      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_4`,
+      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_5`,
+    ],
+  },
   MESSAGES: {
     SUCCESS: `${LOGIN_KEYS_PREFIX}.messages.success`,
     FAILED: `${LOGIN_KEYS_PREFIX}.messages.failed`,

@@ -26,6 +26,7 @@ base:
     - { token: DISABLE_ON_LOADING, optional: true, description: Auto-disables during loading state }
   common_inputs:
     - { name: label, type: "string | undefined" }
+    - { name: tooltip, type: "string | undefined", description: Tooltip shown on external label }
     - { name: placeholder, type: "string | undefined" }
     - { name: required, type: "boolean | undefined" }
     - { name: icon, type: "string | undefined", description: Material Icons prefix }
@@ -38,6 +39,7 @@ base:
 interfaces:
   IInputWrapperConfig:
     - { name: label, type: string, required: true }
+    - { name: tooltip, type: string, required: false }
     - { name: hideInternalLabel, type: boolean, required: false, default: true }
     - { name: hideExternalLabel, type: boolean, required: false, default: false }
     - { name: placeholder, type: string, required: false }
@@ -78,6 +80,7 @@ Todos los wrappers de input extienden esta directiva. Provee:
 | Input | Tipo | Descripción |
 |---|---|---|
 | `label` | `string` | Etiqueta del campo |
+| `tooltip` | `string` | Tooltip mostrado sobre la etiqueta externa |
 | `placeholder` | `string` | Placeholder del input |
 | `required` | `boolean` | Marca el campo como requerido |
 | `icon` | `string` | Icono prefijo (nombre Material Icons) |
@@ -150,6 +153,7 @@ Campo de contraseña con botón de ojo para alternar visibilidad entre `password
 ```typescript
 public readonly emailConfig: IInputTextWrapperConfig = {
   label: 'Correo electrónico',
+  tooltip: 'Introduce tu email corporativo',
   placeholder: 'tu@email.com',
   required: true,
   icon: 'email',
@@ -174,6 +178,7 @@ public readonly emailConfig: IInputTextWrapperConfig = {
 ```typescript
 interface IInputWrapperConfig {
   label: string;
+  tooltip?: string;
   hideInternalLabel?: boolean;  // default: true
   hideExternalLabel?: boolean;  // default: false
   placeholder?: string;

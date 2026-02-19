@@ -12,6 +12,7 @@ value_type: boolean
 inherits_inputs_from: InputWrapperDirective
 key_inputs:
   - { name: label, type: "string | undefined", description: Checkbox label text }
+  - { name: tooltip, type: "string | undefined", description: Tooltip shown on checkbox label }
   - { name: required, type: "boolean | undefined", description: Marks field as required }
   - { name: config, type: IInputWrapperConfig, description: Config object alternative to individual inputs }
 ---
@@ -39,6 +40,7 @@ Los más relevantes:
 | Input | Tipo | Descripción |
 |---|---|---|
 | `label` | `string` | Texto visible junto al checkbox |
+| `tooltip` | `string` | Tooltip mostrado al pasar por el label |
 | `required` | `boolean` | Marca el campo como requerido |
 | `config` | `IInputWrapperConfig` | Alternativa al paso individual de inputs |
 
@@ -49,6 +51,7 @@ Los más relevantes:
 ```html
 <checkbox-wrapper
   label="Recuérdame"
+  tooltip="Mantiene tu sesión iniciada"
   [formControl]="rememberMeControl"
 />
 ```
@@ -70,6 +73,7 @@ Los más relevantes:
 ```typescript
 public readonly termsConfig: IInputWrapperConfig = {
   label: 'Acepto los términos',
+  tooltip: 'Lee los términos antes de aceptar',
   required: true,
 };
 ```

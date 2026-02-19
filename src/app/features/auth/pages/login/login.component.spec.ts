@@ -127,4 +127,15 @@ describe('LoginComponent', () => {
     expect(component.emailErrorMessage).toBe('t:common.validation.required');
     expect(component.passwordErrorMessage).toBe('t:common.validation.min_length');
   });
+
+  it('selects a random submit button tooltip key from the configured list', () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.41);
+
+    const component = createComponent();
+
+    const expectedIndex = Math.floor(0.41 * LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS.length);
+    expect(component.submitButtonTooltipKey).toBe(
+      LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS[expectedIndex],
+    );
+  });
 });
