@@ -31,6 +31,10 @@ const meta: Meta<InputPasswordWrapperComponent> = {
       control: 'text',
       description: 'Helper text below the input',
     },
+    tooltip: {
+      control: 'text',
+      description: 'Tooltip shown on external label',
+    },
     errorMessage: {
       control: 'text',
       description: 'Error message to display',
@@ -50,6 +54,7 @@ const meta: Meta<InputPasswordWrapperComponent> = {
       <input-password-wrapper
         [formControl]="passwordControl"
         [label]="label"
+        [tooltip]="tooltip"
         [placeholder]="placeholder"
         [required]="required"
         [hint]="hint"
@@ -91,6 +96,7 @@ export const WithHint: TStory = {
     label: 'New Password',
     placeholder: 'Create a strong password',
     hint: 'Password must be at least 8 characters long',
+    tooltip: 'Debe incluir mayúsculas y números',
   },
 };
 
@@ -143,6 +149,7 @@ export const LongLabel: TStory = {
     label: 'Your secure account password for authentication',
     placeholder: 'Enter password',
     hint: 'This will be used to authenticate your account access',
+    tooltip: 'Información sensible',
   },
 };
 

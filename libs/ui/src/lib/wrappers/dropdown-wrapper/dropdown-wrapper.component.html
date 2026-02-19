@@ -1,4 +1,10 @@
-<button mat-button [matMenuTriggerFor]="dropdownMenu" [disabled]="disabled()" [class]="customClass()">
+<button
+  mat-button
+  [matMenuTriggerFor]="dropdownMenu"
+  [matTooltip]="tooltip() ?? ''"
+  [disabled]="disabled()"
+  [class]="customClass()"
+>
   <ng-content select="[slot=trigger]" />
 </button>
 

@@ -85,6 +85,27 @@ describe('InputTextWrapperComponent', () => {
     expect(hint?.textContent).toContain('This is a hint');
   });
 
+  it('should resolve tooltip from config', () => {
+    fixture.componentRef.setInput('config', {
+      label: 'Configured Label',
+      tooltip: 'Configured tooltip',
+    });
+    fixture.detectChanges();
+
+    expect(component.effectiveTooltip()).toBe('Configured tooltip');
+  });
+
+  it('should prioritize tooltip input over config tooltip', () => {
+    fixture.componentRef.setInput('config', {
+      label: 'Configured Label',
+      tooltip: 'Configured tooltip',
+    });
+    fixture.componentRef.setInput('tooltip', 'Input tooltip');
+    fixture.detectChanges();
+
+    expect(component.effectiveTooltip()).toBe('Input tooltip');
+  });
+
   it('should work with FormControl', () => {
     const control = new FormControl('initial value');
     component.writeValue(control.value);

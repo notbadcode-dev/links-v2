@@ -110,6 +110,7 @@ export class LoginComponent extends BaseDirective {
   public get emailConfig(): IInputTextWrapperConfig {
     return {
       label: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.LABEL),
+      tooltip: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.LABEL),
       icon: ICONS_CONSTANTS.AUTH.EMAIL,
       placeholder: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.PLACEHOLDER),
       type: EInputTextWrapperType.EMAIL,
@@ -120,6 +121,7 @@ export class LoginComponent extends BaseDirective {
   public get passwordConfig(): IInputTextWrapperConfig {
     return {
       label: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.LABEL),
+      tooltip: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.LABEL),
       icon: ICONS_CONSTANTS.AUTH.PASSWORD,
       placeholder: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.PLACEHOLDER),
       required: true,

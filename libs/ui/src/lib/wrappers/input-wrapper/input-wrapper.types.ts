@@ -2,6 +2,7 @@ import { EInputTextWrapperType } from './input-text-wrapper/input-text-wrapper.e
 
 export interface IInputWrapperConfig {
   label: string;
+  tooltip?: string;
   hideInternalLabel?: boolean;
   hideExternalLabel?: boolean;
   placeholder?: string;

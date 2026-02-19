@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { EInputTextWrapperType } from '../input-text-wrapper/input-text-wrapper.enum';
 import { InputWrapperDirective } from '../input-wrapper.directive';
@@ -28,7 +29,14 @@ const PASSWORD_ICONS = {
   styleUrl: './input-password-wrapper.component.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule],
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

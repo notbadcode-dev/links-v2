@@ -22,6 +22,10 @@ const meta: Meta<InputTextWrapperComponent> = {
     required: {
       control: 'boolean',
     },
+    tooltip: {
+      control: 'text',
+      description: 'Tooltip shown on external label',
+    },
   },
   args: {},
 };
@@ -61,6 +65,7 @@ export const WithHint: TStory = {
     icon: 'lock',
     hint: 'Mínimo 8 caracteres',
     required: true,
+    tooltip: 'Usa al menos 8 caracteres',
   },
 };
 
@@ -116,5 +121,6 @@ export const URL: TStory = {
     placeholder: 'https://ejemplo.com',
     icon: 'link',
     hint: 'Incluya http:// o https://',
+    tooltip: 'Ejemplo: https://mi-sitio.com',
   },
 };

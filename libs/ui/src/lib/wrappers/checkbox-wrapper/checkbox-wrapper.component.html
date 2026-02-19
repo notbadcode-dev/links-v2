@@ -1,10 +1,11 @@
 <mat-checkbox
   [required]="effectiveRequired()"
   [disabled]="isDisabled()"
-  [attr.tabindex]="tabindex() ?? null"
+  [matTooltip]="effectiveTooltip() ?? ''"
+  [attr.tabindex]="effectiveTabindex() ?? null"
   [ngModel]="value()"
   (ngModelChange)="onChange($event)"
   (blur)="onBlur()"
 >
-  {{ label() }}
+  {{ effectiveLabel() }}
 </mat-checkbox>

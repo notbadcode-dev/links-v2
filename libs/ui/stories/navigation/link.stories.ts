@@ -23,6 +23,10 @@ const meta: Meta<LinkComponent> = {
       control: 'text',
       description: 'Link text label',
     },
+    tooltip: {
+      control: 'text',
+      description: 'Tooltip shown on link',
+    },
   },
   args: {
     route: '/dashboard',
@@ -60,6 +64,7 @@ export const ExternalStyleRoute: TStory = {
   args: {
     route: '/external-link',
     label: 'External Link Example',
+    tooltip: 'Opens internal external-link route',
   },
 };
 

@@ -11,6 +11,7 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { InputWrapperDirective } from '../input-wrapper.directive';
 import { EInputTextWrapperType } from './input-text-wrapper.enum';
@@ -23,7 +24,7 @@ import { IInputTextWrapperConfig } from '../input-wrapper.types';
   styleUrl: './input-text-wrapper.component.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatIconModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatTooltipModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

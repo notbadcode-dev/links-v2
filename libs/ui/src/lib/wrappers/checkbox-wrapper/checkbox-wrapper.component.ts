@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { InputWrapperDirective } from '../input-wrapper/input-wrapper.directive';
 
@@ -10,7 +11,7 @@ import { InputWrapperDirective } from '../input-wrapper/input-wrapper.directive'
   styleUrl: './checkbox-wrapper.component.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, MatCheckboxModule],
+  imports: [FormsModule, MatCheckboxModule, MatTooltipModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

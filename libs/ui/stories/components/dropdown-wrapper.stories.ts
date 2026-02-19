@@ -29,12 +29,17 @@ const meta: Meta<DropdownWrapperComponent> = {
       control: 'text',
       description: 'Custom CSS class for the trigger button',
     },
+    tooltip: {
+      control: 'text',
+      description: 'Tooltip shown on dropdown trigger',
+    },
   },
   args: {
     trigger: EDropdownWrapperTrigger.CLICK,
     position: EDropdownWrapperPosition.BELOW,
     disabled: false,
     customClass: '',
+    tooltip: '',
   },
   render: (args) => ({
     props: args,
@@ -44,6 +49,7 @@ const meta: Meta<DropdownWrapperComponent> = {
         [position]="position"
         [disabled]="disabled"
         [customClass]="customClass"
+        [tooltip]="tooltip"
       >
         <ng-container slot="trigger">
           🌐 Select Language
@@ -116,6 +122,7 @@ export const WithIcon: TStory = {
         [position]="position"
         [disabled]="disabled"
         [customClass]="customClass"
+        [tooltip]="tooltip"
       >
         <ng-container slot="trigger">
           <mat-icon>settings</mat-icon>
@@ -131,4 +138,7 @@ export const WithIcon: TStory = {
       </dropdown-wrapper>
     `,
   }),
+  args: {
+    tooltip: 'Open settings options',
+  },
 };

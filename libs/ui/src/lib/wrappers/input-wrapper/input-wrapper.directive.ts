@@ -23,6 +23,7 @@ export abstract class InputWrapperDirective<
   implements ControlValueAccessor
 {
   public readonly label: InputSignal<string | undefined> = input<string>();
+  public readonly tooltip: InputSignal<string | undefined> = input<string | undefined>(undefined);
   public readonly hideInternalLabel: InputSignal<boolean | undefined> = input<boolean | undefined>(
     undefined,
   );
@@ -46,6 +47,9 @@ export abstract class InputWrapperDirective<
 
   public readonly effectiveLabel: Signal<string> = computed(
     () => this.label() ?? this.config()?.label ?? '',
+  );
+  public readonly effectiveTooltip: Signal<string | undefined> = computed(
+    () => this.tooltip() ?? this.config()?.tooltip,
   );
   public readonly effectiveHideInternalLabel: Signal<boolean> = computed(
     () => this.hideInternalLabel() ?? this.config()?.hideInternalLabel ?? true,

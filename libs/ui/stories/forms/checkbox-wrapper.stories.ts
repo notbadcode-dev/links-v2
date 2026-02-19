@@ -27,6 +27,10 @@ const meta: Meta<CheckboxWrapperComponent> = {
       control: 'text',
       description: 'Helper text below the checkbox',
     },
+    tooltip: {
+      control: 'text',
+      description: 'Tooltip shown on checkbox label',
+    },
     errorMessage: {
       control: 'text',
       description: 'Error message to display',
@@ -45,6 +49,7 @@ const meta: Meta<CheckboxWrapperComponent> = {
       <checkbox-wrapper
         [formControl]="checkboxControl"
         [label]="label"
+        [tooltip]="tooltip"
         [required]="required"
         [hint]="hint"
         [errorMessage]="errorMessage">
@@ -82,6 +87,7 @@ export const WithHint: TStory = {
   args: {
     label: 'Subscribe to newsletter',
     hint: 'You can unsubscribe at any time',
+    tooltip: 'Recibirás 1 correo semanal',
   },
 };
 
