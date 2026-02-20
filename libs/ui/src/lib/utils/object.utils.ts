@@ -1,5 +1,3 @@
-
-
 export function createSchema<TValue extends Record<string, unknown>>(
   schema: TValue,
 ): { keys: (keyof TValue)[]; schema: TValue } {

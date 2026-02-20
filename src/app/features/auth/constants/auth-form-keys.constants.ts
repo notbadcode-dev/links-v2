@@ -11,6 +11,10 @@ export const AUTH_FORM_KEYS = {
     LABEL: `${AUTH_FORM_KEYS_PREFIX}.password.label`,
     PLACEHOLDER: `${AUTH_FORM_KEYS_PREFIX}.password.placeholder`,
   },
+  CONFIRM_PASSWORD: {
+    LABEL: `${AUTH_FORM_KEYS_PREFIX}.confirm_password.label`,
+    PLACEHOLDER: `${AUTH_FORM_KEYS_PREFIX}.confirm_password.placeholder`,
+  },
   NAME: {
     LABEL: `${AUTH_FORM_KEYS_PREFIX}.name.label`,
     PLACEHOLDER: `${AUTH_FORM_KEYS_PREFIX}.name.placeholder`,

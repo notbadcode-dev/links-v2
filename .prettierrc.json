@@ -17,27 +17,21 @@
   "singleAttributePerLine": false,
   "overrides": [
     {
-      "files": "*.html",
+      "files": ["**/*.html", "**/*.component.html"],
       "options": {
         "parser": "angular",
         "printWidth": 120
       }
     },
     {
-      "files": "*.component.html",
-      "options": {
-        "parser": "angular"
-      }
-    },
-    {
-      "files": "*.json",
+      "files": "**/*.json",
       "options": {
         "printWidth": 80,
         "tabWidth": 2
       }
     },
     {
-      "files": ["*.yml", "*.yaml"],
+      "files": ["**/*.yml", "**/*.yaml"],
       "options": {
         "tabWidth": 2,
         "singleQuote": false

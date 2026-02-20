@@ -12,28 +12,30 @@ import { ApiResponseWrapper } from '../../models/api-response-wrapper';
 import { UpdateGroupLinkRequest } from '../../models/update-group-link-request';
 
 export interface GroupLinksControllerUpdateGroupLink$Params {
-
-/**
- * Group link ID
- */
+  /**
+   * Group link ID
+   */
   id: number;
-      body: UpdateGroupLinkRequest
+  body: UpdateGroupLinkRequest;
 }
 
-export function groupLinksControllerUpdateGroupLink(http: HttpClient, rootUrl: string, params: GroupLinksControllerUpdateGroupLink$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseWrapper>> {
+export function groupLinksControllerUpdateGroupLink(
+  http: HttpClient,
+  rootUrl: string,
+  params: GroupLinksControllerUpdateGroupLink$Params,
+  context?: HttpContext,
+): Observable<StrictHttpResponse<ApiResponseWrapper>> {
   const rb = new RequestBuilder(rootUrl, groupLinksControllerUpdateGroupLink.PATH, 'patch');
   if (params) {
     rb.path('id', params.id, {});
     rb.body(params.body, 'application/json');
   }
 
-  return http.request(
-    rb.build({ responseType: 'json', accept: 'application/json', context })
-  ).pipe(
+  return http.request(rb.build({ responseType: 'json', accept: 'application/json', context })).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
       return r as StrictHttpResponse<ApiResponseWrapper>;
-    })
+    }),
   );
 }
 

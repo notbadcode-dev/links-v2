@@ -1,5 +1,6 @@
 import { isDevMode, Provider } from '@angular/core';
 import { provideTransloco } from '@jsverse/transloco';
+
 import { I18N_CONSTANTS } from './i18n.constants';
 import { II18nConfig } from './i18n.types';
 import { TranslocoHttpLoader } from './transloco-loader';
@@ -37,7 +38,6 @@ export function provideI18n(config?: Partial<II18nConfig>): Provider[] {
 }
 
 export function provideI18nScope(scope: string): Provider {
-
   return {
     provide: `I18N_SCOPE_${scope.toUpperCase()}`,
     useValue: scope,

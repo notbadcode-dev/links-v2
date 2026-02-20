@@ -11,8 +11,12 @@ import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 
 export default tseslint.config({
+  files: ['**/*.ts'],
   ignores: [
-    'node_modules*.ts'],
+    'node_modules/**',
+    'dist/**',
+    'storybook-static/**',
+  ],
   languageOptions: {
     parser: tseslint.parser,
     parserOptions: {
@@ -415,7 +419,33 @@ export default tseslint.config({
         ],
         pathGroups: [
           {
-            pattern: '@app*.spec.ts'],
+            pattern: '@api/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: '@app/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: '@libs/**',
+            group: 'internal',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['builtin'],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+        'newlines-between': 'always',
+      },
+    ],
+  },
+},
+{
+  files: ['**/*.spec.ts'],
   rules: {
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
@@ -431,7 +461,6 @@ export default tseslint.config({
     '@angular-eslint/template': angularTemplate,
   },
   rules: {
-
     '@angular-eslint/template/banana-in-box': 'error',
     '@angular-eslint/template/no-negated-async': 'error',
     '@angular-eslint/template/eqeqeq': [
@@ -462,4 +491,7 @@ export default tseslint.config({
       },
     ],
   },
-}, ...storybook.configs["flat/recommended"]);
+},
+prettierConfig,
+...storybook.configs['flat/recommended'],
+);

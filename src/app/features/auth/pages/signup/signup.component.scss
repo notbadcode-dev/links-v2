@@ -1,13 +1,16 @@
-@use '../login/login.component.scss';
+:host ::ng-deep .signup-page .ui-page.layout-centered {
+  justify-content: flex-start;
+  padding-top: 5.5rem;
 
-.signup-container {
-  @extend .login-container !optional;
+  .ui-page__header {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
 }
 
-.signup-header {
-  @extend .login-header !optional;
-}
-
-::ng-deep .signup-card {
-  @extend .login-card !optional;
+@media (max-width: 768px) {
+  :host ::ng-deep .signup-page .ui-page.layout-centered {
+    padding-top: 3.75rem;
+  }
 }

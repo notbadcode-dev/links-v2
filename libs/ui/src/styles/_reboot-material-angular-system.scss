@@ -1,7 +1,6 @@
 @use './reboot-variables' as rv;
 
 html {
-
   --mat-sys-background: #{rv.$reboot-gray-50};
   --mat-sys-surface: #{rv.$reboot-surface};
   --mat-sys-surface-dim: #{rv.$reboot-surface-dim};

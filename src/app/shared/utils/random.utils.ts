@@ -1,7 +1,7 @@
-export function pickRandomItem<T>(
-  items: readonly T[],
+export function pickRandomItem<TItem>(
+  items: readonly TItem[],
   randomFn: () => number = Math.random,
-): T | undefined {
+): TItem | undefined {
   if (items.length === 0) {
     return undefined;
   }

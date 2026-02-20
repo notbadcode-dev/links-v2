@@ -23,6 +23,11 @@ export class NotificationService {
   private readonly _timers: Map<string, ReturnType<typeof setTimeout>> = new Map();
 
   public show(config: INotificationConfig): string {
+    const duplicate = this._findDuplicateByMessage(config.message);
+    if (duplicate) {
+      return duplicate.id;
+    }
+
     const notification: INotification = {
       id: this._generateId(),
       message: config.message,
@@ -108,6 +113,13 @@ export class NotificationService {
       clearTimeout(timer);
       this._timers.delete(id);
     }
+  }
+
+  private _findDuplicateByMessage(message: string): INotification | undefined {
+    const normalizedMessage = message.trim();
+    return this._notifications().find(
+      (notification) => notification.message.trim() === normalizedMessage,
+    );
   }
 
   private _generateId(): string {

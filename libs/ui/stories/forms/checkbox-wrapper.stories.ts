@@ -1,9 +1,8 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { moduleMetadata } from '@storybook/angular';
-import type { Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
 
-import { CheckboxWrapperComponent } from '@libs/ui';
+import { CheckboxWrapperComponent } from '@libs/wrappers';
 
 const meta: Meta<CheckboxWrapperComponent> = {
   title: 'UI Wrappers/CheckboxWrapper',

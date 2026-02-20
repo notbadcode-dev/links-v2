@@ -1,15 +1,38 @@
 :host {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
 }
 
 .ui-link {
-  color: var(--ui-color-primary);
+  display: inline-flex;
+  align-items: center;
+  color: var(--ui-color-link, var(--ui-color-primary));
   text-decoration: none;
   font-weight: var(--ui-font-weight-bold);
   cursor: pointer;
   transition: all var(--ui-transition-base);
+  line-height: 1.2;
 
   &:hover {
+    color: var(--ui-color-link-hover, var(--ui-color-primary-700));
     text-decoration: underline;
   }
+
+  &:active {
+    color: var(--ui-color-link-active, var(--ui-color-primary-800));
+  }
+
+  &:visited {
+    color: var(--ui-color-link-visited, var(--ui-color-primary-600));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ui-color-primary-soft-fg);
+    outline-offset: 2px;
+    border-radius: var(--ui-radius-xs);
+  }
+}
+
+.ui-link--adjacent {
+  margin-inline-start: var(--ui-space-2);
 }

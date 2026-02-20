@@ -1,17 +1,11 @@
 <ng-container *i18n="'auth'; let t">
-  <ui-page [layout]="EPageLayout.CENTERED">
+  <ui-page class="login-page" [layout]="EPageLayout.CENTERED">
     <ui-page-header>
-      <ui-stack [align]="EAlign.CENTER" [gap]="ESpacing.MD">
-        <ui-icon-circle>
-          <icon-wrapper [icon]="icons.APP.LOGO" />
-        </ui-icon-circle>
-
-        <ui-title [title]="t(i18nKeys.TITLE)" [subtitle]="t(i18nKeys.SUBTITLE)" />
-      </ui-stack>
+      <ui-title [title]="t(i18nKeys.TITLE)" [subtitle]="t(i18nKeys.SUBTITLE)" />
     </ui-page-header>
 
     <ui-page-body>
-      <ui-surface [variant]="ESurfaceVariant.CARD" [padding]="ESpacing.LG">
+      <ui-surface class="auth-card" [variant]="ESurfaceVariant.CARD" [padding]="ESpacing.LG">
         <ui-form-container [formGroup]="loginForm" (formSubmit)="onSubmit()">
           <input-text-wrapper
             [config]="emailConfig"
@@ -26,27 +20,37 @@
           />
 
           <ui-form-row [align]="EAlign.BETWEEN">
-            <checkbox-wrapper [label]="t(i18nKeys.FORM.REMEMBER_ME)" formControlName="rememberMe" />
+            <checkbox-wrapper
+              [label]="t(i18nKeys.FORM.REMEMBER_ME)"
+              [tooltip]="t(i18nKeys.TOOLTIPS.REMEMBER_ME)"
+              formControlName="rememberMe"
+            />
 
-            <ui-link [route]="routes.FORGOT_PASSWORD" [label]="t(i18nKeys.FORM.FORGOT_PASSWORD)" />
+            <ui-link
+              [route]="routes.FORGOT_PASSWORD"
+              [label]="t(i18nKeys.FORM.FORGOT_PASSWORD)"
+              [tooltip]="t(i18nKeys.TOOLTIPS.FORGOT_PASSWORD)"
+            />
           </ui-form-row>
-
-          <button-wrapper
-            disableOnLoading
-            [title]="t(i18nKeys.FORM.SUBMIT_BUTTON)"
-            [tooltip]="t(submitButtonTooltipKey)"
-            [fullWidth]="true"
-            [disabled]="loginForm.invalid"
-            [variant]="EButtonWrapperVariant.FLAT"
-          />
         </ui-form-container>
+
+        <button-wrapper
+          disableOnLoading
+          [title]="t(i18nKeys.FORM.SUBMIT_BUTTON)"
+          [tooltip]="t(submitButtonTooltipKey)"
+          [svgIcon]="icons.AUTH.LOGIN_BUTTON"
+          [fullWidth]="true"
+          [disabled]="loginForm.invalid"
+          [variant]="EButtonWrapperVariant.FLAT"
+          (clicked)="onSubmit()"
+        />
       </ui-surface>
     </ui-page-body>
 
     <ui-page-footer>
       <ui-inline-text>
         {{ t(i18nKeys.FOOTER.NO_ACCOUNT) }}
-        <ui-link [route]="routes.SIGNUP" [label]="t(i18nKeys.FOOTER.SIGN_UP_LINK)" />
+        <ui-link [route]="routes.SIGNUP" [label]="t(i18nKeys.FOOTER.SIGN_UP_LINK)" [adjacent]="true" />
       </ui-inline-text>
     </ui-page-footer>
   </ui-page>

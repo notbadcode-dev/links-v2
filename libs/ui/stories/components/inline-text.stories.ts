@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { InlineTextComponent } from '@libs/components';
 
-import { InlineTextComponent } from '@libs/ui';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<InlineTextComponent> = {
   title: 'UI Components/InlineText',

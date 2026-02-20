@@ -4,7 +4,6 @@
 
 import { EPaginatedOrder } from '../models/e-paginated-order';
 export interface PaginatedRequest {
-
   /**
    * Current page number
    */

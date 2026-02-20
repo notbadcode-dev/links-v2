@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 export interface RgbColorDto {
-
   /**
    * Blue component (0-255)
    */

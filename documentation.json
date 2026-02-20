@@ -632,12 +632,12 @@
         },
         {
             "name": "AuthHealthControllerHealthz$Params",
-            "id": "interface-AuthHealthControllerHealthz$Params-844128b8dacb0597ff1570174006424966190483d3ef0bd95c5fed9a1ddc939f82e7e7f1493f95c4982e14c0d87e34f56637dfc1100285e0fda8d147ab24b288",
-            "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
+            "id": "interface-AuthHealthControllerHealthz$Params-d051c11c228b9949eec7c85188cde771c77f0593a6ddfbda6398b87692079c10d096a89e483dc799c16ed40964ebb4686f74a0658f1ce79495da8d2a8f5bd8a3",
+            "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { filter, map } from 'rxjs/operators';\nimport { StrictHttpResponse } from '../../strict-http-response';\nimport { RequestBuilder } from '../../request-builder';\n\n\nexport interface AuthHealthControllerHealthz$Params {\n}\n\nexport function authHealthControllerHealthz(http: HttpClient, rootUrl: string, params?: AuthHealthControllerHealthz$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {\n  const rb = new RequestBuilder(rootUrl, authHealthControllerHealthz.PATH, 'get');\n  if (params) {\n  }\n\n  return http.request(\n    rb.build({ responseType: 'text', accept: '*/*', context })\n  ).pipe(\n    filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),\n    map((r: HttpResponse<any>) => {\n      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;\n    })\n  );\n}\n\nauthHealthControllerHealthz.PATH = '/healthz';\n",
+            "sourceCode": "import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { filter, map } from 'rxjs/operators';\nimport { StrictHttpResponse } from '../../strict-http-response';\nimport { RequestBuilder } from '../../request-builder';\n\nexport interface AuthHealthControllerHealthz$Params {\n}\n\nexport function authHealthControllerHealthz(http: HttpClient, rootUrl: string, params?: AuthHealthControllerHealthz$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {\n  const rb = new RequestBuilder(rootUrl, authHealthControllerHealthz.PATH, 'get');\n  if (params) {\n  }\n\n  return http.request(\n    rb.build({ responseType: 'text', accept: '*/*', context })\n  ).pipe(\n    filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),\n    map((r: HttpResponse<any>) => {\n      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;\n    })\n  );\n}\n\nauthHealthControllerHealthz.PATH = '/healthz';\n",
             "properties": [],
             "indexSignatures": [],
             "methods": [],
@@ -645,12 +645,12 @@
         },
         {
             "name": "AuthHealthControllerHealthz$Params",
-            "id": "interface-AuthHealthControllerHealthz$Params-d051c11c228b9949eec7c85188cde771c77f0593a6ddfbda6398b87692079c10d096a89e483dc799c16ed40964ebb4686f74a0658f1ce79495da8d2a8f5bd8a3-1",
-            "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
+            "id": "interface-AuthHealthControllerHealthz$Params-844128b8dacb0597ff1570174006424966190483d3ef0bd95c5fed9a1ddc939f82e7e7f1493f95c4982e14c0d87e34f56637dfc1100285e0fda8d147ab24b288-1",
+            "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { filter, map } from 'rxjs/operators';\nimport { StrictHttpResponse } from '../../strict-http-response';\nimport { RequestBuilder } from '../../request-builder';\n\nexport interface AuthHealthControllerHealthz$Params {\n}\n\nexport function authHealthControllerHealthz(http: HttpClient, rootUrl: string, params?: AuthHealthControllerHealthz$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {\n  const rb = new RequestBuilder(rootUrl, authHealthControllerHealthz.PATH, 'get');\n  if (params) {\n  }\n\n  return http.request(\n    rb.build({ responseType: 'text', accept: '*/*', context })\n  ).pipe(\n    filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),\n    map((r: HttpResponse<any>) => {\n      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;\n    })\n  );\n}\n\nauthHealthControllerHealthz.PATH = '/healthz';\n",
+            "sourceCode": "import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { filter, map } from 'rxjs/operators';\nimport { StrictHttpResponse } from '../../strict-http-response';\nimport { RequestBuilder } from '../../request-builder';\n\n\nexport interface AuthHealthControllerHealthz$Params {\n}\n\nexport function authHealthControllerHealthz(http: HttpClient, rootUrl: string, params?: AuthHealthControllerHealthz$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {\n  const rb = new RequestBuilder(rootUrl, authHealthControllerHealthz.PATH, 'get');\n  if (params) {\n  }\n\n  return http.request(\n    rb.build({ responseType: 'text', accept: '*/*', context })\n  ).pipe(\n    filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),\n    map((r: HttpResponse<any>) => {\n      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;\n    })\n  );\n}\n\nauthHealthControllerHealthz.PATH = '/healthz';\n",
             "properties": [],
             "indexSignatures": [],
             "methods": [],
@@ -1562,6 +1562,41 @@
             "extends": []
         },
         {
+            "name": "ISessionState",
+            "id": "interface-ISessionState-4063aff44db2d5c3e11e65e53580e09ca815820bcfb051c16b61ac272313e1441b2b404f9ebaf652d1e71e4806654e7e45be91f9285507d7b935c68dfad5296a",
+            "file": "src/app/core/services/session.service.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Injectable, Signal, WritableSignal, computed, signal } from '@angular/core';\n\ninterface ISessionState {\n  accessToken: string;\n  refreshToken: string;\n}\n\nconst SESSION_STORAGE_KEYS = {\n  ACCESS_TOKEN: 'links_v2.session.accessToken',\n  REFRESH_TOKEN: 'links_v2.session.refreshToken',\n} as const;\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class SessionService {\n  public readonly accessToken: Signal<string> = computed(() => this._state().accessToken);\n  public readonly refreshToken: Signal<string> = computed(() => this._state().refreshToken);\n  public readonly isAuthenticated: Signal<boolean> = computed(\n    () => Boolean(this._state().accessToken) && Boolean(this._state().refreshToken),\n  );\n\n  private readonly _state: WritableSignal<ISessionState> = signal<ISessionState>(\n    this._getInitialState(),\n  );\n\n  public setTokens(accessToken: string, refreshToken: string): void {\n    const normalizedAccessToken = accessToken.trim();\n    const normalizedRefreshToken = refreshToken.trim();\n\n    this._state.set({\n      accessToken: normalizedAccessToken,\n      refreshToken: normalizedRefreshToken,\n    });\n\n    localStorage.setItem(SESSION_STORAGE_KEYS.ACCESS_TOKEN, normalizedAccessToken);\n    localStorage.setItem(SESSION_STORAGE_KEYS.REFRESH_TOKEN, normalizedRefreshToken);\n  }\n\n  public clear(): void {\n    this._state.set({\n      accessToken: '',\n      refreshToken: '',\n    });\n    localStorage.removeItem(SESSION_STORAGE_KEYS.ACCESS_TOKEN);\n    localStorage.removeItem(SESSION_STORAGE_KEYS.REFRESH_TOKEN);\n  }\n\n  private _getInitialState(): ISessionState {\n    const accessToken = localStorage.getItem(SESSION_STORAGE_KEYS.ACCESS_TOKEN) ?? '';\n    const refreshToken = localStorage.getItem(SESSION_STORAGE_KEYS.REFRESH_TOKEN) ?? '';\n\n    return {\n      accessToken,\n      refreshToken,\n    };\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "accessToken",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "refreshToken",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "ISignupForm",
             "id": "interface-ISignupForm-a9ffe969f12cd97ef6322a9599b637a9141d716c15bef138a8cbaf943ff7b485ff6f22d3d98cfa99c066eb9f8dac3206bd86b0f07125acd107e5b309e61f4383",
             "file": "src/app/features/auth/interfaces/auth.interfaces.ts",
@@ -1599,6 +1634,31 @@
                     "optional": false,
                     "description": "",
                     "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IUser",
+            "id": "interface-IUser-2e3e24774455f5b8222634cfb6ced7f99c80af55913452bcf2fc6a41f31ed2a9310390c98841c7ad0261901b7c1a7c5d1960b0acb94ee43b71e45d34c2ca6d4f",
+            "file": "src/app/core/services/user.service.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Injectable, Signal, WritableSignal, computed, signal } from '@angular/core';\n\nexport interface IUser {\n  email: string;\n}\n\nconst USER_STORAGE_KEYS = {\n  EMAIL: 'links_v2.user.email',\n} as const;\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserService {\n  public readonly user: Signal<IUser> = computed(() => this._state());\n  public readonly email: Signal<string> = computed(() => this._state().email);\n\n  private readonly _state: WritableSignal<IUser> = signal<IUser>(this._getInitialState());\n\n  public setUser(user: IUser): void {\n    const normalizedUser: IUser = {\n      email: user.email.trim(),\n    };\n\n    this._state.set(normalizedUser);\n    localStorage.setItem(USER_STORAGE_KEYS.EMAIL, normalizedUser.email);\n  }\n\n  public clear(): void {\n    this._state.set({\n      email: '',\n    });\n    localStorage.removeItem(USER_STORAGE_KEYS.EMAIL);\n  }\n\n  private _getInitialState(): IUser {\n    const email = localStorage.getItem(USER_STORAGE_KEYS.EMAIL) ?? '';\n    return {\n      email,\n    };\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "email",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
                 }
             ],
             "indexSignatures": [],
@@ -4010,7 +4070,7 @@
         },
         {
             "name": "I18nService",
-            "id": "injectable-I18nService-fa417d6b98aaeebd7d065f3aa2227e90869ea8f9cae27f80e8bc140c12e2475f14e76a9decae906db9d6d0108c333e7d9eb3a8050dc8305b29675052210251f1",
+            "id": "injectable-I18nService-0dd8aaa4dbe1e4dff98df9d9a5f008a498193c6c742308fe65d567e5b7db8a04ffaa6ae286431796ab85918dfdf2d96e91417fcaa1962e1493d06f3f4fc840dd",
             "file": "src/app/core/i18n/i18n.service.ts",
             "properties": [
                 {
@@ -4022,7 +4082,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 11,
+                    "line": 12,
                     "modifierKind": [
                         123,
                         126,
@@ -4038,7 +4098,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 13,
+                    "line": 14,
                     "modifierKind": [
                         123,
                         148
@@ -4053,7 +4113,21 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12,
+                    "line": 13,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "currentLanguageSignal",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<string>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
                     "modifierKind": [
                         125,
                         148
@@ -4084,7 +4158,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4130,7 +4204,7 @@
                     "optional": false,
                     "returnType": "Observable<unknown>",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4165,7 +4239,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4216,7 +4290,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4289,7 +4363,7 @@
                     "optional": false,
                     "returnType": "Observable<string>",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4354,7 +4428,7 @@
                     "optional": false,
                     "returnType": "Record<string, string>",
                     "typeParameters": [],
-                    "line": 59,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4390,7 +4464,15 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { inject, Injectable } from '@angular/core';\nimport { TranslocoService } from '@jsverse/transloco';\nimport { forkJoin, map, Observable } from 'rxjs';\nimport { I18N_CONSTANTS } from './i18n.constants';\nimport { ILanguage, TTranslationParams, TTranslationPath } from './i18n.types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class I18nService {\n  private static readonly _fallbackLanguage: ILanguage = I18N_CONSTANTS.DEFAULT_LANGUAGE;\n  public readonly availableLanguages: ILanguage[] = I18N_CONSTANTS.LANGUAGES;\n  private readonly _translocoService: TranslocoService = inject(TranslocoService);\n\n  public get currentLanguage(): string {\n    return this._translocoService.getActiveLang();\n  }\n\n  public get currentLanguageInfo(): ILanguage {\n    const current = this.currentLanguage;\n    return (\n      this.availableLanguages.find((lang) => lang.code === current) ??\n      this.availableLanguages[0] ??\n      I18nService._fallbackLanguage\n    );\n  }\n\n  public get langChanges$(): Observable<string> {\n    return this._translocoService.langChanges$;\n  }\n\n  public setLanguage(langCode: string): void {\n    if (this.availableLanguages.some((lang) => lang.code === langCode)) {\n      this._translocoService.setActiveLang(langCode);\n    }\n  }\n\n  public translate(key: TTranslationPath, params?: TTranslationParams, scope?: string): string {\n    return this._translocoService.translate(key, params, scope);\n  }\n\n  public translate$(\n    key: TTranslationPath,\n    params?: TTranslationParams,\n    scope?: string,\n  ): Observable<string> {\n    return this._translocoService.selectTranslate(key, params, scope);\n  }\n\n  public hasKey(key: TTranslationPath, scope?: string): boolean {\n    try {\n      const translation = this.translate(key, {}, scope);\n      return translation !== key && translation.length > 0;\n    } catch {\n      return false;\n    }\n  }\n\n  public translateMultiple(keys: TTranslationPath[], scope?: string): Record<string, string> {\n    const result: Record<string, string> = {};\n    keys.forEach((key) => {\n      result[key] = this.translate(key, {}, scope);\n    });\n    return result;\n  }\n\n  public loadTranslations(scope?: string): Observable<unknown> {\n    const language = this.currentLanguage;\n    const normalizedScope = scope?.trim();\n\n    if (normalizedScope === undefined || normalizedScope.length === 0) {\n      return this._translocoService.load(language);\n    }\n\n    return forkJoin([\n      this._translocoService.load(language),\n      this._translocoService.load(`${normalizedScope}/${language}`),\n    ]).pipe(\n      map(([globalTranslation, scopeTranslation]) => ({ globalTranslation, scopeTranslation })),\n    );\n  }\n}\n",
+            "sourceCode": "import { inject, Injectable, Signal } from '@angular/core';\nimport { toSignal } from '@angular/core/rxjs-interop';\nimport { TranslocoService } from '@jsverse/transloco';\nimport { forkJoin, map, Observable, startWith } from 'rxjs';\nimport { I18N_CONSTANTS } from './i18n.constants';\nimport { ILanguage, TTranslationParams, TTranslationPath } from './i18n.types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class I18nService {\n  private static readonly _fallbackLanguage: ILanguage = I18N_CONSTANTS.DEFAULT_LANGUAGE;\n  public readonly availableLanguages: ILanguage[] = I18N_CONSTANTS.LANGUAGES;\n  private readonly _translocoService: TranslocoService = inject(TranslocoService);\n  public readonly currentLanguageSignal: Signal<string>;\n\n  constructor() {\n    const initialLanguage = this.currentLanguage;\n    this.currentLanguageSignal = toSignal(\n      this._translocoService.langChanges$.pipe(startWith(initialLanguage)),\n      { initialValue: initialLanguage },\n    );\n  }\n\n  public get currentLanguage(): string {\n    return this._translocoService.getActiveLang();\n  }\n\n  public get currentLanguageInfo(): ILanguage {\n    const current = this.currentLanguage;\n    return (\n      this.availableLanguages.find((lang) => lang.code === current) ??\n      this.availableLanguages[0] ??\n      I18nService._fallbackLanguage\n    );\n  }\n\n  public get langChanges$(): Observable<string> {\n    return this._translocoService.langChanges$;\n  }\n\n  public setLanguage(langCode: string): void {\n    if (this.availableLanguages.some((lang) => lang.code === langCode)) {\n      this._translocoService.setActiveLang(langCode);\n    }\n  }\n\n  public translate(key: TTranslationPath, params?: TTranslationParams, scope?: string): string {\n    return this._translocoService.translate(key, params, scope);\n  }\n\n  public translate$(\n    key: TTranslationPath,\n    params?: TTranslationParams,\n    scope?: string,\n  ): Observable<string> {\n    return this._translocoService.selectTranslate(key, params, scope);\n  }\n\n  public hasKey(key: TTranslationPath, scope?: string): boolean {\n    try {\n      const translation = this.translate(key, {}, scope);\n      return translation !== key && translation.length > 0;\n    } catch {\n      return false;\n    }\n  }\n\n  public translateMultiple(keys: TTranslationPath[], scope?: string): Record<string, string> {\n    const result: Record<string, string> = {};\n    keys.forEach((key) => {\n      result[key] = this.translate(key, {}, scope);\n    });\n    return result;\n  }\n\n  public loadTranslations(scope?: string): Observable<unknown> {\n    const language = this.currentLanguage;\n    const normalizedScope = scope?.trim();\n\n    if (normalizedScope === undefined || normalizedScope.length === 0) {\n      return this._translocoService.load(language);\n    }\n\n    return forkJoin([\n      this._translocoService.load(language),\n      this._translocoService.load(`${normalizedScope}/${language}`),\n    ]).pipe(\n      map(([globalTranslation, scopeTranslation]) => ({ globalTranslation, scopeTranslation })),\n    );\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 15
+            },
             "accessors": {
                 "currentLanguage": {
                     "name": "currentLanguage",
@@ -4398,7 +4480,7 @@
                         "name": "currentLanguage",
                         "type": "string",
                         "returnType": "string",
-                        "line": 15
+                        "line": 25
                     }
                 },
                 "currentLanguageInfo": {
@@ -4407,7 +4489,7 @@
                         "name": "currentLanguageInfo",
                         "type": "unknown",
                         "returnType": "ILanguage",
-                        "line": 19
+                        "line": 29
                     }
                 },
                 "langChanges$": {
@@ -4416,7 +4498,7 @@
                         "name": "langChanges$",
                         "type": "unknown",
                         "returnType": "Observable<string>",
-                        "line": 28
+                        "line": 38
                     }
                 }
             },
@@ -4492,6 +4574,162 @@
             "description": "",
             "rawdescription": "\n",
             "sourceCode": "import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class LoadingService {\n  public readonly isLoading: Signal<boolean> = computed(() => this._pendingRequests() > 0);\n\n  private readonly _pendingRequests: WritableSignal<number> = signal(0);\n\n  public increment(): void {\n    this._pendingRequests.update((count) => count + 1);\n  }\n\n  public decrement(): void {\n    this._pendingRequests.update((count) => Math.max(0, count - 1));\n  }\n}\n",
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "SessionService",
+            "id": "injectable-SessionService-4063aff44db2d5c3e11e65e53580e09ca815820bcfb051c16b61ac272313e1441b2b404f9ebaf652d1e71e4806654e7e45be91f9285507d7b935c68dfad5296a",
+            "file": "src/app/core/services/session.service.ts",
+            "properties": [
+                {
+                    "name": "_state",
+                    "defaultValue": "signal<ISessionState>(\n    this._getInitialState(),\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "WritableSignal<ISessionState>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "accessToken",
+                    "defaultValue": "computed(() => this._state().accessToken)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<string>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "isAuthenticated",
+                    "defaultValue": "computed(\n    () => Boolean(this._state().accessToken) && Boolean(this._state().refreshToken),\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<boolean>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "refreshToken",
+                    "defaultValue": "computed(() => this._state().refreshToken)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<string>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "_getInitialState",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "ISessionState",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "setTokens",
+                    "args": [
+                        {
+                            "name": "accessToken",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "refreshToken",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "accessToken",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "refreshToken",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable, Signal, WritableSignal, computed, signal } from '@angular/core';\n\ninterface ISessionState {\n  accessToken: string;\n  refreshToken: string;\n}\n\nconst SESSION_STORAGE_KEYS = {\n  ACCESS_TOKEN: 'links_v2.session.accessToken',\n  REFRESH_TOKEN: 'links_v2.session.refreshToken',\n} as const;\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class SessionService {\n  public readonly accessToken: Signal<string> = computed(() => this._state().accessToken);\n  public readonly refreshToken: Signal<string> = computed(() => this._state().refreshToken);\n  public readonly isAuthenticated: Signal<boolean> = computed(\n    () => Boolean(this._state().accessToken) && Boolean(this._state().refreshToken),\n  );\n\n  private readonly _state: WritableSignal<ISessionState> = signal<ISessionState>(\n    this._getInitialState(),\n  );\n\n  public setTokens(accessToken: string, refreshToken: string): void {\n    const normalizedAccessToken = accessToken.trim();\n    const normalizedRefreshToken = refreshToken.trim();\n\n    this._state.set({\n      accessToken: normalizedAccessToken,\n      refreshToken: normalizedRefreshToken,\n    });\n\n    localStorage.setItem(SESSION_STORAGE_KEYS.ACCESS_TOKEN, normalizedAccessToken);\n    localStorage.setItem(SESSION_STORAGE_KEYS.REFRESH_TOKEN, normalizedRefreshToken);\n  }\n\n  public clear(): void {\n    this._state.set({\n      accessToken: '',\n      refreshToken: '',\n    });\n    localStorage.removeItem(SESSION_STORAGE_KEYS.ACCESS_TOKEN);\n    localStorage.removeItem(SESSION_STORAGE_KEYS.REFRESH_TOKEN);\n  }\n\n  private _getInitialState(): ISessionState {\n    const accessToken = localStorage.getItem(SESSION_STORAGE_KEYS.ACCESS_TOKEN) ?? '';\n    const refreshToken = localStorage.getItem(SESSION_STORAGE_KEYS.REFRESH_TOKEN) ?? '';\n\n    return {\n      accessToken,\n      refreshToken,\n    };\n  }\n}\n",
             "extends": [],
             "type": "injectable"
         },
@@ -4659,6 +4897,128 @@
             "description": "",
             "rawdescription": "\n",
             "sourceCode": "import { HttpClient } from '@angular/common/http';\nimport { inject, Injectable } from '@angular/core';\nimport { Translation, TranslocoLoader } from '@jsverse/transloco';\nimport { catchError, Observable } from 'rxjs';\n\n@Injectable({ providedIn: 'root' })\nexport class TranslocoHttpLoader implements TranslocoLoader {\n  private readonly _httpClient: HttpClient = inject(HttpClient);\n\n  public getTranslation(lang: string): Observable<Translation> {\n    return this._requestTranslation(`${lang}.json`);\n  }\n\n  private _requestTranslation(filePath: string): Observable<Translation> {\n    return this._httpClient\n      .get<Translation>(`/assets/i18n/${filePath}`)\n      .pipe(catchError(() => this._httpClient.get<Translation>(`/i18n/${filePath}`)));\n  }\n}\n\n@Injectable({ providedIn: 'root' })\nexport class TranslocoScopeLoader implements TranslocoLoader {\n  private readonly _httpClient: HttpClient = inject(HttpClient);\n\n  public getTranslation(path: string): Observable<Translation> {\n    return this._httpClient\n      .get<Translation>(`/assets/i18n/${path}.json`)\n      .pipe(catchError(() => this._httpClient.get<Translation>(`/i18n/${path}.json`)));\n  }\n}\n",
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "UserService",
+            "id": "injectable-UserService-2e3e24774455f5b8222634cfb6ced7f99c80af55913452bcf2fc6a41f31ed2a9310390c98841c7ad0261901b7c1a7c5d1960b0acb94ee43b71e45d34c2ca6d4f",
+            "file": "src/app/core/services/user.service.ts",
+            "properties": [
+                {
+                    "name": "_state",
+                    "defaultValue": "signal<IUser>(this._getInitialState())",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "WritableSignal<IUser>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "email",
+                    "defaultValue": "computed(() => this._state().email)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<string>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "user",
+                    "defaultValue": "computed(() => this._state())",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<IUser>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "_getInitialState",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "IUser",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "setUser",
+                    "args": [
+                        {
+                            "name": "user",
+                            "type": "IUser",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "user",
+                            "type": "IUser",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable, Signal, WritableSignal, computed, signal } from '@angular/core';\n\nexport interface IUser {\n  email: string;\n}\n\nconst USER_STORAGE_KEYS = {\n  EMAIL: 'links_v2.user.email',\n} as const;\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserService {\n  public readonly user: Signal<IUser> = computed(() => this._state());\n  public readonly email: Signal<string> = computed(() => this._state().email);\n\n  private readonly _state: WritableSignal<IUser> = signal<IUser>(this._getInitialState());\n\n  public setUser(user: IUser): void {\n    const normalizedUser: IUser = {\n      email: user.email.trim(),\n    };\n\n    this._state.set(normalizedUser);\n    localStorage.setItem(USER_STORAGE_KEYS.EMAIL, normalizedUser.email);\n  }\n\n  public clear(): void {\n    this._state.set({\n      email: '',\n    });\n    localStorage.removeItem(USER_STORAGE_KEYS.EMAIL);\n  }\n\n  private _getInitialState(): IUser {\n    const email = localStorage.getItem(USER_STORAGE_KEYS.EMAIL) ?? '';\n    return {\n      email,\n    };\n  }\n}\n",
             "extends": [],
             "type": "injectable"
         }
@@ -8093,7 +8453,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-a982e2da60db1157c7629f4c90c66ffc25421ae9c30494254547f458df74fa9248e478032efa27eb45a0b494a55e8ee62f250b61813df4fcd98fba37112a5201",
+            "id": "component-AppComponent-97ba548833fdf0eb62dd81b277eae564b87a2f2541ad3194b619ae4d5c186e7aeac9598338dd71382b998ecefc863a206538ace2f3bf16d52d3c51f5a0c5f0e4",
             "file": "src/app/app.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8111,7 +8471,38 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "icons",
+                    "defaultValue": "ICONS_CONSTANTS",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "isAuthenticated",
+                    "defaultValue": "inject(SessionService).isAuthenticated",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<boolean>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -8125,12 +8516,20 @@
                 {
                     "name": "NotificationContainerComponent",
                     "type": "component"
+                },
+                {
+                    "name": "LanguageSelectorComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { BaseDirective, NotificationContainerComponent } from '@libs/ui';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet, NotificationContainerComponent],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class AppComponent extends BaseDirective {}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, inject, Signal } from '@angular/core';\nimport { MatIconModule } from '@angular/material/icon';\nimport { RouterOutlet } from '@angular/router';\nimport { ICONS_CONSTANTS } from '@app/constants/icons.constants';\nimport { SessionService } from '@app/core/services/session.service';\nimport { BaseDirective, NotificationContainerComponent } from '@libs/ui';\nimport { LanguageSelectorComponent } from './shared/components/language-selector/language-selector.component';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet, NotificationContainerComponent, LanguageSelectorComponent, MatIconModule],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class AppComponent extends BaseDirective {\n  public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;\n  public readonly isAuthenticated: Signal<boolean> = inject(SessionService).isAuthenticated;\n}\n",
             "styleUrl": "./app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -8138,7 +8537,7 @@
             "extends": [
                 "BaseDirective"
             ],
-            "templateData": "<router-outlet />\n<notification-container />\n"
+            "templateData": "<nav class=\"top-navbar\">\n  <div class=\"nav-brand\">\n    <mat-icon class=\"brand-logo\">{{ icons.APP.LOGO }}</mat-icon>\n    <span class=\"brand-name\">Bookmarks</span>\n  </div>\n\n  <div class=\"nav-actions\">\n    @if (!isAuthenticated()) {\n      <div class=\"global-language-selector\" data-testid=\"global-language-selector\">\n        <language-selector />\n      </div>\n    }\n  </div>\n</nav>\n<router-outlet />\n<notification-container />\n"
         },
         {
             "name": "DashboardComponent",
@@ -8248,7 +8647,7 @@
         },
         {
             "name": "LanguageSelectorComponent",
-            "id": "component-LanguageSelectorComponent-6f9b05ee4da1c925f9f54a181350057ac8f331e555115b21885aa512136a3e6fb3c5387f22d029e2d8063d1a7562d41d61341cc12de2f7a354b0e61ae380ee53",
+            "id": "component-LanguageSelectorComponent-0e2c3e8615311a980e4c43f357480925b607fc7019abaed901ba7ca4daec89d13192b03c90b16298272ad6979b68f134e793b6b68de9657a6f07827e9fc39b82",
             "file": "src/app/shared/components/language-selector/language-selector.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8296,20 +8695,6 @@
                     ]
                 },
                 {
-                    "name": "_currentLangInfo",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Signal<ILanguage>",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17,
-                    "modifierKind": [
-                        124,
-                        148
-                    ]
-                },
-                {
                     "name": "_i18nService",
                     "defaultValue": "inject(I18nService)",
                     "deprecated": false,
@@ -8318,7 +8703,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 18,
                     "modifierKind": [
                         123,
                         148
@@ -8327,16 +8712,38 @@
             ],
             "methodsClass": [
                 {
-                    "name": "_getCurrentLanguage",
-                    "args": [],
+                    "name": "getLanguageLabel",
+                    "args": [
+                        {
+                            "name": "langCode",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
-                    "returnType": "ILanguage",
+                    "returnType": "string",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        123
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "langCode",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
                     ]
                 },
                 {
@@ -8354,7 +8761,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -8393,7 +8800,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, computed, inject, Signal } from '@angular/core';\nimport { toSignal } from '@angular/core/rxjs-interop';\nimport { I18nService, ILanguage } from '@app/core/i18n';\nimport { DropdownWrapperComponent, IconWrapperComponent } from '@libs/ui';\n\n@Component({\n  selector: 'language-selector',\n  standalone: true,\n  templateUrl: './language-selector.component.html',\n  styleUrl: './language-selector.component.scss',\n  imports: [DropdownWrapperComponent, IconWrapperComponent],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class LanguageSelectorComponent {\n  protected readonly _availableLanguages: readonly ILanguage[];\n  protected readonly _currentLang: Signal<string>;\n  protected readonly _currentLangInfo: Signal<ILanguage>;\n\n  private readonly _i18nService: I18nService = inject(I18nService);\n\n  constructor() {\n    this._availableLanguages = this._i18nService.availableLanguages as readonly ILanguage[];\n\n    this._currentLang = toSignal(this._i18nService.langChanges$, {\n      initialValue: this._i18nService.currentLanguage,\n    })!;\n\n    this._currentLangInfo = computed((): ILanguage => this._getCurrentLanguage());\n  }\n\n  public setLanguage(lang: string): void {\n    this._i18nService.setLanguage(lang);\n  }\n\n  private _getCurrentLanguage(): ILanguage {\n    const currentLang = this._currentLang();\n    const foundLang = this._availableLanguages.find((l: ILanguage) => l.code === currentLang);\n    return foundLang ?? this._availableLanguages[0]!;\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, inject, Signal } from '@angular/core';\nimport { toSignal } from '@angular/core/rxjs-interop';\nimport { I18nService, ILanguage } from '@app/core/i18n';\nimport { DropdownWrapperComponent, IconWrapperComponent } from '@libs/ui';\n\n@Component({\n  selector: 'language-selector',\n  standalone: true,\n  templateUrl: './language-selector.component.html',\n  styleUrl: './language-selector.component.scss',\n  imports: [DropdownWrapperComponent, IconWrapperComponent],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class LanguageSelectorComponent {\n  protected readonly _availableLanguages: readonly ILanguage[];\n  protected readonly _currentLang: Signal<string>;\n\n  private readonly _i18nService: I18nService = inject(I18nService);\n\n  constructor() {\n    this._availableLanguages = this._i18nService.availableLanguages as readonly ILanguage[];\n\n    this._currentLang = toSignal(this._i18nService.langChanges$, {\n      initialValue: this._i18nService.currentLanguage,\n    })!;\n  }\n\n  public setLanguage(lang: string): void {\n    this._i18nService.setLanguage(lang);\n  }\n\n  protected getLanguageLabel(langCode: string): string {\n    const translationKey = `language.names.${langCode}`;\n    const translated = this._i18nService.translate(translationKey);\n    return translated === translationKey ? langCode.toUpperCase() : translated;\n  }\n}\n",
             "styleUrl": "./language-selector.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -8404,14 +8811,14 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 19
+                "line": 18
             },
             "extends": [],
-            "templateData": "@let currentLang = _currentLang();\n@let currentLangInfo = _currentLangInfo();\n\n<dropdown-wrapper>\n  <ng-container slot=\"trigger\">\n    <icon-wrapper icon=\"language\" />\n    {{ currentLangInfo.flag }} {{ currentLang.toUpperCase() }}\n  </ng-container>\n\n  <ng-container slot=\"content\">\n    @for (lang of _availableLanguages; track lang.code) {\n      <button\n        class=\"dropdown-item\"\n        [class.active]=\"currentLang === lang.code\"\n        (click)=\"setLanguage(lang.code)\"\n      >\n        {{ lang.flag }} {{ lang.name }}\n      </button>\n    }\n  </ng-container>\n</dropdown-wrapper>\n"
+            "templateData": "@let currentLang = _currentLang();\n<dropdown-wrapper customClass=\"language-selector-trigger\" menuClass=\"language-selector-menu\">\n  <ng-container slot=\"trigger\">\n    <icon-wrapper icon=\"translate\" />\n    {{ currentLang.toUpperCase() }}\n  </ng-container>\n\n  <ng-container slot=\"content\">\n    @for (lang of _availableLanguages; track lang.code) {\n      <button\n        class=\"dropdown-item\"\n        [attr.data-testid]=\"'language-option-' + lang.code\"\n        [class.active]=\"currentLang === lang.code\"\n        (click)=\"setLanguage(lang.code)\"\n      >\n        {{ getLanguageLabel(lang.code) }}\n      </button>\n    }\n  </ng-container>\n</dropdown-wrapper>\n"
         },
         {
             "name": "LoginComponent",
-            "id": "component-LoginComponent-0c15b17d928822e0ee48a432caa2f50ddfdb8829284e6a6d521ea2028da6822db02f38e8b3982099c5571d93f5b8379824acf94af5104c845fdaf82e49908781",
+            "id": "component-LoginComponent-fc59fa7eb7c708fc6acd8120d68156c84f9a36460ac7330fe25ab0aa616bada1126b871547ef3471b8a80bd02466631849671e233eae56de1c745304e8d06706",
             "file": "src/app/features/auth/pages/login/login.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8443,7 +8850,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 105,
+                    "line": 106,
                     "modifierKind": [
                         123,
                         148
@@ -8458,7 +8865,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 107,
+                    "line": 108,
                     "modifierKind": [
                         123,
                         148
@@ -8473,7 +8880,22 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 106,
+                    "line": 107,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "_sessionService",
+                    "defaultValue": "inject(SessionService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "SessionService",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 110,
                     "modifierKind": [
                         123,
                         148
@@ -8488,7 +8910,22 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 108,
+                    "line": 109,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "_userService",
+                    "defaultValue": "inject(UserService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "UserService",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 111,
                     "modifierKind": [
                         123,
                         148
@@ -8503,7 +8940,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 85,
+                    "line": 82,
                     "modifierKind": [
                         125,
                         148
@@ -8518,7 +8955,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 92,
                     "modifierKind": [
                         125,
                         148
@@ -8533,7 +8970,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 93,
+                    "line": 91,
                     "modifierKind": [
                         125,
                         148
@@ -8548,7 +8985,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 94,
+                    "line": 93,
                     "modifierKind": [
                         125,
                         148
@@ -8563,7 +9000,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 96,
+                    "line": 94,
                     "modifierKind": [
                         125,
                         148
@@ -8578,7 +9015,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 97,
+                    "line": 95,
                     "modifierKind": [
                         125,
                         148
@@ -8593,7 +9030,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 86,
+                    "line": 84,
                     "modifierKind": [
                         125,
                         148
@@ -8608,7 +9045,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 84,
+                    "line": 83,
                     "modifierKind": [
                         125,
                         148
@@ -8623,7 +9060,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 103,
+                    "line": 101,
                     "modifierKind": [
                         125,
                         148
@@ -8638,7 +9075,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 99,
+                    "line": 97,
                     "modifierKind": [
                         125,
                         148
@@ -8653,7 +9090,22 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 87,
+                    "line": 85,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "submitButtonTooltipKey",
+                    "defaultValue": "pickRandomItem(LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS) ??\n    LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS[0]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 102,
                     "modifierKind": [
                         125,
                         148
@@ -8667,7 +9119,7 @@
                     "optional": false,
                     "returnType": "FormGroup<TFormGroupType<ILoginForm>>",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 188,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -8680,7 +9132,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 155,
+                    "line": 160,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -8715,14 +9167,6 @@
                     "type": "component"
                 },
                 {
-                    "name": "StackComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "IconCircleComponent",
-                    "type": "component"
-                },
-                {
                     "name": "TitleComponent",
                     "type": "component"
                 },
@@ -8747,10 +9191,6 @@
                     "type": "component"
                 },
                 {
-                    "name": "IconWrapperComponent",
-                    "type": "component"
-                },
-                {
                     "name": "ButtonWrapperComponent",
                     "type": "component"
                 },
@@ -8770,7 +9210,8 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, inject } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { I18nDirective } from '@app/core/i18n';\nimport { provideTranslocoScope, TranslocoService } from '@jsverse/transloco';\nimport { tap } from 'rxjs';\n\nimport { LoginResponse } from '@api/auth';\nimport { COMMON_KEYS } from '@app/constants/i18n-keys.constants';\nimport { ICONS_CONSTANTS } from '@app/constants/icons.constants';\nimport { PATTERNS_CONSTANTS } from '@app/constants/pattern.constants';\nimport { ROUTES_CONSTANTS } from '@app/constants/routes.constants';\nimport {\n  VALIDATION_CONSTANTS,\n  VALIDATION_KEYS_CONSTANTS,\n} from '@app/constants/validation.constants';\nimport { DisableOnLoadingDirective } from '@app/core/directives/disable-on-loading.directive';\nimport { AUTH_FORM_KEYS } from '@app/features/auth/constants/auth-form-keys.constants';\nimport { LOGIN_KEYS } from '@app/features/auth/constants/login-keys.constants';\nimport { AuthHttpHelper } from '@app/features/auth/helpers';\nimport { ILoginForm } from '@app/features/auth/interfaces/auth.interfaces';\nimport {\n  BaseDirective,\n  ButtonWrapperComponent,\n  CheckboxWrapperComponent,\n  createKeys,\n  EAlign,\n  EButtonWrapperVariant,\n  EInputTextWrapperType,\n  EPageLayout,\n  ESpacing,\n  ESurfaceVariant,\n  FormContainerComponent,\n  FormRowComponent,\n  IconCircleComponent,\n  IconWrapperComponent,\n  IInputTextWrapperConfig,\n  InlineTextComponent,\n  InputPasswordWrapperComponent,\n  InputTextWrapperComponent,\n  LinkComponent,\n  NotificationService,\n  PageComponent,\n  StackComponent,\n  SurfaceComponent,\n  TFormGroupType,\n  TitleComponent,\n  UiPageSectionComponent,\n} from '@libs/ui';\n\nimport { LOGIN_CONSTANTS } from '../../constants/login.constants';\n\n@Component({\n  selector: 'login',\n  templateUrl: './login.component.html',\n  standalone: true,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [provideTranslocoScope('auth')],\n  imports: [\n    ReactiveFormsModule,\n    I18nDirective,\n    DisableOnLoadingDirective,\n\n    PageComponent,\n    UiPageSectionComponent,\n    StackComponent,\n    IconCircleComponent,\n    TitleComponent,\n    SurfaceComponent,\n    FormContainerComponent,\n    FormRowComponent,\n    InlineTextComponent,\n    LinkComponent,\n\n    IconWrapperComponent,\n    ButtonWrapperComponent,\n    CheckboxWrapperComponent,\n    InputPasswordWrapperComponent,\n    InputTextWrapperComponent,\n  ],\n})\nexport class LoginComponent extends BaseDirective {\n  public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;\n  public readonly constants: typeof LOGIN_CONSTANTS = LOGIN_CONSTANTS;\n  public readonly i18nKeys: typeof LOGIN_KEYS = LOGIN_KEYS;\n  public readonly routes = {\n    SIGNUP: ROUTES_CONSTANTS.AUTH.SIGNUP,\n    FORGOT_PASSWORD: ROUTES_CONSTANTS.AUTH.FORGOT_PASSWORD,\n    DASHBOARD: ROUTES_CONSTANTS.DASHBOARD,\n  } as const;\n\n  public readonly EButtonWrapperVariant: typeof EButtonWrapperVariant = EButtonWrapperVariant;\n  public readonly EPageLayout: typeof EPageLayout = EPageLayout;\n  public readonly EAlign: typeof EAlign = EAlign;\n  public readonly ESpacing: typeof ESpacing = ESpacing;\n  public readonly ESurfaceVariant: typeof ESurfaceVariant = ESurfaceVariant;\n\n  public readonly loginFormKeys: Record<keyof ILoginForm, keyof ILoginForm> = createKeys(\n    this.constants.FORM.SCHEMA,\n  );\n\n  public readonly loginForm: FormGroup<TFormGroupType<ILoginForm>> = this._getFormConfig();\n\n  private readonly _authHttpHelper: AuthHttpHelper = inject(AuthHttpHelper);\n  private readonly _router: Router = inject(Router);\n  private readonly _notification: NotificationService = inject(NotificationService);\n  private readonly _translocoService: TranslocoService = inject(TranslocoService);\n\n  public get emailConfig(): IInputTextWrapperConfig {\n    return {\n      label: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.LABEL),\n      icon: ICONS_CONSTANTS.AUTH.EMAIL,\n      placeholder: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.PLACEHOLDER),\n      type: EInputTextWrapperType.EMAIL,\n      required: true,\n    };\n  }\n\n  public get passwordConfig(): IInputTextWrapperConfig {\n    return {\n      label: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.LABEL),\n      icon: ICONS_CONSTANTS.AUTH.PASSWORD,\n      placeholder: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.PLACEHOLDER),\n      required: true,\n    };\n  }\n\n  public get emailErrorMessage(): string {\n    const control = this.loginForm.controls.email;\n\n    if (control.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {\n      return this._translocoService.translate(COMMON_KEYS.VALIDATION.REQUIRED);\n    }\n\n    if (control.hasError(VALIDATION_KEYS_CONSTANTS.PATTERN)) {\n      return this._translocoService.translate(COMMON_KEYS.VALIDATION.INVALID_EMAIL);\n    }\n    return '';\n  }\n\n  public get passwordErrorMessage(): string {\n    const control = this.loginForm.controls.password;\n\n    if (control.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {\n      return this._translocoService.translate(COMMON_KEYS.VALIDATION.REQUIRED);\n    }\n\n    if (control.hasError(VALIDATION_KEYS_CONSTANTS.MIN_LENGTH)) {\n      return this._translocoService.translate(COMMON_KEYS.VALIDATION.MIN_LENGTH);\n    }\n    return '';\n  }\n\n  public onSubmit(): void {\n    if (this.loginForm.invalid) {\n      this.loginForm.markAllAsTouched();\n      return;\n    }\n\n    const formData = this.loginForm.getRawValue();\n\n    this._authHttpHelper\n      .login(formData)\n      .pipe(\n        takeUntilDestroyed(this._destroyRef),\n        tap((response: LoginResponse) => {\n          if (response.accessToken && response.refreshToken) {\n            this._notification.success(\n              this._translocoService.translate(LOGIN_KEYS.MESSAGES.SUCCESS),\n            );\n            void this._router.navigate([this.routes.DASHBOARD]);\n          } else {\n            this._notification.error(this._translocoService.translate(LOGIN_KEYS.MESSAGES.FAILED));\n          }\n        }),\n      )\n      .subscribe();\n  }\n\n  private _getFormConfig(): FormGroup<TFormGroupType<ILoginForm>> {\n    return new FormGroup<TFormGroupType<ILoginForm>>({\n      email: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.EMAIL, {\n        nonNullable: true,\n        validators: [Validators.required, Validators.pattern(PATTERNS_CONSTANTS.EMAIL)],\n      }),\n      password: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.PASSWORD, {\n        nonNullable: true,\n        validators: [\n          Validators.required,\n          Validators.minLength(VALIDATION_CONSTANTS.MIN_PASSWORD_LENGTH),\n        ],\n      }),\n      rememberMe: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.REMEMBER_ME, {\n        nonNullable: true,\n      }),\n    });\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, inject } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { I18nDirective } from '@app/core/i18n';\nimport { provideTranslocoScope, TranslocoService } from '@jsverse/transloco';\nimport { tap } from 'rxjs';\n\nimport { LoginResponse } from '@api/auth';\nimport { ICONS_CONSTANTS } from '@app/constants/icons.constants';\nimport { COMMON_KEYS } from '@app/constants/i18n-keys.constants';\nimport { PATTERNS_CONSTANTS } from '@app/constants/pattern.constants';\nimport { ROUTES_CONSTANTS } from '@app/constants/routes.constants';\nimport {\n  VALIDATION_CONSTANTS,\n  VALIDATION_KEYS_CONSTANTS,\n} from '@app/constants/validation.constants';\nimport { DisableOnLoadingDirective } from '@app/core/directives/disable-on-loading.directive';\nimport { SessionService } from '@app/core/services/session.service';\nimport { UserService } from '@app/core/services/user.service';\nimport { AUTH_FORM_KEYS } from '@app/features/auth/constants/auth-form-keys.constants';\nimport { LOGIN_KEYS } from '@app/features/auth/constants/login-keys.constants';\nimport { AuthHttpHelper } from '@app/features/auth/helpers';\nimport { ILoginForm } from '@app/features/auth/interfaces/auth.interfaces';\nimport { pickRandomItem } from '@app/shared/utils/random.utils';\nimport {\n  BaseDirective,\n  ButtonWrapperComponent,\n  CheckboxWrapperComponent,\n  createKeys,\n  EAlign,\n  EButtonWrapperVariant,\n  EInputTextWrapperType,\n  EPageLayout,\n  ESpacing,\n  ESurfaceVariant,\n  FormContainerComponent,\n  FormRowComponent,\n  IInputTextWrapperConfig,\n  InlineTextComponent,\n  InputPasswordWrapperComponent,\n  InputTextWrapperComponent,\n  LinkComponent,\n  NotificationService,\n  PageComponent,\n  SurfaceComponent,\n  TFormGroupType,\n  TitleComponent,\n  UiPageSectionComponent,\n} from '@libs/ui';\n\nimport { LOGIN_CONSTANTS } from '../../constants/login.constants';\n\n@Component({\n  selector: 'login',\n  templateUrl: './login.component.html',\n  styleUrl: './login.component.scss',\n  standalone: true,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [provideTranslocoScope('auth')],\n  imports: [\n    ReactiveFormsModule,\n    I18nDirective,\n    DisableOnLoadingDirective,\n\n    PageComponent,\n    UiPageSectionComponent,\n    TitleComponent,\n    SurfaceComponent,\n    FormContainerComponent,\n    FormRowComponent,\n    InlineTextComponent,\n    LinkComponent,\n\n    ButtonWrapperComponent,\n    CheckboxWrapperComponent,\n    InputPasswordWrapperComponent,\n    InputTextWrapperComponent,\n  ],\n})\nexport class LoginComponent extends BaseDirective {\n  public readonly constants: typeof LOGIN_CONSTANTS = LOGIN_CONSTANTS;\n  public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;\n  public readonly i18nKeys: typeof LOGIN_KEYS = LOGIN_KEYS;\n  public readonly routes = {\n    SIGNUP: ROUTES_CONSTANTS.AUTH.SIGNUP,\n    FORGOT_PASSWORD: ROUTES_CONSTANTS.AUTH.FORGOT_PASSWORD,\n    DASHBOARD: ROUTES_CONSTANTS.DASHBOARD,\n  } as const;\n\n  public readonly EButtonWrapperVariant: typeof EButtonWrapperVariant = EButtonWrapperVariant;\n  public readonly EAlign: typeof EAlign = EAlign;\n  public readonly EPageLayout: typeof EPageLayout = EPageLayout;\n  public readonly ESpacing: typeof ESpacing = ESpacing;\n  public readonly ESurfaceVariant: typeof ESurfaceVariant = ESurfaceVariant;\n\n  public readonly loginFormKeys: Record<keyof ILoginForm, keyof ILoginForm> = createKeys(\n    this.constants.FORM.SCHEMA,\n  );\n\n  public readonly loginForm: FormGroup<TFormGroupType<ILoginForm>> = this._getFormConfig();\n  public readonly submitButtonTooltipKey: (typeof LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS)[number] =\n    pickRandomItem(LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS) ??\n    LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS[0];\n\n  private readonly _authHttpHelper: AuthHttpHelper = inject(AuthHttpHelper);\n  private readonly _router: Router = inject(Router);\n  private readonly _notification: NotificationService = inject(NotificationService);\n  private readonly _translocoService: TranslocoService = inject(TranslocoService);\n  private readonly _sessionService: SessionService = inject(SessionService);\n  private readonly _userService: UserService = inject(UserService);\n\n  public get emailConfig(): IInputTextWrapperConfig {\n    return {\n      label: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.LABEL),\n      tooltip: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.LABEL),\n      icon: ICONS_CONSTANTS.AUTH.EMAIL,\n      placeholder: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.PLACEHOLDER),\n      type: EInputTextWrapperType.EMAIL,\n      required: true,\n    };\n  }\n\n  public get passwordConfig(): IInputTextWrapperConfig {\n    return {\n      label: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.LABEL),\n      tooltip: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.LABEL),\n      icon: ICONS_CONSTANTS.AUTH.PASSWORD,\n      placeholder: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.PLACEHOLDER),\n      required: true,\n    };\n  }\n\n  public get emailErrorMessage(): string {\n    const control = this.loginForm.controls.email;\n\n    if (control.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {\n      return this._translocoService.translate(COMMON_KEYS.VALIDATION.REQUIRED);\n    }\n\n    if (control.hasError(VALIDATION_KEYS_CONSTANTS.PATTERN)) {\n      return this._translocoService.translate(COMMON_KEYS.VALIDATION.INVALID_EMAIL);\n    }\n    return '';\n  }\n\n  public get passwordErrorMessage(): string {\n    const control = this.loginForm.controls.password;\n\n    if (control.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {\n      return this._translocoService.translate(COMMON_KEYS.VALIDATION.REQUIRED);\n    }\n\n    if (control.hasError(VALIDATION_KEYS_CONSTANTS.MIN_LENGTH)) {\n      return this._translocoService.translate(COMMON_KEYS.VALIDATION.MIN_LENGTH);\n    }\n    return '';\n  }\n\n  public onSubmit(): void {\n    if (this.loginForm.invalid) {\n      this.loginForm.markAllAsTouched();\n      return;\n    }\n\n    const formData = this.loginForm.getRawValue();\n\n    this._authHttpHelper\n      .login(formData)\n      .pipe(\n        takeUntilDestroyed(this._destroyRef),\n        tap((response: LoginResponse) => {\n          if (response.accessToken && response.refreshToken) {\n            this._sessionService.setTokens(response.accessToken, response.refreshToken);\n            this._userService.setUser({ email: formData.email });\n            this._notification.success(\n              this._translocoService.translate(LOGIN_KEYS.MESSAGES.SUCCESS),\n            );\n            void this._router.navigate([this.routes.DASHBOARD]);\n          } else {\n            this._notification.error(this._translocoService.translate(LOGIN_KEYS.MESSAGES.FAILED));\n          }\n        }),\n      )\n      .subscribe();\n  }\n\n  private _getFormConfig(): FormGroup<TFormGroupType<ILoginForm>> {\n    return new FormGroup<TFormGroupType<ILoginForm>>({\n      email: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.EMAIL, {\n        nonNullable: true,\n        validators: [Validators.required, Validators.pattern(PATTERNS_CONSTANTS.EMAIL)],\n      }),\n      password: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.PASSWORD, {\n        nonNullable: true,\n        validators: [\n          Validators.required,\n          Validators.minLength(VALIDATION_CONSTANTS.MIN_PASSWORD_LENGTH),\n        ],\n      }),\n      rememberMe: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.REMEMBER_ME, {\n        nonNullable: true,\n      }),\n    });\n  }\n}\n",
+            "styleUrl": "./login.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -8784,7 +9225,7 @@
                         "name": "emailConfig",
                         "type": "unknown",
                         "returnType": "IInputTextWrapperConfig",
-                        "line": 110
+                        "line": 113
                     }
                 },
                 "passwordConfig": {
@@ -8793,7 +9234,7 @@
                         "name": "passwordConfig",
                         "type": "unknown",
                         "returnType": "IInputTextWrapperConfig",
-                        "line": 120
+                        "line": 124
                     }
                 },
                 "emailErrorMessage": {
@@ -8802,7 +9243,7 @@
                         "name": "emailErrorMessage",
                         "type": "string",
                         "returnType": "string",
-                        "line": 129
+                        "line": 134
                     }
                 },
                 "passwordErrorMessage": {
@@ -8811,15 +9252,15 @@
                         "name": "passwordErrorMessage",
                         "type": "string",
                         "returnType": "string",
-                        "line": 142
+                        "line": 147
                     }
                 }
             },
-            "templateData": "<ng-container *i18n=\"'auth'; let t\">\n  <ui-page [layout]=\"EPageLayout.CENTERED\">\n    <ui-page-header>\n      <ui-stack [align]=\"EAlign.CENTER\" [gap]=\"ESpacing.MD\">\n        <ui-icon-circle>\n          <icon-wrapper [icon]=\"icons.APP.LOGO\" />\n        </ui-icon-circle>\n\n        <ui-title [title]=\"t(i18nKeys.TITLE)\" [subtitle]=\"t(i18nKeys.SUBTITLE)\" />\n      </ui-stack>\n    </ui-page-header>\n\n    <ui-page-body>\n      <ui-surface [variant]=\"ESurfaceVariant.CARD\" [padding]=\"ESpacing.LG\">\n        <ui-form-container [formGroup]=\"loginForm\" (formSubmit)=\"onSubmit()\">\n          <input-text-wrapper\n            [config]=\"emailConfig\"\n            [formControlName]=\"loginFormKeys.email\"\n            [errorMessage]=\"emailErrorMessage\"\n          />\n\n          <input-password-wrapper\n            [config]=\"passwordConfig\"\n            [formControlName]=\"loginFormKeys.password\"\n            [errorMessage]=\"passwordErrorMessage\"\n          />\n\n          <ui-form-row [align]=\"EAlign.BETWEEN\">\n            <checkbox-wrapper [label]=\"t(i18nKeys.FORM.REMEMBER_ME)\" formControlName=\"rememberMe\" />\n\n            <ui-link [route]=\"routes.FORGOT_PASSWORD\" [label]=\"t(i18nKeys.FORM.FORGOT_PASSWORD)\" />\n          </ui-form-row>\n\n          <button-wrapper\n            disableOnLoading\n            [title]=\"t(i18nKeys.FORM.SUBMIT_BUTTON)\"\n            [fullWidth]=\"true\"\n            [disabled]=\"loginForm.invalid\"\n            [variant]=\"EButtonWrapperVariant.FLAT\"\n          />\n        </ui-form-container>\n      </ui-surface>\n    </ui-page-body>\n\n    <ui-page-footer>\n      <ui-inline-text>\n        {{ t(i18nKeys.FOOTER.NO_ACCOUNT) }}\n        <ui-link [route]=\"routes.SIGNUP\" [label]=\"t(i18nKeys.FOOTER.SIGN_UP_LINK)\" />\n      </ui-inline-text>\n    </ui-page-footer>\n  </ui-page>\n</ng-container>\n"
+            "templateData": "<ng-container *i18n=\"'auth'; let t\">\n  <ui-page class=\"login-page\" [layout]=\"EPageLayout.CENTERED\">\n    <ui-page-header>\n      <ui-title [title]=\"t(i18nKeys.TITLE)\" [subtitle]=\"t(i18nKeys.SUBTITLE)\" />\n    </ui-page-header>\n\n    <ui-page-body>\n      <ui-surface [variant]=\"ESurfaceVariant.CARD\" [padding]=\"ESpacing.LG\">\n        <ui-form-container [formGroup]=\"loginForm\" (formSubmit)=\"onSubmit()\">\n          <input-text-wrapper\n            [config]=\"emailConfig\"\n            [formControlName]=\"loginFormKeys.email\"\n            [errorMessage]=\"emailErrorMessage\"\n          />\n\n          <input-password-wrapper\n            [config]=\"passwordConfig\"\n            [formControlName]=\"loginFormKeys.password\"\n            [errorMessage]=\"passwordErrorMessage\"\n          />\n\n          <ui-form-row [align]=\"EAlign.BETWEEN\">\n            <checkbox-wrapper [label]=\"t(i18nKeys.FORM.REMEMBER_ME)\" formControlName=\"rememberMe\" />\n\n            <ui-link [route]=\"routes.FORGOT_PASSWORD\" [label]=\"t(i18nKeys.FORM.FORGOT_PASSWORD)\" />\n          </ui-form-row>\n\n          <button-wrapper\n            disableOnLoading\n            [title]=\"t(i18nKeys.FORM.SUBMIT_BUTTON)\"\n            [tooltip]=\"t(submitButtonTooltipKey)\"\n            [svgIcon]=\"icons.AUTH.LOGIN_BUTTON\"\n            [fullWidth]=\"true\"\n            [disabled]=\"loginForm.invalid\"\n            [variant]=\"EButtonWrapperVariant.FLAT\"\n          />\n        </ui-form-container>\n      </ui-surface>\n    </ui-page-body>\n\n    <ui-page-footer>\n      <ui-inline-text>\n        {{ t(i18nKeys.FOOTER.NO_ACCOUNT) }}\n        <ui-link [route]=\"routes.SIGNUP\" [label]=\"t(i18nKeys.FOOTER.SIGN_UP_LINK)\" />\n      </ui-inline-text>\n    </ui-page-footer>\n  </ui-page>\n</ng-container>\n"
         },
         {
             "name": "MainLayoutComponent",
-            "id": "component-MainLayoutComponent-29225b41f9df623cee48790ccfb66905f95f24bd01b49982eb2926817201fb9743d1e5fc364e2f88c5d054930039a8f488046bed199ea524e116244958db9a86",
+            "id": "component-MainLayoutComponent-e2d0b0d9f9881871f274e0a3e7b3d66ac7d9a5ef55563e17710d48c4e73c9da251473c2bf237f7b2f905c71f9dd865bb71ad5ff32075c00a32f583c0b5974372",
             "file": "src/app/core/layouts/main-layout/main-layout.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8839,6 +9280,94 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "_i18nService",
+                    "defaultValue": "inject(I18nService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "I18nService",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "_router",
+                    "defaultValue": "inject(Router)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Router",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "_sessionService",
+                    "defaultValue": "inject(SessionService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "SessionService",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "_userService",
+                    "defaultValue": "inject(UserService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "UserService",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "activeUserLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<string>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "activeUsername",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<string>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
                     "name": "icons",
                     "defaultValue": "ICONS_CONSTANTS",
                     "deprecated": false,
@@ -8847,14 +9376,42 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18,
+                    "line": 21,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "logoutLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<string>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
                     "modifierKind": [
                         125,
                         148
                     ]
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "onLogout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -8867,24 +9424,28 @@
                 {
                     "name": "MatIconModule",
                     "type": "module"
-                },
-                {
-                    "name": "MatButtonModule",
-                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { RouterOutlet } from '@angular/router';\n\nimport { ICONS_CONSTANTS } from '@app/constants/icons.constants';\nimport { BaseDirective } from '@libs/ui';\n\n@Component({\n  selector: 'main-layout',\n  templateUrl: './main-layout.component.html',\n  styleUrl: './main-layout.component.scss',\n  standalone: true,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [RouterOutlet, MatIconModule, MatButtonModule],\n})\nexport class MainLayoutComponent extends BaseDirective {\n  public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, computed, inject, Signal } from '@angular/core';\nimport { MatIconModule } from '@angular/material/icon';\nimport { Router, RouterOutlet } from '@angular/router';\n\nimport { ICONS_CONSTANTS } from '@app/constants/icons.constants';\nimport { ROUTES_CONSTANTS } from '@app/constants/routes.constants';\nimport { I18nService } from '@app/core/i18n';\nimport { SessionService } from '@app/core/services/session.service';\nimport { UserService } from '@app/core/services/user.service';\nimport { BaseDirective } from '@libs/ui';\n\n@Component({\n  selector: 'main-layout',\n  templateUrl: './main-layout.component.html',\n  styleUrl: './main-layout.component.scss',\n  standalone: true,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [RouterOutlet, MatIconModule],\n})\nexport class MainLayoutComponent extends BaseDirective {\n  public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;\n  public readonly activeUsername: Signal<string>;\n  public readonly activeUserLabel: Signal<string>;\n  public readonly logoutLabel: Signal<string>;\n\n  private readonly _sessionService: SessionService = inject(SessionService);\n  private readonly _userService: UserService = inject(UserService);\n  private readonly _i18nService: I18nService = inject(I18nService);\n  private readonly _router: Router = inject(Router);\n\n  constructor() {\n    super();\n    this.activeUsername = computed(() => this._userService.email() || 'Guest');\n    this.activeUserLabel = computed(() => {\n      this._i18nService.currentLanguageSignal();\n      return this._i18nService.translate('common.labels.active_user');\n    });\n    this.logoutLabel = computed(() => {\n      this._i18nService.currentLanguageSignal();\n      return this._i18nService.translate('common.actions.logout');\n    });\n  }\n\n  public onLogout(): void {\n    this._sessionService.clear();\n    this._userService.clear();\n    void this._router.navigate([ROUTES_CONSTANTS.AUTH.LOGIN]);\n  }\n}\n",
             "styleUrl": "./main-layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 29
+            },
             "extends": [
                 "BaseDirective"
             ],
-            "templateData": "<div class=\"layout-wrapper\">\n  <nav class=\"top-navbar\">\n    <div class=\"nav-brand\">\n      <mat-icon class=\"brand-logo\">{{ icons.APP.LOGO }}</mat-icon>\n      <span class=\"brand-name\">Bookmarks</span>\n    </div>\n    <div class=\"nav-actions\">\n      <button mat-icon-button aria-label=\"Notifications\">\n        <mat-icon>{{ icons.NAV.NOTIFICATIONS }}</mat-icon>\n      </button>\n      <button mat-icon-button aria-label=\"User profile\">\n        <mat-icon>{{ icons.NAV.ACCOUNT }}</mat-icon>\n      </button>\n    </div>\n  </nav>\n\n  <aside class=\"right-sidebar\">\n    <div class=\"sidebar-content\">\n      <header class=\"sidebar-header\">\n        <h3>Activity</h3>\n      </header>\n      <div class=\"sidebar-items\">\n        <p class=\"empty-state\">No recent activity</p>\n      </div>\n    </div>\n  </aside>\n\n  <main class=\"main-content\">\n    <router-outlet />\n  </main>\n</div>\n"
+            "templateData": "<div class=\"layout-wrapper\">\n  <aside class=\"right-sidebar\">\n    <div class=\"sidebar-content\">\n      <header class=\"sidebar-header\">\n        <h3>Activity</h3>\n      </header>\n      <div class=\"sidebar-items\">\n        <p class=\"empty-state\">No recent activity</p>\n      </div>\n\n      <div class=\"sidebar-user\">\n        <mat-icon class=\"sidebar-user-icon\">{{ icons.AUTH.USER }}</mat-icon>\n        <div class=\"sidebar-user-text\">\n          <span class=\"sidebar-user-label\">{{ activeUserLabel() }}</span>\n          <span class=\"sidebar-user-name\">{{ activeUsername() }}</span>\n          <button class=\"sidebar-logout\" type=\"button\" (click)=\"onLogout()\">\n            {{ logoutLabel() }}\n          </button>\n        </div>\n      </div>\n    </div>\n  </aside>\n\n  <main class=\"main-content\">\n    <router-outlet />\n  </main>\n</div>\n"
         },
         {
             "name": "SignupComponent",
@@ -9125,7 +9686,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
-                "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes),\n    provideAnimations(),\n    provideHttpClient(withInterceptors(interceptors)),\n    provideAuthApi(environment.authApiUrl),\n    provideLinksApi(environment.linksApiUrl),\n    provideI18n({\n      defaultLang: 'en',\n      fallbackLang: 'en',\n      availableLangs: ['en', 'es'],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes),\n    provideAnimations(),\n    provideHttpClient(withInterceptors(interceptors)),\n    provideAuthApi(environment.authApiUrl),\n    provideLinksApi(environment.linksApiUrl),\n    provideCustomIcons(),\n    provideI18n({\n      defaultLang: 'en',\n      fallbackLang: 'en',\n      availableLangs: ['en', 'es'],\n    }),\n  ],\n}"
             },
             {
                 "name": "AUTH_FORM_KEYS",
@@ -9158,6 +9719,16 @@
                 "defaultValue": "'auth'"
             },
             {
+                "name": "authorizationInterceptor",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/interceptors/authorization.interceptor.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "HttpInterceptorFn",
+                "defaultValue": "(req, next) => {\n  const sessionService = inject(SessionService);\n  const accessToken = sessionService.accessToken();\n\n  if (!accessToken) {\n    return next(req);\n  }\n\n  const modifiedReq = req.clone({\n    setHeaders: {\n      Authorization: `Bearer ${accessToken}`,\n    },\n  });\n\n  return next(modifiedReq);\n}"
+            },
+            {
                 "name": "COMMON_KEYS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -9166,6 +9737,16 @@
                 "deprecationMessage": "",
                 "type": "unknown",
                 "defaultValue": "{\n  ACTIONS: {\n    BACK: 'common.actions.back',\n    SUBMIT: 'common.actions.submit',\n  },\n  VALIDATION: {\n    REQUIRED: 'common.validation.required',\n    INVALID_EMAIL: 'common.validation.invalid_email',\n    MIN_LENGTH: 'common.validation.min_length',\n  },\n} as const"
+            },
+            {
+                "name": "CUSTOM_ICONS_CONSTANTS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/icons/icons.constants.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "{\n  AUTH: {\n    LOGIN_BUTTON: 'auth-login-button',\n  },\n} as const"
             },
             {
                 "name": "DASHBOARD_CONSTANTS",
@@ -9273,7 +9854,27 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
-                "defaultValue": "{\n  APP: {\n    LOGO: 'rocket_launch',\n  },\n  AUTH: {\n    EMAIL: 'email',\n    PASSWORD: 'lock',\n    USER: 'person',\n    VISIBILITY: 'visibility',\n    VISIBILITY_OFF: 'visibility_off',\n  },\n  NAV: {\n    NOTIFICATIONS: 'notifications',\n    ACCOUNT: 'account_circle',\n  },\n  TREE: {\n    EXPANDED: 'expand_more',\n    COLLAPSED: 'chevron_right',\n  },\n  NOTIFICATION: {\n    SUCCESS: 'check_circle',\n    ERROR: 'error',\n    WARNING: 'warning',\n    INFO: 'info',\n    CLOSE: 'close',\n  },\n  DASHBOARD: {\n    CODE: 'code',\n    HTML: 'html',\n    SCRIPT: 'script',\n    REBASE_EDIT: 'rebase_edit',\n    PALETTE: 'palette',\n    DRAW: 'draw',\n    GRID_VIEW: 'grid_view',\n    RESTAURANT: 'restaurant',\n    FLIGHT: 'flight',\n  },\n} as const"
+                "defaultValue": "{\n  APP: {\n    LOGO: 'rocket_launch',\n  },\n  AUTH: {\n    EMAIL: 'email',\n    PASSWORD: 'lock',\n    USER: 'person',\n    LOGIN_BUTTON: 'auth-login-button',\n    VISIBILITY: 'visibility',\n    VISIBILITY_OFF: 'visibility_off',\n  },\n  NAV: {\n    NOTIFICATIONS: 'notifications',\n    ACCOUNT: 'account_circle',\n  },\n  TREE: {\n    EXPANDED: 'expand_more',\n    COLLAPSED: 'chevron_right',\n  },\n  NOTIFICATION: {\n    SUCCESS: 'check_circle',\n    ERROR: 'error',\n    WARNING: 'warning',\n    INFO: 'info',\n    CLOSE: 'close',\n  },\n  DASHBOARD: {\n    CODE: 'code',\n    HTML: 'html',\n    SCRIPT: 'script',\n    REBASE_EDIT: 'rebase_edit',\n    PALETTE: 'palette',\n    DRAW: 'draw',\n    GRID_VIEW: 'grid_view',\n    RESTAURANT: 'restaurant',\n    FLIGHT: 'flight',\n  },\n} as const"
+            },
+            {
+                "name": "ICONS_PATHS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/icons/icons.provider.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "{\n  AUTH: {\n    LOGIN_BUTTON: 'assets/icons/auth/login-user-animated.svg',\n  },\n} as const"
+            },
+            {
+                "name": "initializeIcons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/icons/icons.provider.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) =>\n  (): void =>\n    registerCustomIcons(iconRegistry, sanitizer)"
             },
             {
                 "name": "interceptors",
@@ -9283,7 +9884,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[loadingInterceptor, languageInterceptor, apiErrorMapperInterceptor]"
+                "defaultValue": "[\n  loadingInterceptor,\n  languageInterceptor,\n  authorizationInterceptor,\n  apiErrorMapperInterceptor,\n]"
             },
             {
                 "name": "languageInterceptor",
@@ -9293,7 +9894,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "HttpInterceptorFn",
-                "defaultValue": "(req, next) => {\n  const language = 'ES';\n\n  const modifiedReq = req.clone({\n    setHeaders: {\n      'Accept-Language': language,\n    },\n  });\n\n  return next(modifiedReq);\n}"
+                "defaultValue": "(req, next) => {\n  const i18nService = inject(I18nService);\n  const language = i18nService.currentLanguageSignal() || i18nService.currentLanguage;\n\n  const modifiedReq = req.clone({\n    setHeaders: {\n      'Accept-Language': language,\n    },\n  });\n\n  return next(modifiedReq);\n}"
             },
             {
                 "name": "LINK_LAST_STATUS_CODE",
@@ -9335,7 +9936,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
-                "defaultValue": "{\n  TITLE: `${LOGIN_KEYS_PREFIX}.title`,\n  SUBTITLE: `${LOGIN_KEYS_PREFIX}.subtitle`,\n  FORM: {\n    REMEMBER_ME: `${LOGIN_KEYS_PREFIX}.form.remember_me`,\n    FORGOT_PASSWORD: `${LOGIN_KEYS_PREFIX}.form.forgot_password`,\n    SUBMIT_BUTTON: `${LOGIN_KEYS_PREFIX}.form.submit_button`,\n  },\n  MESSAGES: {\n    SUCCESS: `${LOGIN_KEYS_PREFIX}.messages.success`,\n    FAILED: `${LOGIN_KEYS_PREFIX}.messages.failed`,\n  },\n  FOOTER: {\n    NO_ACCOUNT: `${LOGIN_KEYS_PREFIX}.footer.no_account`,\n    SIGN_UP_LINK: `${LOGIN_KEYS_PREFIX}.footer.sign_up_link`,\n  },\n} as const"
+                "defaultValue": "{\n  TITLE: `${LOGIN_KEYS_PREFIX}.title`,\n  SUBTITLE: `${LOGIN_KEYS_PREFIX}.subtitle`,\n  FORM: {\n    REMEMBER_ME: `${LOGIN_KEYS_PREFIX}.form.remember_me`,\n    FORGOT_PASSWORD: `${LOGIN_KEYS_PREFIX}.form.forgot_password`,\n    SUBMIT_BUTTON: `${LOGIN_KEYS_PREFIX}.form.submit_button`,\n  },\n  TOOLTIPS: {\n    SUBMIT_BUTTON_OPTIONS: [\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_1`,\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_2`,\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_3`,\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_4`,\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_5`,\n    ],\n  },\n  MESSAGES: {\n    SUCCESS: `${LOGIN_KEYS_PREFIX}.messages.success`,\n    FAILED: `${LOGIN_KEYS_PREFIX}.messages.failed`,\n  },\n  FOOTER: {\n    NO_ACCOUNT: `${LOGIN_KEYS_PREFIX}.footer.no_account`,\n    SIGN_UP_LINK: `${LOGIN_KEYS_PREFIX}.footer.sign_up_link`,\n  },\n} as const"
             },
             {
                 "name": "LOGIN_KEYS_PREFIX",
@@ -9388,6 +9989,26 @@
                 "defaultValue": "{\n  EMAIL: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/,\n} as const"
             },
             {
+                "name": "provideCustomIcons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/icons/icons.provider.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "(): Provider => ({\n  provide: APP_INITIALIZER,\n  multi: true,\n  deps: [MatIconRegistry, DomSanitizer],\n  useFactory: initializeIcons,\n})"
+            },
+            {
+                "name": "registerCustomIcons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/icons/icons.provider.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer): void => {\n  iconRegistry.addSvgIcon(\n    CUSTOM_ICONS_CONSTANTS.AUTH.LOGIN_BUTTON,\n    sanitizer.bypassSecurityTrustResourceUrl(ICONS_PATHS.AUTH.LOGIN_BUTTON),\n  );\n}"
+            },
+            {
                 "name": "routes",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -9408,6 +10029,16 @@
                 "defaultValue": "{\n  AUTH: {\n    LOGIN: '/login',\n    SIGNUP: '/signup',\n    FORGOT_PASSWORD: '/forgot-password',\n  },\n  DASHBOARD: '/dashboard',\n} as const"
             },
             {
+                "name": "SESSION_STORAGE_KEYS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/services/session.service.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "{\n  ACCESS_TOKEN: 'links_v2.session.accessToken',\n  REFRESH_TOKEN: 'links_v2.session.refreshToken',\n} as const"
+            },
+            {
                 "name": "SIGNUP_KEYS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -9426,6 +10057,16 @@
                 "deprecationMessage": "",
                 "type": "string",
                 "defaultValue": "`${AUTH_KEYS_PREFIX}.signup`"
+            },
+            {
+                "name": "USER_STORAGE_KEYS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/services/user.service.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "{\n  EMAIL: 'links_v2.user.email',\n} as const"
             },
             {
                 "name": "VALIDATION_CONSTANTS",
@@ -9800,7 +10441,7 @@
             },
             {
                 "name": "authHealthControllerHealthz",
-                "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
+                "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -9878,7 +10519,7 @@
             },
             {
                 "name": "authHealthControllerHealthz",
-                "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
+                "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -11314,6 +11955,48 @@
                 ]
             },
             {
+                "name": "pickRandomItem",
+                "file": "src/app/shared/utils/random.utils.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "items",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "randomFn",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "Math.random"
+                    }
+                ],
+                "returnType": "T | undefined",
+                "jsdoctags": [
+                    {
+                        "name": "items",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "randomFn",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "Math.random",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
                 "name": "provideApiConfiguration",
                 "file": "src/api/auth/api-configuration.ts",
                 "ctype": "miscellaneous",
@@ -11674,7 +12357,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
-                    "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes),\n    provideAnimations(),\n    provideHttpClient(withInterceptors(interceptors)),\n    provideAuthApi(environment.authApiUrl),\n    provideLinksApi(environment.linksApiUrl),\n    provideI18n({\n      defaultLang: 'en',\n      fallbackLang: 'en',\n      availableLangs: ['en', 'es'],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes),\n    provideAnimations(),\n    provideHttpClient(withInterceptors(interceptors)),\n    provideAuthApi(environment.authApiUrl),\n    provideLinksApi(environment.linksApiUrl),\n    provideCustomIcons(),\n    provideI18n({\n      defaultLang: 'en',\n      fallbackLang: 'en',\n      availableLangs: ['en', 'es'],\n    }),\n  ],\n}"
                 }
             ],
             "src/app/features/auth/constants/auth-form-keys.constants.ts": [
@@ -11711,6 +12394,18 @@
                     "defaultValue": "'auth'"
                 }
             ],
+            "src/app/core/interceptors/authorization.interceptor.ts": [
+                {
+                    "name": "authorizationInterceptor",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/interceptors/authorization.interceptor.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "HttpInterceptorFn",
+                    "defaultValue": "(req, next) => {\n  const sessionService = inject(SessionService);\n  const accessToken = sessionService.accessToken();\n\n  if (!accessToken) {\n    return next(req);\n  }\n\n  const modifiedReq = req.clone({\n    setHeaders: {\n      Authorization: `Bearer ${accessToken}`,\n    },\n  });\n\n  return next(modifiedReq);\n}"
+                }
+            ],
             "src/app/constants/i18n-keys.constants.ts": [
                 {
                     "name": "COMMON_KEYS",
@@ -11721,6 +12416,18 @@
                     "deprecationMessage": "",
                     "type": "unknown",
                     "defaultValue": "{\n  ACTIONS: {\n    BACK: 'common.actions.back',\n    SUBMIT: 'common.actions.submit',\n  },\n  VALIDATION: {\n    REQUIRED: 'common.validation.required',\n    INVALID_EMAIL: 'common.validation.invalid_email',\n    MIN_LENGTH: 'common.validation.min_length',\n  },\n} as const"
+                }
+            ],
+            "src/app/core/icons/icons.constants.ts": [
+                {
+                    "name": "CUSTOM_ICONS_CONSTANTS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/icons/icons.constants.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "{\n  AUTH: {\n    LOGIN_BUTTON: 'auth-login-button',\n  },\n} as const"
                 }
             ],
             "src/app/features/dashboard/constants/dashboard.constants.ts": [
@@ -11848,7 +12555,49 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
-                    "defaultValue": "{\n  APP: {\n    LOGO: 'rocket_launch',\n  },\n  AUTH: {\n    EMAIL: 'email',\n    PASSWORD: 'lock',\n    USER: 'person',\n    VISIBILITY: 'visibility',\n    VISIBILITY_OFF: 'visibility_off',\n  },\n  NAV: {\n    NOTIFICATIONS: 'notifications',\n    ACCOUNT: 'account_circle',\n  },\n  TREE: {\n    EXPANDED: 'expand_more',\n    COLLAPSED: 'chevron_right',\n  },\n  NOTIFICATION: {\n    SUCCESS: 'check_circle',\n    ERROR: 'error',\n    WARNING: 'warning',\n    INFO: 'info',\n    CLOSE: 'close',\n  },\n  DASHBOARD: {\n    CODE: 'code',\n    HTML: 'html',\n    SCRIPT: 'script',\n    REBASE_EDIT: 'rebase_edit',\n    PALETTE: 'palette',\n    DRAW: 'draw',\n    GRID_VIEW: 'grid_view',\n    RESTAURANT: 'restaurant',\n    FLIGHT: 'flight',\n  },\n} as const"
+                    "defaultValue": "{\n  APP: {\n    LOGO: 'rocket_launch',\n  },\n  AUTH: {\n    EMAIL: 'email',\n    PASSWORD: 'lock',\n    USER: 'person',\n    LOGIN_BUTTON: 'auth-login-button',\n    VISIBILITY: 'visibility',\n    VISIBILITY_OFF: 'visibility_off',\n  },\n  NAV: {\n    NOTIFICATIONS: 'notifications',\n    ACCOUNT: 'account_circle',\n  },\n  TREE: {\n    EXPANDED: 'expand_more',\n    COLLAPSED: 'chevron_right',\n  },\n  NOTIFICATION: {\n    SUCCESS: 'check_circle',\n    ERROR: 'error',\n    WARNING: 'warning',\n    INFO: 'info',\n    CLOSE: 'close',\n  },\n  DASHBOARD: {\n    CODE: 'code',\n    HTML: 'html',\n    SCRIPT: 'script',\n    REBASE_EDIT: 'rebase_edit',\n    PALETTE: 'palette',\n    DRAW: 'draw',\n    GRID_VIEW: 'grid_view',\n    RESTAURANT: 'restaurant',\n    FLIGHT: 'flight',\n  },\n} as const"
+                }
+            ],
+            "src/app/core/icons/icons.provider.ts": [
+                {
+                    "name": "ICONS_PATHS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/icons/icons.provider.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "{\n  AUTH: {\n    LOGIN_BUTTON: 'assets/icons/auth/login-user-animated.svg',\n  },\n} as const"
+                },
+                {
+                    "name": "initializeIcons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/icons/icons.provider.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) =>\n  (): void =>\n    registerCustomIcons(iconRegistry, sanitizer)"
+                },
+                {
+                    "name": "provideCustomIcons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/icons/icons.provider.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "(): Provider => ({\n  provide: APP_INITIALIZER,\n  multi: true,\n  deps: [MatIconRegistry, DomSanitizer],\n  useFactory: initializeIcons,\n})"
+                },
+                {
+                    "name": "registerCustomIcons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/icons/icons.provider.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer): void => {\n  iconRegistry.addSvgIcon(\n    CUSTOM_ICONS_CONSTANTS.AUTH.LOGIN_BUTTON,\n    sanitizer.bypassSecurityTrustResourceUrl(ICONS_PATHS.AUTH.LOGIN_BUTTON),\n  );\n}"
                 }
             ],
             "src/app/core/interceptors/interceptors.config.ts": [
@@ -11860,7 +12609,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[loadingInterceptor, languageInterceptor, apiErrorMapperInterceptor]"
+                    "defaultValue": "[\n  loadingInterceptor,\n  languageInterceptor,\n  authorizationInterceptor,\n  apiErrorMapperInterceptor,\n]"
                 }
             ],
             "src/app/core/interceptors/language.interceptor.ts": [
@@ -11872,7 +12621,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "HttpInterceptorFn",
-                    "defaultValue": "(req, next) => {\n  const language = 'ES';\n\n  const modifiedReq = req.clone({\n    setHeaders: {\n      'Accept-Language': language,\n    },\n  });\n\n  return next(modifiedReq);\n}"
+                    "defaultValue": "(req, next) => {\n  const i18nService = inject(I18nService);\n  const language = i18nService.currentLanguageSignal() || i18nService.currentLanguage;\n\n  const modifiedReq = req.clone({\n    setHeaders: {\n      'Accept-Language': language,\n    },\n  });\n\n  return next(modifiedReq);\n}"
                 }
             ],
             "src/api/links/models/link-last-status-code-array.ts": [
@@ -11922,7 +12671,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
-                    "defaultValue": "{\n  TITLE: `${LOGIN_KEYS_PREFIX}.title`,\n  SUBTITLE: `${LOGIN_KEYS_PREFIX}.subtitle`,\n  FORM: {\n    REMEMBER_ME: `${LOGIN_KEYS_PREFIX}.form.remember_me`,\n    FORGOT_PASSWORD: `${LOGIN_KEYS_PREFIX}.form.forgot_password`,\n    SUBMIT_BUTTON: `${LOGIN_KEYS_PREFIX}.form.submit_button`,\n  },\n  MESSAGES: {\n    SUCCESS: `${LOGIN_KEYS_PREFIX}.messages.success`,\n    FAILED: `${LOGIN_KEYS_PREFIX}.messages.failed`,\n  },\n  FOOTER: {\n    NO_ACCOUNT: `${LOGIN_KEYS_PREFIX}.footer.no_account`,\n    SIGN_UP_LINK: `${LOGIN_KEYS_PREFIX}.footer.sign_up_link`,\n  },\n} as const"
+                    "defaultValue": "{\n  TITLE: `${LOGIN_KEYS_PREFIX}.title`,\n  SUBTITLE: `${LOGIN_KEYS_PREFIX}.subtitle`,\n  FORM: {\n    REMEMBER_ME: `${LOGIN_KEYS_PREFIX}.form.remember_me`,\n    FORGOT_PASSWORD: `${LOGIN_KEYS_PREFIX}.form.forgot_password`,\n    SUBMIT_BUTTON: `${LOGIN_KEYS_PREFIX}.form.submit_button`,\n  },\n  TOOLTIPS: {\n    SUBMIT_BUTTON_OPTIONS: [\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_1`,\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_2`,\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_3`,\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_4`,\n      `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_5`,\n    ],\n  },\n  MESSAGES: {\n    SUCCESS: `${LOGIN_KEYS_PREFIX}.messages.success`,\n    FAILED: `${LOGIN_KEYS_PREFIX}.messages.failed`,\n  },\n  FOOTER: {\n    NO_ACCOUNT: `${LOGIN_KEYS_PREFIX}.footer.no_account`,\n    SIGN_UP_LINK: `${LOGIN_KEYS_PREFIX}.footer.sign_up_link`,\n  },\n} as const"
                 },
                 {
                     "name": "LOGIN_KEYS_PREFIX",
@@ -11995,6 +12744,18 @@
                     "defaultValue": "{\n  AUTH: {\n    LOGIN: '/login',\n    SIGNUP: '/signup',\n    FORGOT_PASSWORD: '/forgot-password',\n  },\n  DASHBOARD: '/dashboard',\n} as const"
                 }
             ],
+            "src/app/core/services/session.service.ts": [
+                {
+                    "name": "SESSION_STORAGE_KEYS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/services/session.service.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "{\n  ACCESS_TOKEN: 'links_v2.session.accessToken',\n  REFRESH_TOKEN: 'links_v2.session.refreshToken',\n} as const"
+                }
+            ],
             "src/app/features/auth/constants/signup-keys.constants.ts": [
                 {
                     "name": "SIGNUP_KEYS",
@@ -12015,6 +12776,18 @@
                     "deprecationMessage": "",
                     "type": "string",
                     "defaultValue": "`${AUTH_KEYS_PREFIX}.signup`"
+                }
+            ],
+            "src/app/core/services/user.service.ts": [
+                {
+                    "name": "USER_STORAGE_KEYS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/services/user.service.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "{\n  EMAIL: 'links_v2.user.email',\n} as const"
                 }
             ],
             "src/app/constants/validation.constants.ts": [
@@ -12444,10 +13217,10 @@
                     ]
                 }
             ],
-            "src/api/auth/fn/health/auth-health-controller-healthz.ts": [
+            "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts": [
                 {
                     "name": "authHealthControllerHealthz",
-                    "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
+                    "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -12524,10 +13297,10 @@
                     ]
                 }
             ],
-            "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts": [
+            "src/api/auth/fn/health/auth-health-controller-healthz.ts": [
                 {
                     "name": "authHealthControllerHealthz",
-                    "file": "src/api/auth/fn/auth-health/auth-health-controller-healthz.ts",
+                    "file": "src/api/auth/fn/health/auth-health-controller-healthz.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -13997,6 +14770,50 @@
                     ]
                 }
             ],
+            "src/app/shared/utils/random.utils.ts": [
+                {
+                    "name": "pickRandomItem",
+                    "file": "src/app/shared/utils/random.utils.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "items",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "randomFn",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "Math.random"
+                        }
+                    ],
+                    "returnType": "T | undefined",
+                    "jsdoctags": [
+                        {
+                            "name": "items",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "randomFn",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "Math.random",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "src/api/auth/api-configuration.ts": [
                 {
                     "name": "provideApiConfiguration",
@@ -14338,7 +15155,7 @@
         ]
     },
     "coverage": {
-        "count": 17,
+        "count": 16,
         "status": "low",
         "files": [
             {
@@ -15379,7 +16196,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -15544,7 +16361,7 @@
                 "linktype": "injectable",
                 "name": "I18nService",
                 "coveragePercent": 0,
-                "coverageCount": "0/10",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -15623,6 +16440,56 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/core/icons/icons.constants.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CUSTOM_ICONS_CONSTANTS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/icons/icons.provider.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ICONS_PATHS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/icons/icons.provider.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initializeIcons",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/icons/icons.provider.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "provideCustomIcons",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/icons/icons.provider.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "registerCustomIcons",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/core/interceptors/api-error-mapper.interceptor.ts",
                 "type": "function",
                 "linktype": "miscellaneous",
@@ -15638,6 +16505,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "function",
                 "name": "showNotificationByType",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/interceptors/authorization.interceptor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "authorizationInterceptor",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -15767,7 +16644,7 @@
                 "linktype": "component",
                 "name": "MainLayoutComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {
@@ -15777,6 +16654,62 @@
                 "name": "LoadingService",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/session.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "SessionService",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/session.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ISessionState",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/session.service.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SESSION_STORAGE_KEYS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/user.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UserService",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/user.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IUser",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/user.service.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "USER_STORAGE_KEYS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -15901,7 +16834,7 @@
                 "linktype": "component",
                 "name": "LoginComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/18",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -15938,7 +16871,17 @@
                 "linktype": "component",
                 "name": "LanguageSelectorComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/utils/random.utils.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "pickRandomItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

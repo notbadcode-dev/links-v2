@@ -1,13 +1,43 @@
 {
+  "language": {
+    "names": {
+      "en": "Inglés",
+      "es": "Español"
+    }
+  },
   "common": {
+    "preferences": {
+      "title": "Preferencias",
+      "language": "Idioma",
+      "theme": "Tema"
+    },
+    "theme": {
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system_short": "Sistema"
+    },
     "actions": {
       "back": "Atrás",
-      "submit": "Enviar"
+      "submit": "Enviar",
+      "logout": "Cerrar sesión",
+      "tooltips": {
+        "logout": {
+          "option_1": "Misión completada. Hora de volver a la base.",
+          "option_2": "Cerrando sesión. Tus marcadores se quedan en guardia.",
+          "option_3": "Modo sigilo activado. Vas a desaparecer del radar.",
+          "option_4": "Cerrando el portal. Vuelve cuando quieras.",
+          "option_5": "Sesión firmada y cerrada. Nos vemos en la próxima."
+        }
+      }
+    },
+    "labels": {
+      "active_user": "Usuario activo"
     },
     "validation": {
       "required": "Este campo es requerido",
       "invalid_email": "Ingresa un email válido",
-      "min_length": "Mínimo {{min}} caracteres"
+      "min_length": "Mínimo {{min}} caracteres",
+      "password_mismatch": "Las contraseñas no coinciden"
     }
   }
 }

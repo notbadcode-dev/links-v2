@@ -8,16 +8,5 @@ import { LinkLastStatusCode } from './link-last-status-code';
  * Each possible value of `LinkLastStatusCode`
  */
 export const LINK_LAST_STATUS_CODE: LinkLastStatusCode[] = [
-  0,
-  200,
-  201,
-  202,
-  204,
-  400,
-  401,
-  403,
-  404,
-  500,
-  503,
-  520
+  0, 200, 201, 202, 204, 400, 401, 403, 404, 500, 503, 520,
 ];

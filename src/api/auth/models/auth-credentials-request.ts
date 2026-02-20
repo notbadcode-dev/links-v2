@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 export interface AuthCredentialsRequest {
-
   /**
    * User email address
    */

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
-import { EAlign, ESpacing } from '../../enums/ui.enums';
+
+import { EAlign, ESpacing } from '@libs/enums';
+
 import { STACK_CONSTANTS } from './stack.constants';
 
 @Component({

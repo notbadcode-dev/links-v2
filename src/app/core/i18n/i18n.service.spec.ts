@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { TranslocoService } from '@jsverse/transloco';
-import { Observable, of, Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 
 import { I18nService } from './i18n.service';
 
@@ -16,7 +16,7 @@ describe('I18nService', () => {
     ),
     selectTranslate: vi.fn((_key: string) => of('translated value')),
     load: vi.fn((path: string) => of({ path })),
-    langChanges$: langChanges$.asObservable() as Observable<string>,
+    langChanges$: langChanges$.asObservable(),
   };
 
   beforeEach(() => {
@@ -31,6 +31,16 @@ describe('I18nService', () => {
     translocoMock.getActiveLang.mockReturnValue('es');
 
     expect(service.currentLanguageInfo.code).toBe('es');
+  });
+
+  it('exposes current language as signal and updates on lang changes', () => {
+    translocoMock.getActiveLang.mockReturnValue('en');
+
+    expect(service.currentLanguageSignal()).toBe('en');
+
+    langChanges$.next('es');
+
+    expect(service.currentLanguageSignal()).toBe('es');
   });
 
   it('falls back to default language info when active language is unknown', () => {

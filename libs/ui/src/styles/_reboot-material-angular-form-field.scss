@@ -1,7 +1,6 @@
 @use './reboot-variables' as rv;
 
 html {
-
   --mat-form-field-outlined-container-shape: #{rv.$reboot-border-radius-sm};
 
   --mat-form-field-container-height: 32px;
@@ -54,7 +53,6 @@ html {
 }
 
 .mat-mdc-form-field {
-
   .mat-mdc-text-field-wrapper.mdc-text-field--outlined {
     height: auto;
     padding-left: rv.$reboot-input-padding-h;
@@ -75,11 +73,15 @@ html {
   }
 
   &.mat-focused .mat-mdc-text-field-wrapper.mdc-text-field {
-    box-shadow: rv.$reboot-shadow-inset, 0 0 0 3px rv.$reboot-accent-muted;
+    box-shadow:
+      rv.$reboot-shadow-inset,
+      0 0 0 3px rv.$reboot-accent-muted;
   }
 
   &.mat-form-field-invalid.mat-focused .mat-mdc-text-field-wrapper.mdc-text-field {
-    box-shadow: rv.$reboot-shadow-inset, 0 0 0 3px rv.$reboot-error-muted;
+    box-shadow:
+      rv.$reboot-shadow-inset,
+      0 0 0 3px rv.$reboot-error-muted;
   }
 
   &.mat-form-field-disabled .mat-mdc-text-field-wrapper.mdc-text-field {

@@ -1,4 +1,3 @@
-
 export interface II18nConfig {
   defaultLang: string;
   fallbackLang: string;

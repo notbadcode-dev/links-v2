@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 export interface UnmarkLinksAsFavoriteRequest {
-
   /**
    * List of link IDs to mark as favorite
    */

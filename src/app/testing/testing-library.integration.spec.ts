@@ -3,11 +3,12 @@ import { render, screen } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
 @Component({
+  selector: 'app-test-counter',
   standalone: true,
-  template: `<button type="button" (click)="count = count + 1">Count: {{ count }}</button>`,
+  templateUrl: './testing-library.integration.spec.host.html',
 })
 class TestCounterComponent {
-  count = 0;
+  public count: number = 0;
 }
 
 describe('Testing Library integration', () => {

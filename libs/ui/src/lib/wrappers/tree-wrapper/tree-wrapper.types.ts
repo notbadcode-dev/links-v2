@@ -7,7 +7,6 @@ export interface ITreeNode<TNode = unknown> {
 }
 
 export interface ITreeWrapperConfig {
-
   childrenField?: string;
 
   showLines?: boolean;

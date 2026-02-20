@@ -29,7 +29,21 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@api/*": ["src/api/*"],
-      "@libs/ui": ["libs/ui/src/public-api.ts"]
+      "@libs/ui": ["libs/ui/src/public-api.ts"],
+      "@libs/components": ["libs/ui/src/lib/components/index.ts"],
+      "@libs/components/*": ["libs/ui/src/lib/components/*"],
+      "@libs/wrappers": ["libs/ui/src/lib/wrappers/index.ts"],
+      "@libs/wrappers/*": ["libs/ui/src/lib/wrappers/*"],
+      "@libs/directives": ["libs/ui/src/lib/directives/index.ts"],
+      "@libs/directives/*": ["libs/ui/src/lib/directives/*"],
+      "@libs/enums": ["libs/ui/src/lib/enums/index.ts"],
+      "@libs/enums/*": ["libs/ui/src/lib/enums/*"],
+      "@libs/types": ["libs/ui/src/lib/types/index.ts"],
+      "@libs/types/*": ["libs/ui/src/lib/types/*"],
+      "@libs/tokens": ["libs/ui/src/lib/tokens/index.ts"],
+      "@libs/tokens/*": ["libs/ui/src/lib/tokens/*"],
+      "@libs/utils": ["libs/ui/src/lib/utils/index.ts"],
+      "@libs/utils/*": ["libs/ui/src/lib/utils/*"]
     },
     "skipLibCheck": true,
     "isolatedModules": true,

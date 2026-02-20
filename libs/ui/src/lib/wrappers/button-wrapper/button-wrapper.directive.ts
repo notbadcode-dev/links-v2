@@ -1,6 +1,6 @@
 import { Directive, HostBinding, HostListener, input, InputSignal } from '@angular/core';
 
-import { BaseDirective } from '../../directives/base.directive';
+import { BaseDirective } from '@libs/directives';
 
 @Directive({
   selector: '[buttonWrapperBase]',

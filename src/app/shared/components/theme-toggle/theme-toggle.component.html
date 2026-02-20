@@ -1,0 +1,12 @@
+<button
+  type="button"
+  class="theme-toggle-button"
+  [class.light-active]="isLightThemeActive()"
+  [class.dark-active]="isDarkThemeActive()"
+  data-testid="theme-toggle-button"
+  [attr.aria-label]="getToggleLabel()"
+  [attr.title]="getToggleLabel()"
+  (click)="toggleTheme()"
+>
+  <icon-wrapper [svgIcon]="_moonIcon" />
+</button>

@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
-import { ESpacing, ESurfaceVariant } from '../../enums/ui.enums';
+import { ESpacing, ESurfaceVariant } from '@libs/enums';
+
 import { SURFACE_CONSTANTS } from './surface.constants';
 
 @Component({

@@ -4,16 +4,12 @@
 
 import { LinkBasicResponse } from '../models/link-basic-response';
 export interface GetGroupLinkByIdResponse {
-
   /**
    * RGB color object { r, g, b }
    */
-  color?: {
-} | null;
-  description?: {
-} | null;
-  icon?: {
-} | null;
+  color?: {} | null;
+  description?: {} | null;
+  icon?: {} | null;
   id: number;
   isFavorite: boolean;
   links?: Array<LinkBasicResponse> | null;

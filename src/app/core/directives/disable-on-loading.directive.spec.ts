@@ -2,14 +2,17 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { DISABLE_ON_LOADING } from '@libs/ui';
 import { LoadingService } from '@app/core/services/loading.service';
+
+import { DISABLE_ON_LOADING } from '@libs/tokens';
+
 import { DisableOnLoadingDirective } from './disable-on-loading.directive';
 
 @Component({
+  selector: 'app-test-disable-on-loading-host',
   standalone: true,
   imports: [DisableOnLoadingDirective],
-  template: `<button disableOnLoading>Submit</button>`,
+  templateUrl: './disable-on-loading.directive.spec.host.html',
 })
 class TestDisableOnLoadingHostComponent {}
 

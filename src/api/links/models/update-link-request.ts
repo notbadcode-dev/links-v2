@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 export interface UpdateLinkRequest {
-
   /**
    * Link description
    */

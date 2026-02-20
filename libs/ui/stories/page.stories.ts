@@ -1,6 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { PageComponent } from '@libs/components';
+import { EPageLayout } from '@libs/enums';
+import { ButtonWrapperComponent } from '@libs/wrappers';
 
-import { ButtonWrapperComponent, EPageLayout, PageComponent } from '@libs/ui';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<PageComponent> = {
   title: 'UI Components/Page',

@@ -1,6 +1,7 @@
-import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+
 import { ApiConfiguration } from '@api/auth';
 
 import { AuthHttpHelper } from './auth-http.helper';
@@ -62,5 +63,34 @@ describe('AuthHttpHelper', () => {
       accessToken: 'access-token',
       refreshToken: 'refresh-token',
     });
+  });
+
+  it('posts signup form and returns success status', () => {
+    let result: unknown;
+
+    service
+      .register({
+        email: 'user@test.com',
+        password: 'secret123',
+        confirmPassword: 'secret123',
+      })
+      .subscribe((response) => {
+        result = response;
+      });
+
+    const request = httpMock.expectOne('http://api.test/auth/register');
+    expect(request.request.method).toBe('POST');
+    expect(request.request.body).toEqual({
+      email: 'user@test.com',
+      password: 'secret123',
+    });
+
+    request.flush({
+      success: true,
+      data: null,
+      messageList: [],
+    });
+
+    expect(result).toBe(true);
   });
 });

@@ -11,6 +11,8 @@ export const LOGIN_KEYS = {
     SUBMIT_BUTTON: `${LOGIN_KEYS_PREFIX}.form.submit_button`,
   },
   TOOLTIPS: {
+    REMEMBER_ME: `${LOGIN_KEYS_PREFIX}.form.tooltips.remember_me`,
+    FORGOT_PASSWORD: `${LOGIN_KEYS_PREFIX}.form.tooltips.forgot_password`,
     SUBMIT_BUTTON_OPTIONS: [
       `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_1`,
       `${LOGIN_KEYS_PREFIX}.form.tooltips.submit_button.option_2`,

@@ -1,3 +1,60 @@
 :host {
   display: block;
 }
+
+.top-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--ui-size-navbar);
+  padding: 0 var(--ui-space-5);
+  background-color: var(--ui-color-surface);
+  border-bottom: var(--ui-border-width) solid var(--ui-border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-space-3);
+
+    .brand-logo {
+      color: var(--ui-color-primary);
+      font-size: var(--ui-size-icon-lg);
+      width: var(--ui-size-icon-lg);
+      height: var(--ui-size-icon-lg);
+    }
+
+    .brand-name {
+      font-size: var(--ui-font-size-lg);
+      font-weight: var(--ui-font-weight-bold);
+      color: var(--ui-color-text-strong);
+      letter-spacing: -0.01em;
+    }
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-space-3);
+    min-width: 0;
+  }
+}
+
+.route-animation-container {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - var(--ui-size-navbar));
+  background-color: var(--ui-color-canvas);
+}
+
+@media (max-width: 768px) {
+  .top-navbar {
+    padding: 0 var(--ui-space-3);
+
+    .nav-actions {
+      gap: var(--ui-space-2);
+    }
+  }
+}

@@ -3,14 +3,11 @@
 // @ts-nocheck
 
 export interface GroupLinkBasicResponse {
-
   /**
    * RGB color object { r, g, b }
    */
-  color?: {
-} | null;
-  icon?: {
-} | null;
+  color?: {} | null;
+  icon?: {} | null;
   id: number;
   title: string;
 }

@@ -3,9 +3,58 @@
   margin-bottom: 0.5rem;
 }
 
-mat-checkbox {
-  --mdc-checkbox-selected-focus-icon-color: var(--mat-sys-primary);
-  --mdc-checkbox-selected-hover-icon-color: var(--mat-sys-primary);
-  --mdc-checkbox-selected-icon-color: var(--mat-sys-primary);
-  --mdc-checkbox-selected-pressed-icon-color: var(--mat-sys-primary);
+:host-context(ui-form-row) {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.checkbox-control {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--ui-color-text);
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-2);
+  cursor: pointer;
+  font: inherit;
+  outline: none;
+
+  &:disabled {
+    color: var(--ui-color-text-soft);
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ui-color-primary-soft-fg);
+    outline-offset: 2px;
+    border-radius: var(--ui-radius-xs);
+  }
+}
+
+.checkbox-control svg {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  color: var(--ui-color-primary-700);
+  display: block;
+}
+
+.checkbox-label {
+  color: var(--ui-color-text);
+  font-size: var(--ui-font-size-xs);
+  font-weight: var(--ui-font-weight-semibold);
+  margin-left: 0.0625rem;
+}
+
+.checkbox-required {
+  color: var(--ui-color-text-soft);
+  font-size: 0.82em;
+  font-weight: var(--ui-font-weight-regular);
+  font-style: italic;
+  margin-left: 0.2rem;
+  opacity: 0.95;
 }

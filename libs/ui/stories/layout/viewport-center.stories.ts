@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { ViewportCenterComponent } from '@libs/components';
+import { ButtonWrapperComponent } from '@libs/wrappers';
 
-import { ButtonWrapperComponent, ViewportCenterComponent } from '@libs/ui';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<ViewportCenterComponent> = {
   title: 'UI Components/ViewportCenter',

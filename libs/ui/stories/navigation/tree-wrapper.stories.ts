@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/angular';
 import { fn } from 'storybook/test';
 
-import { ITreeNode, TreeWrapperComponent } from '@libs/ui';
+import { ITreeNode, TreeWrapperComponent } from '@libs/wrappers';
+
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const sampleData: ITreeNode[] = [
   {

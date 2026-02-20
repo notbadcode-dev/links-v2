@@ -12,22 +12,25 @@ import { ApiResponseWrapper } from '../../models/api-response-wrapper';
 import { MarkLinksAsFavoriteRequest } from '../../models/mark-links-as-favorite-request';
 
 export interface LinksControllerMarkLinksAsFavorite$Params {
-      body: MarkLinksAsFavoriteRequest
+  body: MarkLinksAsFavoriteRequest;
 }
 
-export function linksControllerMarkLinksAsFavorite(http: HttpClient, rootUrl: string, params: LinksControllerMarkLinksAsFavorite$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseWrapper>> {
+export function linksControllerMarkLinksAsFavorite(
+  http: HttpClient,
+  rootUrl: string,
+  params: LinksControllerMarkLinksAsFavorite$Params,
+  context?: HttpContext,
+): Observable<StrictHttpResponse<ApiResponseWrapper>> {
   const rb = new RequestBuilder(rootUrl, linksControllerMarkLinksAsFavorite.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/json');
   }
 
-  return http.request(
-    rb.build({ responseType: 'json', accept: 'application/json', context })
-  ).pipe(
+  return http.request(rb.build({ responseType: 'json', accept: 'application/json', context })).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
       return r as StrictHttpResponse<ApiResponseWrapper>;
-    })
+    }),
   );
 }
 

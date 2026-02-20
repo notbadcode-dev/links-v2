@@ -8,6 +8,10 @@
       "label": "Contraseña",
       "placeholder": "••••••••"
     },
+    "confirm_password": {
+      "label": "Confirmar contraseña",
+      "placeholder": "••••••••"
+    },
     "name": {
       "label": "Nombre completo",
       "placeholder": "Juan García"
@@ -21,6 +25,8 @@
       "forgot_password": "¿Olvidaste tu contraseña?",
       "submit_button": "Iniciar sesión",
       "tooltips": {
+        "remember_me": "Mantén tu sesión activa en este dispositivo.",
+        "forgot_password": "Restablece tu contraseña si no la recuerdas.",
         "submit_button": {
           "option_1": "Entra y pon tus links bien finos.",
           "option_2": "Accede y deja tu colección pulida.",
@@ -31,8 +37,8 @@
       }
     },
     "messages": {
-      "success": "¡Inicio de sesión exitoso! Redirigiendo al dashboard...",
-      "failed": "Error al iniciar sesión. Por favor, verifica tus credenciales."
+      "success": "Inicio de sesión correcto",
+      "failed": "Credenciales incorrectas"
     },
     "footer": {
       "no_account": "¿No tienes una cuenta?",
@@ -44,6 +50,10 @@
     "subtitle": "Comienza con tu cuenta gratuita",
     "form": {
       "submit_button": "Crear cuenta"
+    },
+    "messages": {
+      "success": "Cuenta creada",
+      "failed": "No se pudo crear la cuenta"
     },
     "footer": {
       "already_have_account": "¿Ya tienes una cuenta?",

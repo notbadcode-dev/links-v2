@@ -20,6 +20,8 @@ describe('DashboardComponent', () => {
   it('handles onCategorySelect without throwing', () => {
     const component = createComponent();
 
-    expect(() => component.onCategorySelect({ id: '1', label: 'Test' })).not.toThrow();
+    expect(() => {
+      component.onCategorySelect({ id: '1', label: 'Test' });
+    }).not.toThrow();
   });
 });

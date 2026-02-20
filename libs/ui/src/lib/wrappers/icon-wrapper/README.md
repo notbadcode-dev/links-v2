@@ -5,7 +5,8 @@ category: wrappers
 selector: icon-wrapper
 description: Standalone Material Icons wrapper to avoid importing MatIconModule in every consumer
 inputs:
-  - { name: icon, type: string, required: true, description: Material Icons ligature name }
+  - { name: icon, type: string, required: false, description: Material Icons ligature name }
+  - { name: svgIcon, type: string, required: false, description: Registered MatIconRegistry SVG icon name }
 ---
 
 # IconWrapperComponent
@@ -26,7 +27,8 @@ Encapsula `MatIcon` para usar iconos de Material Design sin importar directament
 
 | Input | Tipo | Requerido | Descripción |
 |---|---|---|---|
-| `icon` | `string` | ✅ | Nombre del icono de Material Icons |
+| `icon` | `string` | ❌ | Nombre del icono de Material Icons |
+| `svgIcon` | `string` | ❌ | Nombre del icono SVG registrado con `MatIconRegistry` |
 
 ## Uso
 
@@ -34,6 +36,7 @@ Encapsula `MatIcon` para usar iconos de Material Design sin importar directament
 <icon-wrapper icon="person" />
 <icon-wrapper icon="settings" />
 <icon-wrapper icon="logout" />
+<icon-wrapper svgIcon="auth-login-button" />
 ```
 
 Los nombres de icono disponibles están en [Material Symbols](https://fonts.google.com/icons). En el proyecto, usa las constantes de `ICONS_CONSTANTS` para evitar strings sueltos:

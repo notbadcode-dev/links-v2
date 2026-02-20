@@ -11,26 +11,28 @@ import { RequestBuilder } from '../../request-builder';
 import { ApiResponseWrapper } from '../../models/api-response-wrapper';
 
 export interface GroupLinksControllerGetGroupLinkById$Params {
-
-/**
- * Group link ID
- */
+  /**
+   * Group link ID
+   */
   id: number;
 }
 
-export function groupLinksControllerGetGroupLinkById(http: HttpClient, rootUrl: string, params: GroupLinksControllerGetGroupLinkById$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseWrapper>> {
+export function groupLinksControllerGetGroupLinkById(
+  http: HttpClient,
+  rootUrl: string,
+  params: GroupLinksControllerGetGroupLinkById$Params,
+  context?: HttpContext,
+): Observable<StrictHttpResponse<ApiResponseWrapper>> {
   const rb = new RequestBuilder(rootUrl, groupLinksControllerGetGroupLinkById.PATH, 'get');
   if (params) {
     rb.path('id', params.id, {});
   }
 
-  return http.request(
-    rb.build({ responseType: 'json', accept: 'application/json', context })
-  ).pipe(
+  return http.request(rb.build({ responseType: 'json', accept: 'application/json', context })).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
       return r as StrictHttpResponse<ApiResponseWrapper>;
-    })
+    }),
   );
 }
 

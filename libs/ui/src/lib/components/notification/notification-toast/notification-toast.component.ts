@@ -11,8 +11,7 @@ import {
 import { MatIconButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { NOTIFICATION_CONSTANTS } from '../notification.constants';
-import { INotification } from '../notification.interface';
+import { INotification, NOTIFICATION_CONSTANTS } from '@libs/components/notification';
 
 @Component({
   selector: 'notification-toast',

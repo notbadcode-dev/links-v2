@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 export interface UnmarkGroupLinksAsFavoriteRequest {
-
   /**
    * List of group link IDs to unmark as favorite
    */

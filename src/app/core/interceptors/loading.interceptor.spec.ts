@@ -1,8 +1,9 @@
-import { HttpRequest } from '@angular/common/http';
+import { HttpHandlerFn, HttpRequest, HttpResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
 import { LoadingService } from '@app/core/services/loading.service';
+
 import { loadingInterceptor } from './loading.interceptor';
 
 describe('loadingInterceptor', () => {
@@ -20,7 +21,7 @@ describe('loadingInterceptor', () => {
 
   it('increments before request and decrements on success', () => {
     const req = new HttpRequest('GET', '/test');
-    const next = vi.fn(() => of({ ok: true }));
+    const next: HttpHandlerFn = () => of(new HttpResponse({ status: 200 }));
 
     TestBed.runInInjectionContext(() => {
       loadingInterceptor(req, next).subscribe();
@@ -32,7 +33,7 @@ describe('loadingInterceptor', () => {
 
   it('decrements on error as well', () => {
     const req = new HttpRequest('GET', '/test');
-    const next = vi.fn(() => throwError(() => new Error('network error')));
+    const next: HttpHandlerFn = () => throwError(() => new Error('network error'));
 
     TestBed.runInInjectionContext(() => {
       loadingInterceptor(req, next).subscribe({

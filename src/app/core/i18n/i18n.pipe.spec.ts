@@ -1,9 +1,9 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
-import { I18nService } from './i18n.service';
 import { I18nPipe } from './i18n.pipe';
+import { I18nService } from './i18n.service';
 
 describe('I18nPipe', () => {
   const langChanges$ = new Subject<string>();
@@ -12,7 +12,7 @@ describe('I18nPipe', () => {
   };
 
   const i18nMock = {
-    langChanges$: langChanges$.asObservable() as Observable<string>,
+    langChanges$: langChanges$.asObservable(),
     translate: vi.fn((key: string) => `t:${key}`),
   };
 
@@ -37,7 +37,7 @@ describe('I18nPipe', () => {
 
   it('marks for check on language changes', () => {
     const pipe = createPipe();
-    const callsBefore = cdrMock.markForCheck.mock.calls.length;
+    const callsBefore: number = cdrMock.markForCheck.mock.calls.length as number;
 
     langChanges$.next('es');
     pipe.ngOnDestroy();

@@ -1,20 +1,19 @@
 @let currentLang = _currentLang();
-@let currentLangInfo = _currentLangInfo();
-
-<dropdown-wrapper>
+<dropdown-wrapper customClass="language-selector-trigger" menuClass="language-selector-menu">
   <ng-container slot="trigger">
-    <icon-wrapper icon="language" />
-    {{ currentLangInfo.flag }} {{ currentLang.toUpperCase() }}
+    <icon-wrapper icon="translate" />
+    <span class="language-selector-label">{{ _getLanguageLabel(currentLang) }}</span>
   </ng-container>
 
   <ng-container slot="content">
     @for (lang of _availableLanguages; track lang.code) {
       <button
         class="dropdown-item"
+        [attr.data-testid]="'language-option-' + lang.code"
         [class.active]="currentLang === lang.code"
         (click)="setLanguage(lang.code)"
       >
-        {{ lang.flag }} {{ lang.name }}
+        {{ _getLanguageLabel(lang.code) }}
       </button>
     }
   </ng-container>

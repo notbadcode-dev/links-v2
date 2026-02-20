@@ -1,5 +1,5 @@
-import { I18N_CONSTANTS } from './i18n.constants';
 import { I18N_SCOPE_TOKEN, provideI18n, provideI18nScope } from './i18n-config.provider';
+import { I18N_CONSTANTS } from './i18n.constants';
 
 describe('i18n config providers', () => {
   it('creates transloco providers array', () => {

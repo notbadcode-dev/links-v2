@@ -12,22 +12,25 @@ import { ApiResponseWrapper } from '../../models/api-response-wrapper';
 import { PaginatedRequest } from '../../models/paginated-request';
 
 export interface LinksControllerGetLinksPaginated$Params {
-      body: PaginatedRequest
+  body: PaginatedRequest;
 }
 
-export function linksControllerGetLinksPaginated(http: HttpClient, rootUrl: string, params: LinksControllerGetLinksPaginated$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseWrapper>> {
+export function linksControllerGetLinksPaginated(
+  http: HttpClient,
+  rootUrl: string,
+  params: LinksControllerGetLinksPaginated$Params,
+  context?: HttpContext,
+): Observable<StrictHttpResponse<ApiResponseWrapper>> {
   const rb = new RequestBuilder(rootUrl, linksControllerGetLinksPaginated.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/json');
   }
 
-  return http.request(
-    rb.build({ responseType: 'json', accept: 'application/json', context })
-  ).pipe(
+  return http.request(rb.build({ responseType: 'json', accept: 'application/json', context })).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
       return r as StrictHttpResponse<ApiResponseWrapper>;
-    })
+    }),
   );
 }
 

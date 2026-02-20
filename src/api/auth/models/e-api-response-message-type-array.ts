@@ -12,5 +12,5 @@ export const E_API_RESPONSE_MESSAGE_TYPE: EApiResponseMessageType[] = [
   'success',
   'warning',
   'error',
-  'critical'
+  'critical',
 ];

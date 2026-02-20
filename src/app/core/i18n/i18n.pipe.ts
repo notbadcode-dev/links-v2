@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, inject, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+
 import { I18nService } from './i18n.service';
 import { TTranslationParams, TTranslationPath } from './i18n.types';
 
@@ -14,7 +15,6 @@ export class I18nPipe implements PipeTransform, OnDestroy {
   private readonly _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   constructor() {
-
     this._i18nService.langChanges$.pipe(takeUntil(this._destroy$)).subscribe(() => {
       this._cdr.markForCheck();
     });

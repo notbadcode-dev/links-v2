@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { TitleComponent } from '@libs/components';
 
-import { TitleComponent } from '@libs/ui';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<TitleComponent> = {
   title: 'UI Components/Title',

@@ -1,7 +1,6 @@
 @use './reboot-variables' as rv;
 
 html {
-
   --mat-button-filled-container-color: #{rv.$reboot-primary};
   --mat-button-filled-label-text-color: #{rv.$reboot-on-primary};
   --mat-button-filled-container-shape: #{rv.$reboot-border-radius-sm};

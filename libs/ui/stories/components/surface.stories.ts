@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { SurfaceComponent } from '@libs/components';
+import { ESpacing, ESurfaceVariant } from '@libs/enums';
 
-import { ESpacing, ESurfaceVariant, SurfaceComponent } from '@libs/ui';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<SurfaceComponent> = {
   title: 'UI Components/Surface',

@@ -1,13 +1,26 @@
-import { HttpErrorResponse, HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandlerFn,
+  HttpRequest,
+} from '@angular/common/http';
 import { inject } from '@angular/core';
-import { ApiResponseMessageModel } from '@api/auth/models/api-response-message-model';
-import { NotificationService } from '@libs/ui';
-import { catchError, EMPTY } from 'rxjs';
+import { catchError, EMPTY, Observable } from 'rxjs';
 
-import { API_ERROR_MAPPER_CONSTANTS, NOTIFICATION_TYPE_MAP } from './constants/api-error-mapper.constants';
+import { ApiResponseMessageModel } from '@api/auth/models/api-response-message-model';
+
+import { NotificationService } from '@libs/components';
+
+import {
+  API_ERROR_MAPPER_CONSTANTS,
+  NOTIFICATION_TYPE_MAP,
+} from './constants/api-error-mapper.constants';
 import { getApiFailureResponseFromHttpError } from './helpers/api-error-mapper.helper';
 
-export function apiErrorMapperInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
+export function apiErrorMapperInterceptor(
+  req: HttpRequest<unknown>,
+  next: HttpHandlerFn,
+): Observable<HttpEvent<unknown>> {
   const notificationService = inject(NotificationService);
 
   return next(req).pipe(
@@ -32,6 +45,6 @@ function showNotificationByType(
   notificationService: NotificationService,
   messageItem: ApiResponseMessageModel,
 ): void {
-  const method = NOTIFICATION_TYPE_MAP[messageItem.type] ?? 'error';
+  const method = NOTIFICATION_TYPE_MAP[messageItem.type];
   notificationService[method](messageItem.message);
 }

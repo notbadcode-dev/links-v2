@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
-import { EAlign } from '../../enums/ui.enums';
+import { EAlign } from '@libs/enums';
+
 import { FORM_ROW_CONSTANTS } from './form-row.constants';
 
 @Component({

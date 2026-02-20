@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { IconWrapperComponent } from '@libs/wrappers';
 
-import { IconWrapperComponent } from '@libs/ui';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<IconWrapperComponent> = {
   title: 'UI Wrappers/IconWrapper',
@@ -10,6 +10,10 @@ const meta: Meta<IconWrapperComponent> = {
     icon: {
       control: 'text',
       description: 'Material icon name',
+    },
+    svgIcon: {
+      control: 'text',
+      description: 'Registered SVG icon name',
     },
   },
   args: {

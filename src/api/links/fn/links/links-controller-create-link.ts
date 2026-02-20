@@ -12,22 +12,25 @@ import { ApiResponseWrapper } from '../../models/api-response-wrapper';
 import { CreateLinkRequest } from '../../models/create-link-request';
 
 export interface LinksControllerCreateLink$Params {
-      body: CreateLinkRequest
+  body: CreateLinkRequest;
 }
 
-export function linksControllerCreateLink(http: HttpClient, rootUrl: string, params: LinksControllerCreateLink$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseWrapper>> {
+export function linksControllerCreateLink(
+  http: HttpClient,
+  rootUrl: string,
+  params: LinksControllerCreateLink$Params,
+  context?: HttpContext,
+): Observable<StrictHttpResponse<ApiResponseWrapper>> {
   const rb = new RequestBuilder(rootUrl, linksControllerCreateLink.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/json');
   }
 
-  return http.request(
-    rb.build({ responseType: 'json', accept: 'application/json', context })
-  ).pipe(
+  return http.request(rb.build({ responseType: 'json', accept: 'application/json', context })).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
       return r as StrictHttpResponse<ApiResponseWrapper>;
-    })
+    }),
   );
 }
 

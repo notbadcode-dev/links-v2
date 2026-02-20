@@ -8,6 +8,10 @@ export const SIGNUP_KEYS = {
   FORM: {
     SUBMIT_BUTTON: `${SIGNUP_KEYS_PREFIX}.form.submit_button`,
   },
+  MESSAGES: {
+    SUCCESS: `${SIGNUP_KEYS_PREFIX}.messages.success`,
+    FAILED: `${SIGNUP_KEYS_PREFIX}.messages.failed`,
+  },
   FOOTER: {
     ALREADY_HAVE_ACCOUNT: `${SIGNUP_KEYS_PREFIX}.footer.already_have_account`,
     SIGN_IN_LINK: `${SIGNUP_KEYS_PREFIX}.footer.sign_in_link`,

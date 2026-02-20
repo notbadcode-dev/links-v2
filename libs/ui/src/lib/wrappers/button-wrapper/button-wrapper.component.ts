@@ -13,13 +13,14 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { BaseDirective } from '@libs/directives';
+import { DISABLE_ON_LOADING } from '@libs/tokens';
+
 import { ButtonWrapperBaseDirective } from './button-wrapper.directive';
 import { EButtonWrapperColor, EButtonWrapperVariant } from './button-wrapper.enum';
-
-import { BaseDirective } from '../../directives/base.directive';
-import { DISABLE_ON_LOADING } from '../../tokens/disable-on-loading.token';
+import { IconWrapperComponent } from '../icon-wrapper/icon-wrapper.component';
 
 @Component({
   selector: 'button-wrapper',
@@ -31,7 +32,7 @@ import { DISABLE_ON_LOADING } from '../../tokens/disable-on-loading.token';
     NgTemplateOutlet,
     MatButtonModule,
     MatTooltipModule,
-    MatIconModule,
+    IconWrapperComponent,
     ButtonWrapperBaseDirective,
   ],
 })
@@ -40,6 +41,7 @@ export class ButtonWrapperComponent extends BaseDirective {
 
   public readonly tooltip: InputSignal<string | undefined> = input<string>();
   public readonly icon: InputSignal<string | undefined> = input<string>();
+  public readonly svgIcon: InputSignal<string | undefined> = input<string>();
   public readonly variant: InputSignal<EButtonWrapperVariant> = input<EButtonWrapperVariant>(
     EButtonWrapperVariant.RAISED,
   );

@@ -1,16 +1,17 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { E_API_RESPONSE_MESSAGE_TYPE } from '@api/auth/models/e-api-response-message-type-array';
-import { EApiResponseMessageType } from '@api/auth/models/e-api-response-message-type';
+
 import { ApiResponseMessageModel } from '@api/auth/models/api-response-message-model';
+import { EApiResponseMessageType } from '@api/auth/models/e-api-response-message-type';
+import { E_API_RESPONSE_MESSAGE_TYPE } from '@api/auth/models/e-api-response-message-type-array';
 
 import { API_ERROR_MAPPER_CONSTANTS } from '../constants/api-error-mapper.constants';
-import { ApiFailureResponse } from '../models/api-error-mapper.model';
+import { IApiFailureResponse } from '../models/api-error-mapper.model';
 
-export function getApiFailureResponseFromHttpError(error: HttpErrorResponse): ApiFailureResponse {
+export function getApiFailureResponseFromHttpError(error: HttpErrorResponse): IApiFailureResponse {
   return mapErrorBody(error);
 }
 
-function mapErrorBody(error: HttpErrorResponse): ApiFailureResponse {
+function mapErrorBody(error: HttpErrorResponse): IApiFailureResponse {
   const originalBody = error.error as { code?: unknown } | null;
   const code = typeof originalBody?.code === 'string' ? originalBody.code : undefined;
 
@@ -39,8 +40,8 @@ function getMessageList(errorBody: unknown): ApiResponseMessageModel[] {
           return null;
         }
 
-        const message = (item as { message?: unknown }).message;
-        const type = (item as { type?: unknown }).type;
+        const { message } = item as { message?: unknown };
+        const { type } = item as { type?: unknown };
 
         if (typeof message !== 'string' || !message.trim()) {
           return null;
@@ -51,7 +52,9 @@ function getMessageList(errorBody: unknown): ApiResponseMessageModel[] {
           type: isApiMessageType(type) ? type : 'error',
         } as ApiResponseMessageModel;
       })
-      .filter((item: ApiResponseMessageModel | null): item is ApiResponseMessageModel => item !== null);
+      .filter(
+        (item: ApiResponseMessageModel | null): item is ApiResponseMessageModel => item !== null,
+      );
 
     if (mapped.length > 0) {
       return mapped;

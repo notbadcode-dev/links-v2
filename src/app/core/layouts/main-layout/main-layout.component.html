@@ -1,31 +1,35 @@
-<div class="layout-wrapper">
-  <nav class="top-navbar">
-    <div class="nav-brand">
-      <mat-icon class="brand-logo">{{ icons.APP.LOGO }}</mat-icon>
-      <span class="brand-name">Bookmarks</span>
-    </div>
-    <div class="nav-actions">
-      <button mat-icon-button aria-label="Notifications">
-        <mat-icon>{{ icons.NAV.NOTIFICATIONS }}</mat-icon>
-      </button>
-      <button mat-icon-button aria-label="User profile">
-        <mat-icon>{{ icons.NAV.ACCOUNT }}</mat-icon>
-      </button>
-    </div>
-  </nav>
+<ng-container *i18n="let t">
+  <div class="layout-wrapper">
+    <aside class="right-sidebar">
+      <div class="sidebar-content">
+        <header class="sidebar-header">
+          <h3>Activity</h3>
+        </header>
+        <div class="sidebar-items">
+          <p class="empty-state">No recent activity</p>
+        </div>
 
-  <aside class="right-sidebar">
-    <div class="sidebar-content">
-      <header class="sidebar-header">
-        <h3>Activity</h3>
-      </header>
-      <div class="sidebar-items">
-        <p class="empty-state">No recent activity</p>
+        <div class="sidebar-user">
+          <div class="sidebar-user-row">
+            <mat-icon class="sidebar-user-icon" [svgIcon]="icons.AUTH.USER_SIDEBAR" />
+            <span class="sidebar-user-email">{{ activeEmail() }}</span>
+          </div>
+
+          <button-wrapper
+            class="sidebar-logout-button"
+            [title]="t('common.actions.logout')"
+            [tooltip]="t(logoutTooltipKey)"
+            [svgIcon]="icons.AUTH.LOGOUT_BUTTON"
+            [fullWidth]="true"
+            [variant]="EButtonWrapperVariant.FLAT"
+            (clicked)="onLogout()"
+          />
+        </div>
       </div>
-    </div>
-  </aside>
+    </aside>
 
-  <main class="main-content">
-    <router-outlet />
-  </main>
-</div>
+    <main class="main-content">
+      <router-outlet />
+    </main>
+  </div>
+</ng-container>

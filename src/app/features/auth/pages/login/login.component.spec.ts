@@ -1,13 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotificationService } from '@libs/ui';
 import { of } from 'rxjs';
 
 import { ROUTES_CONSTANTS } from '@app/constants/routes.constants';
+import { SessionService } from '@app/core/services/session.service';
+import { UserService } from '@app/core/services/user.service';
 import { AuthHttpHelper } from '@app/features/auth/helpers';
-import { LOGIN_KEYS } from '../../constants/login-keys.constants';
+
+import { NotificationService } from '@libs/components';
+
 import { LoginComponent } from './login.component';
+import { LOGIN_KEYS } from '../../constants/login-keys.constants';
 
 describe('LoginComponent', () => {
   const authHttpHelperMock = {
@@ -27,6 +31,14 @@ describe('LoginComponent', () => {
     translate: vi.fn((key: string) => `t:${key}`),
   };
 
+  const sessionServiceMock = {
+    setTokens: vi.fn(),
+  };
+
+  const userServiceMock = {
+    setUser: vi.fn(),
+  };
+
   const createComponent = (): LoginComponent =>
     TestBed.runInInjectionContext(() => new LoginComponent());
 
@@ -39,6 +51,8 @@ describe('LoginComponent', () => {
         { provide: Router, useValue: routerMock },
         { provide: NotificationService, useValue: notificationMock },
         { provide: TranslocoService, useValue: translocoMock },
+        { provide: SessionService, useValue: sessionServiceMock },
+        { provide: UserService, useValue: userServiceMock },
       ],
     });
   });
@@ -94,6 +108,8 @@ describe('LoginComponent', () => {
       rememberMe: true,
     });
     expect(notificationMock.success).toHaveBeenCalledWith(`t:${LOGIN_KEYS.MESSAGES.SUCCESS}`);
+    expect(sessionServiceMock.setTokens).toHaveBeenCalledWith('access-token', 'refresh-token');
+    expect(userServiceMock.setUser).toHaveBeenCalledWith({ email: 'john@doe.com' });
     expect(routerMock.navigate).toHaveBeenCalledWith([ROUTES_CONSTANTS.DASHBOARD]);
   });
 

@@ -1,11 +1,53 @@
-<mat-checkbox
-  [required]="effectiveRequired()"
+<button
+  type="button"
+  class="checkbox-control"
+  role="checkbox"
+  [attr.aria-checked]="isChecked()"
+  [attr.aria-required]="effectiveRequired()"
   [disabled]="isDisabled()"
   [matTooltip]="effectiveTooltip() ?? ''"
   [attr.tabindex]="effectiveTabindex() ?? null"
-  [ngModel]="value()"
-  (ngModelChange)="onChange($event)"
-  (blur)="onBlur()"
+  (click)="toggle()"
+  (keydown.enter)="toggleFromKeyboard($event)"
+  (keydown.space)="toggleFromKeyboard($event)"
 >
-  {{ effectiveLabel() }}
-</mat-checkbox>
+  @if (isChecked()) {
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path
+          fill="currentColor"
+          fill-opacity="0.3"
+          d="M4 12v-7c0 -0.55 0.45 -1 1 -1h14c0.55 0 1 0.45 1 1v14c0 0.55 -0.45 1 -1 1h-14c-0.55 0 -1 -0.45 -1 -1Z"
+        />
+        <path fill="none" stroke-dasharray="14" d="M8 12l3 3l5 -5">
+          <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.2s" values="14;0" />
+        </path>
+      </g>
+    </svg>
+  } @else {
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        fill-opacity="0"
+        stroke="currentColor"
+        stroke-dasharray="66"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 12v-7c0 -0.55 0.45 -1 1 -1h14c0.55 0 1 0.45 1 1v14c0 0.55 -0.45 1 -1 1h-14c-0.55 0 -1 -0.45 -1 -1Z"
+      >
+        <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="66;0" />
+        <animate fill="freeze" attributeName="fill-opacity" begin="0.6s" dur="0.15s" to="0.3" />
+      </path>
+    </svg>
+  }
+
+  @if (effectiveLabel()) {
+    <span class="checkbox-label">
+      {{ effectiveLabel() }}
+      @if (effectiveRequired()) {
+        <span class="checkbox-required" aria-hidden="true">required</span>
+      }
+    </span>
+  }
+</button>

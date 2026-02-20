@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 export interface SuccessFailureResponse {
-
   /**
    * List of items that failed to process
    */

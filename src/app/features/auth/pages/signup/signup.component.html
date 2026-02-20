@@ -1,18 +1,12 @@
 <ng-container *i18n="'auth'; let t">
-  <viewport-center>
-    <div class="signup-container">
-      <div class="signup-header">
-        <div class="logo-circle">
-          <mat-icon>{{ icons.APP.LOGO }}</mat-icon>
-        </div>
-        <h1>{{ t('auth.signup.title') }}</h1>
-        <p>{{ t('auth.signup.subtitle') }}</p>
-      </div>
+  <ui-page class="signup-page" [layout]="EPageLayout.CENTERED">
+    <ui-page-header>
+      <ui-title [title]="t(i18nKeys.TITLE)" [subtitle]="t(i18nKeys.SUBTITLE)" />
+    </ui-page-header>
 
-      <card-wrapper customClass="signup-card">
-        <form disableOnLoading [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-          <input-text-wrapper [config]="nameConfig" formControlName="name" [errorMessage]="nameErrorMessage" />
-
+    <ui-page-body>
+      <ui-surface class="auth-card" [variant]="ESurfaceVariant.CARD" [padding]="ESpacing.LG">
+        <ui-form-container [formGroup]="signupForm" (formSubmit)="onSubmit()">
           <input-text-wrapper [config]="emailConfig" formControlName="email" [errorMessage]="emailErrorMessage" />
 
           <input-password-wrapper
@@ -21,20 +15,30 @@
             [errorMessage]="passwordErrorMessage"
           />
 
-          <button-wrapper
-            [title]="t('auth.signup.form.submit_button')"
-            [fullWidth]="true"
-            [disabled]="signupForm.invalid"
-            (clicked)="onSubmit()"
-            [variant]="EButtonWrapperVariant.FLAT"
+          <input-password-wrapper
+            [config]="confirmPasswordConfig"
+            formControlName="confirmPassword"
+            [errorMessage]="confirmPasswordErrorMessage"
           />
-        </form>
-      </card-wrapper>
+        </ui-form-container>
 
-      <p class="footer-text">
-        {{ t('auth.signup.footer.already_have_account') }}
-        <a routerLink="/login">{{ t('auth.signup.footer.sign_in_link') }}</a>
-      </p>
-    </div>
-  </viewport-center>
+        <button-wrapper
+          disableOnLoading
+          [title]="t(i18nKeys.FORM.SUBMIT_BUTTON)"
+          [svgIcon]="icons.AUTH.USER_SIDEBAR"
+          [fullWidth]="true"
+          [disabled]="signupForm.invalid"
+          [variant]="EButtonWrapperVariant.FLAT"
+          (clicked)="onSubmit()"
+        />
+      </ui-surface>
+    </ui-page-body>
+
+    <ui-page-footer>
+      <ui-inline-text>
+        {{ t(i18nKeys.FOOTER.ALREADY_HAVE_ACCOUNT) }}
+        <ui-link [route]="routes.LOGIN" [label]="t(i18nKeys.FOOTER.SIGN_IN_LINK)" [adjacent]="true" />
+      </ui-inline-text>
+    </ui-page-footer>
+  </ui-page>
 </ng-container>

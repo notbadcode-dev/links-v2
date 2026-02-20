@@ -8,6 +8,10 @@
       "label": "Password",
       "placeholder": "••••••••"
     },
+    "confirm_password": {
+      "label": "Confirm Password",
+      "placeholder": "••••••••"
+    },
     "name": {
       "label": "Full Name",
       "placeholder": "John Doe"
@@ -21,6 +25,8 @@
       "forgot_password": "Forgot your password?",
       "submit_button": "Sign in",
       "tooltips": {
+        "remember_me": "Keep your session active on this device.",
+        "forgot_password": "Reset your password if you cannot remember it.",
         "submit_button": {
           "option_1": "Sign in and keep your links sharp.",
           "option_2": "Access and leave your collection polished.",
@@ -31,8 +37,8 @@
       }
     },
     "messages": {
-      "success": "Login successful! Redirecting to dashboard...",
-      "failed": "Login failed. Please check your credentials and try again."
+      "success": "Login successful",
+      "failed": "Invalid credentials"
     },
     "footer": {
       "no_account": "Don't have an account?",
@@ -44,6 +50,10 @@
     "subtitle": "Get started with your free account",
     "form": {
       "submit_button": "Create account"
+    },
+    "messages": {
+      "success": "Account created",
+      "failed": "Unable to create account"
     },
     "footer": {
       "already_have_account": "Already have an account?",

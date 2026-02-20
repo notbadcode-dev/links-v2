@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ChangeDetectionStrategy, Component, computed, Signal } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { InputWrapperDirective } from '../input-wrapper/input-wrapper.directive';
+import { InputWrapperDirective } from '@libs/wrappers/input-wrapper/input-wrapper.directive';
 
 @Component({
   selector: 'checkbox-wrapper',
@@ -11,14 +10,29 @@ import { InputWrapperDirective } from '../input-wrapper/input-wrapper.directive'
   styleUrl: './checkbox-wrapper.component.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, MatCheckboxModule, MatTooltipModule],
+  imports: [MatTooltipModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-
-      useExisting: forwardRef(() => CheckboxWrapperComponent),
+      useExisting: CheckboxWrapperComponent,
       multi: true,
     },
   ],
 })
-export class CheckboxWrapperComponent extends InputWrapperDirective<boolean> {}
+export class CheckboxWrapperComponent extends InputWrapperDirective<boolean> {
+  public readonly isChecked: Signal<boolean> = computed(() => this.value() === true);
+
+  public toggle(): void {
+    if (this.isDisabled()) {
+      return;
+    }
+
+    this.onChange(!this.isChecked());
+    this.onBlur();
+  }
+
+  public toggleFromKeyboard(event: Event): void {
+    event.preventDefault();
+    this.toggle();
+  }
+}

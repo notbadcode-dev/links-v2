@@ -1,8 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ICONS_CONSTANTS } from '@app/constants/icons.constants';
 import { provideTranslocoScope } from '@jsverse/transloco';
 
-import { BaseDirective, CardWrapperComponent, ITreeNode, TreeWrapperComponent } from '@libs/ui';
+import { ICONS_CONSTANTS } from '@app/constants/icons.constants';
+
+import { BaseDirective } from '@libs/directives';
+import { CardWrapperComponent, ITreeNode, TreeWrapperComponent } from '@libs/wrappers';
+
 import { DASHBOARD_CONSTANTS } from './constants/dashboard.constants';
 
 @Component({
@@ -52,7 +55,5 @@ export class DashboardComponent extends BaseDirective {
     },
   ];
 
-  public onCategorySelect(_node: ITreeNode): void {
-
-  }
+  public onCategorySelect(_node: ITreeNode): void {}
 }

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BaseDirective } from '../../directives/base.directive';
+
+import { BaseDirective } from '@libs/directives';
 
 @Component({
   selector: 'viewport-center',

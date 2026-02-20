@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { StackComponent } from '@libs/components';
+import { EAlign, ESpacing } from '@libs/enums';
 
-import { EAlign, ESpacing, StackComponent } from '@libs/ui';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<StackComponent> = {
   title: 'UI Components/Stack',

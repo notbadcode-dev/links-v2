@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/angular';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import { ButtonWrapperComponent, EButtonWrapperColor, EButtonWrapperVariant } from '@libs/ui';
+import { ButtonWrapperComponent, EButtonWrapperColor, EButtonWrapperVariant } from '@libs/wrappers';
+
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<ButtonWrapperComponent> = {
   title: 'UI Wrappers/ButtonWrapper',
@@ -19,6 +20,10 @@ const meta: Meta<ButtonWrapperComponent> = {
     icon: {
       control: 'text',
       description: 'Material icon name',
+    },
+    svgIcon: {
+      control: 'text',
+      description: 'Registered SVG icon name',
     },
     variant: {
       control: 'select',

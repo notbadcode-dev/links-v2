@@ -1,13 +1,25 @@
 @if (!effectiveHideExternalLabel()) {
-  <label class="form-label" [matTooltip]="effectiveTooltip() ?? ''">{{ effectiveLabel() }}</label>
+  <label class="form-label" [matTooltip]="effectiveTooltip() ?? ''">
+    {{ effectiveLabel() }}
+    @if (effectiveRequired()) {
+      <span class="form-required" aria-hidden="true">required</span>
+    }
+  </label>
 }
 
 <mat-form-field appearance="outline">
   @if (!effectiveHideInternalLabel()) {
-    <mat-label>{{ effectiveLabel() }}</mat-label>
+    <mat-label>
+      {{ effectiveLabel() }}
+      @if (effectiveRequired()) {
+        <span class="form-required-inline" aria-hidden="true">required</span>
+      }
+    </mat-label>
   }
 
-  @if (effectiveIcon()) {
+  @if (effectiveSvgIcon()) {
+    <mat-icon matPrefix [svgIcon]="effectiveSvgIcon()!" />
+  } @else if (effectiveIcon()) {
     <mat-icon matPrefix>{{ effectiveIcon() }}</mat-icon>
   }
 
@@ -22,12 +34,16 @@
     (ngModelChange)="onChange($event)"
     (blur)="onBlur()"
   />
-
-  @if (effectiveErrorMessage()) {
-    <mat-error>{{ effectiveErrorMessage() }}</mat-error>
-  }
-
-  @if (effectiveHint()) {
-    <mat-hint>{{ effectiveHint() }}</mat-hint>
-  }
 </mat-form-field>
+
+<div class="form-caption-slot">
+  @if (effectiveErrorMessage()) {
+    <p class="form-caption form-caption--error" aria-live="polite">
+      {{ effectiveErrorMessage() }}
+    </p>
+  } @else if (effectiveHint()) {
+    <p class="form-caption">{{ effectiveHint() }}</p>
+  } @else {
+    <p class="form-caption form-caption--placeholder" aria-hidden="true"></p>
+  }
+</div>

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { IconCircleComponent } from '@libs/components';
 
-import { IconCircleComponent } from '@libs/ui';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<IconCircleComponent> = {
   title: 'UI Components/IconCircle',

@@ -1,6 +1,8 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, Signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { forkJoin, map, Observable } from 'rxjs';
+import { forkJoin, map, Observable, startWith } from 'rxjs';
+
 import { I18N_CONSTANTS } from './i18n.constants';
 import { ILanguage, TTranslationParams, TTranslationPath } from './i18n.types';
 
@@ -10,7 +12,16 @@ import { ILanguage, TTranslationParams, TTranslationPath } from './i18n.types';
 export class I18nService {
   private static readonly _fallbackLanguage: ILanguage = I18N_CONSTANTS.DEFAULT_LANGUAGE;
   public readonly availableLanguages: ILanguage[] = I18N_CONSTANTS.LANGUAGES;
+  public readonly currentLanguageSignal: Signal<string>;
   private readonly _translocoService: TranslocoService = inject(TranslocoService);
+
+  constructor() {
+    const initialLanguage = this.currentLanguage;
+    this.currentLanguageSignal = toSignal(
+      this._translocoService.langChanges$.pipe(startWith(initialLanguage)),
+      { initialValue: initialLanguage },
+    );
+  }
 
   public get currentLanguage(): string {
     return this._translocoService.getActiveLang();

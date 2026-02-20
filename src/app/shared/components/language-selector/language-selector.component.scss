@@ -2,26 +2,123 @@
   display: inline-block;
 }
 
+:host ::ng-deep .language-selector-trigger {
+  width: 130px;
+  min-width: 130px;
+  max-width: 130px;
+  padding: var(--ui-space-1) var(--ui-space-2);
+  min-height: 32px;
+  border: var(--ui-border-width) solid var(--ui-border-subtle);
+  border-radius: var(--ui-radius-sm);
+  line-height: 1;
+  font-size: var(--ui-font-size-sm);
+  color: var(--ui-color-text);
+  --mat-text-button-label-text-color: var(--ui-color-text);
+  --mdc-text-button-label-text-color: var(--ui-color-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  font-weight: var(--ui-font-weight-semibold);
+  letter-spacing: 0.01em;
+  box-shadow: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition:
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    border-color var(--ui-transition-fast);
+}
+
+:host ::ng-deep .language-selector-trigger .mdc-button__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--ui-space-2);
+  width: 100%;
+  color: var(--ui-color-text);
+  overflow: hidden;
+}
+
+:host ::ng-deep .language-selector-trigger:hover {
+  color: var(--ui-color-text);
+  --mat-text-button-label-text-color: var(--ui-color-text);
+  --mdc-text-button-label-text-color: var(--ui-color-text);
+  border-color: var(--ui-border-strong);
+  background-color: var(--ui-color-hover-muted);
+}
+
+:host ::ng-deep .language-selector-trigger icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 1rem;
+  width: 1rem;
+  min-width: 1rem;
+  position: relative;
+  padding-right: var(--ui-space-2);
+  margin-right: var(--ui-space-1);
+}
+
+:host ::ng-deep .language-selector-trigger icon-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 14px;
+  background-color: var(--ui-border-strong);
+}
+
+:host ::ng-deep .language-selector-trigger .language-selector-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:host ::ng-deep .language-selector-trigger .mat-icon {
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transform: translateY(1px);
+  color: var(--ui-color-text);
+}
+
 .dropdown-item {
   display: flex;
   align-items: center;
   gap: var(--ui-space-2);
-  padding: var(--ui-space-3) var(--ui-space-4);
+  padding: var(--ui-space-2) var(--ui-space-3);
   cursor: pointer;
   border: none;
+  border-bottom: var(--ui-border-width) solid var(--ui-border-subtle);
   background: none;
   width: 100%;
   text-align: left;
-  font-size: var(--ui-font-size-base);
+  font-size: var(--ui-font-size-sm);
   color: var(--ui-color-text);
-  transition: background-color var(--ui-transition-fast);
+  transition: color var(--ui-transition-fast);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
 }
 
 .dropdown-item:hover {
-  background-color: var(--ui-color-hover-muted);
+  color: var(--ui-color-primary-700);
+  background-color: var(--ui-color-primary-soft);
 }
 
 .dropdown-item.active {
-  font-weight: var(--ui-font-weight-semibold);
-  background-color: var(--ui-color-active-muted);
+  font-weight: var(--ui-font-weight-medium);
+  color: var(--ui-color-primary-700);
 }

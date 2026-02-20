@@ -1,20 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { Observable, of, Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 
 import { I18nDirective } from './i18n.directive';
 import { I18nService } from './i18n.service';
 
 @Component({
+  selector: 'app-test-i18n-directive-host',
   standalone: true,
   imports: [I18nDirective],
-  template: `
-    <ng-container *i18n="'auth'; let t">
-      <span class="scoped">{{ t('title') }}</span>
-      <span class="common">{{ t('common.actions.back') }}</span>
-      <span class="plain">{{ t('subtitle') }}</span>
-    </ng-container>
-  `,
+  templateUrl: './i18n.directive.spec.host.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestI18nDirectiveHostComponent {}
@@ -24,7 +19,7 @@ describe('I18nDirective', () => {
 
   const i18nMock = {
     currentLanguage: 'en',
-    langChanges$: langChanges$.asObservable() as Observable<string>,
+    langChanges$: langChanges$.asObservable(),
     loadTranslations: vi.fn((_scope?: string) => of({})),
     translate: vi.fn((key: string, _params?: unknown, scope?: string) =>
       scope ? `${scope}:${key}` : `global:${key}`,
@@ -44,9 +39,9 @@ describe('I18nDirective', () => {
     fixture.detectChanges();
 
     const host = fixture.nativeElement as HTMLElement;
-    const scoped = host.querySelector('.scoped')?.textContent?.trim();
-    const common = host.querySelector('.common')?.textContent?.trim();
-    const plain = host.querySelector('.plain')?.textContent?.trim();
+    const scoped = host.querySelector('.scoped')?.textContent.trim();
+    const common = host.querySelector('.common')?.textContent.trim();
+    const plain = host.querySelector('.plain')?.textContent.trim();
 
     expect(i18nMock.loadTranslations).toHaveBeenCalledWith(undefined);
     expect(scoped).toBe('global:title');

@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, Signal } from '@angular/core';
 
-import { NotificationService } from '../notification.service';
-import { INotification } from '../notification.interface';
-import { NotificationToastComponent } from '../notification-toast';
+import {
+  INotification,
+  NotificationService,
+  NotificationToastComponent,
+} from '@libs/components/notification';
 
 @Component({
   selector: 'notification-container',

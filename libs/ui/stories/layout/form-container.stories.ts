@@ -1,7 +1,9 @@
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import type { Meta, StoryObj } from '@storybook/angular';
 
-import { ButtonWrapperComponent, FormContainerComponent } from '@libs/ui';
+import { FormContainerComponent } from '@libs/components';
+import { ButtonWrapperComponent } from '@libs/wrappers';
+
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<FormContainerComponent> = {
   title: 'UI Components/FormContainer',

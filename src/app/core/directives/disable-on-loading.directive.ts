@@ -1,7 +1,8 @@
 import { Directive, inject } from '@angular/core';
 
-import { DISABLE_ON_LOADING } from '@libs/ui';
 import { LoadingService } from '@app/core/services/loading.service';
+
+import { DISABLE_ON_LOADING } from '@libs/tokens';
 
 @Directive({
   selector: '[disableOnLoading]',

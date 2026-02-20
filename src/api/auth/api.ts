@@ -9,8 +9,18 @@ import { filter, map } from 'rxjs/operators';
 import { ApiConfiguration } from './api-configuration';
 import { StrictHttpResponse } from './strict-http-response';
 
-export type ApiFnOptional<P, R> = (http: HttpClient, rootUrl: string, params?: P, context?: HttpContext) => Observable<StrictHttpResponse<R>>;
-export type ApiFnRequired<P, R> = (http: HttpClient, rootUrl: string, params: P, context?: HttpContext) => Observable<StrictHttpResponse<R>>;
+export type ApiFnOptional<P, R> = (
+  http: HttpClient,
+  rootUrl: string,
+  params?: P,
+  context?: HttpContext,
+) => Observable<StrictHttpResponse<R>>;
+export type ApiFnRequired<P, R> = (
+  http: HttpClient,
+  rootUrl: string,
+  params: P,
+  context?: HttpContext,
+) => Observable<StrictHttpResponse<R>>;
 
 /**
  * Helper service to call API functions directly
@@ -19,9 +29,8 @@ export type ApiFnRequired<P, R> = (http: HttpClient, rootUrl: string, params: P,
 export class Api {
   constructor(
     private config: ApiConfiguration,
-    private http: HttpClient
-  ) {
-  }
+    private http: HttpClient,
+  ) {}
 
   private _rootUrl?: string;
 
@@ -45,7 +54,11 @@ export class Api {
    */
   invoke<P, R>(fn: ApiFnRequired<P, R>, params: P, context?: HttpContext): Promise<R>;
   invoke<P, R>(fn: ApiFnOptional<P, R>, params?: P, context?: HttpContext): Promise<R>;
-  async invoke<P, R>(fn: ApiFnRequired<P, R> | ApiFnOptional<P, R>, params: P, context?: HttpContext): Promise<R> {
+  async invoke<P, R>(
+    fn: ApiFnRequired<P, R> | ApiFnOptional<P, R>,
+    params: P,
+    context?: HttpContext,
+  ): Promise<R> {
     const resp = this.invoke$Response(fn, params, context);
     return (await resp).body;
   }
@@ -53,13 +66,25 @@ export class Api {
   /**
    * Executes an API call, returning the entire response
    */
-  invoke$Response<P, R>(fn: ApiFnRequired<P, R>, params: P, context?: HttpContext): Promise<StrictHttpResponse<R>>;
-  invoke$Response<P, R>(fn: ApiFnOptional<P, R>, params?: P, context?: HttpContext): Promise<StrictHttpResponse<R>>;
-  invoke$Response<P, R>(fn: ApiFnRequired<P, R> | ApiFnOptional<P, R>, params: P, context?: HttpContext): Promise<StrictHttpResponse<R>> {
-    const obs = fn(this.http, this.rootUrl, params, context)
-      .pipe(
-        filter(r => r instanceof HttpResponse),
-        map(r => r as StrictHttpResponse<R>));
+  invoke$Response<P, R>(
+    fn: ApiFnRequired<P, R>,
+    params: P,
+    context?: HttpContext,
+  ): Promise<StrictHttpResponse<R>>;
+  invoke$Response<P, R>(
+    fn: ApiFnOptional<P, R>,
+    params?: P,
+    context?: HttpContext,
+  ): Promise<StrictHttpResponse<R>>;
+  invoke$Response<P, R>(
+    fn: ApiFnRequired<P, R> | ApiFnOptional<P, R>,
+    params: P,
+    context?: HttpContext,
+  ): Promise<StrictHttpResponse<R>> {
+    const obs = fn(this.http, this.rootUrl, params, context).pipe(
+      filter((r) => r instanceof HttpResponse),
+      map((r) => r as StrictHttpResponse<R>),
+    );
     return firstValueFrom(obs);
   }
 }

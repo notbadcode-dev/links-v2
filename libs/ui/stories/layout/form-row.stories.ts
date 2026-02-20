@@ -1,6 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { FormRowComponent } from '@libs/components';
+import { EAlign } from '@libs/enums';
+import { ButtonWrapperComponent } from '@libs/wrappers';
 
-import { ButtonWrapperComponent, EAlign, FormRowComponent } from '@libs/ui';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<FormRowComponent> = {
   title: 'UI Components/FormRow',

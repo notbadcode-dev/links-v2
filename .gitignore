@@ -50,3 +50,5 @@ src/app/api/links/
 
 *storybook.log
 storybook-static
+playwright-report
+test-results

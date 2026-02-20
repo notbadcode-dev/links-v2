@@ -36,4 +36,12 @@ describe('LinkComponent', () => {
 
     expect(component.tooltip()).toBe('Go to dashboard');
   });
+
+  it('should add spacing class when adjacent is true', () => {
+    fixture.componentRef.setInput('adjacent', true);
+    fixture.detectChanges();
+    const anchor = fixture.nativeElement.querySelector('a') as HTMLAnchorElement | null;
+
+    expect(anchor?.classList.contains('ui-link--adjacent')).toBe(true);
+  });
 });

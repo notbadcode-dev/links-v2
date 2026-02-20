@@ -1,0 +1,70 @@
+<dropdown-wrapper
+  customClass="global-preferences-trigger"
+  menuClass="global-preferences-menu"
+  data-testid="global-preferences-menu"
+>
+  <ng-container slot="trigger">
+    <icon-wrapper icon="settings" />
+  </ng-container>
+
+  <ng-container slot="content">
+    <ng-container *i18n="let t">
+      <section
+        class="global-preferences-content"
+        (click)="$event.stopPropagation()"
+        (mousedown)="$event.stopPropagation()"
+      >
+        <div class="global-preferences-header">
+          <icon-wrapper icon="settings" />
+          <ui-inline-text class="global-preferences-title">
+            {{ t('common.preferences.title') }}
+          </ui-inline-text>
+        </div>
+
+        <div class="global-preferences-group" data-testid="global-language-selector">
+          <ui-inline-text class="global-preferences-label">
+            {{ t('common.preferences.language') }}
+          </ui-inline-text>
+
+          <div class="preference-options preference-options--languages">
+            @for (lang of _availableLanguages; track lang.code) {
+              <button
+                type="button"
+                class="preference-option preference-option--language"
+                [class.active]="_currentLanguage() === lang.code"
+                [attr.data-testid]="'language-option-' + lang.code"
+                (click)="setLanguage(lang.code)"
+              >
+                <ui-inline-text>{{ t('language.names.' + lang.code) }}</ui-inline-text>
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="global-preferences-divider"></div>
+
+        <div class="global-preferences-group" data-testid="global-theme-selector">
+          <ui-inline-text class="global-preferences-label">
+            {{ t('common.preferences.theme') }}
+          </ui-inline-text>
+
+          <div class="preference-options preference-options--themes">
+            @for (option of _themeOptions; track option.value) {
+              <button
+                type="button"
+                class="preference-option preference-option--theme"
+                [class.active]="isThemePreferenceSelected(option.value)"
+                [attr.data-testid]="'theme-option-' + option.value"
+                [attr.aria-label]="t(option.labelKey)"
+                [attr.title]="t(option.labelKey)"
+                (click)="setThemePreference(option.value)"
+              >
+                <icon-wrapper [icon]="option.icon" />
+              </button>
+            }
+          </div>
+        </div>
+      </section>
+    </ng-container>
+  </ng-container>
+</dropdown-wrapper>

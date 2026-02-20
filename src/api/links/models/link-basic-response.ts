@@ -4,13 +4,11 @@
 
 import { LinkLastStatusCode } from '../models/link-last-status-code';
 export interface LinkBasicResponse {
-  faviconUrl?: {
-};
+  faviconUrl?: {};
   id: number;
   isActive: boolean;
   isFavorite: boolean;
   lastStatusCode: LinkLastStatusCode;
-  title?: {
-};
+  title?: {};
   url: string;
 }

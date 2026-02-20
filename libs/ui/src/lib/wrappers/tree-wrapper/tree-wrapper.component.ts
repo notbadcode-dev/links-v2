@@ -12,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTreeModule } from '@angular/material/tree';
 
-import { BaseDirective } from '../../directives/base.directive';
+import { BaseDirective } from '@libs/directives';
+
 import { ITreeNode, ITreeWrapperConfig } from './tree-wrapper.types';
 
 const TREE_DEFAULT_ICONS = {

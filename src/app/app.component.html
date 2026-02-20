@@ -1,2 +1,15 @@
-<router-outlet />
+<nav class="top-navbar">
+  <div class="nav-brand">
+    <mat-icon class="brand-logo">{{ icons.APP.LOGO }}</mat-icon>
+    <span class="brand-name">StackMarkr</span>
+  </div>
+
+  <div class="nav-actions">
+    <language-selector />
+    <theme-toggle />
+  </div>
+</nav>
+<div class="route-animation-container" [@routeTransition]="routeAnimationState">
+  <router-outlet #outlet="outlet" />
+</div>
 <notification-container />

@@ -7,5 +7,6 @@ export const COMMON_KEYS = {
     REQUIRED: 'common.validation.required',
     INVALID_EMAIL: 'common.validation.invalid_email',
     MIN_LENGTH: 'common.validation.min_length',
+    PASSWORD_MISMATCH: 'common.validation.password_mismatch',
   },
 } as const;

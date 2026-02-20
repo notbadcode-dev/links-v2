@@ -1,7 +1,6 @@
 @use './reboot-variables' as rv;
 
 html {
-
   --mat-card-elevated-container-color: #{rv.$reboot-white};
   --mat-card-elevated-container-elevation: #{rv.$reboot-shadow-none};
   --mat-card-elevated-container-shape: #{rv.$reboot-border-radius-md};

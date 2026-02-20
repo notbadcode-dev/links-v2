@@ -1,13 +1,43 @@
 {
+  "language": {
+    "names": {
+      "en": "English",
+      "es": "Spanish"
+    }
+  },
   "common": {
+    "preferences": {
+      "title": "Preferences",
+      "language": "Language",
+      "theme": "Theme"
+    },
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system_short": "System"
+    },
     "actions": {
       "back": "Back",
-      "submit": "Submit"
+      "submit": "Submit",
+      "logout": "Logout",
+      "tooltips": {
+        "logout": {
+          "option_1": "Mission complete. Time to warp back to base.",
+          "option_2": "Logging out now. Your bookmarks will hold the line.",
+          "option_3": "Stealth mode engaged. You are about to disappear.",
+          "option_4": "Shutting the portal. Re-enter whenever you are ready.",
+          "option_5": "Session signed off. See you on the next run."
+        }
+      }
+    },
+    "labels": {
+      "active_user": "Active user"
     },
     "validation": {
       "required": "This field is required",
       "invalid_email": "Please enter a valid email address",
-      "min_length": "Minimum {{min}} characters required"
+      "min_length": "Minimum {{min}} characters required",
+      "password_mismatch": "Passwords do not match"
     }
   }
 }

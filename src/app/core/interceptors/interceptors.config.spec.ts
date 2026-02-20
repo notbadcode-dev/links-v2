@@ -1,5 +1,6 @@
 import {
   apiErrorMapperInterceptor,
+  authorizationInterceptor,
   interceptors,
   languageInterceptor,
   loadingInterceptor,
@@ -10,6 +11,7 @@ describe('interceptors config', () => {
     expect(interceptors).toEqual([
       loadingInterceptor,
       languageInterceptor,
+      authorizationInterceptor,
       apiErrorMapperInterceptor,
     ]);
   });

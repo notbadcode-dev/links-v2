@@ -15,4 +15,5 @@ export class LinkComponent {
   public readonly route: InputSignal<string> = input.required<string>();
   public readonly label: InputSignal<string> = input.required<string>();
   public readonly tooltip: InputSignal<string | undefined> = input<string | undefined>(undefined);
+  public readonly adjacent: InputSignal<boolean> = input<boolean>(false);
 }

@@ -3,4 +3,3 @@
 // @ts-nocheck
 
 export type EApiResponseMessageType = 'info' | 'success' | 'warning' | 'error' | 'critical';
-

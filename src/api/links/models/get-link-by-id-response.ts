@@ -4,15 +4,12 @@
 
 import { GroupLinkBasicResponse } from '../models/group-link-basic-response';
 export interface GetLinkByIdResponse {
-  description?: {
-};
-  faviconUrl?: {
-};
+  description?: {};
+  faviconUrl?: {};
   groupLink?: GroupLinkBasicResponse | null;
   groupLinkId?: number | null;
   id: number;
-  imagePreviewUrl?: {
-};
+  imagePreviewUrl?: {};
   isActive: boolean;
   isFavorite: boolean;
   lastCheckedAt?: string;
@@ -20,7 +17,6 @@ export interface GetLinkByIdResponse {
   lastVisitedAt?: string;
   normalizedUrl?: string;
   tagList?: Array<string>;
-  title?: {
-};
+  title?: {};
   url: string;
 }

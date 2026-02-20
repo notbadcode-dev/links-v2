@@ -2,7 +2,8 @@ import { pickRandomItem } from './random.utils';
 
 describe('pickRandomItem', () => {
   it('returns undefined when list is empty', () => {
-    expect(pickRandomItem([])).toBeUndefined();
+    const result = pickRandomItem<string>([]);
+    expect(result).toBeUndefined();
   });
 
   it('returns first item when random value is 0', () => {

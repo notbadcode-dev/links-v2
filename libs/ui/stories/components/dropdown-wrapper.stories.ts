@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/angular';
-
 import {
   DropdownWrapperComponent,
   EDropdownWrapperPosition,
   EDropdownWrapperTrigger,
-} from '@libs/ui';
+} from '@libs/wrappers';
+
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<DropdownWrapperComponent> = {
   title: 'UI Wrappers/DropdownWrapper',

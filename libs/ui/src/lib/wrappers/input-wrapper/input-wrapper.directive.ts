@@ -10,8 +10,9 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
-import { BaseDirective } from '../../directives/base.directive';
-import { DISABLE_ON_LOADING } from '../../tokens/disable-on-loading.token';
+import { BaseDirective } from '@libs/directives';
+import { DISABLE_ON_LOADING } from '@libs/tokens';
+
 import { IInputWrapperConfig } from './input-wrapper.types';
 
 @Directive()
@@ -37,6 +38,7 @@ export abstract class InputWrapperDirective<
     undefined,
   );
   public readonly icon: InputSignal<string | undefined> = input<string | undefined>(undefined);
+  public readonly svgIcon: InputSignal<string | undefined> = input<string | undefined>(undefined);
   public readonly hint: InputSignal<string | undefined> = input<string | undefined>(undefined);
   public readonly errorMessage: InputSignal<string | undefined> = input<string | undefined>(
     undefined,
@@ -65,6 +67,9 @@ export abstract class InputWrapperDirective<
   );
   public readonly effectiveIcon: Signal<string | undefined> = computed(
     () => this.icon() ?? this.config()?.icon,
+  );
+  public readonly effectiveSvgIcon: Signal<string | undefined> = computed(
+    () => this.svgIcon() ?? this.config()?.svgIcon,
   );
   public readonly effectiveHint: Signal<string | undefined> = computed(
     () => this.hint() ?? this.config()?.hint,

@@ -12,6 +12,7 @@ inputs:
   - { name: variant, type: EButtonWrapperVariant, required: false, default: RAISED, description: Visual style }
   - { name: color, type: EButtonWrapperColor, required: false, default: PRIMARY, description: Material color theme }
   - { name: icon, type: "string | undefined", required: false, description: Material Icons name displayed before text }
+  - { name: svgIcon, type: "string | undefined", required: false, description: Registered SVG icon name displayed before text }
   - { name: tooltip, type: "string | undefined", required: false, description: Tooltip text, defaults to title }
   - { name: disabled, type: boolean, required: false, default: false, description: Manually disables the button }
   - { name: fullWidth, type: boolean, required: false, default: false, description: Stretches button to full container width }
@@ -48,6 +49,7 @@ Encapsula `MatButton` con lógica adicional:
 | `variant` | `EButtonWrapperVariant` | ❌ | `RAISED` | Estilo visual del botón |
 | `color` | `EButtonWrapperColor` | ❌ | `PRIMARY` | Color Material |
 | `icon` | `string` | ❌ | — | Icono Material antes del texto |
+| `svgIcon` | `string` | ❌ | — | Icono SVG registrado en `MatIconRegistry` antes del texto |
 | `tooltip` | `string` | ❌ | `title` | Texto del tooltip (usa `title` si no se especifica) |
 | `disabled` | `boolean` | ❌ | `false` | Deshabilita el botón |
 | `fullWidth` | `boolean` | ❌ | `false` | Ocupa todo el ancho disponible |
@@ -79,6 +81,9 @@ Encapsula `MatButton` con lógica adicional:
   [color]="EButtonWrapperColor.WARN"
   (clicked)="onDelete()"
 />
+
+<!-- Con icono SVG registrado -->
+<button-wrapper title="Iniciar sesión" svgIcon="auth-login-button" />
 
 <!-- Botón de submit deshabilitado -->
 <button-wrapper

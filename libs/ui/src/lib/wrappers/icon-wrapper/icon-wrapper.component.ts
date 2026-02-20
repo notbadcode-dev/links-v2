@@ -10,5 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconWrapperComponent {
-  public readonly icon: InputSignal<string> = input.required<string>();
+  public readonly icon: InputSignal<string | undefined> = input<string>();
+  public readonly svgIcon: InputSignal<string | undefined> = input<string>();
 }

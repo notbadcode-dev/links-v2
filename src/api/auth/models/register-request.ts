@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 export interface RegisterRequest {
-
   /**
    * User email address
    */

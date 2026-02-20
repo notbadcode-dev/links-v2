@@ -4,6 +4,7 @@ export const VALIDATION_KEYS_CONSTANTS = {
   MIN_LENGTH: 'minlength',
   MAX_LENGTH: 'maxlength',
   PATTERN: 'pattern',
+  PASSWORD_MISMATCH: 'passwordMismatch',
 } as const;
 
 export const VALIDATION_CONSTANTS = {

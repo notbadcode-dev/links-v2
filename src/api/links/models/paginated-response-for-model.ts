@@ -5,8 +5,7 @@
 import { GetLinkByIdResponse } from '../models/get-link-by-id-response';
 export interface PaginatedResponseForModel {
   currentPage?: number;
-  filters?: {
-};
+  filters?: {};
   items: Array<GetLinkByIdResponse>;
   nextPage?: number;
   previousPage?: number;

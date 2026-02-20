@@ -2,6 +2,9 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
+
+import { IconWrapperComponent } from '@libs/wrappers';
+
 import { ButtonWrapperComponent } from './button-wrapper.component';
 import { EButtonWrapperColor, EButtonWrapperVariant } from './button-wrapper.enum';
 
@@ -57,6 +60,18 @@ describe('ButtonWrapperComponent', () => {
     const icon = fixture.debugElement.query(By.css('mat-icon'));
     expect(icon).toBeTruthy();
     expect(icon.nativeElement.textContent.trim()).toBe('home');
+  });
+
+  it('should pass svgIcon to icon wrapper when provided', () => {
+    fixture.componentRef.setInput('title', 'Test Button');
+    fixture.componentRef.setInput('svgIcon', 'auth-login-button');
+    fixture.detectChanges();
+
+    const iconWrapper = fixture.debugElement.query(By.directive(IconWrapperComponent));
+    expect(iconWrapper).toBeTruthy();
+    expect((iconWrapper.componentInstance as IconWrapperComponent).svgIcon()).toBe(
+      'auth-login-button',
+    );
   });
 
   it('should be disabled when disabled input is true', () => {

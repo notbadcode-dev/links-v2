@@ -8,6 +8,7 @@ export interface IInputWrapperConfig {
   placeholder?: string;
   required?: boolean;
   icon?: string;
+  svgIcon?: string;
   hint?: string;
   errorMessage?: string;
   tabindex?: number;

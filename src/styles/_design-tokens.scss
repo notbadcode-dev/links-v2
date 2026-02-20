@@ -1,11 +1,6 @@
 :root {
   --ui-font-family-base:
-    'Mona Sans Variable',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Helvetica,
-    Arial,
+    'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
     sans-serif;
   --ui-font-size-xs: 0.75rem;
   --ui-font-size-sm: 0.8125rem;
@@ -44,20 +39,46 @@
   --ui-size-navbar: 56px;
 
   --ui-border-width: 1px;
+
+  --ui-shadow-sm: 0 1px 2px rgba(27, 31, 35, 0.04);
+  --ui-shadow-md: 0 1px 5px rgba(27, 31, 35, 0.08);
+  --ui-transition-fast: 150ms ease;
+  --ui-transition-base: 200ms ease;
+}
+
+:root,
+:root[data-theme='light'] {
+  --ui-color-scheme: light;
   --ui-border-subtle: #e1e4e8;
   --ui-border-strong: #d1d5da;
 
-  --ui-color-canvas: #fafbfc;
-  --ui-color-surface: #ffffff;
-  --ui-color-surface-alt: #f6f8fa;
+  --ui-color-canvas: #eef2f7;
+  --ui-color-surface: #f9fbfe;
+  --ui-color-surface-alt: #f3f7fc;
   --ui-color-text: #1f2328;
-  --ui-color-text-strong: #1a1a1a;
+  --ui-color-text-strong: #111827;
   --ui-color-text-muted: #57606a;
   --ui-color-text-soft: #959da5;
   --ui-color-primary: #3d17ff;
+  --ui-color-primary-600: #3614e8;
+  --ui-color-primary-700: #2f11cf;
+  --ui-color-primary-800: #270eb0;
+  --ui-color-primary-hover: #270eb0;
+  --ui-color-primary-active: #210c95;
+  --ui-color-cta: #111111;
+  --ui-color-cta-hover: #1f1f1f;
+  --ui-color-cta-active: #050505;
+  --ui-color-cta-contrast: #ffffff;
   --ui-color-primary-soft: rgba(61, 23, 255, 0.08);
   --ui-color-primary-soft-bg: #eef2ff;
   --ui-color-primary-soft-fg: #4f46e5;
+  --ui-color-button-primary: #2c2f33;
+  --ui-color-button-primary-hover: #25282c;
+  --ui-color-button-primary-active: #1e2125;
+  --ui-color-link: var(--ui-color-primary-700);
+  --ui-color-link-hover: var(--ui-color-primary-800);
+  --ui-color-link-active: #210c95;
+  --ui-color-link-visited: var(--ui-color-primary-600);
   --ui-color-hover-muted: rgba(0, 0, 0, 0.04);
   --ui-color-active-muted: rgba(0, 0, 0, 0.08);
 
@@ -77,9 +98,57 @@
   --ui-color-info-border: #bfdbfe;
   --ui-color-info-text: #1e40af;
   --ui-color-info-icon: #2563eb;
+}
 
-  --ui-shadow-sm: 0 1px 2px rgba(27, 31, 35, 0.04);
-  --ui-shadow-md: 0 1px 5px rgba(27, 31, 35, 0.08);
-  --ui-transition-fast: 150ms ease;
-  --ui-transition-base: 200ms ease;
+:root[data-theme='dark'] {
+  --ui-color-scheme: dark;
+  --ui-border-subtle: #2f353d;
+  --ui-border-strong: #3b424c;
+
+  --ui-color-canvas: #171b20;
+  --ui-color-surface: #232a33;
+  --ui-color-surface-alt: #2a323c;
+  --ui-color-text: #e6edf3;
+  --ui-color-text-strong: #f0f6fc;
+  --ui-color-text-muted: #7d8590;
+  --ui-color-text-soft: #6e7681;
+  --ui-color-primary: #8b5cf6;
+  --ui-color-primary-600: #7c3aed;
+  --ui-color-primary-700: #a78bfa;
+  --ui-color-primary-800: #c4b5fd;
+  --ui-color-primary-hover: #8b5cf6;
+  --ui-color-primary-active: #7c3aed;
+  --ui-color-cta: #8b5cf6;
+  --ui-color-cta-hover: #7c3aed;
+  --ui-color-cta-active: #6d28d9;
+  --ui-color-cta-contrast: #ffffff;
+  --ui-color-primary-soft: rgba(167, 139, 250, 0.24);
+  --ui-color-primary-soft-bg: #2b1f46;
+  --ui-color-primary-soft-fg: #c4b5fd;
+  --ui-color-button-primary: #8b6ce2;
+  --ui-color-button-primary-hover: #7d5fd5;
+  --ui-color-button-primary-active: #704fc8;
+  --ui-color-link: #b8a7e8;
+  --ui-color-link-hover: #c8baf0;
+  --ui-color-link-active: #a897dc;
+  --ui-color-link-visited: #aa97dd;
+  --ui-color-hover-muted: rgba(255, 255, 255, 0.08);
+  --ui-color-active-muted: rgba(255, 255, 255, 0.14);
+
+  --ui-color-success-bg: #0f2a1f;
+  --ui-color-success-border: #1f6e4a;
+  --ui-color-success-text: #8df4c1;
+  --ui-color-success-icon: #5ee8a6;
+  --ui-color-error-bg: #2b1216;
+  --ui-color-error-border: #7f1d2c;
+  --ui-color-error-text: #f8b4bd;
+  --ui-color-error-icon: #f38c98;
+  --ui-color-warning-bg: #2a220d;
+  --ui-color-warning-border: #7a5c14;
+  --ui-color-warning-text: #f6df8a;
+  --ui-color-warning-icon: #f2ce5d;
+  --ui-color-info-bg: #122338;
+  --ui-color-info-border: #214d78;
+  --ui-color-info-text: #93c5fd;
+  --ui-color-info-icon: #60a5fa;
 }

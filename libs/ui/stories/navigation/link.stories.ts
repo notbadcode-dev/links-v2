@@ -1,9 +1,8 @@
 import { RouterTestingModule } from '@angular/router/testing';
-import { moduleMetadata } from '@storybook/angular';
-import type { Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
 
-import { LinkComponent } from '@libs/ui';
+import { LinkComponent } from '@libs/components';
 
 const meta: Meta<LinkComponent> = {
   title: 'UI Components/Link',

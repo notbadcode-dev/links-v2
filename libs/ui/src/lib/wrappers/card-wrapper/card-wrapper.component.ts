@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { BaseDirective } from '../../directives/base.directive';
+
+import { BaseDirective } from '@libs/directives';
+
 import { ECardWrapperAlignHeader, ECardWrapperAppearance } from './card-wrapper.enum';
 
 @Component({

@@ -10,21 +10,23 @@ import { RequestBuilder } from '../../request-builder';
 
 import { ApiNullResponse } from '../../models/api-null-response';
 
-export interface AuthControllerLogout$Params {
-}
+export interface AuthControllerLogout$Params {}
 
-export function authControllerLogout(http: HttpClient, rootUrl: string, params?: AuthControllerLogout$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiNullResponse>> {
+export function authControllerLogout(
+  http: HttpClient,
+  rootUrl: string,
+  params?: AuthControllerLogout$Params,
+  context?: HttpContext,
+): Observable<StrictHttpResponse<ApiNullResponse>> {
   const rb = new RequestBuilder(rootUrl, authControllerLogout.PATH, 'post');
   if (params) {
   }
 
-  return http.request(
-    rb.build({ responseType: 'json', accept: 'application/json', context })
-  ).pipe(
+  return http.request(rb.build({ responseType: 'json', accept: 'application/json', context })).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
       return r as StrictHttpResponse<ApiNullResponse>;
-    })
+    }),
   );
 }
 

@@ -4,7 +4,6 @@
 
 import { RgbColorDto } from '../models/rgb-color-dto';
 export interface CreateGroupLinkRequest {
-
   /**
    * RGB color object { r, g, b }
    */

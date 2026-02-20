@@ -7,7 +7,4 @@ import { EPaginatedOrder } from './e-paginated-order';
 /**
  * Each possible value of `EPaginatedOrder`
  */
-export const E_PAGINATED_ORDER: EPaginatedOrder[] = [
-  'ASC',
-  'DESC'
-];
+export const E_PAGINATED_ORDER: EPaginatedOrder[] = ['ASC', 'DESC'];

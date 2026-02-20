@@ -1,11 +1,12 @@
 import { HttpClient, HttpRequest, provideHttpClient, withInterceptors } from '@angular/common/http';
-import { TestBed } from '@angular/core/testing';
 import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
-import { NotificationService } from '@libs/ui';
+import { TestBed } from '@angular/core/testing';
 import { throwError } from 'rxjs';
 
-import { API_ERROR_MAPPER_CONSTANTS } from './constants/api-error-mapper.constants';
+import { NotificationService } from '@libs/components';
+
 import { apiErrorMapperInterceptor } from './api-error-mapper.interceptor';
+import { API_ERROR_MAPPER_CONSTANTS } from './constants/api-error-mapper.constants';
 
 describe('apiErrorMapperInterceptor', () => {
   let http: HttpClient;
@@ -63,7 +64,9 @@ describe('apiErrorMapperInterceptor', () => {
     const request = new HttpRequest('GET', '/test');
 
     TestBed.runInInjectionContext(() => {
-      apiErrorMapperInterceptor(request, () => throwError(() => new Error('Unexpected failure'))).subscribe();
+      apiErrorMapperInterceptor(request, () =>
+        throwError(() => new Error('Unexpected failure')),
+      ).subscribe();
     });
 
     expect(notificationMock.error).toHaveBeenCalledWith(

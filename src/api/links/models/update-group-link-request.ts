@@ -4,7 +4,6 @@
 
 import { RgbColorDto } from '../models/rgb-color-dto';
 export interface UpdateGroupLinkRequest {
-
   /**
    * RGB color object { r, g, b }
    */
@@ -13,14 +12,12 @@ export interface UpdateGroupLinkRequest {
   /**
    * Group link description
    */
-  description?: {
-};
+  description?: {};
 
   /**
    * Icon identifier
    */
-  icon?: {
-};
+  icon?: {};
 
   /**
    * Whether the group is marked as favorite

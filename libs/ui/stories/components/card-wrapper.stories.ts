@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/angular';
-
 import {
   ButtonWrapperComponent,
   CardWrapperComponent,
   ECardWrapperAlignHeader,
   ECardWrapperAppearance,
-} from '@libs/ui';
+} from '@libs/wrappers';
+
+import type { Meta, StoryObj } from '@storybook/angular';
 
 const meta: Meta<CardWrapperComponent> = {
   title: 'UI Wrappers/CardWrapper',

@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 export interface RefreshRequest {
-
   /**
    * JWT refresh token
    */

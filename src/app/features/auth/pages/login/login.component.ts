@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { I18nDirective } from '@app/core/i18n';
 import { provideTranslocoScope, TranslocoService } from '@jsverse/transloco';
 import { tap } from 'rxjs';
 
 import { LoginResponse } from '@api/auth';
+
 import { COMMON_KEYS } from '@app/constants/i18n-keys.constants';
 import { ICONS_CONSTANTS } from '@app/constants/icons.constants';
 import { PATTERNS_CONSTANTS } from '@app/constants/pattern.constants';
@@ -16,45 +16,51 @@ import {
   VALIDATION_KEYS_CONSTANTS,
 } from '@app/constants/validation.constants';
 import { DisableOnLoadingDirective } from '@app/core/directives/disable-on-loading.directive';
+import { I18nDirective } from '@app/core/i18n';
+import { SessionService } from '@app/core/services/session.service';
+import { UserService } from '@app/core/services/user.service';
 import { AUTH_FORM_KEYS } from '@app/features/auth/constants/auth-form-keys.constants';
 import { LOGIN_KEYS } from '@app/features/auth/constants/login-keys.constants';
 import { AuthHttpHelper } from '@app/features/auth/helpers';
 import { ILoginForm } from '@app/features/auth/interfaces/auth.interfaces';
 import { pickRandomItem } from '@app/shared/utils/random.utils';
+
 import {
-  BaseDirective,
-  ButtonWrapperComponent,
-  CheckboxWrapperComponent,
-  createKeys,
+  FormContainerComponent,
+  FormRowComponent,
+  InlineTextComponent,
+  LinkComponent,
+  NotificationService,
+  PageComponent,
+  SurfaceComponent,
+  TitleComponent,
+  UiPageSectionComponent,
+} from '@libs/components';
+import { BaseDirective } from '@libs/directives';
+import {
   EAlign,
   EButtonWrapperVariant,
   EInputTextWrapperType,
   EPageLayout,
   ESpacing,
   ESurfaceVariant,
-  FormContainerComponent,
-  FormRowComponent,
-  IconCircleComponent,
-  IconWrapperComponent,
+} from '@libs/enums';
+import { TFormGroupType } from '@libs/types';
+import { createKeys } from '@libs/utils';
+import {
+  ButtonWrapperComponent,
+  CheckboxWrapperComponent,
   IInputTextWrapperConfig,
-  InlineTextComponent,
   InputPasswordWrapperComponent,
   InputTextWrapperComponent,
-  LinkComponent,
-  NotificationService,
-  PageComponent,
-  StackComponent,
-  SurfaceComponent,
-  TFormGroupType,
-  TitleComponent,
-  UiPageSectionComponent,
-} from '@libs/ui';
+} from '@libs/wrappers';
 
 import { LOGIN_CONSTANTS } from '../../constants/login.constants';
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [provideTranslocoScope('auth')],
@@ -65,8 +71,6 @@ import { LOGIN_CONSTANTS } from '../../constants/login.constants';
 
     PageComponent,
     UiPageSectionComponent,
-    StackComponent,
-    IconCircleComponent,
     TitleComponent,
     SurfaceComponent,
     FormContainerComponent,
@@ -74,7 +78,6 @@ import { LOGIN_CONSTANTS } from '../../constants/login.constants';
     InlineTextComponent,
     LinkComponent,
 
-    IconWrapperComponent,
     ButtonWrapperComponent,
     CheckboxWrapperComponent,
     InputPasswordWrapperComponent,
@@ -82,18 +85,22 @@ import { LOGIN_CONSTANTS } from '../../constants/login.constants';
   ],
 })
 export class LoginComponent extends BaseDirective {
-  public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;
   public readonly constants: typeof LOGIN_CONSTANTS = LOGIN_CONSTANTS;
+  public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;
   public readonly i18nKeys: typeof LOGIN_KEYS = LOGIN_KEYS;
-  public readonly routes = {
+  public readonly routes: Readonly<{
+    SIGNUP: string;
+    FORGOT_PASSWORD: string;
+    DASHBOARD: string;
+  }> = {
     SIGNUP: ROUTES_CONSTANTS.AUTH.SIGNUP,
     FORGOT_PASSWORD: ROUTES_CONSTANTS.AUTH.FORGOT_PASSWORD,
     DASHBOARD: ROUTES_CONSTANTS.DASHBOARD,
-  } as const;
+  };
 
   public readonly EButtonWrapperVariant: typeof EButtonWrapperVariant = EButtonWrapperVariant;
-  public readonly EPageLayout: typeof EPageLayout = EPageLayout;
   public readonly EAlign: typeof EAlign = EAlign;
+  public readonly EPageLayout: typeof EPageLayout = EPageLayout;
   public readonly ESpacing: typeof ESpacing = ESpacing;
   public readonly ESurfaceVariant: typeof ESurfaceVariant = ESurfaceVariant;
 
@@ -110,15 +117,17 @@ export class LoginComponent extends BaseDirective {
   private readonly _router: Router = inject(Router);
   private readonly _notification: NotificationService = inject(NotificationService);
   private readonly _translocoService: TranslocoService = inject(TranslocoService);
+  private readonly _sessionService: SessionService = inject(SessionService);
+  private readonly _userService: UserService = inject(UserService);
 
   public get emailConfig(): IInputTextWrapperConfig {
     return {
       label: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.LABEL),
       tooltip: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.LABEL),
-      icon: ICONS_CONSTANTS.AUTH.EMAIL,
+      svgIcon: ICONS_CONSTANTS.AUTH.EMAIL_INPUT,
       placeholder: this._translocoService.translate(AUTH_FORM_KEYS.EMAIL.PLACEHOLDER),
       type: EInputTextWrapperType.EMAIL,
-      required: true,
+      required: this.loginForm.controls.email.hasValidator(Validators.required),
     };
   }
 
@@ -126,20 +135,26 @@ export class LoginComponent extends BaseDirective {
     return {
       label: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.LABEL),
       tooltip: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.LABEL),
-      icon: ICONS_CONSTANTS.AUTH.PASSWORD,
+      svgIcon: ICONS_CONSTANTS.AUTH.PASSWORD_INPUT,
       placeholder: this._translocoService.translate(AUTH_FORM_KEYS.PASSWORD.PLACEHOLDER),
-      required: true,
+      required: this.loginForm.controls.password.hasValidator(Validators.required),
     };
   }
 
   public get emailErrorMessage(): string {
     const control = this.loginForm.controls.email;
+    if (!this._hasVisibleError(control)) {
+      return '';
+    }
 
     if (control.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {
       return this._translocoService.translate(COMMON_KEYS.VALIDATION.REQUIRED);
     }
 
-    if (control.hasError(VALIDATION_KEYS_CONSTANTS.PATTERN)) {
+    if (
+      control.hasError(VALIDATION_KEYS_CONSTANTS.EMAIL) ||
+      control.hasError(VALIDATION_KEYS_CONSTANTS.PATTERN)
+    ) {
       return this._translocoService.translate(COMMON_KEYS.VALIDATION.INVALID_EMAIL);
     }
     return '';
@@ -147,6 +162,11 @@ export class LoginComponent extends BaseDirective {
 
   public get passwordErrorMessage(): string {
     const control = this.loginForm.controls.password;
+    const emailControl = this.loginForm.controls.email;
+
+    if (this._hasVisibleError(emailControl) || !this._hasVisibleError(control)) {
+      return '';
+    }
 
     if (control.hasError(VALIDATION_KEYS_CONSTANTS.REQUIRED)) {
       return this._translocoService.translate(COMMON_KEYS.VALIDATION.REQUIRED);
@@ -172,6 +192,8 @@ export class LoginComponent extends BaseDirective {
         takeUntilDestroyed(this._destroyRef),
         tap((response: LoginResponse) => {
           if (response.accessToken && response.refreshToken) {
+            this._sessionService.setTokens(response.accessToken, response.refreshToken);
+            this._userService.setUser({ email: formData.email });
             this._notification.success(
               this._translocoService.translate(LOGIN_KEYS.MESSAGES.SUCCESS),
             );
@@ -188,7 +210,11 @@ export class LoginComponent extends BaseDirective {
     return new FormGroup<TFormGroupType<ILoginForm>>({
       email: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.EMAIL, {
         nonNullable: true,
-        validators: [Validators.required, Validators.pattern(PATTERNS_CONSTANTS.EMAIL)],
+        validators: [
+          Validators.required,
+          Validators.email,
+          Validators.pattern(PATTERNS_CONSTANTS.EMAIL),
+        ],
       }),
       password: new FormControl(LOGIN_CONSTANTS.FORM.DEFAULT_VALUES.PASSWORD, {
         nonNullable: true,
@@ -201,5 +227,9 @@ export class LoginComponent extends BaseDirective {
         nonNullable: true,
       }),
     });
+  }
+
+  private _hasVisibleError(control: FormControl<string | boolean>): boolean {
+    return control.invalid && (control.touched || control.dirty);
   }
 }

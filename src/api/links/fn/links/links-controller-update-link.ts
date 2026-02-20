@@ -12,28 +12,30 @@ import { ApiResponseWrapper } from '../../models/api-response-wrapper';
 import { UpdateLinkRequest } from '../../models/update-link-request';
 
 export interface LinksControllerUpdateLink$Params {
-
-/**
- * Link ID
- */
+  /**
+   * Link ID
+   */
   id: number;
-      body: UpdateLinkRequest
+  body: UpdateLinkRequest;
 }
 
-export function linksControllerUpdateLink(http: HttpClient, rootUrl: string, params: LinksControllerUpdateLink$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseWrapper>> {
+export function linksControllerUpdateLink(
+  http: HttpClient,
+  rootUrl: string,
+  params: LinksControllerUpdateLink$Params,
+  context?: HttpContext,
+): Observable<StrictHttpResponse<ApiResponseWrapper>> {
   const rb = new RequestBuilder(rootUrl, linksControllerUpdateLink.PATH, 'patch');
   if (params) {
     rb.path('id', params.id, {});
     rb.body(params.body, 'application/json');
   }
 
-  return http.request(
-    rb.build({ responseType: 'json', accept: 'application/json', context })
-  ).pipe(
+  return http.request(rb.build({ responseType: 'json', accept: 'application/json', context })).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
       return r as StrictHttpResponse<ApiResponseWrapper>;
-    })
+    }),
   );
 }
 

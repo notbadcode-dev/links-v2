@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
-import { EPageLayout } from '../../enums/ui.enums';
+import { EPageLayout } from '@libs/enums';
 
 @Component({
   selector: 'ui-page-header, ui-page-body, ui-page-footer',
