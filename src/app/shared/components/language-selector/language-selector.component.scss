@@ -3,14 +3,14 @@
 }
 
 :host ::ng-deep .language-selector-trigger {
-  width: 130px;
+  width: auto;
   min-width: 130px;
-  max-width: 130px;
+  max-width: 220px;
   padding: var(--ui-space-1) var(--ui-space-2);
   min-height: 32px;
   border: var(--ui-border-width) solid var(--ui-border-subtle);
   border-radius: var(--ui-radius-sm);
-  line-height: 1;
+  line-height: 1.2;
   font-size: var(--ui-font-size-sm);
   color: var(--ui-color-text);
   --mat-text-button-label-text-color: var(--ui-color-text);
@@ -23,8 +23,6 @@
   letter-spacing: 0.01em;
   box-shadow: none;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   transition:
     color var(--ui-transition-fast),
     background-color var(--ui-transition-fast),

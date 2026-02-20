@@ -42,7 +42,10 @@
     },
     "footer": {
       "no_account": "Don't have an account?",
-      "sign_up_link": "Sign up"
+      "sign_up_link": "Sign up",
+      "tooltips": {
+        "sign_up_link": "Go to the sign up page."
+      }
     }
   },
   "signup": {
@@ -69,6 +72,33 @@
       "sign_in_link": "Sign in",
       "tooltips": {
         "sign_in_link": "Go to the sign in page."
+      }
+    }
+  },
+  "forgot_password": {
+    "title": "Recover your account",
+    "subtitle": "Enter your email and we will send recovery instructions",
+    "form": {
+      "submit_button": "Send recovery email",
+      "tooltips": {
+        "submit_button": {
+          "option_1": "Send the reset instructions and regain access quickly.",
+          "option_2": "Trigger a recovery email and get back to your dashboard.",
+          "option_3": "Start password recovery in one secure step.",
+          "option_4": "Request a reset link and continue where you left off.",
+          "option_5": "Send recovery details to your inbox now."
+        }
+      }
+    },
+    "messages": {
+      "success": "Recovery email sent",
+      "failed": "Unable to send recovery email"
+    },
+    "footer": {
+      "remembered_password": "Remembered your password?",
+      "back_to_login": "Back to sign in",
+      "tooltips": {
+        "back_to_login": "Go back to the sign in page."
       }
     }
   }

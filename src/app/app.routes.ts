@@ -16,6 +16,12 @@ export const routes: Routes = [
     data: { animation: 'signup' },
   },
   {
+    path: 'forgot-password',
+    loadComponent: async () =>
+      await import('./features/auth/pages/forgot-password').then((m) => m.ForgotPasswordComponent),
+    data: { animation: 'forgotPassword' },
+  },
+  {
     path: 'dashboard',
     loadComponent: async () =>
       await import('./core/layouts/main-layout/main-layout.component').then(

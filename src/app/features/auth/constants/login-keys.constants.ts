@@ -28,5 +28,8 @@ export const LOGIN_KEYS = {
   FOOTER: {
     NO_ACCOUNT: `${LOGIN_KEYS_PREFIX}.footer.no_account`,
     SIGN_UP_LINK: `${LOGIN_KEYS_PREFIX}.footer.sign_up_link`,
+    TOOLTIPS: {
+      SIGN_UP_LINK: `${LOGIN_KEYS_PREFIX}.footer.tooltips.sign_up_link`,
+    },
   },
 } as const;

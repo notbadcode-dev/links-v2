@@ -9,3 +9,7 @@ export interface ISignupForm {
   password: string;
   confirmPassword: string;
 }
+
+export interface IForgotPasswordForm {
+  email: string;
+}

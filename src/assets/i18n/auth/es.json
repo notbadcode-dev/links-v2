@@ -42,7 +42,10 @@
     },
     "footer": {
       "no_account": "¿No tienes una cuenta?",
-      "sign_up_link": "Regístrate"
+      "sign_up_link": "Regístrate",
+      "tooltips": {
+        "sign_up_link": "Ir a la página de registro."
+      }
     }
   },
   "signup": {
@@ -69,6 +72,33 @@
       "sign_in_link": "Iniciar sesión",
       "tooltips": {
         "sign_in_link": "Ir a la página de inicio de sesión."
+      }
+    }
+  },
+  "forgot_password": {
+    "title": "Recupera tu cuenta",
+    "subtitle": "Introduce tu correo y te enviaremos instrucciones de recuperación",
+    "form": {
+      "submit_button": "Enviar correo de recuperación",
+      "tooltips": {
+        "submit_button": {
+          "option_1": "Envía las instrucciones y recupera acceso en un momento.",
+          "option_2": "Lanza el correo de recuperación y vuelve a tu dashboard.",
+          "option_3": "Empieza la recuperación de contraseña en un paso seguro.",
+          "option_4": "Solicita el enlace de reseteo y sigue donde lo dejaste.",
+          "option_5": "Manda ya los detalles de recuperación a tu bandeja."
+        }
+      }
+    },
+    "messages": {
+      "success": "Correo de recuperación enviado",
+      "failed": "No se pudo enviar el correo de recuperación"
+    },
+    "footer": {
+      "remembered_password": "¿Recordaste tu contraseña?",
+      "back_to_login": "Volver a iniciar sesión",
+      "tooltips": {
+        "back_to_login": "Volver a la página de inicio de sesión."
       }
     }
   }
