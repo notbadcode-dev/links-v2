@@ -27,6 +27,7 @@ import { AUTH_FORM_KEYS } from '@app/features/auth/constants/auth-form-keys.cons
 import { SIGNUP_KEYS } from '@app/features/auth/constants/signup-keys.constants';
 import { AuthHttpHelper } from '@app/features/auth/helpers';
 import { ISignupForm } from '@app/features/auth/interfaces/auth.interfaces';
+import { pickRandomItem } from '@app/shared/utils/random.utils';
 
 import {
   FormContainerComponent,
@@ -117,6 +118,9 @@ export class SignupComponent extends BaseDirective {
       validators: [this._passwordsMatchValidator()],
     },
   );
+  public readonly submitButtonTooltipKey: (typeof SIGNUP_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS)[number] =
+    pickRandomItem(SIGNUP_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS) ??
+    SIGNUP_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS[0];
 
   private readonly _translocoService: TranslocoService = inject(TranslocoService);
   private readonly _authHttpHelper: AuthHttpHelper = inject(AuthHttpHelper);

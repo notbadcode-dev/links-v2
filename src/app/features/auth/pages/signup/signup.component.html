@@ -25,6 +25,7 @@
         <button-wrapper
           disableOnLoading
           [title]="t(i18nKeys.FORM.SUBMIT_BUTTON)"
+          [tooltip]="t(submitButtonTooltipKey)"
           [svgIcon]="icons.AUTH.USER_SIDEBAR"
           [fullWidth]="true"
           [disabled]="signupForm.invalid"
@@ -37,7 +38,12 @@
     <ui-page-footer>
       <ui-inline-text>
         {{ t(i18nKeys.FOOTER.ALREADY_HAVE_ACCOUNT) }}
-        <ui-link [route]="routes.LOGIN" [label]="t(i18nKeys.FOOTER.SIGN_IN_LINK)" [adjacent]="true" />
+        <ui-link
+          [route]="routes.LOGIN"
+          [label]="t(i18nKeys.FOOTER.SIGN_IN_LINK)"
+          [tooltip]="t(i18nKeys.FOOTER.TOOLTIPS.SIGN_IN_LINK)"
+          [adjacent]="true"
+        />
       </ui-inline-text>
     </ui-page-footer>
   </ui-page>

@@ -49,7 +49,16 @@
     "title": "Crea tu cuenta",
     "subtitle": "Comienza con tu cuenta gratuita",
     "form": {
-      "submit_button": "Crear cuenta"
+      "submit_button": "Crear cuenta",
+      "tooltips": {
+        "submit_button": {
+          "option_1": "Crea tu cuenta y empieza a darle forma a tu espacio de links.",
+          "option_2": "Estás a un clic de tu dashboard bien pulido.",
+          "option_3": "Abre tu cuenta y organiza tus enlaces a tu estilo.",
+          "option_4": "Empieza ahora y arma un flujo de links más limpio.",
+          "option_5": "Crea tu perfil y haz que cada link cuente."
+        }
+      }
     },
     "messages": {
       "success": "Cuenta creada",
@@ -57,7 +66,10 @@
     },
     "footer": {
       "already_have_account": "¿Ya tienes una cuenta?",
-      "sign_in_link": "Iniciar sesión"
+      "sign_in_link": "Iniciar sesión",
+      "tooltips": {
+        "sign_in_link": "Ir a la página de inicio de sesión."
+      }
     }
   }
 }
