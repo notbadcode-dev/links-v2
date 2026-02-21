@@ -4,7 +4,7 @@ import { I18nService } from '@app/core/i18n';
 import { CUSTOM_ICONS_CONSTANTS } from '@app/core/icons/icons.constants';
 import { ThemeService } from '@app/core/services/theme.service';
 
-import { IconWrapperComponent } from '@libs/wrappers';
+import { IconWrapperComponent } from '@libs/wrappers/icon-wrapper/icon-wrapper.component';
 
 @Component({
   selector: 'theme-toggle',

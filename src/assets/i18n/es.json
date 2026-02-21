@@ -33,6 +33,14 @@
     "labels": {
       "active_user": "Usuario activo"
     },
+    "session": {
+      "inactivity_modal": {
+        "title": "Sigues ahi?",
+        "description": "Tu sesion ha estado inactiva durante 10 minutos.",
+        "auto_logout_warning": "Si no respondes, cerraremos tu sesion en 5 minutos.",
+        "confirm_button": "Si, sigo aqui"
+      }
+    },
     "validation": {
       "required": "Este campo es requerido",
       "invalid_email": "Ingresa un email válido",

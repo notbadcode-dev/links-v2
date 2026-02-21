@@ -28,4 +28,14 @@ describe('i18n config providers', () => {
     expect(provider.useValue).toBe('auth');
     expect(I18N_SCOPE_TOKEN).toBe('I18N_SCOPE_TOKEN');
   });
+
+  it('accepts undefined and explicit logMissingKeys overrides', () => {
+    const providersWithUndefined = provideI18n({ logMissingKeys: undefined });
+    const providersWithFalse = provideI18n({ logMissingKeys: false });
+
+    expect(Array.isArray(providersWithUndefined)).toBe(true);
+    expect(Array.isArray(providersWithFalse)).toBe(true);
+    expect(providersWithUndefined.length).toBeGreaterThan(0);
+    expect(providersWithFalse.length).toBeGreaterThan(0);
+  });
 });

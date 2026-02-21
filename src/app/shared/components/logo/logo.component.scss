@@ -1,7 +1,7 @@
+@use '../../../../styles/shared-mixins' as mixins;
+
 :host {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @include mixins.inline-flex-center;
   width: var(--logo-size);
   height: var(--logo-size);
   color: var(--ui-color-primary);

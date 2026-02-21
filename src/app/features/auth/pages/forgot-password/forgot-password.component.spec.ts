@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
 
 import { ROUTES_CONSTANTS } from '@app/constants/routes.constants';
+import { AUTH_FORM_KEYS } from '@app/features/auth/constants/auth-form-keys.constants';
 import { FORGOT_PASSWORD_KEYS } from '@app/features/auth/constants/forgot-password-keys.constants';
+import * as randomUtils from '@app/shared/utils/random.utils';
 
 import { NotificationService } from '@libs/components';
 
@@ -79,11 +81,48 @@ describe('ForgotPasswordComponent', () => {
   it('returns translated validation messages for email', () => {
     const component = createComponent();
 
+    expect(component.emailErrorMessage).toBe('');
+
     component.forgotPasswordForm.controls.email.setValue('');
     component.forgotPasswordForm.controls.email.markAsTouched();
     component.forgotPasswordForm.controls.email.updateValueAndValidity();
 
     expect(component.emailErrorMessage).toBe('t:common.validation.required');
+  });
+
+  it('returns invalid email message when email format is incorrect', () => {
+    const component = createComponent();
+
+    component.forgotPasswordForm.controls.email.setValue('invalid-email');
+    component.forgotPasswordForm.controls.email.markAsTouched();
+    component.forgotPasswordForm.controls.email.updateValueAndValidity();
+
+    expect(component.emailErrorMessage).toBe('t:common.validation.invalid_email');
+  });
+
+  it('returns invalid email message when only pattern validation fails', () => {
+    const component = createComponent();
+
+    component.forgotPasswordForm.controls.email.setErrors({ pattern: true });
+    component.forgotPasswordForm.controls.email.markAsTouched();
+
+    expect(component.emailErrorMessage).toBe('t:common.validation.invalid_email');
+  });
+
+  it('returns empty email message for unknown errors', () => {
+    const component = createComponent();
+
+    component.forgotPasswordForm.controls.email.setErrors({ custom: true });
+    component.forgotPasswordForm.controls.email.markAsTouched();
+
+    expect(component.emailErrorMessage).toBe('');
+  });
+
+  it('builds translated email input config', () => {
+    const component = createComponent();
+
+    expect(component.emailConfig.label).toBe(`t:${AUTH_FORM_KEYS.EMAIL.LABEL}`);
+    expect(component.emailConfig.tooltip).toBe(`t:${AUTH_FORM_KEYS.EMAIL.LABEL}`);
   });
 
   it('selects a random submit button tooltip key from the configured list', () => {
@@ -96,6 +135,16 @@ describe('ForgotPasswordComponent', () => {
     );
     expect(component.submitButtonTooltipKey).toBe(
       FORGOT_PASSWORD_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS[expectedIndex],
+    );
+  });
+
+  it('falls back to first submit tooltip key when random picker returns undefined', () => {
+    vi.spyOn(randomUtils, 'pickRandomItem').mockReturnValue(undefined);
+
+    const component = createComponent();
+
+    expect(component.submitButtonTooltipKey).toBe(
+      FORGOT_PASSWORD_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS[0],
     );
   });
 });

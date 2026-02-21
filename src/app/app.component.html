@@ -9,7 +9,10 @@
     <theme-toggle />
   </div>
 </nav>
-<div class="route-animation-container" [@routeTransition]="routeAnimationState">
+<div class="route-animation-container" [@routeTransition]="getRouteAnimationState(outlet)">
   <router-outlet #outlet="outlet" />
 </div>
 <notification-container />
+@if (_authSessionLifecycleService.isInactivityPromptOpen()) {
+  <session-inactivity-modal (keepSessionActive)="onConfirmSessionStillActive()" />
+}

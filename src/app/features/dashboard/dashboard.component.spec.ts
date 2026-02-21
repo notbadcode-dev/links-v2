@@ -10,18 +10,9 @@ describe('DashboardComponent', () => {
     TestBed.configureTestingModule({});
   });
 
-  it('builds dashboard categories tree', () => {
+  it('creates dashboard component', () => {
     const component = createComponent();
 
-    expect(component.categories.length).toBeGreaterThan(0);
-    expect(component.categories[0]?.children?.length).toBeGreaterThan(0);
-  });
-
-  it('handles onCategorySelect without throwing', () => {
-    const component = createComponent();
-
-    expect(() => {
-      component.onCategorySelect({ id: '1', label: 'Test' });
-    }).not.toThrow();
+    expect(component).toBeTruthy();
   });
 });

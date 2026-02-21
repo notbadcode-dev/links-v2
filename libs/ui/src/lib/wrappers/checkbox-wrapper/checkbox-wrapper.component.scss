@@ -1,25 +1,22 @@
+@use '../../../styles/shared-mixins' as mixins;
+
 :host {
   display: block;
   margin-bottom: 0.5rem;
 }
 
 :host-context(ui-form-row) {
-  display: inline-flex;
-  align-items: center;
+  @include mixins.inline-flex-align-center;
   margin-bottom: 0;
 }
 
 .checkbox-control {
   appearance: none;
   -webkit-appearance: none;
-  border: 0;
-  background: transparent;
+  @include mixins.button-reset;
   color: var(--ui-color-text);
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
+  @include mixins.inline-flex-align-center;
   gap: var(--ui-space-2);
-  cursor: pointer;
   font: inherit;
   outline: none;
 
@@ -51,10 +48,9 @@
 }
 
 .checkbox-required {
-  color: var(--ui-color-text-soft);
-  font-size: 0.82em;
+  color: var(--ui-color-text-muted);
+  font-size: var(--ui-font-size-xs);
   font-weight: var(--ui-font-weight-regular);
   font-style: italic;
   margin-left: 0.2rem;
-  opacity: 0.95;
 }

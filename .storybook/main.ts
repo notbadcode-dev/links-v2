@@ -1,15 +1,18 @@
 import type { StorybookConfig } from '@storybook/angular';
 
 const config: StorybookConfig = {
-  "stories": [
-    "../libs/ui/stories/**/*.mdx",
-    "../libs/ui/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  stories: [
+    '../libs/ui/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
-  "addons": [
-    "@storybook/addon-a11y",
-    "@storybook/addon-docs",
-    "@storybook/addon-onboarding"
+  addons: [
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs',
+    '@storybook/addon-onboarding',
   ],
-  "framework": "@storybook/angular"
+  framework: '@storybook/angular',
+  webpackFinal: async (webpackConfig) => {
+    webpackConfig.performance = { hints: false };
+    return webpackConfig;
+  },
 };
 export default config;

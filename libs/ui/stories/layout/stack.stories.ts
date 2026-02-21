@@ -27,9 +27,9 @@ const meta: Meta<StackComponent> = {
     props: args,
     template: `
       <ui-stack [align]="align" [gap]="gap">
-        <div style="background: #f0f0f0; padding: 16px; border: 1px solid #ddd;">Item 1</div>
-        <div style="background: #e0e0e0; padding: 16px; border: 1px solid #ddd;">Item 2</div>
-        <div style="background: #d0d0d0; padding: 16px; border: 1px solid #ddd;">Item 3</div>
+        <div class="stack-story-item stack-story-item--1">Item 1</div>
+        <div class="stack-story-item stack-story-item--2">Item 2</div>
+        <div class="stack-story-item stack-story-item--3">Item 3</div>
       </ui-stack>
     `,
   }),

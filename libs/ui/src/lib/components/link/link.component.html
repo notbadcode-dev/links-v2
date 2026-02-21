@@ -1,3 +1,9 @@
-<a [routerLink]="route()" [matTooltip]="tooltip() ?? ''" class="ui-link" [class.ui-link--adjacent]="adjacent()">
+<a
+  [routerLink]="route()"
+  [matTooltip]="tooltip() ?? ''"
+  [attr.data-testid]="dataTestId() ?? null"
+  class="ui-link"
+  [class.ui-link--adjacent]="adjacent()"
+>
   {{ label() }}
 </a>

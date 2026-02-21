@@ -1,6 +1,6 @@
 import { ApiResponseMessageModel } from '@api/auth/models/api-response-message-model';
 
-import { NotificationService } from '@libs/components';
+import { NotificationService } from '@libs/components/notification/notification.service';
 
 export type TNotificationMethod = keyof Pick<
   NotificationService,

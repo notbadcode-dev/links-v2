@@ -47,6 +47,12 @@
     }
   }
 
+  .tree-toggle-spacer {
+    width: var(--ui-size-icon-lg);
+    height: var(--ui-size-icon-lg);
+    flex: 0 0 var(--ui-size-icon-lg);
+  }
+
   ::ng-deep .mat-icon-button {
     width: var(--ui-size-icon-lg);
     height: var(--ui-size-icon-lg);

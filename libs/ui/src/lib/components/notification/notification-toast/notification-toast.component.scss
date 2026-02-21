@@ -1,3 +1,5 @@
+@use '../../../../styles/shared-mixins' as mixins;
+
 :host {
   display: flex;
   align-items: center;
@@ -5,8 +7,8 @@
   padding: var(--ui-space-3) var(--ui-space-4);
   border-radius: var(--ui-radius-md);
   border: var(--ui-border-width) solid;
-  min-width: 320px;
-  max-width: 420px;
+  min-width: var(--ui-size-notification-min);
+  max-width: var(--ui-size-notification-max);
   font-family: var(--ui-font-family-base);
   animation: notification-slide-in var(--ui-transition-base) ease-out;
 
@@ -14,48 +16,33 @@
     background-color: var(--ui-color-success-bg);
     border-color: var(--ui-color-success-border);
     color: var(--ui-color-success-text);
-
-    .notification-toast__icon {
-      color: var(--ui-color-success-icon);
-    }
   }
 
   &.notification-toast--error {
     background-color: var(--ui-color-error-bg);
     border-color: var(--ui-color-error-border);
     color: var(--ui-color-error-text);
-
-    .notification-toast__icon {
-      color: var(--ui-color-error-icon);
-    }
   }
 
   &.notification-toast--warning {
     background-color: var(--ui-color-warning-bg);
     border-color: var(--ui-color-warning-border);
     color: var(--ui-color-warning-text);
-
-    .notification-toast__icon {
-      color: var(--ui-color-warning-icon);
-    }
   }
 
   &.notification-toast--info {
     background-color: var(--ui-color-info-bg);
     border-color: var(--ui-color-info-border);
     color: var(--ui-color-info-text);
-
-    .notification-toast__icon {
-      color: var(--ui-color-info-icon);
-    }
   }
 }
 
 .notification-toast__icon {
   flex-shrink: 0;
-  font-size: var(--ui-size-icon-md);
   width: var(--ui-size-icon-md);
   height: var(--ui-size-icon-md);
+  color: currentColor;
+  --mat-icon-color: currentColor;
 }
 
 .notification-toast__message {
@@ -67,8 +54,23 @@
 
 .notification-toast__close {
   flex-shrink: 0;
-  --mdc-icon-button-state-layer-size: var(--ui-size-control-sm);
-  --mdc-icon-button-icon-size: var(--ui-size-icon-sm);
+  width: var(--ui-size-control-sm);
+  height: var(--ui-size-control-sm);
+  @include mixins.button-reset;
+  border-radius: var(--ui-radius-full);
+  color: currentColor;
+  --mat-icon-color: currentColor;
+  @include mixins.inline-flex-center;
+  transform: translateY(2px);
+  opacity: 1;
+}
+
+.notification-toast__close:hover {
+  background-color: var(--ui-color-hover-muted);
+}
+
+.notification-toast__close:active {
+  background-color: var(--ui-color-active-muted);
 }
 
 @keyframes notification-slide-in {

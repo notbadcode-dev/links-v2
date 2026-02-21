@@ -52,9 +52,9 @@ const meta: Meta<CardWrapperComponent> = {
         [appearance]="appearance"
         [alignHeader]="alignHeader"
         [customClass]="customClass">
-        <div style="padding: 16px;">
+        <div class="card-wrapper-story-content">
           <p>This is the card content area. You can put any content here, including text, images, forms, or other components.</p>
-          <div style="display: flex; gap: 8px;">
+          <div class="card-wrapper-story-actions">
             <button-wrapper title="Primary Action"></button-wrapper>
             <button-wrapper title="Secondary Action" variant="stroked"></button-wrapper>
           </div>

@@ -6,11 +6,15 @@ import { I18nService } from './i18n.service';
 
 describe('I18nService', () => {
   let service: I18nService;
+  let activeLang = 'en';
   const langChanges$ = new Subject<string>();
+  const languageStorageKey = 'links_v2.i18n.language';
 
   const translocoMock = {
-    getActiveLang: vi.fn(() => 'en'),
-    setActiveLang: vi.fn(),
+    getActiveLang: vi.fn(() => activeLang),
+    setActiveLang: vi.fn((lang: string) => {
+      activeLang = lang;
+    }),
     translate: vi.fn((key: string, _params?: unknown, scope?: string) =>
       scope ? `${scope}.${key}` : key,
     ),
@@ -20,6 +24,8 @@ describe('I18nService', () => {
   };
 
   beforeEach(() => {
+    activeLang = 'en';
+    localStorage.clear();
     vi.clearAllMocks();
     TestBed.configureTestingModule({
       providers: [{ provide: TranslocoService, useValue: translocoMock }],
@@ -55,6 +61,37 @@ describe('I18nService', () => {
 
     expect(translocoMock.setActiveLang).toHaveBeenCalledTimes(1);
     expect(translocoMock.setActiveLang).toHaveBeenCalledWith('es');
+    expect(localStorage.getItem(languageStorageKey)).toBe('es');
+  });
+
+  it('initializes active language from localStorage when persisted value is valid', () => {
+    localStorage.setItem(languageStorageKey, 'es');
+    activeLang = 'en';
+    vi.clearAllMocks();
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({
+      providers: [{ provide: TranslocoService, useValue: translocoMock }],
+    });
+
+    service = TestBed.inject(I18nService);
+
+    expect(translocoMock.setActiveLang).toHaveBeenCalledWith('es');
+    expect(service.currentLanguageSignal()).toBe('es');
+  });
+
+  it('ignores persisted language when value is unsupported', () => {
+    localStorage.setItem(languageStorageKey, 'fr');
+    activeLang = 'en';
+    vi.clearAllMocks();
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({
+      providers: [{ provide: TranslocoService, useValue: translocoMock }],
+    });
+
+    service = TestBed.inject(I18nService);
+
+    expect(translocoMock.setActiveLang).not.toHaveBeenCalledWith('fr');
+    expect(service.currentLanguageSignal()).toBe('en');
   });
 
   it('checks hasKey by comparing translated value to key', () => {
@@ -63,6 +100,14 @@ describe('I18nService', () => {
 
     expect(service.hasKey('common.validation.required')).toBe(false);
     expect(service.hasKey('common.validation.required')).toBe(true);
+  });
+
+  it('returns false in hasKey when translate throws', () => {
+    translocoMock.translate.mockImplementationOnce(() => {
+      throw new Error('boom');
+    });
+
+    expect(service.hasKey('common.validation.required')).toBe(false);
   });
 
   it('loads global and scoped translations when scope is present', async () => {
@@ -78,6 +123,18 @@ describe('I18nService', () => {
     });
   });
 
+  it('loads only global translations when scope is undefined or blank', async () => {
+    const undefinedScopeResult = await new Promise<unknown>((resolve) => {
+      service.loadTranslations(undefined).subscribe(resolve);
+    });
+    const blankScopeResult = await new Promise<unknown>((resolve) => {
+      service.loadTranslations('   ').subscribe(resolve);
+    });
+
+    expect(undefinedScopeResult).toEqual({ path: 'en' });
+    expect(blankScopeResult).toEqual({ path: 'en' });
+  });
+
   it('translates multiple keys', () => {
     translocoMock.translate.mockImplementation((key: string) => `t:${key}`);
 
@@ -87,5 +144,22 @@ describe('I18nService', () => {
       a: 't:a',
       b: 't:b',
     });
+  });
+
+  it('proxies translate$, translate and langChanges$', async () => {
+    translocoMock.selectTranslate.mockReturnValueOnce(of('stream-value'));
+
+    expect(service.translate('x.key')).toBe('x.key');
+    await expect(
+      new Promise<string>((resolve) => service.translate$('x.key').subscribe(resolve)),
+    ).resolves.toBe('stream-value');
+    expect(service.langChanges$).toBe(translocoMock.langChanges$);
+  });
+
+  it('falls back to static fallback language when availableLanguages is empty', () => {
+    (service as unknown as { availableLanguages: { code: string }[] }).availableLanguages = [];
+    translocoMock.getActiveLang.mockReturnValue('zz');
+
+    expect(service.currentLanguageInfo.code).toBe('en');
   });
 });

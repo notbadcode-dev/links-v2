@@ -1,16 +1,3 @@
-:host ::ng-deep .signup-page .ui-page.layout-centered {
-  justify-content: flex-start;
-  padding-top: 5.5rem;
+@use '../auth-page-layout' as authLayout;
 
-  .ui-page__header {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  :host ::ng-deep .signup-page .ui-page.layout-centered {
-    padding-top: 3.75rem;
-  }
-}
+@include authLayout.centeredAuthPageLayout('signup-page');

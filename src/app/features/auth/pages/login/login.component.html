@@ -52,6 +52,7 @@
         {{ t(i18nKeys.FOOTER.NO_ACCOUNT) }}
         <ui-link
           [route]="routes.SIGNUP"
+          [dataTestId]="'auth-link-signup'"
           [label]="t(i18nKeys.FOOTER.SIGN_UP_LINK)"
           [tooltip]="t(i18nKeys.FOOTER.TOOLTIPS.SIGN_UP_LINK)"
           [adjacent]="true"

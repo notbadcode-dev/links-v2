@@ -1,0 +1,18 @@
+@mixin centeredAuthPageLayout($pageClass) {
+  :host ::ng-deep .#{$pageClass} .ui-page.layout-centered {
+    justify-content: flex-start;
+    padding-top: var(--ui-space-page-top-lg);
+
+    .ui-page__header {
+      width: 100%;
+      max-width: var(--ui-size-content-sm);
+      text-align: center;
+    }
+  }
+
+  @media (max-width: var(--ui-breakpoint-md)) {
+    :host ::ng-deep .#{$pageClass} .ui-page.layout-centered {
+      padding-top: var(--ui-space-page-top-md);
+    }
+  }
+}

@@ -8,15 +8,14 @@ import {
   OutputEmitterRef,
   Signal,
 } from '@angular/core';
-import { MatIconButton } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 
 import { INotification, NOTIFICATION_CONSTANTS } from '@libs/components/notification';
+import { IconWrapperComponent } from '@libs/wrappers';
 
 @Component({
   selector: 'notification-toast',
   standalone: true,
-  imports: [MatIconModule, MatIconButton],
+  imports: [IconWrapperComponent],
   templateUrl: './notification-toast.component.html',
   styleUrl: './notification-toast.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

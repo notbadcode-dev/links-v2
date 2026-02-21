@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  forwardRef,
   Signal,
   signal,
   WritableSignal,
@@ -17,8 +16,8 @@ import { EInputTextWrapperType } from '../input-text-wrapper/input-text-wrapper.
 import { InputWrapperDirective } from '../input-wrapper.directive';
 import { IInputTextWrapperConfig } from '../input-wrapper.types';
 const PASSWORD_ICONS = {
-  VISIBILITY: 'auth-visibility-off',
-  VISIBILITY_OFF: 'auth-visibility-on',
+  VISIBILITY: 'visibility',
+  VISIBILITY_OFF: 'visibility_off',
 } as const;
 
 @Component({
@@ -31,8 +30,7 @@ const PASSWORD_ICONS = {
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-
-      useExisting: forwardRef(() => InputPasswordWrapperComponent),
+      useExisting: InputPasswordWrapperComponent,
       multi: true,
     },
   ],

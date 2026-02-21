@@ -16,4 +16,5 @@ export class LinkComponent {
   public readonly label: InputSignal<string> = input.required<string>();
   public readonly tooltip: InputSignal<string | undefined> = input<string | undefined>(undefined);
   public readonly adjacent: InputSignal<boolean> = input<boolean>(false);
+  public readonly dataTestId: InputSignal<string | undefined> = input<string | undefined>(undefined);
 }

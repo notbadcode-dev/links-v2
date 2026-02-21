@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  forwardRef,
   input,
   InputSignal,
   Signal,
@@ -27,8 +26,7 @@ import { EInputTextWrapperType } from './input-text-wrapper.enum';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-
-      useExisting: forwardRef(() => InputTextWrapperComponent),
+      useExisting: InputTextWrapperComponent,
       multi: true,
     },
   ],

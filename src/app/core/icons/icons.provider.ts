@@ -29,6 +29,12 @@ const ICONS_PATHS = {
   THEME: {
     TOGGLE: 'assets/icons/theme/theme-toggle-animated.svg',
   },
+  NOTIFICATION: {
+    SUCCESS: 'assets/icons/notification/check.svg',
+    ERROR: 'assets/icons/notification/error.svg',
+    WARNING: 'assets/icons/notification/warning.svg',
+    INFO: 'assets/icons/notification/info.svg',
+  },
   MATERIAL: {
     CLOSE: 'assets/icons/material/close.svg',
     CHECK_CIRCLE: 'assets/icons/material/check_circle.svg',
@@ -80,6 +86,22 @@ const registerCustomIcons = (iconRegistry: MatIconRegistry, sanitizer: DomSaniti
   iconRegistry.addSvgIcon(
     CUSTOM_ICONS_CONSTANTS.THEME.TOGGLE,
     sanitizer.bypassSecurityTrustResourceUrl(ICONS_PATHS.THEME.TOGGLE),
+  );
+  iconRegistry.addSvgIcon(
+    CUSTOM_ICONS_CONSTANTS.NOTIFICATION.SUCCESS,
+    sanitizer.bypassSecurityTrustResourceUrl(ICONS_PATHS.NOTIFICATION.SUCCESS),
+  );
+  iconRegistry.addSvgIcon(
+    CUSTOM_ICONS_CONSTANTS.NOTIFICATION.ERROR,
+    sanitizer.bypassSecurityTrustResourceUrl(ICONS_PATHS.NOTIFICATION.ERROR),
+  );
+  iconRegistry.addSvgIcon(
+    CUSTOM_ICONS_CONSTANTS.NOTIFICATION.WARNING,
+    sanitizer.bypassSecurityTrustResourceUrl(ICONS_PATHS.NOTIFICATION.WARNING),
+  );
+  iconRegistry.addSvgIcon(
+    CUSTOM_ICONS_CONSTANTS.NOTIFICATION.INFO,
+    sanitizer.bypassSecurityTrustResourceUrl(ICONS_PATHS.NOTIFICATION.INFO),
   );
   iconRegistry.addSvgIcon(
     CUSTOM_ICONS_CONSTANTS.APP.LOGO,

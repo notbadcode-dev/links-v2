@@ -1,20 +1,32 @@
 @let currentLang = _currentLang();
-<dropdown-wrapper customClass="language-selector-trigger" menuClass="language-selector-menu">
-  <ng-container slot="trigger">
-    <icon-wrapper icon="translate" />
-    <span class="language-selector-label">{{ _getLanguageLabel(currentLang) }}</span>
-  </ng-container>
+<div
+  class="language-selector"
+  data-testid="global-language-selector"
+  (click)="$event.stopPropagation()"
+>
+  <button
+    type="button"
+    class="language-selector__trigger"
+    [attr.aria-expanded]="_isMenuOpen()"
+    (click)="toggleMenu($event)"
+  >
+    <icon-wrapper class="language-selector__icon" icon="translate" />
+    <span class="language-selector__label">{{ _getLanguageLabel(currentLang) }}</span>
+  </button>
 
-  <ng-container slot="content">
-    @for (lang of _availableLanguages; track lang.code) {
-      <button
-        class="dropdown-item"
-        [attr.data-testid]="'language-option-' + lang.code"
-        [class.active]="currentLang === lang.code"
-        (click)="setLanguage(lang.code)"
-      >
-        {{ _getLanguageLabel(lang.code) }}
-      </button>
-    }
-  </ng-container>
-</dropdown-wrapper>
+  @if (_isMenuOpen()) {
+    <div class="language-selector__menu" role="listbox">
+      @for (lang of _availableLanguages; track lang.code) {
+        <button
+          type="button"
+          class="language-selector__option"
+          [attr.data-testid]="'language-option-' + lang.code"
+          [class.active]="currentLang === lang.code"
+          (click)="selectLanguage(lang.code, $event)"
+        >
+          {{ _getLanguageLabel(lang.code) }}
+        </button>
+      }
+    </div>
+  }
+</div>

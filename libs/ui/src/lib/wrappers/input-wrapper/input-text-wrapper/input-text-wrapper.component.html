@@ -20,7 +20,7 @@
   @if (effectiveSvgIcon()) {
     <mat-icon matPrefix [svgIcon]="effectiveSvgIcon()!" />
   } @else if (effectiveIcon()) {
-    <mat-icon matPrefix [svgIcon]="effectiveIcon()!" />
+    <mat-icon matPrefix>{{ effectiveIcon() }}</mat-icon>
   }
 
   <input
@@ -29,6 +29,7 @@
     [placeholder]="effectivePlaceholder()"
     [required]="effectiveRequired()"
     [disabled]="isDisabled()"
+    [attr.aria-label]="effectiveLabel()"
     [attr.tabindex]="effectiveTabindex() ?? null"
     [ngModel]="value()"
     (ngModelChange)="onChange($event)"

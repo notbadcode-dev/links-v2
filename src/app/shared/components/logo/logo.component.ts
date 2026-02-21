@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { ESpacing } from '@libs/enums';
-import { IconWrapperComponent } from '@libs/wrappers';
+import { IconWrapperComponent } from '@libs/wrappers/icon-wrapper/icon-wrapper.component';
 
 import { ELogoVariant, LOGO_COLORS, LOGO_ICON_BY_VARIANT, LOGO_SIZES } from './logo.constants';
 
@@ -44,12 +44,13 @@ export class LogoComponent {
   });
   protected readonly _logoSize: Signal<string> = computed(() => {
     switch (this.size()) {
+      case ESpacing.NONE:
       case ESpacing.SM:
         return LOGO_SIZES.SM;
+      case ESpacing.LG:
       case ESpacing.XL:
-        return `calc(${LOGO_SIZES.MD} * ${LOGO_SIZES.XL_MULTIPLIER})`;
+        return LOGO_SIZES.XL;
       case ESpacing.MD:
-      default:
         return LOGO_SIZES.MD;
     }
   });

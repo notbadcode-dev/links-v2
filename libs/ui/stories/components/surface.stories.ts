@@ -27,12 +27,12 @@ const meta: Meta<SurfaceComponent> = {
     props: args,
     template: `
       <ui-surface [variant]="variant" [padding]="padding">
-        <h3 style="margin: 0 0 16px 0;">Surface Content</h3>
-        <p style="margin: 0 0 16px 0;">
+        <h3 class="surface-story-title">Surface Content</h3>
+        <p class="surface-story-description">
           This is content inside a surface component. The surface provides a consistent
           background and padding for content areas.
         </p>
-        <div style="background: #f8f9fa; padding: 12px; border-radius: 4px;">
+        <div class="surface-story-nested">
           <strong>Nested content</strong> can be placed inside the surface.
         </div>
       </ui-surface>

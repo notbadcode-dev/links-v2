@@ -45,4 +45,5 @@ export const LOGO_SIZES = {
   SM: '18px',
   MD: 'var(--ui-size-icon-lg)',
   XL_MULTIPLIER: 1.375,
+  XL: 'calc(var(--ui-size-icon-lg) * 1.375)',
 } as const;

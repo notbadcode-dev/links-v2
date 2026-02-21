@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 import { ICONS_CONSTANTS } from '@app/constants/icons.constants';
-import { ROUTES_CONSTANTS } from '@app/constants/routes.constants';
 import { I18nDirective } from '@app/core/i18n';
-import { SessionService } from '@app/core/services/session.service';
+import { AuthSessionLifecycleService } from '@app/core/services/auth-session-lifecycle.service';
 import { UserService } from '@app/core/services/user.service';
 import { pickRandomItem } from '@app/shared/utils/random.utils';
 
@@ -36,9 +35,10 @@ export class MainLayoutComponent extends BaseDirective {
   public readonly logoutTooltipKey: (typeof LOGOUT_TOOLTIP_KEYS)[number] =
     pickRandomItem(LOGOUT_TOOLTIP_KEYS) ?? LOGOUT_TOOLTIP_KEYS[0];
 
-  private readonly _sessionService: SessionService = inject(SessionService);
+  private readonly _authSessionLifecycleService: AuthSessionLifecycleService = inject(
+    AuthSessionLifecycleService,
+  );
   private readonly _userService: UserService = inject(UserService);
-  private readonly _router: Router = inject(Router);
 
   constructor() {
     super();
@@ -46,8 +46,6 @@ export class MainLayoutComponent extends BaseDirective {
   }
 
   public onLogout(): void {
-    this._sessionService.clear();
-    this._userService.clear();
-    void this._router.navigate([ROUTES_CONSTANTS.AUTH.LOGIN]);
+    this._authSessionLifecycleService.logout();
   }
 }

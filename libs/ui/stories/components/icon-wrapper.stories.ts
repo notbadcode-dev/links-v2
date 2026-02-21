@@ -34,7 +34,7 @@ export const NavigationIcons: TStory = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+      <div class="icon-wrapper-story-row">
         <icon-wrapper icon="home"></icon-wrapper>
         <icon-wrapper icon="dashboard"></icon-wrapper>
         <icon-wrapper icon="settings"></icon-wrapper>
@@ -50,7 +50,7 @@ export const ActionIcons: TStory = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+      <div class="icon-wrapper-story-row">
         <icon-wrapper icon="edit"></icon-wrapper>
         <icon-wrapper icon="delete"></icon-wrapper>
         <icon-wrapper icon="add"></icon-wrapper>
@@ -66,7 +66,7 @@ export const StatusIcons: TStory = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+      <div class="icon-wrapper-story-row">
         <icon-wrapper icon="check_circle"></icon-wrapper>
         <icon-wrapper icon="error"></icon-wrapper>
         <icon-wrapper icon="warning"></icon-wrapper>
@@ -82,16 +82,16 @@ export const WithText: TStory = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; align-items: center; gap: 8px;">
+      <div class="icon-wrapper-story-column">
+        <div class="icon-wrapper-story-item">
           <icon-wrapper icon="email"></icon-wrapper>
           <span>Send Email</span>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="icon-wrapper-story-item">
           <icon-wrapper icon="phone"></icon-wrapper>
           <span>Call Support</span>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="icon-wrapper-story-item">
           <icon-wrapper icon="location_on"></icon-wrapper>
           <span>View Location</span>
         </div>
@@ -104,7 +104,7 @@ export const Large: TStory = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="font-size: 48px;">
+      <div class="icon-wrapper-story-large">
         <icon-wrapper icon="star"></icon-wrapper>
       </div>
     `,

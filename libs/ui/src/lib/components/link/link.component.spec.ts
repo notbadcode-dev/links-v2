@@ -44,4 +44,12 @@ describe('LinkComponent', () => {
 
     expect(anchor?.classList.contains('ui-link--adjacent')).toBe(true);
   });
+
+  it('should expose an optional data-testid attribute', () => {
+    fixture.componentRef.setInput('dataTestId', 'auth-link-signup');
+    fixture.detectChanges();
+    const anchor = fixture.nativeElement.querySelector('a') as HTMLAnchorElement | null;
+
+    expect(anchor?.getAttribute('data-testid')).toBe('auth-link-signup');
+  });
 });

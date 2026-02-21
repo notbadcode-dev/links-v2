@@ -1,13 +1,6 @@
-:host ::ng-deep .login-page .ui-page.layout-centered {
-  justify-content: flex-start;
-  padding-top: 5.5rem;
+@use '../auth-page-layout' as authLayout;
 
-  .ui-page__header {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-  }
-}
+@include authLayout.centeredAuthPageLayout('login-page');
 
 :host ::ng-deep .login-page ui-form-container ui-form-row checkbox-wrapper .checkbox-label {
   font-size: var(--ui-font-size-xs);
@@ -16,8 +9,7 @@
   letter-spacing: 0.01em;
 }
 
-@media (max-width: 768px) {
-  :host ::ng-deep .login-page .ui-page.layout-centered {
-    padding-top: 3.75rem;
-  }
+:host ::ng-deep .login-page .auth-card > button-wrapper {
+  display: block;
+  margin-top: var(--ui-space-4);
 }

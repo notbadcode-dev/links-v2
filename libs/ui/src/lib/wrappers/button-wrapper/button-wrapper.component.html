@@ -1,21 +1,45 @@
 @switch (variant()) {
   @case (EButtonWrapperVariant.FLAT) {
-    <button mat-flat-button [buttonWrapperBase]="this" [color]="color()" [matTooltip]="effectiveTooltip()">
+    <button
+      mat-flat-button
+      [buttonWrapperBase]="this"
+      [color]="color()"
+      [matTooltip]="effectiveTooltip()"
+      [attr.aria-label]="ariaLabel()"
+    >
       <ng-container *ngTemplateOutlet="buttonInner" />
     </button>
   }
   @case (EButtonWrapperVariant.STROKED) {
-    <button mat-stroked-button [buttonWrapperBase]="this" [color]="color()" [matTooltip]="effectiveTooltip()">
+    <button
+      mat-stroked-button
+      [buttonWrapperBase]="this"
+      [color]="color()"
+      [matTooltip]="effectiveTooltip()"
+      [attr.aria-label]="ariaLabel()"
+    >
       <ng-container *ngTemplateOutlet="buttonInner" />
     </button>
   }
   @case (EButtonWrapperVariant.BASIC) {
-    <button mat-button [buttonWrapperBase]="this" [color]="color()" [matTooltip]="effectiveTooltip()">
+    <button
+      mat-button
+      [buttonWrapperBase]="this"
+      [color]="color()"
+      [matTooltip]="effectiveTooltip()"
+      [attr.aria-label]="ariaLabel()"
+    >
       <ng-container *ngTemplateOutlet="buttonInner" />
     </button>
   }
   @default {
-    <button mat-raised-button [buttonWrapperBase]="this" [color]="color()" [matTooltip]="effectiveTooltip()">
+    <button
+      mat-raised-button
+      [buttonWrapperBase]="this"
+      [color]="color()"
+      [matTooltip]="effectiveTooltip()"
+      [attr.aria-label]="ariaLabel()"
+    >
       <ng-container *ngTemplateOutlet="buttonInner" />
     </button>
   }

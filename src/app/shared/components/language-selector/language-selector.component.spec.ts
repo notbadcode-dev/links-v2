@@ -9,6 +9,7 @@ import { LanguageSelectorComponent } from './language-selector.component';
 describe('LanguageSelectorComponent', () => {
   type TLanguageSelectorTestAccess = LanguageSelectorComponent & {
     _currentLang: Signal<string>;
+    _isMenuOpen: { set: (value: boolean) => void; (): boolean };
   };
 
   const langChanges$ = new Subject<string>();
@@ -95,5 +96,47 @@ describe('LanguageSelectorComponent', () => {
     i18nMock.translate.mockReturnValueOnce('language.names.en');
 
     expect(getLanguageLabel('en')).toBe('English');
+  });
+
+  it('falls back to generic label when translation and configured name are missing', () => {
+    const component = createComponent() as TLanguageSelectorTestAccess;
+    const getLanguageLabel = (
+      (component as unknown as Record<string, unknown>)['_getLanguageLabel'] as (
+        langCode: string,
+      ) => string
+    ).bind(component);
+
+    i18nMock.translate.mockReturnValueOnce('language.names.fr');
+
+    expect(getLanguageLabel('fr')).toBe('Language');
+  });
+
+  it('opens/closes menu with toggle, document click and escape', () => {
+    const component = createComponent() as TLanguageSelectorTestAccess;
+    const event = { stopPropagation: vi.fn() } as unknown as MouseEvent;
+
+    expect(component._isMenuOpen()).toBe(false);
+    component.toggleMenu(event);
+    expect(event.stopPropagation).toHaveBeenCalledTimes(1);
+    expect(component._isMenuOpen()).toBe(true);
+
+    component.onDocumentClick();
+    expect(component._isMenuOpen()).toBe(false);
+
+    component._isMenuOpen.set(true);
+    component.onEscape();
+    expect(component._isMenuOpen()).toBe(false);
+  });
+
+  it('selectLanguage sets language and closes menu', () => {
+    const component = createComponent() as TLanguageSelectorTestAccess;
+    const event = { stopPropagation: vi.fn() } as unknown as MouseEvent;
+    component._isMenuOpen.set(true);
+
+    component.selectLanguage('es', event);
+
+    expect(event.stopPropagation).toHaveBeenCalledTimes(1);
+    expect(i18nMock.setLanguage).toHaveBeenCalledWith('es');
+    expect(component._isMenuOpen()).toBe(false);
   });
 });

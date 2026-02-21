@@ -55,6 +55,19 @@ export class ButtonWrapperComponent extends BaseDirective {
   public readonly clicked: OutputEmitterRef<Event> = output<Event>();
 
   public readonly effectiveTooltip: Signal<string> = computed(() => this.tooltip() ?? this.title());
+  public readonly ariaLabel: Signal<string> = computed(() => {
+    const title = this.title().trim();
+    if (title.length > 0) {
+      return title;
+    }
+
+    const tooltip = this.tooltip()?.trim();
+    if ((tooltip?.length ?? 0) > 0) {
+      return tooltip ?? 'button';
+    }
+
+    return 'button';
+  });
   public readonly isDisabled: Signal<boolean> = computed(
     () => this.disabled() || this._isProcessing() || (this._disableOnLoading?.() ?? false),
   );

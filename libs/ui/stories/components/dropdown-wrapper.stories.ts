@@ -62,31 +62,6 @@ const meta: Meta<DropdownWrapperComponent> = {
         </ng-container>
       </dropdown-wrapper>
     `,
-    styles: [
-      `
-      .dropdown-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1rem;
-        cursor: pointer;
-        border: none;
-        background: none;
-        width: 100%;
-        text-align: left;
-        transition: background-color 0.15s ease;
-      }
-
-      .dropdown-item:hover {
-        background-color: rgba(0, 0, 0, 0.04);
-      }
-
-      .dropdown-item.active {
-        font-weight: 600;
-        background-color: rgba(0, 0, 0, 0.08);
-      }
-    `,
-    ],
   }),
 };
 

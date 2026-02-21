@@ -64,4 +64,35 @@ describe('getApiFailureResponseFromHttpError', () => {
       { type: 'error', message: 'Password is too short' },
     ]);
   });
+
+  it('defaults to error type when messageList item has unsupported type', () => {
+    const error = new HttpErrorResponse({
+      status: 400,
+      error: {
+        code: 123,
+        messageList: [{ message: 'Unsupported type', type: 'unknown' }],
+      },
+    });
+
+    const result = getApiFailureResponseFromHttpError(error);
+
+    expect(result.code).toBeUndefined();
+    expect(result.messageList).toEqual([{ type: 'error', message: 'Unsupported type' }]);
+  });
+
+  it('falls back to default message when message payload is empty after normalization', () => {
+    const error = new HttpErrorResponse({
+      status: 400,
+      error: {
+        messageList: [{ message: '   ', type: 'error' }, null],
+        message: [' ', 42, ''],
+      },
+    });
+
+    const result = getApiFailureResponseFromHttpError(error);
+
+    expect(result.messageList).toEqual([
+      { type: 'error', message: API_ERROR_MAPPER_CONSTANTS.DEFAULT_ERROR_MESSAGE },
+    ]);
+  });
 });

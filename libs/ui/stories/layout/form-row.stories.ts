@@ -22,8 +22,8 @@ const meta: Meta<FormRowComponent> = {
     props: args,
     template: `
       <ui-form-row [align]="align">
-        <label style="margin-right: 16px; min-width: 100px;">Email:</label>
-        <input type="email" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        <label for="form-row-email">Email</label>
+        <input id="form-row-email" type="email" placeholder="name@example.com">
       </ui-form-row>
     `,
   }),
@@ -61,10 +61,11 @@ export const WithMultipleElements: TStory = {
     },
     template: `
       <ui-form-row [align]="align">
-        <label style="margin-right: 16px; min-width: 100px;">Full Name:</label>
-        <input type="text" placeholder="First" style="margin-right: 8px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-        <input type="text" placeholder="Last" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-        <button-wrapper style="margin-left: 8px;" title="Verify" variant="flat"></button-wrapper>
+        <label for="form-row-first-name">First Name</label>
+        <input id="form-row-first-name" type="text" placeholder="First" aria-label="First name">
+        <label for="form-row-last-name">Last Name</label>
+        <input id="form-row-last-name" type="text" placeholder="Last" aria-label="Last name">
+        <button-wrapper title="Verify" variant="flat"></button-wrapper>
       </ui-form-row>
     `,
   }),

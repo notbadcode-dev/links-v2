@@ -6,7 +6,9 @@ import { of } from 'rxjs';
 import { ROUTES_CONSTANTS } from '@app/constants/routes.constants';
 import { SessionService } from '@app/core/services/session.service';
 import { UserService } from '@app/core/services/user.service';
+import { AUTH_FORM_KEYS } from '@app/features/auth/constants/auth-form-keys.constants';
 import { AuthHttpHelper } from '@app/features/auth/helpers';
+import * as randomUtils from '@app/shared/utils/random.utils';
 
 import { NotificationService } from '@libs/components';
 
@@ -146,6 +148,71 @@ describe('LoginComponent', () => {
     expect(component.passwordErrorMessage).toBe('t:common.validation.min_length');
   });
 
+  it('returns invalid email message for malformed email and empty when untouched', () => {
+    const component = createComponent();
+
+    expect(component.emailErrorMessage).toBe('');
+
+    component.loginForm.controls.email.setValue('invalid-email');
+    component.loginForm.controls.email.markAsTouched();
+    component.loginForm.controls.email.updateValueAndValidity();
+
+    expect(component.emailErrorMessage).toBe('t:common.validation.invalid_email');
+  });
+
+  it('returns invalid email message when only pattern validation fails', () => {
+    const component = createComponent();
+
+    component.loginForm.controls.email.setErrors({ pattern: true });
+    component.loginForm.controls.email.markAsTouched();
+
+    expect(component.emailErrorMessage).toBe('t:common.validation.invalid_email');
+  });
+
+  it('returns required message for password and empty when unknown error is set', () => {
+    const component = createComponent();
+
+    component.loginForm.controls.email.setValue('john@doe.com');
+    component.loginForm.controls.email.updateValueAndValidity();
+    component.loginForm.controls.password.setValue('');
+    component.loginForm.controls.password.markAsTouched();
+    component.loginForm.controls.password.updateValueAndValidity();
+    expect(component.passwordErrorMessage).toBe('t:common.validation.required');
+
+    component.loginForm.controls.password.setErrors({ custom: true });
+    component.loginForm.controls.password.markAsTouched();
+    expect(component.passwordErrorMessage).toBe('');
+  });
+
+  it('returns empty email message when unknown error is set and control is dirty', () => {
+    const component = createComponent();
+
+    component.loginForm.controls.email.setErrors({ custom: true });
+    component.loginForm.controls.email.markAsDirty();
+
+    expect(component.emailErrorMessage).toBe('');
+  });
+
+  it('builds translated input configs for email and password', () => {
+    const component = createComponent();
+
+    expect(component.emailConfig.label).toBe(`t:${AUTH_FORM_KEYS.EMAIL.LABEL}`);
+    expect(component.passwordConfig.label).toBe(`t:${AUTH_FORM_KEYS.PASSWORD.LABEL}`);
+  });
+
+  it('returns empty password error when email has visible errors', () => {
+    const component = createComponent();
+
+    component.loginForm.controls.email.setValue('');
+    component.loginForm.controls.email.markAsTouched();
+    component.loginForm.controls.email.updateValueAndValidity();
+    component.loginForm.controls.password.setValue('123');
+    component.loginForm.controls.password.markAsTouched();
+    component.loginForm.controls.password.updateValueAndValidity();
+
+    expect(component.passwordErrorMessage).toBe('');
+  });
+
   it('selects a random submit button tooltip key from the configured list', () => {
     vi.spyOn(Math, 'random').mockReturnValue(0.41);
 
@@ -155,5 +222,13 @@ describe('LoginComponent', () => {
     expect(component.submitButtonTooltipKey).toBe(
       LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS[expectedIndex],
     );
+  });
+
+  it('falls back to first submit tooltip key when random picker returns undefined', () => {
+    vi.spyOn(randomUtils, 'pickRandomItem').mockReturnValue(undefined);
+
+    const component = createComponent();
+
+    expect(component.submitButtonTooltipKey).toBe(LOGIN_KEYS.TOOLTIPS.SUBMIT_BUTTON_OPTIONS[0]);
   });
 });

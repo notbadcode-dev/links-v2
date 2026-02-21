@@ -26,14 +26,14 @@ const meta: Meta<PageComponent> = {
     template: `
       <ui-page [layout]="layout">
         <ui-page-header>
-          <div style="padding: 16px; background: #f8f9fa; border-bottom: 1px solid #dee2e6;">
-            <h1 style="margin: 0;">Page Header</h1>
-            <p style="margin: 8px 0 0 0; color: #6c757d;">This is the page header section</p>
+          <div class="page-story-header">
+            <h1>Page Header</h1>
+            <p>This is the page header section</p>
           </div>
         </ui-page-header>
 
         <ui-page-body>
-          <div style="padding: 24px;">
+          <div class="page-story-body">
             <h2>Main Content</h2>
             <p>This is the main content area of the page. It can contain any type of content including:</p>
             <ul>
@@ -42,15 +42,15 @@ const meta: Meta<PageComponent> = {
               <li>Cards and information panels</li>
               <li>Navigation elements</li>
             </ul>
-            <div style="background: #e9ecef; padding: 16px; border-radius: 4px; margin: 16px 0;">
+            <div class="page-story-note">
               <strong>Note:</strong> This content area adapts based on the selected layout.
             </div>
           </div>
         </ui-page-body>
 
         <ui-page-footer>
-          <div style="padding: 16px; background: #f8f9fa; border-top: 1px solid #dee2e6; text-align: center;">
-            <p style="margin: 0; color: #6c757d;">© 2024 Page Footer Content</p>
+          <div class="page-story-footer">
+            <p>© 2024 Page Footer Content</p>
           </div>
         </ui-page-footer>
       </ui-page>
@@ -82,9 +82,9 @@ export const HeaderOnly: TStory = {
     template: `
       <ui-page [layout]="layout">
         <ui-page-header>
-          <div style="padding: 24px; background: #007bff; color: white;">
-            <h1 style="margin: 0;">Header Only Page</h1>
-            <p style="margin: 8px 0 0 0; opacity: 0.9;">Sometimes you only need a header</p>
+          <div class="page-story-header-accent">
+            <h1>Header Only Page</h1>
+            <p>Sometimes you only need a header</p>
           </div>
         </ui-page-header>
       </ui-page>
@@ -104,7 +104,7 @@ export const BodyOnly: TStory = {
     template: `
       <ui-page [layout]="layout">
         <ui-page-body>
-          <div style="padding: 32px; text-align: center;">
+          <div class="page-story-body-centered">
             <h2>Content Only Page</h2>
             <p>This page only has body content, no header or footer.</p>
             <button-wrapper title="Action Button" variant="flat"></button-wrapper>

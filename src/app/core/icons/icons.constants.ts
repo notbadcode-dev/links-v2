@@ -23,6 +23,12 @@ export const CUSTOM_ICONS_CONSTANTS = {
   THEME: {
     TOGGLE: 'theme-toggle-animated',
   },
+  NOTIFICATION: {
+    SUCCESS: 'notification-success',
+    ERROR: 'notification-error',
+    WARNING: 'notification-warning',
+    INFO: 'notification-info',
+  },
   MATERIAL: {
     CLOSE: 'close',
     CHECK_CIRCLE: 'check_circle',

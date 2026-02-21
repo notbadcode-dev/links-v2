@@ -1,6 +1,7 @@
+@use '../../../../styles/shared-mixins' as mixins;
+
 :host {
-  display: inline-flex;
-  align-items: center;
+  @include mixins.inline-flex-align-center;
 }
 
 .theme-toggle-button {
@@ -9,17 +10,14 @@
   height: 32px;
   min-width: 32px;
   min-height: 32px;
-  padding: 0;
+  @include mixins.button-reset;
   flex: 0 0 32px;
   overflow: visible;
   border: var(--ui-border-width) solid transparent;
   border-radius: var(--ui-radius-sm);
   background-color: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @include mixins.inline-flex-center;
   color: var(--ui-color-text-muted);
-  cursor: pointer;
   transition:
     border-color var(--ui-transition-fast),
     color var(--ui-transition-fast),

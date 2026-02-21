@@ -42,10 +42,25 @@ describe('ThemeToggleComponent', () => {
     expect(component.isLightThemeActive()).toBe(true);
   });
 
+  it('reports dark mode as active when theme is dark', () => {
+    themeServiceMock.isDarkTheme.mockReturnValue(true);
+    const component = createComponent();
+
+    expect(component.isDarkThemeActive()).toBe(true);
+    expect(component.isLightThemeActive()).toBe(false);
+  });
+
   it('returns dark label when dark theme is active', () => {
     themeServiceMock.isDarkTheme.mockReturnValue(true);
     const component = createComponent();
 
     expect(component.getToggleLabel()).toBe('common.theme.dark');
+  });
+
+  it('returns light label when dark theme is not active', () => {
+    themeServiceMock.isDarkTheme.mockReturnValue(false);
+    const component = createComponent();
+
+    expect(component.getToggleLabel()).toBe('common.theme.light');
   });
 });

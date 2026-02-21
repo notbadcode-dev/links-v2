@@ -1,0 +1,15 @@
+<div class="session-inactivity-modal__backdrop" role="presentation"></div>
+<section
+  class="session-inactivity-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="session-inactivity-modal-title"
+>
+  <h2 id="session-inactivity-modal-title" class="session-inactivity-modal__title">{{ title }}</h2>
+  <p class="session-inactivity-modal__description">{{ description }}</p>
+  <p class="session-inactivity-modal__warning">{{ autoLogoutWarning }}</p>
+
+  <button type="button" class="session-inactivity-modal__confirm" (click)="onKeepSessionActive()">
+    {{ confirmLabel }}
+  </button>
+</section>

@@ -83,4 +83,91 @@ describe('ThemeService', () => {
 
     expect(document.documentElement.classList.contains('theme-transitioning')).toBe(false);
   });
+
+  it('is idempotent on initialize and toggles theme correctly', () => {
+    service = TestBed.inject(ThemeService);
+    service.initialize();
+    const initialTheme = service.appliedTheme();
+    const storedAfterFirstInit = localStorage.getItem('links_v2.theme.preference');
+
+    service.initialize();
+    service.toggleTheme();
+
+    const toggledTheme = initialTheme === 'dark' ? 'light' : 'dark';
+    expect(localStorage.getItem('links_v2.theme.preference')).not.toBe(storedAfterFirstInit);
+    expect(service.appliedTheme()).toBe(toggledTheme);
+    expect(service.isDarkTheme()).toBe(toggledTheme === 'dark');
+  });
+
+  it('toggles back to light when current applied theme is dark', () => {
+    service = TestBed.inject(ThemeService);
+    service.initialize();
+    service.setTheme('dark');
+
+    service.toggleTheme();
+
+    expect(service.appliedTheme()).toBe('light');
+    expect(service.isDarkTheme()).toBe(false);
+  });
+
+  it('falls back to system theme when stored preference is invalid', () => {
+    localStorage.setItem('links_v2.theme.preference', 'unknown');
+    darkModeMatches = true;
+
+    service = TestBed.inject(ThemeService);
+    service.initialize();
+
+    expect(service.preference()).toBe('dark');
+    expect(service.appliedTheme()).toBe('dark');
+  });
+
+  it('resets running transition timer when theme changes rapidly', () => {
+    vi.useFakeTimers();
+    const clearTimeoutSpy = vi.spyOn(window, 'clearTimeout');
+    service = TestBed.inject(ThemeService);
+    service.initialize();
+
+    service.setTheme('dark');
+    service.setTheme('light');
+
+    expect(clearTimeoutSpy).toHaveBeenCalled();
+    vi.advanceTimersByTime(280);
+    expect(document.documentElement.classList.contains('theme-transitioning')).toBe(false);
+  });
+
+  it('skips DOM updates when document is unavailable', () => {
+    service = TestBed.inject(ThemeService);
+    const originalDocument = globalThis.document;
+
+    Object.defineProperty(globalThis, 'document', {
+      configurable: true,
+      value: undefined,
+    });
+
+    expect(() => (service as unknown as { _applyTheme: (theme: 'light', withTransition: boolean) => void })._applyTheme('light', true)).not.toThrow();
+
+    Object.defineProperty(globalThis, 'document', {
+      configurable: true,
+      value: originalDocument,
+    });
+  });
+
+  it('falls back to light when window is unavailable', () => {
+    service = TestBed.inject(ThemeService);
+    const originalWindow = globalThis.window;
+
+    Object.defineProperty(globalThis, 'window', {
+      configurable: true,
+      value: undefined,
+    });
+
+    expect(
+      (service as unknown as { _getSystemTheme: () => string })._getSystemTheme(),
+    ).toBe('light');
+
+    Object.defineProperty(globalThis, 'window', {
+      configurable: true,
+      value: originalWindow,
+    });
+  });
 });

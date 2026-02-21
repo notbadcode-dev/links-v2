@@ -29,14 +29,14 @@ const meta: Meta<FormContainerComponent> = {
         [formGroup]="sampleForm"
         (formSubmit)="onFormSubmit()">
         <div>
-          <label>Email:</label>
-          <input type="email" formControlName="email" style="width: 100%; padding: 8px; margin: 4px 0;">
+          <label for="form-container-email">Email</label>
+          <input id="form-container-email" type="email" formControlName="email">
         </div>
-        <div style="margin-top: 16px;">
-          <label>Name:</label>
-          <input type="text" formControlName="name" style="width: 100%; padding: 8px; margin: 4px 0;">
+        <div>
+          <label for="form-container-name">Name</label>
+          <input id="form-container-name" type="text" formControlName="name">
         </div>
-        <button-wrapper title="Submit" style="margin-top: 16px;"></button-wrapper>
+        <button-wrapper title="Submit"></button-wrapper>
       </ui-form-container>
     `,
     moduleMetadata: {
@@ -70,22 +70,32 @@ export const WithValidation: TStory = {
         [formGroup]="validationForm"
         (formSubmit)="onFormSubmit()">
         <div>
-          <label>Email (required):</label>
-          <input type="email" formControlName="email" style="width: 100%; padding: 8px; margin: 4px 0; border: 1px solid #ddd;">
-          <div *ngIf="validationForm.get('email')?.invalid && validationForm.get('email')?.touched"
-               style="color: red; font-size: 12px;">
+          <label for="form-container-validation-email">Email (required)</label>
+          <input
+            id="form-container-validation-email"
+            type="email"
+            formControlName="email"
+          >
+          <div
+            *ngIf="validationForm.get('email')?.invalid && validationForm.get('email')?.touched"
+          >
             Email is required
           </div>
         </div>
-        <div style="margin-top: 16px;">
-          <label>Name (required):</label>
-          <input type="text" formControlName="name" style="width: 100%; padding: 8px; margin: 4px 0; border: 1px solid #ddd;">
-          <div *ngIf="validationForm.get('name')?.invalid && validationForm.get('name')?.touched"
-               style="color: red; font-size: 12px;">
+        <div>
+          <label for="form-container-validation-name">Name (required)</label>
+          <input
+            id="form-container-validation-name"
+            type="text"
+            formControlName="name"
+          >
+          <div
+            *ngIf="validationForm.get('name')?.invalid && validationForm.get('name')?.touched"
+          >
             Name is required
           </div>
         </div>
-        <button-wrapper title="Submit" style="margin-top: 16px;"></button-wrapper>
+        <button-wrapper title="Submit"></button-wrapper>
       </ui-form-container>
     `,
     moduleMetadata: {

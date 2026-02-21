@@ -33,6 +33,14 @@
     "labels": {
       "active_user": "Active user"
     },
+    "session": {
+      "inactivity_modal": {
+        "title": "Are you still there?",
+        "description": "Your session has been inactive for 10 minutes.",
+        "auto_logout_warning": "If you do not answer, we will close your session in 5 minutes.",
+        "confirm_button": "Yes, I am still here"
+      }
+    },
     "validation": {
       "required": "This field is required",
       "invalid_email": "Please enter a valid email address",

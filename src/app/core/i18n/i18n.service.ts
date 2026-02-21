@@ -11,11 +11,17 @@ import { ILanguage, TTranslationParams, TTranslationPath } from './i18n.types';
 })
 export class I18nService {
   private static readonly _fallbackLanguage: ILanguage = I18N_CONSTANTS.DEFAULT_LANGUAGE;
+  private static readonly _languageStorageKey = 'links_v2.i18n.language';
   public readonly availableLanguages: ILanguage[] = I18N_CONSTANTS.LANGUAGES;
   public readonly currentLanguageSignal: Signal<string>;
   private readonly _translocoService: TranslocoService = inject(TranslocoService);
 
   constructor() {
+    const persistedLanguage = this._readPersistedLanguage();
+    if (persistedLanguage !== null) {
+      this._translocoService.setActiveLang(persistedLanguage);
+    }
+
     const initialLanguage = this.currentLanguage;
     this.currentLanguageSignal = toSignal(
       this._translocoService.langChanges$.pipe(startWith(initialLanguage)),
@@ -41,8 +47,9 @@ export class I18nService {
   }
 
   public setLanguage(langCode: string): void {
-    if (this.availableLanguages.some((lang) => lang.code === langCode)) {
+    if (this._isAvailableLanguage(langCode)) {
       this._translocoService.setActiveLang(langCode);
+      this._persistLanguage(langCode);
     }
   }
 
@@ -89,5 +96,28 @@ export class I18nService {
     ]).pipe(
       map(([globalTranslation, scopeTranslation]) => ({ globalTranslation, scopeTranslation })),
     );
+  }
+
+  private _isAvailableLanguage(langCode: string): boolean {
+    return this.availableLanguages.some((lang) => lang.code === langCode);
+  }
+
+  private _persistLanguage(langCode: string): void {
+    try {
+      globalThis.localStorage?.setItem(I18nService._languageStorageKey, langCode);
+    } catch {
+      // Ignore storage failures so i18n still works in restricted contexts.
+    }
+  }
+
+  private _readPersistedLanguage(): string | null {
+    try {
+      const persistedLanguage = globalThis.localStorage?.getItem(I18nService._languageStorageKey);
+      return persistedLanguage !== null && this._isAvailableLanguage(persistedLanguage)
+        ? persistedLanguage
+        : null;
+    } catch {
+      return null;
+    }
   }
 }

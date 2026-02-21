@@ -1,12 +1,4 @@
 @use './design-tokens';
 @forward './reboot-variables';
 
-@use './reboot-material-angular-system';
-
-@use './reboot-material-angular-typography';
-
-@use './reboot-material-angular-button';
-@use './reboot-material-angular-form-field';
-@use './reboot-material-angular-card';
-@use './reboot-material-angular-tooltip';
-@use './reboot-material-angular-icon';
+@use '../../libs/ui/src/styles/reboot-material-angular';

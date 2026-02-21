@@ -15,8 +15,8 @@
   }
 
   .form-required {
-    color: var(--ui-color-text-soft);
-    font-size: 0.82em;
+    color: var(--ui-color-text-muted);
+    font-size: var(--ui-font-size-xs);
     font-weight: var(--ui-font-weight-regular);
     font-style: italic;
     line-height: 1.1;
@@ -26,8 +26,8 @@
   }
 
   .form-required-inline {
-    color: var(--ui-color-text-soft);
-    font-size: 0.78em;
+    color: var(--ui-color-text-muted);
+    font-size: var(--ui-font-size-xs);
     font-weight: var(--ui-font-weight-regular);
     font-style: italic;
     line-height: 1.1;
