@@ -1,9 +1,4 @@
-import {
-  HttpErrorResponse,
-  HttpEvent,
-  HttpHandlerFn,
-  HttpRequest,
-} from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { catchError, EMPTY, Observable } from 'rxjs';
 

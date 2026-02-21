@@ -1,6 +1,15 @@
 export const ICONS_CONSTANTS = {
   APP: {
-    LOGO: 'rocket_launch',
+    LOGO: 'brand-bookmark-animated',
+    BOOKMARK: 'brand-bookmark',
+    BOOKMARK_ANIMATED: 'brand-bookmark-animated',
+    BOOKMARK_S: 'brand-bookmark-s',
+    BOOKMARK_S_MIN: 'brand-bookmark-s-min',
+    BOOKMARK_ANIMATED_S: 'brand-bookmark-animated-s',
+    BOOKMARK_OUTLINE: 'brand-bookmark-outline',
+    BOOKMARK_OUTLINE_S: 'brand-bookmark-outline-s',
+    BOOKMARK_OUTLINE_ANIMATED: 'brand-bookmark-outline-animated',
+    BOOKMARK_OUTLINE_ANIMATED_S: 'brand-bookmark-outline-animated-s',
   },
   AUTH: {
     EMAIL: 'email',

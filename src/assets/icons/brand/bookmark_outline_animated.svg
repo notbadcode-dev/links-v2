@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="none" viewBox="0 0 25 24">
+  <g clip-path="url(#bookmarkOutlineAnimClip)">
+    <g transform-origin="12.5 3.75">
+      <path stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"
+        d="M5.25 3.75a1 1 0 0 1 1-1h12.5a1 1 0 0 1 1 1v15.974c0 1.193-1.325 1.908-2.322 1.255L12.5 17.75l-4.928 3.229c-.998.653-2.322-.062-2.322-1.255z">
+        <animateTransform attributeName="transform" type="skewX"
+          values="0; 12; -8; 5; -3; 1; 0"
+          keyTimes="0; 0.15; 0.3; 0.45; 0.6; 0.8; 1"
+          dur="1s" begin="0s" fill="freeze"
+          calcMode="spline"
+          keySplines="0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1"
+          additive="sum"/>
+      </path>
+    </g>
+  </g>
+  <defs>
+    <clipPath id="bookmarkOutlineAnimClip"><path fill="#fff" d="M.5 0h24v24H.5z"/></clipPath>
+  </defs>
+</svg>

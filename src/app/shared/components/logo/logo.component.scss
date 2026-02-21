@@ -1,0 +1,34 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  color: var(--ui-color-primary);
+  line-height: 0;
+  --bookmark-letter-font: 'Mona Sans', sans-serif;
+}
+
+.logo-component__icon {
+  width: 100%;
+  height: 100%;
+}
+
+:host ::ng-deep mat-icon {
+  width: 100%;
+  height: 100%;
+  font-size: 100%;
+  color: inherit;
+}
+
+:host ::ng-deep mat-icon svg {
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+
+:host ::ng-deep mat-icon svg path,
+:host ::ng-deep mat-icon svg g,
+:host ::ng-deep mat-icon svg text {
+  color: inherit;
+}

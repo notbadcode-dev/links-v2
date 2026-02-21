@@ -2,6 +2,18 @@
   display: inline-block;
 }
 
+:host ::ng-deep .mat-mdc-menu-panel.language-selector-menu {
+  box-shadow: none !important;
+  border: var(--ui-border-width) solid var(--ui-border-subtle);
+  border-radius: var(--ui-radius-sm);
+  background-color: var(--ui-color-surface);
+  min-width: 140px;
+}
+
+:host ::ng-deep .mat-mdc-menu-panel.language-selector-menu .mat-mdc-menu-content {
+  padding: 0;
+}
+
 :host ::ng-deep .language-selector-trigger {
   width: auto;
   min-width: 130px;
@@ -10,6 +22,13 @@
   min-height: 32px;
   border: var(--ui-border-width) solid var(--ui-border-subtle);
   border-radius: var(--ui-radius-sm);
+  --mat-text-button-container-shape: var(--ui-radius-sm);
+  --mdc-text-button-container-shape: var(--ui-radius-sm);
+  --mat-text-button-state-layer-color: transparent;
+  --mat-text-button-ripple-color: transparent;
+  --mat-text-button-hover-state-layer-opacity: 0;
+  --mat-text-button-focus-state-layer-opacity: 0;
+  --mat-text-button-pressed-state-layer-opacity: 0;
   line-height: 1.2;
   font-size: var(--ui-font-size-sm);
   color: var(--ui-color-text);
@@ -22,11 +41,31 @@
   font-weight: var(--ui-font-weight-semibold);
   letter-spacing: 0.01em;
   box-shadow: none;
+  position: relative;
+  overflow: hidden;
   white-space: nowrap;
   transition:
     color var(--ui-transition-fast),
     background-color var(--ui-transition-fast),
     border-color var(--ui-transition-fast);
+}
+
+:host ::ng-deep .language-selector-trigger .mat-mdc-button-persistent-ripple,
+:host ::ng-deep .language-selector-trigger .mat-focus-indicator,
+:host ::ng-deep .language-selector-trigger .mat-ripple,
+:host ::ng-deep .language-selector-trigger .mat-ripple-element {
+  border-radius: inherit;
+}
+
+:host ::ng-deep .language-selector-trigger .mat-mdc-button-persistent-ripple,
+:host ::ng-deep .language-selector-trigger .mat-ripple,
+:host ::ng-deep .language-selector-trigger .mdc-button__ripple,
+:host ::ng-deep .language-selector-trigger .mdc-button__touch {
+  display: none;
+}
+
+:host ::ng-deep .language-selector-trigger .mat-mdc-button-touch-target {
+  border-radius: inherit;
 }
 
 :host ::ng-deep .language-selector-trigger .mdc-button__label {
@@ -45,6 +84,10 @@
   --mdc-text-button-label-text-color: var(--ui-color-text);
   border-color: var(--ui-border-strong);
   background-color: var(--ui-color-hover-muted);
+}
+
+:host ::ng-deep .language-selector-trigger:active {
+  background-color: var(--ui-color-active-muted);
 }
 
 :host ::ng-deep .language-selector-trigger icon-wrapper {

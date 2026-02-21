@@ -3,3 +3,8 @@
   flex-direction: column;
   gap: 0.35rem;
 }
+
+:host + button-wrapper {
+  display: block;
+  margin-top: 0.5rem;
+}

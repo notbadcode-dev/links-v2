@@ -2,6 +2,15 @@
   display: inline-block;
 }
 
+:host ::ng-deep .mat-mdc-menu-panel.dropdown-wrapper-menu {
+  margin-top: var(--ui-space-2);
+}
+
+:host ::ng-deep .mat-mdc-menu-panel.dropdown-wrapper-menu.mat-menu-above {
+  margin-top: 0;
+  margin-bottom: var(--ui-space-2);
+}
+
 .dropdown-item {
   display: flex;
   align-items: center;

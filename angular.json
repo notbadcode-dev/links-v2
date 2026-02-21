@@ -33,7 +33,6 @@
               }
             ],
             "styles": [
-              "@fontsource/material-icons/index.css",
               "src/styles.scss"
             ],
             "scripts": []

@@ -17,14 +17,7 @@
   .nav-brand {
     display: flex;
     align-items: center;
-    gap: var(--ui-space-3);
-
-    .brand-logo {
-      color: var(--ui-color-primary);
-      font-size: var(--ui-size-icon-lg);
-      width: var(--ui-size-icon-lg);
-      height: var(--ui-size-icon-lg);
-    }
+    gap: var(--ui-space-1);
 
     .brand-name {
       font-size: var(--ui-font-size-lg);
@@ -32,6 +25,7 @@
       color: var(--ui-color-text-strong);
       letter-spacing: -0.01em;
     }
+
   }
 
   .nav-actions {
@@ -52,6 +46,10 @@
 @media (max-width: 768px) {
   .top-navbar {
     padding: 0 var(--ui-space-3);
+
+    .nav-brand {
+      min-width: 0;
+    }
 
     .nav-actions {
       gap: var(--ui-space-2);

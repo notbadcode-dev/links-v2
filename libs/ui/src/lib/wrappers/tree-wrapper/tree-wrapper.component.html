@@ -7,7 +7,7 @@
     <button mat-icon-button disabled></button>
     <div class="node-content leaf" (click)="onNodeClick(node)">
       @if (node.icon) {
-        <mat-icon class="node-icon">{{ node.icon }}</mat-icon>
+        <mat-icon class="node-icon" [svgIcon]="node.icon" />
       } @else {
         <div class="icon-placeholder"></div>
       }
@@ -18,13 +18,11 @@
   <mat-nested-tree-node *matTreeNodeDef="let dataNode; when: hasChild" #node="matNestedTreeNode">
     <div class="mat-tree-node">
       <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + dataNode.label">
-        <mat-icon class="mat-icon-rtl-mirror">
-          {{ node.isExpanded ? expandedIcon() : collapsedIcon() }}
-        </mat-icon>
+        <mat-icon class="mat-icon-rtl-mirror" [svgIcon]="node.isExpanded ? expandedIcon() : collapsedIcon()" />
       </button>
       <div class="node-content branch" (click)="onNodeClick(dataNode)">
         @if (dataNode.icon) {
-          <mat-icon class="node-icon">{{ dataNode.icon }}</mat-icon>
+          <mat-icon class="node-icon" [svgIcon]="dataNode.icon" />
         } @else {
           <div class="icon-placeholder"></div>
         }

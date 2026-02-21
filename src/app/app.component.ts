@@ -1,17 +1,18 @@
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 
-import { ICONS_CONSTANTS } from '@app/constants/icons.constants';
 import { ThemeService } from '@app/core/services/theme.service';
 
 import { NotificationContainerComponent } from '@libs/components';
 import { BaseDirective } from '@libs/directives';
+import { ESpacing } from '@libs/enums';
 
 import { LanguageSelectorComponent } from './shared/components/language-selector/language-selector.component';
+import { LogoComponent } from './shared/components/logo/logo.component';
+import { ELogoVariant } from './shared/components/logo/logo.constants';
 import { ThemeToggleComponent } from './shared/components/theme-toggle/theme-toggle.component';
 
 const routeTransitionAnimations = [
@@ -64,8 +65,8 @@ const routeTransitionAnimations = [
     RouterOutlet,
     NotificationContainerComponent,
     LanguageSelectorComponent,
+    LogoComponent,
     ThemeToggleComponent,
-    MatIconModule,
   ],
   animations: routeTransitionAnimations,
   templateUrl: './app.component.html',
@@ -73,8 +74,9 @@ const routeTransitionAnimations = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent extends BaseDirective {
-  public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;
   public routeAnimationState: string = 'initial';
+  protected readonly _eSpacing: typeof ESpacing = ESpacing;
+  protected readonly _brandLogoVariant: ELogoVariant = ELogoVariant.BOOKMARK_ANIMATED_S;
 
   private readonly _router: Router = inject(Router);
   private readonly _themeService: ThemeService = inject(ThemeService);

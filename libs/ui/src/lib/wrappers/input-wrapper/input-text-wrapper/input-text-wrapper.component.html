@@ -20,7 +20,7 @@
   @if (effectiveSvgIcon()) {
     <mat-icon matPrefix [svgIcon]="effectiveSvgIcon()!" />
   } @else if (effectiveIcon()) {
-    <mat-icon matPrefix>{{ effectiveIcon() }}</mat-icon>
+    <mat-icon matPrefix [svgIcon]="effectiveIcon()!" />
   }
 
   <input

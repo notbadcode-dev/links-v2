@@ -2,7 +2,34 @@
 @use './styles/design-tokens';
 @use './styles/reboot-material-angular';
 
-@use '@fontsource-variable/mona-sans';
+@font-face {
+  font-family: 'Mona Sans Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url('../node_modules/@fontsource-variable/mona-sans/files/mona-sans-latin-wght-normal.woff2')
+    format('woff2-variations');
+  unicode-range:
+    U+0000-00FF,
+    U+0131,
+    U+0152-0153,
+    U+02BB-02BC,
+    U+02C6,
+    U+02DA,
+    U+02DC,
+    U+0304,
+    U+0308,
+    U+0329,
+    U+2000-206F,
+    U+20AC,
+    U+2122,
+    U+2191,
+    U+2193,
+    U+2212,
+    U+2215,
+    U+FEFF,
+    U+FFFD;
+}
 
 html {
   height: 100%;
@@ -64,27 +91,6 @@ body {
   }
 }
 
-.mat-mdc-menu-panel.language-selector-menu {
-  box-shadow: none !important;
-  border: var(--ui-border-width) solid var(--ui-border-subtle);
-  border-radius: var(--ui-radius-sm);
-  background-color: var(--ui-color-surface);
-  min-width: 140px;
-}
-
-.mat-mdc-menu-panel.language-selector-menu .mat-mdc-menu-content {
-  padding: 0;
-}
-
-.mat-mdc-menu-panel.dropdown-wrapper-menu {
-  margin-top: var(--ui-space-2);
-}
-
-.mat-mdc-menu-panel.dropdown-wrapper-menu.mat-menu-above {
-  margin-top: 0;
-  margin-bottom: var(--ui-space-2);
-}
-
 .mat-mdc-unelevated-button.mat-primary,
 .mat-mdc-raised-button.mat-primary {
   background-color: var(--ui-color-button-primary, var(--ui-color-primary-700)) !important;
@@ -113,9 +119,4 @@ body {
   ) !important;
   filter: none;
   transform: translateY(0);
-}
-
-ui-form-container + button-wrapper {
-  display: block;
-  margin-top: 0.5rem;
 }

@@ -1,4 +1,16 @@
 export const CUSTOM_ICONS_CONSTANTS = {
+  APP: {
+    LOGO: 'brand-bookmark-animated',
+    BOOKMARK: 'brand-bookmark',
+    BOOKMARK_ANIMATED: 'brand-bookmark-animated',
+    BOOKMARK_S: 'brand-bookmark-s',
+    BOOKMARK_S_MIN: 'brand-bookmark-s-min',
+    BOOKMARK_ANIMATED_S: 'brand-bookmark-animated-s',
+    BOOKMARK_OUTLINE: 'brand-bookmark-outline',
+    BOOKMARK_OUTLINE_S: 'brand-bookmark-outline-s',
+    BOOKMARK_OUTLINE_ANIMATED: 'brand-bookmark-outline-animated',
+    BOOKMARK_OUTLINE_ANIMATED_S: 'brand-bookmark-outline-animated-s',
+  },
   AUTH: {
     LOGIN_BUTTON: 'auth-login-button',
     LOGOUT_BUTTON: 'auth-logout-button',
@@ -10,5 +22,22 @@ export const CUSTOM_ICONS_CONSTANTS = {
   },
   THEME: {
     TOGGLE: 'theme-toggle-animated',
+  },
+  MATERIAL: {
+    CLOSE: 'close',
+    CHECK_CIRCLE: 'check_circle',
+    ERROR: 'error',
+    WARNING: 'warning',
+    INFO: 'info',
+    EXPAND_MORE: 'expand_more',
+    CHEVRON_RIGHT: 'chevron_right',
+    CODE: 'code',
+    PERSON: 'person',
+    SETTINGS: 'settings',
+    TRANSLATE: 'translate',
+    ECO: 'eco',
+    CONTRAST: 'contrast',
+    RESTAURANT: 'restaurant',
+    FLIGHT: 'flight',
   },
 } as const;
