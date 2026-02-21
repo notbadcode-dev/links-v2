@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 @Component({
   selector: 'app-test-counter',
   standalone: true,
-  templateUrl: './testing-library.integration.spec.host.html',
+  template: ` <button type="button" (click)="count = count + 1">Count: {{ count }}</button> `,
 })
 class TestCounterComponent {
   public count: number = 0;

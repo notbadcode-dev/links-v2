@@ -68,9 +68,11 @@ describe('LanguageSelectorComponent', () => {
 
   it('localizes language labels based on current app language', () => {
     const component = createComponent() as TLanguageSelectorTestAccess;
-    const getLanguageLabel = (component as Record<string, unknown>)['_getLanguageLabel'] as (
-      langCode: string,
-    ) => string;
+    const getLanguageLabel = (
+      (component as unknown as Record<string, unknown>)['_getLanguageLabel'] as (
+        langCode: string,
+      ) => string
+    ).bind(component);
 
     expect(getLanguageLabel('es')).toBe('Spanish');
     expect(getLanguageLabel('en')).toBe('English');
@@ -84,9 +86,11 @@ describe('LanguageSelectorComponent', () => {
 
   it('falls back to configured language name and never to uppercase code', () => {
     const component = createComponent() as TLanguageSelectorTestAccess;
-    const getLanguageLabel = (component as Record<string, unknown>)['_getLanguageLabel'] as (
-      langCode: string,
-    ) => string;
+    const getLanguageLabel = (
+      (component as unknown as Record<string, unknown>)['_getLanguageLabel'] as (
+        langCode: string,
+      ) => string
+    ).bind(component);
 
     i18nMock.translate.mockReturnValueOnce('language.names.en');
 

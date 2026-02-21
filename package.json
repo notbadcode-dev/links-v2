@@ -13,7 +13,7 @@
     "lint:html": "eslint \"src/**/*.html\" \"libs/**/*.html\"",
     "format": "prettier --write \"src/**/*.{ts,html,css,scss,json}\" \"libs/**/*.{ts,html,css,scss,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,css,scss,json}\" \"libs/**/*.{ts,html,css,scss,json}\"",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc -p tsconfig.typecheck.json",
     "check": "npm run format:check && npm run lint && npm run lint:html && npm run type-check",
     "fix": "npm run format && npm run lint:fix",
     "api:generate": "npm run api:generate:auth && npm run api:generate:links && npm run api:postgen",

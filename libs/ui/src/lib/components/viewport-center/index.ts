@@ -1,1 +1,1 @@
-export * from './centered-content.component';
+export * from './viewport-center.component';

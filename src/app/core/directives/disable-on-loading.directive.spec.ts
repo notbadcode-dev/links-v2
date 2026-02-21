@@ -12,7 +12,7 @@ import { DisableOnLoadingDirective } from './disable-on-loading.directive';
   selector: 'app-test-disable-on-loading-host',
   standalone: true,
   imports: [DisableOnLoadingDirective],
-  templateUrl: './disable-on-loading.directive.spec.host.html',
+  template: ` <button disableOnLoading>Send</button> `,
 })
 class TestDisableOnLoadingHostComponent {}
 

@@ -9,7 +9,13 @@ import { I18nService } from './i18n.service';
   selector: 'app-test-i18n-directive-host',
   standalone: true,
   imports: [I18nDirective],
-  templateUrl: './i18n.directive.spec.host.html',
+  template: `
+    <ng-container *i18n="'auth'; let t">
+      <span class="scoped">{{ t('title') }}</span>
+      <span class="common">{{ t('common.actions.back') }}</span>
+      <span class="plain">{{ t('subtitle') }}</span>
+    </ng-container>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestI18nDirectiveHostComponent {}

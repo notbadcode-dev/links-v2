@@ -35,3 +35,14 @@ export const LOGO_SHOWCASE_VARIANTS: readonly ELogoVariant[] = [
   ELogoVariant.BOOKMARK_OUTLINE_ANIMATED,
   ELogoVariant.BOOKMARK_OUTLINE_ANIMATED_S,
 ] as const;
+
+export const LOGO_COLORS = {
+  PRIMARY: 'var(--ui-color-primary)',
+  SURFACE: 'var(--ui-color-surface)',
+} as const;
+
+export const LOGO_SIZES = {
+  SM: '18px',
+  MD: 'var(--ui-size-icon-lg)',
+  XL_MULTIPLIER: 1.375,
+} as const;

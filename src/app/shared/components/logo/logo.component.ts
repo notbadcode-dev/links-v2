@@ -10,7 +10,7 @@ import {
 import { ESpacing } from '@libs/enums';
 import { IconWrapperComponent } from '@libs/wrappers';
 
-import { ELogoVariant, LOGO_ICON_BY_VARIANT } from './logo.constants';
+import { ELogoVariant, LOGO_COLORS, LOGO_ICON_BY_VARIANT, LOGO_SIZES } from './logo.constants';
 
 @Component({
   selector: 'logo-component',
@@ -37,20 +37,20 @@ export class LogoComponent {
     switch (this.variant()) {
       case ELogoVariant.BOOKMARK_OUTLINE_S:
       case ELogoVariant.BOOKMARK_OUTLINE_ANIMATED_S:
-        return 'var(--ui-color-primary)';
+        return LOGO_COLORS.PRIMARY;
       default:
-        return 'var(--ui-color-surface)';
+        return LOGO_COLORS.SURFACE;
     }
   });
   protected readonly _logoSize: Signal<string> = computed(() => {
     switch (this.size()) {
       case ESpacing.SM:
-        return '18px';
+        return LOGO_SIZES.SM;
       case ESpacing.XL:
-        return 'calc(var(--ui-size-icon-lg) * 1.375)';
+        return `calc(${LOGO_SIZES.MD} * ${LOGO_SIZES.XL_MULTIPLIER})`;
       case ESpacing.MD:
       default:
-        return 'var(--ui-size-icon-lg)';
+        return LOGO_SIZES.MD;
     }
   });
 }

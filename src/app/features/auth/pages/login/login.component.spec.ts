@@ -135,12 +135,14 @@ describe('LoginComponent', () => {
     component.loginForm.controls.email.setValue('');
     component.loginForm.controls.email.markAsTouched();
     component.loginForm.controls.email.updateValueAndValidity();
+    expect(component.emailErrorMessage).toBe('t:common.validation.required');
 
+    component.loginForm.controls.email.setValue('john@doe.com');
+    component.loginForm.controls.email.updateValueAndValidity();
     component.loginForm.controls.password.setValue('123');
     component.loginForm.controls.password.markAsTouched();
     component.loginForm.controls.password.updateValueAndValidity();
 
-    expect(component.emailErrorMessage).toBe('t:common.validation.required');
     expect(component.passwordErrorMessage).toBe('t:common.validation.min_length');
   });
 
