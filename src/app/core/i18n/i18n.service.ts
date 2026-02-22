@@ -11,7 +11,7 @@ import { ILanguage, TTranslationParams, TTranslationPath } from './i18n.types';
 })
 export class I18nService {
   private static readonly _fallbackLanguage: ILanguage = I18N_CONSTANTS.DEFAULT_LANGUAGE;
-  private static readonly _languageStorageKey = 'links_v2.i18n.language';
+  private static readonly _languageStorageKey: string = 'links_v2.i18n.language';
   public readonly availableLanguages: readonly ILanguage[] = I18N_CONSTANTS.LANGUAGES;
   public readonly currentLanguageSignal: Signal<string>;
   private readonly _translocoService: TranslocoService = inject(TranslocoService);
@@ -104,7 +104,7 @@ export class I18nService {
 
   private _persistLanguage(langCode: string): void {
     try {
-      globalThis.localStorage?.setItem(I18nService._languageStorageKey, langCode);
+      globalThis.localStorage.setItem(I18nService._languageStorageKey, langCode);
     } catch {
       // Ignore storage failures so i18n still works in restricted contexts.
     }
@@ -112,7 +112,7 @@ export class I18nService {
 
   private _readPersistedLanguage(): string | null {
     try {
-      const persistedLanguage = globalThis.localStorage?.getItem(I18nService._languageStorageKey);
+      const persistedLanguage = globalThis.localStorage.getItem(I18nService._languageStorageKey);
       return persistedLanguage !== null && this._isAvailableLanguage(persistedLanguage)
         ? persistedLanguage
         : null;

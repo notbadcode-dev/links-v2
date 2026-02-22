@@ -95,4 +95,17 @@ describe('getApiFailureResponseFromHttpError', () => {
       { type: 'error', message: API_ERROR_MAPPER_CONSTANTS.DEFAULT_ERROR_MESSAGE },
     ]);
   });
+
+  it('falls back to default message when message is neither string nor array', () => {
+    const error = new HttpErrorResponse({
+      status: 400,
+      error: { message: 123 },
+    });
+
+    const result = getApiFailureResponseFromHttpError(error);
+
+    expect(result.messageList).toEqual([
+      { type: 'error', message: API_ERROR_MAPPER_CONSTANTS.DEFAULT_ERROR_MESSAGE },
+    ]);
+  });
 });

@@ -12,7 +12,19 @@ import prettierConfig from 'eslint-config-prettier';
 export default tseslint.config(
   {
     files: ['**/*.ts'],
-    ignores: ['node_modules/**', 'dist/**', 'storybook-static/**'],
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      '.angular/**',
+      'out-tsc/**',
+      'coverage/**',
+      'storybook-static/**',
+      '.git/**',
+      '.vscode/**',
+      '.idea/**',
+      '*.log',
+      'src/api/**',
+    ],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {

@@ -164,9 +164,7 @@
 .theme-toggle-button.dark-active icon-wrapper {
   color: var(--mat-sys-tertiary, var(--ui-color-primary-700));
   opacity: 1;
-  filter: drop-shadow(
-      0 0 3px var(--theme-toggle-dark-glow-1)
-    )
+  filter: drop-shadow(0 0 3px var(--theme-toggle-dark-glow-1))
     drop-shadow(0 0 8px var(--theme-toggle-dark-glow-2));
   animation: dark-mode-icon-glow 1800ms ease-in-out infinite alternate;
 }
@@ -187,9 +185,7 @@
 .theme-toggle-button.light-active icon-wrapper {
   color: var(--theme-toggle-light-icon-color);
   opacity: 0.47;
-  filter: drop-shadow(
-      0 0 3px var(--theme-toggle-light-glow-1)
-    )
+  filter: drop-shadow(0 0 3px var(--theme-toggle-light-glow-1))
     drop-shadow(0 0 8px var(--theme-toggle-light-glow-2));
   animation:
     light-mode-icon-flash 520ms cubic-bezier(0.22, 0.9, 0.2, 1),
@@ -260,15 +256,11 @@
 
 @keyframes dark-mode-icon-glow {
   0% {
-    filter: drop-shadow(
-        0 0 2px var(--theme-toggle-dark-glow-keyframe-start-1)
-      )
+    filter: drop-shadow(0 0 2px var(--theme-toggle-dark-glow-keyframe-start-1))
       drop-shadow(0 0 6px var(--theme-toggle-dark-glow-keyframe-start-2));
   }
   100% {
-    filter: drop-shadow(
-        0 0 4px var(--theme-toggle-dark-glow-keyframe-end-1)
-      )
+    filter: drop-shadow(0 0 4px var(--theme-toggle-dark-glow-keyframe-end-1))
       drop-shadow(0 0 10px var(--theme-toggle-dark-glow-keyframe-end-2));
   }
 }

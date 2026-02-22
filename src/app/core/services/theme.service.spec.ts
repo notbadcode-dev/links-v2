@@ -151,7 +151,14 @@ describe('ThemeService', () => {
       value: undefined,
     });
 
-    expect(() => (service as unknown as { _applyTheme: (theme: 'light', withTransition: boolean) => void })._applyTheme('light', true)).not.toThrow();
+    expect(() => {
+      (
+        (service as unknown as Record<string, unknown>)['_applyTheme'] as (
+          theme: 'light',
+          withTransition: boolean,
+        ) => void
+      )('light', true);
+    }).not.toThrow();
 
     Object.defineProperty(globalThis, 'document', {
       configurable: true,
@@ -169,7 +176,7 @@ describe('ThemeService', () => {
     });
 
     expect(
-      (service as unknown as { _getSystemTheme: () => string })._getSystemTheme(),
+      ((service as unknown as Record<string, unknown>)['_getSystemTheme'] as () => string)(),
     ).toBe('light');
 
     Object.defineProperty(globalThis, 'window', {

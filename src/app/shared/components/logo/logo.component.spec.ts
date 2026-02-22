@@ -3,12 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { ESpacing } from '@libs/enums';
 
 import { LogoComponent } from './logo.component';
+import { LOGO_COLORS, LOGO_ICON_BY_VARIANT, LOGO_SIZES } from './logo.constants';
 import { ELogoLetterFill, ELogoVariant } from './logo.enums';
-import {
-  LOGO_COLORS,
-  LOGO_ICON_BY_VARIANT,
-  LOGO_SIZES,
-} from './logo.constants';
 
 describe('LogoComponent', () => {
   const createComponent = (): LogoComponent =>

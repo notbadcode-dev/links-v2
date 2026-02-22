@@ -235,33 +235,49 @@ describe('AuthSessionLifecycleService', () => {
     service.initialize();
 
     document.dispatchEvent(new Event('mousemove'));
-    expect((service as unknown as { _inactivityTimerId: ReturnType<typeof setTimeout> | null })._inactivityTimerId).toBeNull();
+    expect(
+      (service as unknown as { _inactivityTimerId: ReturnType<typeof setTimeout> | null })
+        ._inactivityTimerId,
+    ).toBeNull();
 
     isAuthenticatedSignal.set(true);
-    (service as unknown as { _isInactivityPromptOpen: { set: (value: boolean) => void } })._isInactivityPromptOpen.set(true);
+    (
+      service as unknown as { _isInactivityPromptOpen: { set: (value: boolean) => void } }
+    )._isInactivityPromptOpen.set(true);
     document.dispatchEvent(new Event('mousemove'));
 
-    expect((service as unknown as { _inactivityTimerId: ReturnType<typeof setTimeout> | null })._inactivityTimerId).toBeNull();
+    expect(
+      (service as unknown as { _inactivityTimerId: ReturnType<typeof setTimeout> | null })
+        ._inactivityTimerId,
+    ).toBeNull();
   });
 
   it('does not open inactivity prompt and timer reset when session is not authenticated', () => {
     const service = createService();
 
-    (service as unknown as { _openInactivityPrompt: () => void })._openInactivityPrompt();
-    (service as unknown as { _resetInactivityTimer: () => void })._resetInactivityTimer();
+    ((service as unknown as Record<string, unknown>)['_openInactivityPrompt'] as () => void)();
+    ((service as unknown as Record<string, unknown>)['_resetInactivityTimer'] as () => void)();
 
     expect(service.isInactivityPromptOpen()).toBe(false);
-    expect((service as unknown as { _inactivityTimerId: ReturnType<typeof setTimeout> | null })._inactivityTimerId).toBeNull();
+    expect(
+      (service as unknown as { _inactivityTimerId: ReturnType<typeof setTimeout> | null })
+        ._inactivityTimerId,
+    ).toBeNull();
   });
 
   it('skips inactivity timer setup while prompt is open', () => {
     isAuthenticatedSignal.set(true);
     const service = createService();
 
-    (service as unknown as { _isInactivityPromptOpen: { set: (value: boolean) => void } })._isInactivityPromptOpen.set(true);
-    (service as unknown as { _resetInactivityTimer: () => void })._resetInactivityTimer();
+    (
+      service as unknown as { _isInactivityPromptOpen: { set: (value: boolean) => void } }
+    )._isInactivityPromptOpen.set(true);
+    ((service as unknown as Record<string, unknown>)['_resetInactivityTimer'] as () => void)();
 
-    expect((service as unknown as { _inactivityTimerId: ReturnType<typeof setTimeout> | null })._inactivityTimerId).toBeNull();
+    expect(
+      (service as unknown as { _inactivityTimerId: ReturnType<typeof setTimeout> | null })
+        ._inactivityTimerId,
+    ).toBeNull();
   });
 
   it('returns early on token refresh when a refresh is already in flight', async () => {
@@ -270,7 +286,9 @@ describe('AuthSessionLifecycleService', () => {
     const service = createService();
 
     (service as unknown as { _isRefreshInFlight: boolean })._isRefreshInFlight = true;
-    await (service as unknown as { _refreshTokens: () => Promise<void> })._refreshTokens();
+    await (
+      (service as unknown as Record<string, unknown>)['_refreshTokens'] as () => Promise<void>
+    )();
 
     expect(refreshSpy).not.toHaveBeenCalled();
   });
@@ -290,7 +308,9 @@ describe('AuthSessionLifecycleService', () => {
     );
 
     const service = createService();
-    await (service as unknown as { _refreshTokens: () => Promise<void> })._refreshTokens();
+    await (
+      (service as unknown as Record<string, unknown>)['_refreshTokens'] as () => Promise<void>
+    )();
 
     expect(sessionServiceMock.clear).toHaveBeenCalledTimes(1);
     expect(userServiceMock.clear).toHaveBeenCalledTimes(1);
@@ -302,7 +322,9 @@ describe('AuthSessionLifecycleService', () => {
     const refreshSpy = vi.spyOn(authApi, 'authControllerRefresh');
     const service = createService();
 
-    await (service as unknown as { _refreshTokens: () => Promise<void> })._refreshTokens();
+    await (
+      (service as unknown as Record<string, unknown>)['_refreshTokens'] as () => Promise<void>
+    )();
 
     expect(refreshSpy).not.toHaveBeenCalled();
     expect(sessionServiceMock.clear).toHaveBeenCalledTimes(1);
@@ -317,7 +339,9 @@ describe('AuthSessionLifecycleService', () => {
     );
 
     const service = createService();
-    await (service as unknown as { _refreshTokens: () => Promise<void> })._refreshTokens();
+    await (
+      (service as unknown as Record<string, unknown>)['_refreshTokens'] as () => Promise<void>
+    )();
 
     expect(sessionServiceMock.clear).toHaveBeenCalledTimes(1);
     expect(userServiceMock.clear).toHaveBeenCalledTimes(1);

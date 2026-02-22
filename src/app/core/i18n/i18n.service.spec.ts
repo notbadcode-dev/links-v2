@@ -6,25 +6,33 @@ import { I18nService } from './i18n.service';
 
 describe('I18nService', () => {
   let service: I18nService;
-  let activeLang = 'en';
-  const langChanges$ = new Subject<string>();
-  const languageStorageKey = 'links_v2.i18n.language';
-
-  const translocoMock = {
-    getActiveLang: vi.fn(() => activeLang),
-    setActiveLang: vi.fn((lang: string) => {
-      activeLang = lang;
-    }),
-    translate: vi.fn((key: string, _params?: unknown, scope?: string) =>
-      scope ? `${scope}.${key}` : key,
-    ),
-    selectTranslate: vi.fn((_key: string) => of('translated value')),
-    load: vi.fn((path: string) => of({ path })),
-    langChanges$: langChanges$.asObservable(),
+  let translocoMock: {
+    getActiveLang: ReturnType<typeof vi.fn>;
+    setActiveLang: ReturnType<typeof vi.fn>;
+    translate: ReturnType<typeof vi.fn>;
+    selectTranslate: ReturnType<typeof vi.fn>;
+    load: ReturnType<typeof vi.fn>;
+    langChanges$: ReturnType<Subject<string>['asObservable']>;
   };
+  let langChanges$: Subject<string>;
+  let activeLang = 'en';
+  const languageStorageKey = 'links_v2.i18n.language';
 
   beforeEach(() => {
     activeLang = 'en';
+    langChanges$ = new Subject<string>();
+    translocoMock = {
+      getActiveLang: vi.fn(() => activeLang),
+      setActiveLang: vi.fn((lang: string) => {
+        activeLang = lang;
+      }),
+      translate: vi.fn((key: string, _params?: unknown, scope?: string) =>
+        scope ? `${scope}.${key}` : key,
+      ),
+      selectTranslate: vi.fn((_key: string) => of('translated value')),
+      load: vi.fn((path: string) => of({ path })),
+      langChanges$: langChanges$.asObservable(),
+    };
     localStorage.clear();
     vi.clearAllMocks();
     TestBed.configureTestingModule({
@@ -92,6 +100,24 @@ describe('I18nService', () => {
 
     expect(translocoMock.setActiveLang).not.toHaveBeenCalledWith('fr');
     expect(service.currentLanguageSignal()).toBe('en');
+  });
+
+  it('falls back when reading persisted language throws', () => {
+    const getItemSpy = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('storage unavailable');
+    });
+    activeLang = 'en';
+    vi.clearAllMocks();
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({
+      providers: [{ provide: TranslocoService, useValue: translocoMock }],
+    });
+
+    service = TestBed.inject(I18nService);
+
+    expect(translocoMock.setActiveLang).not.toHaveBeenCalled();
+    expect(service.currentLanguageSignal()).toBe('en');
+    getItemSpy.mockRestore();
   });
 
   it('checks hasKey by comparing translated value to key', () => {
