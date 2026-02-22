@@ -6,7 +6,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { IconWrapperComponent } from '@libs/wrappers';
 
 import { ButtonWrapperComponent } from './button-wrapper.component';
-import { EButtonWrapperColor, EButtonWrapperVariant } from './button-wrapper.enum';
+import { EButtonWrapperColor, EButtonWrapperVariant } from './button-wrapper.enums';
 
 describe('ButtonWrapperComponent', () => {
   let component: ButtonWrapperComponent;

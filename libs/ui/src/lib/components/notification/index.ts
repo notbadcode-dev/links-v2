@@ -1,4 +1,4 @@
-export * from './notification.enum';
+export * from './notification.enums';
 export * from './notification.interface';
 export * from './notification.constants';
 export * from './notification.service';

@@ -12,7 +12,7 @@ import { ILanguage, TTranslationParams, TTranslationPath } from './i18n.types';
 export class I18nService {
   private static readonly _fallbackLanguage: ILanguage = I18N_CONSTANTS.DEFAULT_LANGUAGE;
   private static readonly _languageStorageKey = 'links_v2.i18n.language';
-  public readonly availableLanguages: ILanguage[] = I18N_CONSTANTS.LANGUAGES;
+  public readonly availableLanguages: readonly ILanguage[] = I18N_CONSTANTS.LANGUAGES;
   public readonly currentLanguageSignal: Signal<string>;
   private readonly _translocoService: TranslocoService = inject(TranslocoService);
 

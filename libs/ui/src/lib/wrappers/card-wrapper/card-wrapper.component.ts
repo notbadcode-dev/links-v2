@@ -3,7 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { BaseDirective } from '@libs/directives';
 
-import { ECardWrapperAlignHeader, ECardWrapperAppearance } from './card-wrapper.enum';
+import { ECardWrapperAlignHeader, ECardWrapperAppearance } from './card-wrapper.enums';
 
 @Component({
   selector: 'card-wrapper',

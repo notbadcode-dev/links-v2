@@ -1,16 +1,1 @@
-@mixin inline-flex-align-center {
-  display: inline-flex;
-  align-items: center;
-}
-
-@mixin inline-flex-center {
-  @include inline-flex-align-center;
-  justify-content: center;
-}
-
-@mixin button-reset {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
+@forward '../../libs/ui/src/styles/shared-mixins';

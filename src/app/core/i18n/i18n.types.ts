@@ -1,7 +1,7 @@
 export interface II18nConfig {
   defaultLang: string;
   fallbackLang: string;
-  availableLangs: string[];
+  availableLangs: readonly string[];
   logMissingKeys?: boolean;
 }
 

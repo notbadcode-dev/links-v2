@@ -31,6 +31,16 @@
     outline-offset: 2px;
     border-radius: var(--ui-radius-xs);
   }
+
+  &:focus {
+    outline: 2px solid var(--ui-color-primary-soft-fg);
+    outline-offset: 2px;
+    border-radius: var(--ui-radius-xs);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
 }
 
 .ui-link--adjacent {

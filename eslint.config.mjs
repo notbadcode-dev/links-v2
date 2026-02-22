@@ -449,6 +449,56 @@ export default tseslint.config(
     },
   },
   {
+    files: ['**/*.constants.ts'],
+    rules: {
+      // Keep constants files as pure data declarations.
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'TSEnumDeclaration',
+          message: 'Do not declare enums in constants files. Move enums to *.enums.ts.',
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.constants.ts', '**/*.enums.ts', '**/*.model.ts', '**/*.models.ts'],
+    rules: {
+      // Avoid broad object literal assertions in data contracts.
+      '@typescript-eslint/consistent-type-assertions': [
+        'error',
+        {
+          assertionStyle: 'as',
+          objectLiteralTypeAssertions: 'never',
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.enum.ts'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'Program',
+          message: 'Use *.enums.ts naming instead of *.enum.ts.',
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.constant.ts', '**/constant.ts'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'Program',
+          message: 'Use *.constants.ts naming instead of *.constant.ts.',
+        },
+      ],
+    },
+  },
+  {
     files: ['**/*.html'],
     languageOptions: {
       parser: angularTemplateParser,

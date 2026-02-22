@@ -1,4 +1,4 @@
-import { EInputTextWrapperType } from './input-text-wrapper/input-text-wrapper.enum';
+import { EInputTextWrapperType } from './input-text-wrapper/input-text-wrapper.enums';
 
 export interface IInputWrapperConfig {
   label: string;

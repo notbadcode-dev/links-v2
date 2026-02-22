@@ -58,3 +58,12 @@
   outline: 2px solid var(--ui-color-primary);
   outline-offset: 2px;
 }
+
+.session-inactivity-modal__confirm:focus {
+  outline: 2px solid var(--ui-color-primary);
+  outline-offset: 2px;
+}
+
+.session-inactivity-modal__confirm:focus:not(:focus-visible) {
+  outline: none;
+}

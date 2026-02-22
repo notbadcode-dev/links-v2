@@ -3,7 +3,12 @@ import { TestBed } from '@angular/core/testing';
 import { ESpacing } from '@libs/enums';
 
 import { LogoComponent } from './logo.component';
-import { ELogoVariant, LOGO_COLORS, LOGO_ICON_BY_VARIANT, LOGO_SIZES } from './logo.constants';
+import { ELogoLetterFill, ELogoVariant } from './logo.enums';
+import {
+  LOGO_COLORS,
+  LOGO_ICON_BY_VARIANT,
+  LOGO_SIZES,
+} from './logo.constants';
 
 describe('LogoComponent', () => {
   const createComponent = (): LogoComponent =>
@@ -20,19 +25,19 @@ describe('LogoComponent', () => {
     const logoSize = component['_logoSize'] as () => string;
 
     expect(iconName()).toBe(LOGO_ICON_BY_VARIANT[ELogoVariant.BOOKMARK_ANIMATED]);
-    expect(bookmarkLetterColor()).toBe(LOGO_COLORS.SURFACE);
+    expect(bookmarkLetterColor()).toBe(LOGO_COLORS.TRANSPARENT);
     expect(logoSize()).toBe(LOGO_SIZES.MD);
   });
 
-  it('maps outline small variant and spacing to expected token values', () => {
+  it('maps letter fill and spacing to expected token values', () => {
     const component = createComponent() as unknown as Record<string, () => string>;
     const bookmarkLetterColor = component['_bookmarkLetterColor'] as () => string;
     const logoSize = component['_logoSize'] as () => string;
 
-    component['variant'] = () => ELogoVariant.BOOKMARK_OUTLINE_S;
+    component['letterFill'] = () => ELogoLetterFill.WHITE;
     component['size'] = () => ESpacing.SM;
 
-    expect(bookmarkLetterColor()).toBe(LOGO_COLORS.PRIMARY);
+    expect(bookmarkLetterColor()).toBe(LOGO_COLORS.WHITE);
     expect(logoSize()).toBe(LOGO_SIZES.SM);
   });
 

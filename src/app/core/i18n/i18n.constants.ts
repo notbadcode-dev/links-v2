@@ -4,7 +4,11 @@ export const I18N_CONSTANTS = {
   LANGUAGES: [
     { code: 'en', name: 'English', flag: '🇺🇸' },
     { code: 'es', name: 'Español', flag: '🇪🇸' },
-  ] as ILanguage[],
-  DEFAULT_LANGUAGE: { code: 'en', name: 'English', flag: '🇺🇸' } as ILanguage,
-  AVAILABLE_LANG_CODES: ['en', 'es'] as string[],
-} as const;
+  ],
+  DEFAULT_LANGUAGE: { code: 'en', name: 'English', flag: '🇺🇸' },
+  AVAILABLE_LANG_CODES: ['en', 'es'],
+} as const satisfies {
+  LANGUAGES: readonly ILanguage[];
+  DEFAULT_LANGUAGE: ILanguage;
+  AVAILABLE_LANG_CODES: readonly string[];
+};

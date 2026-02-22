@@ -13,7 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { BaseDirective } from '@libs/directives';
 
-import { EDropdownWrapperPosition, EDropdownWrapperTrigger } from './dropdown-wrapper.enum';
+import { EDropdownWrapperPosition, EDropdownWrapperTrigger } from './dropdown-wrapper.enums';
 
 @Component({
   selector: 'dropdown-wrapper',

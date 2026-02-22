@@ -25,7 +25,7 @@ export function provideI18n(config?: Partial<II18nConfig>): Provider[] {
   return [
     provideTransloco({
       config: {
-        availableLangs: mergedConfig.availableLangs,
+        availableLangs: [...mergedConfig.availableLangs],
         defaultLang: mergedConfig.defaultLang,
         fallbackLang: mergedConfig.fallbackLang,
         missingHandler,

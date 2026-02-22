@@ -29,7 +29,7 @@ export class LanguageSelectorComponent {
   private readonly _i18nService: I18nService = inject(I18nService);
 
   constructor() {
-    this._availableLanguages = this._i18nService.availableLanguages as readonly ILanguage[];
+    this._availableLanguages = this._i18nService.availableLanguages;
 
     this._currentLang = toSignal(this._i18nService.langChanges$, {
       initialValue: this._i18nService.currentLanguage,

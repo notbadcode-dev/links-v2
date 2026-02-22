@@ -1,4 +1,4 @@
-import { ENotificationType } from './notification.enum';
+import { ENotificationType } from './notification.enums';
 
 const NOTIFICATION_ICON_KEYS = {
   SUCCESS: 'check_circle',

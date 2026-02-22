@@ -12,7 +12,7 @@ import { ESpacing } from '@libs/enums';
 import { SessionInactivityModalComponent } from './core/components/session-inactivity-modal/session-inactivity-modal.component';
 import { LanguageSelectorComponent } from './shared/components/language-selector/language-selector.component';
 import { LogoComponent } from './shared/components/logo/logo.component';
-import { ELogoVariant } from './shared/components/logo/logo.constants';
+import { ELogoLetterFill, ELogoVariant } from './shared/components/logo/logo.enums';
 import { ThemeToggleComponent } from './shared/components/theme-toggle/theme-toggle.component';
 
 const ROUTE_TRANSITION = {
@@ -89,6 +89,7 @@ const routeTransitionAnimations = [
 export class AppComponent extends BaseDirective {
   protected readonly _eSpacing: typeof ESpacing = ESpacing;
   protected readonly _brandLogoVariant: ELogoVariant = ELogoVariant.BOOKMARK_ANIMATED_S;
+  protected readonly _brandLogoLetterFill: ELogoLetterFill = ELogoLetterFill.WHITE;
   protected readonly _authSessionLifecycleService: AuthSessionLifecycleService = inject(
     AuthSessionLifecycleService,
   );

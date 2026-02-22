@@ -19,7 +19,7 @@ import { BaseDirective } from '@libs/directives';
 import { DISABLE_ON_LOADING } from '@libs/tokens';
 
 import { ButtonWrapperBaseDirective } from './button-wrapper.directive';
-import { EButtonWrapperColor, EButtonWrapperVariant } from './button-wrapper.enum';
+import { EButtonWrapperColor, EButtonWrapperVariant } from './button-wrapper.enums';
 import { IconWrapperComponent } from '../icon-wrapper/icon-wrapper.component';
 
 @Component({

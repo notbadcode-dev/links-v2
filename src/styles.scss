@@ -1,6 +1,7 @@
 @use '@angular/material' as mat;
 @use './styles/design-tokens';
 @use './styles/reboot-material-angular';
+@import url('@fontsource/material-icons/index.css');
 
 @font-face {
   font-family: 'Mona Sans Variable';

@@ -6,6 +6,11 @@ const THEME_STORAGE_KEY = 'links_v2.theme.preference';
 const DARK_MODE_MEDIA_QUERY = '(prefers-color-scheme: dark)';
 const THEME_TRANSITION_CLASS = 'theme-transitioning';
 const THEME_TRANSITION_DURATION_MS = 280;
+const FAVICON_LINK_ID = 'app-favicon';
+const FAVICON_PATH_BY_THEME: Readonly<Record<TThemeMode, string>> = {
+  light: 'assets/icons/brand/favicon-light.svg',
+  dark: 'assets/icons/brand/favicon-dark.svg',
+} as const;
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +65,7 @@ export class ThemeService {
 
     document.documentElement.dataset['theme'] = theme;
     document.documentElement.style.colorScheme = theme;
+    this._updateFavicon(theme);
   }
 
   private _enableThemeTransition(): void {
@@ -93,5 +99,27 @@ export class ThemeService {
     }
 
     return window.matchMedia(DARK_MODE_MEDIA_QUERY).matches ? 'dark' : 'light';
+  }
+
+  private _updateFavicon(theme: TThemeMode): void {
+    const faviconHref = FAVICON_PATH_BY_THEME[theme];
+    const faviconLink =
+      document.getElementById(FAVICON_LINK_ID) ??
+      document.querySelector<HTMLLinkElement>("link[rel='icon']");
+
+    if (faviconLink instanceof HTMLLinkElement) {
+      faviconLink.id = FAVICON_LINK_ID;
+      faviconLink.rel = 'icon';
+      faviconLink.type = 'image/svg+xml';
+      faviconLink.href = faviconHref;
+      return;
+    }
+
+    const newFaviconLink = document.createElement('link');
+    newFaviconLink.id = FAVICON_LINK_ID;
+    newFaviconLink.rel = 'icon';
+    newFaviconLink.type = 'image/svg+xml';
+    newFaviconLink.href = faviconHref;
+    document.head.appendChild(newFaviconLink);
   }
 }

@@ -5,6 +5,10 @@ import { ThemeService } from './theme.service';
 describe('ThemeService', () => {
   let service: ThemeService;
   let darkModeMatches = false;
+  const getFaviconHref = (): string => {
+    const faviconLink = document.head.querySelector<HTMLLinkElement>('link#app-favicon');
+    return faviconLink?.getAttribute('href') ?? '';
+  };
 
   beforeEach(() => {
     localStorage.clear();
@@ -32,6 +36,7 @@ describe('ThemeService', () => {
     delete document.documentElement.dataset['theme'];
     document.documentElement.style.colorScheme = '';
     document.documentElement.classList.remove('theme-transitioning');
+    document.head.querySelector('link#app-favicon')?.remove();
   });
 
   it('uses system theme only for first visit and stores resolved mode', () => {
@@ -44,6 +49,7 @@ describe('ThemeService', () => {
     expect(service.appliedTheme()).toBe('dark');
     expect(localStorage.getItem('links_v2.theme.preference')).toBe('dark');
     expect(document.documentElement.dataset['theme']).toBe('dark');
+    expect(getFaviconHref()).toBe('assets/icons/brand/favicon-dark.svg');
   });
 
   it('stores explicit selected theme', () => {
@@ -55,6 +61,7 @@ describe('ThemeService', () => {
     expect(service.preference()).toBe('dark');
     expect(localStorage.getItem('links_v2.theme.preference')).toBe('dark');
     expect(document.documentElement.dataset['theme']).toBe('dark');
+    expect(getFaviconHref()).toBe('assets/icons/brand/favicon-dark.svg');
   });
 
   it('uses saved theme preference instead of system theme on next visits', () => {

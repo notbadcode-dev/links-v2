@@ -10,7 +10,12 @@ import {
 import { ESpacing } from '@libs/enums';
 import { IconWrapperComponent } from '@libs/wrappers/icon-wrapper/icon-wrapper.component';
 
-import { ELogoVariant, LOGO_COLORS, LOGO_ICON_BY_VARIANT, LOGO_SIZES } from './logo.constants';
+import {
+  LOGO_ICON_BY_VARIANT,
+  LOGO_LETTER_FILL_COLOR_BY_VALUE,
+  LOGO_SIZES,
+} from './logo.constants';
+import { ELogoLetterFill, ELogoVariant } from './logo.enums';
 
 @Component({
   selector: 'logo-component',
@@ -28,20 +33,17 @@ export class LogoComponent {
   public readonly variant: InputSignal<ELogoVariant> = input<ELogoVariant>(
     ELogoVariant.BOOKMARK_ANIMATED,
   );
+  public readonly letterFill: InputSignal<ELogoLetterFill> = input<ELogoLetterFill>(
+    ELogoLetterFill.TRANSPARENT,
+  );
   public readonly size: InputSignal<ESpacing> = input<ESpacing>(ESpacing.MD);
 
   protected readonly _iconName: Signal<string> = computed(
     () => LOGO_ICON_BY_VARIANT[this.variant()],
   );
-  protected readonly _bookmarkLetterColor: Signal<string> = computed(() => {
-    switch (this.variant()) {
-      case ELogoVariant.BOOKMARK_OUTLINE_S:
-      case ELogoVariant.BOOKMARK_OUTLINE_ANIMATED_S:
-        return LOGO_COLORS.PRIMARY;
-      default:
-        return LOGO_COLORS.SURFACE;
-    }
-  });
+  protected readonly _bookmarkLetterColor: Signal<string> = computed(
+    () => LOGO_LETTER_FILL_COLOR_BY_VALUE[this.letterFill()],
+  );
   protected readonly _logoSize: Signal<string> = computed(() => {
     switch (this.size()) {
       case ESpacing.NONE:

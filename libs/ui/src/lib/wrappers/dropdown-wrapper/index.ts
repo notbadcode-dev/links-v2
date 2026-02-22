@@ -1,2 +1,2 @@
 export * from './dropdown-wrapper.component';
-export * from './dropdown-wrapper.enum';
+export * from './dropdown-wrapper.enums';

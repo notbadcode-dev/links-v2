@@ -1,7 +1,7 @@
 import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 
 import { NOTIFICATION_CONSTANTS } from './notification.constants';
-import { ENotificationType } from './notification.enum';
+import { ENotificationType } from './notification.enums';
 import { INotification, INotificationConfig } from './notification.interface';
 
 const ID_GENERATION_CONSTANTS = {

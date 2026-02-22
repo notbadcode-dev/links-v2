@@ -1,4 +1,4 @@
-import { ENotificationType } from './notification.enum';
+import { ENotificationType } from './notification.enums';
 
 export interface INotification {
   id: string;

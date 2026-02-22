@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <path
+    d="M5.25 3.75a1 1 0 0 1 1-1h12.5a1 1 0 0 1 1 1v15.974c0 1.193-1.325 1.908-2.322 1.255L12.5 17.75l-4.928 3.229c-.998.653-2.322-.062-2.322-1.255z"
+    fill="#8b5cf6"
+    stroke="#8b5cf6"
+    stroke-width="1.5"
+    stroke-linejoin="round"
+  />
+  <text
+    x="12.5"
+    y="13.5"
+    text-anchor="middle"
+    font-size="9"
+    font-weight="700"
+    fill="#ffffff"
+    style="font-family: Mona Sans, Mona Sans Variable, Arial, sans-serif;"
+  >
+    S
+  </text>
+</svg>

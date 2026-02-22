@@ -1,3 +1,5 @@
+$ui-breakpoint-md: 768px !default;
+
 @mixin inline-flex-align-center {
   display: inline-flex;
   align-items: center;

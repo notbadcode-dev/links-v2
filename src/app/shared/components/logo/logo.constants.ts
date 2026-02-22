@@ -1,16 +1,6 @@
 import { CUSTOM_ICONS_CONSTANTS } from '@app/core/icons/icons.constants';
 
-export enum ELogoVariant {
-  BOOKMARK = 'BOOKMARK',
-  BOOKMARK_ANIMATED = 'BOOKMARK_ANIMATED',
-  BOOKMARK_S = 'BOOKMARK_S',
-  BOOKMARK_S_MIN = 'BOOKMARK_S_MIN',
-  BOOKMARK_ANIMATED_S = 'BOOKMARK_ANIMATED_S',
-  BOOKMARK_OUTLINE = 'BOOKMARK_OUTLINE',
-  BOOKMARK_OUTLINE_S = 'BOOKMARK_OUTLINE_S',
-  BOOKMARK_OUTLINE_ANIMATED = 'BOOKMARK_OUTLINE_ANIMATED',
-  BOOKMARK_OUTLINE_ANIMATED_S = 'BOOKMARK_OUTLINE_ANIMATED_S',
-}
+import { ELogoLetterFill, ELogoVariant } from './logo.enums';
 
 export const LOGO_ICON_BY_VARIANT: Readonly<Record<ELogoVariant, string>> = {
   [ELogoVariant.BOOKMARK]: CUSTOM_ICONS_CONSTANTS.APP.BOOKMARK,
@@ -23,7 +13,7 @@ export const LOGO_ICON_BY_VARIANT: Readonly<Record<ELogoVariant, string>> = {
   [ELogoVariant.BOOKMARK_OUTLINE_ANIMATED]: CUSTOM_ICONS_CONSTANTS.APP.BOOKMARK_OUTLINE_ANIMATED,
   [ELogoVariant.BOOKMARK_OUTLINE_ANIMATED_S]:
     CUSTOM_ICONS_CONSTANTS.APP.BOOKMARK_OUTLINE_ANIMATED_S,
-} as const;
+} as const satisfies Readonly<Record<ELogoVariant, string>>;
 
 export const LOGO_SHOWCASE_VARIANTS: readonly ELogoVariant[] = [
   ELogoVariant.BOOKMARK,
@@ -37,8 +27,13 @@ export const LOGO_SHOWCASE_VARIANTS: readonly ELogoVariant[] = [
 ] as const;
 
 export const LOGO_COLORS = {
-  PRIMARY: 'var(--ui-color-primary)',
-  SURFACE: 'var(--ui-color-surface)',
+  TRANSPARENT: 'transparent',
+  WHITE: 'white',
+} as const;
+
+export const LOGO_LETTER_FILL_COLOR_BY_VALUE: Readonly<Record<ELogoLetterFill, string>> = {
+  [ELogoLetterFill.TRANSPARENT]: LOGO_COLORS.TRANSPARENT,
+  [ELogoLetterFill.WHITE]: LOGO_COLORS.WHITE,
 } as const;
 
 export const LOGO_SIZES = {

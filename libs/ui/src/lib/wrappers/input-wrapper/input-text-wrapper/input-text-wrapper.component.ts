@@ -14,7 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { InputWrapperDirective } from '../input-wrapper.directive';
 import { IInputTextWrapperConfig } from '../input-wrapper.types';
-import { EInputTextWrapperType } from './input-text-wrapper.enum';
+import { EInputTextWrapperType } from './input-text-wrapper.enums';
 
 @Component({
   selector: 'input-text-wrapper',

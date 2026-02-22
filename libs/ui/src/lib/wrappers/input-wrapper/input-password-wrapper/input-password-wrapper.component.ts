@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { EInputTextWrapperType } from '../input-text-wrapper/input-text-wrapper.enum';
+import { EInputTextWrapperType } from '../input-text-wrapper/input-text-wrapper.enums';
 import { InputWrapperDirective } from '../input-wrapper.directive';
 import { IInputTextWrapperConfig } from '../input-wrapper.types';
 const PASSWORD_ICONS = {

@@ -1,3 +1,5 @@
+@use '../../../../styles/shared-mixins' as mixins;
+
 @mixin centeredAuthPageLayout($pageClass) {
   :host ::ng-deep .#{$pageClass} .ui-page.layout-centered {
     justify-content: flex-start;
@@ -10,7 +12,7 @@
     }
   }
 
-  @media (max-width: var(--ui-breakpoint-md)) {
+  @media (max-width: mixins.$ui-breakpoint-md) {
     :host ::ng-deep .#{$pageClass} .ui-page.layout-centered {
       padding-top: var(--ui-space-page-top-md);
     }
