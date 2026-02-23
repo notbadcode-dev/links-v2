@@ -11,6 +11,7 @@ inputs:
   - { name: tooltip, type: string, required: false, default: "''", description: Tooltip text for trigger button }
   - { name: disabled, type: boolean, required: false, default: false, description: Disables the trigger button }
   - { name: customClass, type: string, required: false, default: "''", description: Additional CSS class on trigger button }
+  - { name: menuClass, type: string, required: false, default: "''", description: Additional CSS class on MatMenu panel }
 outputs:
   - { name: itemSelected, type: unknown, description: Emitted when onItemClick(item) is called programmatically }
 slots:
@@ -44,6 +45,7 @@ Encapsula `MatMenu` usando content projection con `slot="trigger"` y `slot="cont
 | `tooltip` | `string` | `''` | Tooltip del botón trigger |
 | `disabled` | `boolean` | `false` | Deshabilita el trigger |
 | `customClass` | `string` | `''` | Clase CSS adicional para el botón trigger |
+| `menuClass` | `string` | `''` | Clase CSS adicional para el panel del menú (`mat-menu`) |
 
 | Output | Tipo | Descripción |
 |---|---|---|
@@ -76,6 +78,17 @@ Encapsula `MatMenu` usando content projection con `slot="trigger"` y `slot="cont
   <ng-container slot="content">
     <button class="dropdown-item" (click)="onEdit()">Editar</button>
     <button class="dropdown-item" (click)="onDelete()">Eliminar</button>
+  </ng-container>
+</dropdown-wrapper>
+
+<dropdown-wrapper
+  tooltip="Acciones"
+  customClass="actions-trigger"
+  menuClass="actions-menu-panel"
+>
+  <ng-container slot="trigger">Acciones</ng-container>
+  <ng-container slot="content">
+    <button class="dropdown-item">Exportar</button>
   </ng-container>
 </dropdown-wrapper>
 ```

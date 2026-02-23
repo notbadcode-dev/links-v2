@@ -7,6 +7,22 @@ on:
       - main
 
 jobs:
+  docs-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Check Markdown links
+        run: npm run docs:check-links
+
   test-unit:
     runs-on: ubuntu-latest
     timeout-minutes: 20

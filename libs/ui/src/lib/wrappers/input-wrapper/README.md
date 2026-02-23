@@ -30,6 +30,7 @@ base:
     - { name: placeholder, type: "string | undefined" }
     - { name: required, type: "boolean | undefined" }
     - { name: icon, type: "string | undefined", description: Material Icons prefix }
+    - { name: svgIcon, type: "string | undefined", description: Registered MatIconRegistry SVG icon prefix }
     - { name: hint, type: "string | undefined" }
     - { name: errorMessage, type: "string | undefined" }
     - { name: tabindex, type: "number | undefined" }
@@ -45,6 +46,7 @@ interfaces:
     - { name: placeholder, type: string, required: false }
     - { name: required, type: boolean, required: false }
     - { name: icon, type: string, required: false }
+    - { name: svgIcon, type: string, required: false }
     - { name: hint, type: string, required: false }
     - { name: errorMessage, type: string, required: false }
     - { name: tabindex, type: number, required: false }
@@ -84,6 +86,7 @@ Todos los wrappers de input extienden esta directiva. Provee:
 | `placeholder` | `string` | Placeholder del input |
 | `required` | `boolean` | Marca el campo como requerido |
 | `icon` | `string` | Icono prefijo (nombre Material Icons) |
+| `svgIcon` | `string` | Icono SVG prefijo registrado en `MatIconRegistry` |
 | `hint` | `string` | Texto de ayuda debajo del campo |
 | `errorMessage` | `string` | Mensaje de error personalizado |
 | `tabindex` | `number` | Índice de tabulación |
@@ -157,6 +160,7 @@ public readonly emailConfig: IInputTextWrapperConfig = {
   placeholder: 'tu@email.com',
   required: true,
   icon: 'email',
+  svgIcon: 'auth-email-input',
   type: EInputTextWrapperType.EMAIL,
 };
 ```
@@ -184,6 +188,7 @@ interface IInputWrapperConfig {
   placeholder?: string;
   required?: boolean;
   icon?: string;
+  svgIcon?: string;
   hint?: string;
   errorMessage?: string;
   tabindex?: number;

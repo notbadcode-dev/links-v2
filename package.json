@@ -16,6 +16,7 @@
     "lint": "eslint \"src/**/*.ts\" \"libs/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" \"libs/**/*.ts\" --fix",
     "lint:html": "eslint \"src/**/*.html\" \"libs/**/*.html\"",
+    "docs:check-links": "node scripts/check-markdown-links.mjs",
     "format": "prettier --write \"src/**/*.{ts,html,css,scss,json}\" \"libs/**/*.{ts,html,css,scss,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,css,scss,json}\" \"libs/**/*.{ts,html,css,scss,json}\"",
     "type-check": "tsc -p tsconfig.typecheck.json",
