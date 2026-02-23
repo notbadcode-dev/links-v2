@@ -9,11 +9,12 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/node-%3E%3D22.19.0-brightgreen?logo=node.js" alt="Node Version" />
-  <img src="https://img.shields.io/badge/npm-%3E%3D10.9.0-red?logo=npm" alt="npm Version" />
-  <img src="https://img.shields.io/badge/Angular-21-dd0031?logo=angular" alt="Angular" />
-  <img src="https://img.shields.io/badge/TypeScript-5.9-3178c6?logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/node-22-brightgreen?logo=node.js" alt="Node Version" />
+  <img src="https://img.shields.io/badge/npm-10-red?logo=npm&logoColor=red" alt="npm Version" />
+  <img src="https://img.shields.io/badge/Angular-21-dd0031?logo=angular&logoColor=dd0031" alt="Angular" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Storybook-10-ff4785?logo=storybook" alt="Storybook" />
+  <img src="https://img.shields.io/badge/ESLint-9-4b32c3?logo=eslint&logoColor=4b32c3" alt="ESLint" />
 </p>
 
 ---
