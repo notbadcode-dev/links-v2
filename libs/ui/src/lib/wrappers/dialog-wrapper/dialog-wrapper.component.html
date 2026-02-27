@@ -1,0 +1,42 @@
+<ui-stack class="dialog-wrapper__layout" [gap]="ESpacing.NONE">
+  <ui-page-header class="dialog-wrapper__header">
+    <ui-title [title]="effectiveTitle()" [subtitle]="effectiveSubtitle()" />
+  </ui-page-header>
+
+  <ui-page-body class="dialog-wrapper__content" [attr.data-size]="effectiveSize()">
+    @if (effectiveContentTemplate()) {
+      <ng-container
+        *ngTemplateOutlet="
+          effectiveContentTemplate();
+          context: effectiveTemplateContext()
+        "
+      />
+    } @else if (effectiveContentType() === EDialogWrapperContentType.MESSAGE && effectiveMessage()) {
+      <ui-inline-text class="dialog-wrapper__message">{{ effectiveMessage() }}</ui-inline-text>
+    } @else {
+      <ng-content />
+    }
+  </ui-page-body>
+
+  <ui-page-footer class="dialog-wrapper__actions">
+    <div class="dialog-wrapper__actions-row">
+      <div class="dialog-wrapper__action dialog-wrapper__action--cancel">
+        <button-wrapper
+          [title]="effectiveCancelText()"
+          [variant]="EButtonWrapperVariant.STROKED"
+          [color]="effectiveCancelColor()"
+          (clicked)="onCancel()"
+        />
+      </div>
+      <div class="dialog-wrapper__action dialog-wrapper__action--confirm">
+        <button-wrapper
+          [title]="effectiveAcceptText()"
+          [variant]="EButtonWrapperVariant.RAISED"
+          [color]="effectiveAcceptColor()"
+          [disabled]="isAcceptDisabled()"
+          (clicked)="onConfirm()"
+        />
+      </div>
+    </div>
+  </ui-page-footer>
+</ui-stack>

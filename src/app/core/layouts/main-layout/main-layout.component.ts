@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Signal } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 
 import { ICONS_CONSTANTS } from '@app/constants/icons.constants';
@@ -10,7 +9,7 @@ import { pickRandomItem } from '@app/shared/utils/random.utils';
 
 import { BaseDirective } from '@libs/directives';
 import { EButtonWrapperVariant } from '@libs/enums';
-import { ButtonWrapperComponent } from '@libs/wrappers';
+import { ButtonWrapperComponent, IconWrapperComponent } from '@libs/wrappers';
 
 const LOGOUT_TOOLTIP_KEYS = [
   'common.actions.tooltips.logout.option_1',
@@ -26,7 +25,7 @@ const LOGOUT_TOOLTIP_KEYS = [
   styleUrl: './main-layout.component.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, MatIconModule, ButtonWrapperComponent, I18nDirective],
+  imports: [RouterOutlet, IconWrapperComponent, ButtonWrapperComponent, I18nDirective],
 })
 export class MainLayoutComponent extends BaseDirective {
   public readonly icons: typeof ICONS_CONSTANTS = ICONS_CONSTANTS;

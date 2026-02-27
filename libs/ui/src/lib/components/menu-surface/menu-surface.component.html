@@ -1,0 +1,8 @@
+<div
+  class="ui-menu-surface"
+  [class.ui-menu-surface--list]="layout() === EMenuSurfaceLayout.LIST"
+  [class.ui-menu-surface--grid]="layout() === EMenuSurfaceLayout.GRID"
+  [style.--ui-menu-columns]="columnsCssValue()"
+>
+  <ng-content />
+</div>

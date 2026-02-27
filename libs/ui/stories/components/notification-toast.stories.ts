@@ -85,3 +85,27 @@ export const Info: TStory = {
     },
   },
 };
+
+export const LongText: TStory = {
+  args: {
+    notification: {
+      ...BASE_NOTIFICATION,
+      id: 'toast-long-text',
+      type: ENotificationType.WARNING,
+      message:
+        'We detected multiple pending updates in your workspace. Please review all highlighted items before continuing with this operation to avoid unexpected data conflicts.',
+    },
+  },
+};
+
+export const LongUnbrokenText: TStory = {
+  args: {
+    notification: {
+      ...BASE_NOTIFICATION,
+      id: 'toast-long-unbroken',
+      type: ENotificationType.ERROR,
+      message:
+        'https://example.com/superlongpathwithoutbreakpoints/superlongpathwithoutbreakpoints/superlongpathwithoutbreakpoints',
+    },
+  },
+};

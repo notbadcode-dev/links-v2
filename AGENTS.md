@@ -39,6 +39,13 @@ Aplicación Angular (`links-v2`) con:
 - Mantener features encapsuladas dentro de `src/app/features/<feature>`.
 - Si cambias comportamiento, API o contratos, actualiza la documentación afectada en la misma PR.
 
+### Storybook E Idioma Global
+
+- Storybook define selector global de idioma (`ES`/`EN`) en `.storybook/preview.ts` (`globalTypes.locale`).
+- Cualquier cambio en stories con texto visible debe validar ambos idiomas con el selector global.
+- Para textos localizables en stories, preferir estructura por locale (ej. `{ es: '...', en: '...' }`) o mantener mapeo central en `.storybook/preview.ts`.
+- Si agregas/renombras textos comunes de stories, actualiza el mapeo de traducciones en `.storybook/preview.ts`.
+
 ## Fuente De Verdad (Si Hay Conflicto)
 
 Prioridad de decisión:

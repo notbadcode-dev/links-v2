@@ -11,18 +11,19 @@
   </button>
 
   @if (_isMenuOpen()) {
-    <div class="language-selector__menu" role="listbox">
+    <ui-menu-surface class="language-selector__menu" [layout]="_menuSurfaceLayoutEnum.LIST" role="listbox">
       @for (lang of _availableLanguages; track lang.code) {
         <button
           type="button"
+          uiMenuOption
           class="language-selector__option"
           [attr.data-testid]="'language-option-' + lang.code"
-          [class.active]="currentLang === lang.code"
+          [uiMenuOptionActive]="currentLang === lang.code"
           (click)="selectLanguage(lang.code, $event)"
         >
           {{ _getLanguageLabel(lang.code) }}
         </button>
       }
-    </div>
+    </ui-menu-surface>
   }
 </div>

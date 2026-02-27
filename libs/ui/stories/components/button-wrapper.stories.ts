@@ -1,6 +1,11 @@
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import { ButtonWrapperComponent, EButtonWrapperColor, EButtonWrapperVariant } from '@libs/wrappers';
+import {
+  ButtonWrapperComponent,
+  EButtonWrapperColor,
+  EButtonWrapperContentMode,
+  EButtonWrapperVariant,
+} from '@libs/wrappers';
 
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -35,6 +40,11 @@ const meta: Meta<ButtonWrapperComponent> = {
       options: Object.values(EButtonWrapperColor),
       description: 'Button color theme',
     },
+    contentMode: {
+      control: 'select',
+      options: Object.values(EButtonWrapperContentMode),
+      description: 'Button content mode: icon, text or icon + text',
+    },
     disabled: {
       control: 'boolean',
       description: 'Disable button interaction',
@@ -48,6 +58,7 @@ const meta: Meta<ButtonWrapperComponent> = {
     title: 'Click Me',
     variant: EButtonWrapperVariant.RAISED,
     color: EButtonWrapperColor.PRIMARY,
+    contentMode: EButtonWrapperContentMode.ICON_TEXT,
     disabled: false,
     fullWidth: false,
 
@@ -77,6 +88,7 @@ export const WithIcon: TStory = {
   args: {
     title: 'Save',
     icon: 'save',
+    contentMode: EButtonWrapperContentMode.ICON_TEXT,
   },
 };
 
@@ -149,6 +161,24 @@ export const IconOnly: TStory = {
   args: {
     title: '',
     icon: 'favorite',
+    contentMode: EButtonWrapperContentMode.ICON,
     tooltip: 'Add to favorites',
+  },
+};
+
+export const TextOnlyMode: TStory = {
+  args: {
+    title: 'Text only',
+    icon: 'delete',
+    contentMode: EButtonWrapperContentMode.TEXT,
+  },
+};
+
+export const IconAndTextMode: TStory = {
+  args: {
+    title: 'Delete',
+    icon: 'delete',
+    contentMode: EButtonWrapperContentMode.ICON_TEXT,
+    color: EButtonWrapperColor.WARN,
   },
 };

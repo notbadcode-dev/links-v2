@@ -6,7 +6,11 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { IconWrapperComponent } from '@libs/wrappers';
 
 import { ButtonWrapperComponent } from './button-wrapper.component';
-import { EButtonWrapperColor, EButtonWrapperVariant } from './button-wrapper.enums';
+import {
+  EButtonWrapperColor,
+  EButtonWrapperContentMode,
+  EButtonWrapperVariant,
+} from './button-wrapper.enums';
 
 describe('ButtonWrapperComponent', () => {
   let component: ButtonWrapperComponent;
@@ -149,5 +153,25 @@ describe('ButtonWrapperComponent', () => {
     fixture.detectChanges();
 
     expect(component.color()).toBe(EButtonWrapperColor.WARN);
+  });
+
+  it('should hide label when content mode is ICON', () => {
+    fixture.componentRef.setInput('title', 'Delete');
+    fixture.componentRef.setInput('icon', 'delete');
+    fixture.componentRef.setInput('contentMode', EButtonWrapperContentMode.ICON);
+    fixture.detectChanges();
+
+    const label = fixture.debugElement.query(By.css('.button-wrapper__label'));
+    expect(label).toBeFalsy();
+  });
+
+  it('should hide icon when content mode is TEXT', () => {
+    fixture.componentRef.setInput('title', 'Delete');
+    fixture.componentRef.setInput('icon', 'delete');
+    fixture.componentRef.setInput('contentMode', EButtonWrapperContentMode.TEXT);
+    fixture.detectChanges();
+
+    const icon = fixture.debugElement.query(By.directive(IconWrapperComponent));
+    expect(icon).toBeFalsy();
   });
 });

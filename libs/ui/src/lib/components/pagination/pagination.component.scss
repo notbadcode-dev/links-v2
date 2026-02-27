@@ -1,0 +1,56 @@
+:host {
+  display: block;
+}
+
+.ui-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-1);
+}
+
+.ui-pagination-pages {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-1);
+}
+
+.ui-pagination-page {
+  display: inline-flex;
+}
+
+.ui-pagination-page--active {
+  border-radius: var(--ui-radius-sm);
+  background: var(--ui-color-primary-soft);
+  color: var(--ui-color-primary);
+  font-weight: var(--ui-font-weight-semibold);
+}
+
+.ui-pagination-nav-btn {
+  display: inline-flex;
+  color: var(--ui-color-text-muted);
+}
+
+.ui-pagination-page ::ng-deep button,
+.ui-pagination-nav-btn ::ng-deep button {
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding-inline: var(--ui-space-2);
+  border-radius: var(--ui-radius-sm);
+  font-size: var(--ui-font-size-sm);
+  line-height: 1;
+}
+
+.ui-pagination--scroll {
+  width: 100%;
+  max-width: 100%;
+}
+
+.ui-pagination--scroll .ui-pagination-pages {
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ui-pagination--scroll .ui-pagination-pages::-webkit-scrollbar {
+  display: none;
+}

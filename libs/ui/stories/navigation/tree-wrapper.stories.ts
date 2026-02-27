@@ -83,6 +83,10 @@ const meta: Meta<TreeWrapperComponent> = {
       control: 'object',
       description: 'Tree configuration options',
     },
+    selectedNodeId: {
+      control: 'text',
+      description: 'Currently selected node id',
+    },
   },
   args: {
     dataSource: sampleData,
@@ -127,10 +131,13 @@ export const SimpleTree: TStory = {
 export const WithCustomConfig: TStory = {
   args: {
     dataSource: sampleData,
+    selectedNodeId: '2',
     config: {
+      ariaLabel: 'Files navigation',
       expandedIcon: 'expand_more',
       collapsedIcon: 'chevron_right',
       showLines: true,
+      dense: true,
     },
   },
 };
@@ -233,5 +240,48 @@ export const FileSystemTree: TStory = {
       { id: 'package.json', label: 'package.json', icon: 'description' },
       { id: 'README.md', label: 'README.md', icon: 'description' },
     ],
+  },
+};
+
+export const WithDisabledNode: TStory = {
+  args: {
+    dataSource: [
+      {
+        id: 'settings',
+        label: 'Settings',
+        icon: 'settings',
+        children: [
+          { id: 'settings.general', label: 'General', icon: 'tune' },
+          {
+            id: 'settings.security',
+            label: 'Security (disabled)',
+            icon: 'security',
+            disabled: true,
+          },
+          { id: 'settings.notifications', label: 'Notifications', icon: 'notifications' },
+        ],
+      },
+    ],
+    selectedNodeId: 'settings.general',
+  },
+};
+
+export const DynamicChildrenField: TStory = {
+  args: {
+    dataSource: [
+      {
+        id: 'root',
+        label: 'Root (items field)',
+        icon: 'folder',
+        items: [
+          { id: 'child.1', label: 'Child One', icon: 'description' },
+          { id: 'child.2', label: 'Child Two', icon: 'description' },
+        ],
+      },
+    ] as unknown as ITreeNode[],
+    config: {
+      childrenField: 'items',
+      showLines: true,
+    },
   },
 };

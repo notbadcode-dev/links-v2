@@ -10,7 +10,7 @@
   min-width: var(--ui-size-notification-min);
   max-width: var(--ui-size-notification-max);
   font-family: var(--ui-font-family-base);
-  animation: notification-slide-in var(--ui-transition-base) ease-out;
+  animation: notification-dialog-like-enter 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
 
   &.notification-toast--success {
     background-color: var(--ui-color-success-bg);
@@ -38,6 +38,10 @@
 }
 
 .notification-toast__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
   flex-shrink: 0;
   width: var(--ui-size-icon-md);
   height: var(--ui-size-icon-md);
@@ -47,9 +51,13 @@
 
 .notification-toast__message {
   flex: 1;
+  min-width: 0;
   font-size: var(--ui-font-size-base);
   font-weight: var(--ui-font-weight-medium);
   line-height: var(--ui-line-height-base);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .notification-toast__close {
@@ -61,7 +69,6 @@
   color: currentColor;
   --mat-icon-color: currentColor;
   @include mixins.inline-flex-center;
-  transform: translateY(2px);
   opacity: 1;
 }
 
@@ -73,13 +80,19 @@
   background-color: var(--ui-color-active-muted);
 }
 
-@keyframes notification-slide-in {
+@keyframes notification-dialog-like-enter {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(10px) scale(0.985);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    animation: none;
   }
 }

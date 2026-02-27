@@ -10,3 +10,9 @@ export enum EButtonWrapperColor {
   ACCENT = 'accent',
   WARN = 'warn',
 }
+
+export enum EButtonWrapperContentMode {
+  ICON = 'icon',
+  TEXT = 'text',
+  ICON_TEXT = 'icon-text',
+}

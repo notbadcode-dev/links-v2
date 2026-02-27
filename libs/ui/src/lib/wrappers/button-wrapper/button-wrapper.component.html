@@ -46,11 +46,14 @@
 }
 
 <ng-template #buttonInner>
-  <span class="button-wrapper__content" [class.button-wrapper__content--icon-only]="(icon() || svgIcon()) && !title()">
-    @if (icon() || svgIcon()) {
+  <span
+    class="button-wrapper__content"
+    [class.button-wrapper__content--icon-only]="shouldShowIcon() && !shouldShowTitle()"
+  >
+    @if (shouldShowIcon()) {
       <icon-wrapper class="button-wrapper__icon" [icon]="icon()" [svgIcon]="svgIcon()" />
     }
-    @if (title()) {
+    @if (shouldShowTitle()) {
       <span class="button-wrapper__label">{{ title() }}</span>
     }
   </span>

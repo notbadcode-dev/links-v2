@@ -19,7 +19,11 @@ import { BaseDirective } from '@libs/directives';
 import { DISABLE_ON_LOADING } from '@libs/tokens';
 
 import { ButtonWrapperBaseDirective } from './button-wrapper.directive';
-import { EButtonWrapperColor, EButtonWrapperVariant } from './button-wrapper.enums';
+import {
+  EButtonWrapperColor,
+  EButtonWrapperContentMode,
+  EButtonWrapperVariant,
+} from './button-wrapper.enums';
 import { IconWrapperComponent } from '../icon-wrapper/icon-wrapper.component';
 
 @Component({
@@ -37,11 +41,13 @@ import { IconWrapperComponent } from '../icon-wrapper/icon-wrapper.component';
   ],
 })
 export class ButtonWrapperComponent extends BaseDirective {
-  public readonly title: InputSignal<string> = input.required<string>();
+  public readonly title: InputSignal<string> = input<string>('');
 
   public readonly tooltip: InputSignal<string | undefined> = input<string>();
   public readonly icon: InputSignal<string | undefined> = input<string>();
   public readonly svgIcon: InputSignal<string | undefined> = input<string>();
+  public readonly contentMode: InputSignal<EButtonWrapperContentMode> =
+    input<EButtonWrapperContentMode>(EButtonWrapperContentMode.ICON_TEXT);
   public readonly variant: InputSignal<EButtonWrapperVariant> = input<EButtonWrapperVariant>(
     EButtonWrapperVariant.RAISED,
   );
@@ -71,8 +77,28 @@ export class ButtonWrapperComponent extends BaseDirective {
   public readonly isDisabled: Signal<boolean> = computed(
     () => this.disabled() || this._isProcessing() || (this._disableOnLoading?.() ?? false),
   );
+  public readonly hasIcon: Signal<boolean> = computed(() => !!this.icon() || !!this.svgIcon());
+  public readonly hasTitle: Signal<boolean> = computed(() => this.title().trim().length > 0);
+  public readonly shouldShowIcon: Signal<boolean> = computed(() => {
+    if (!this.hasIcon()) {
+      return false;
+    }
+
+    const mode = this.contentMode();
+    return mode === EButtonWrapperContentMode.ICON || mode === EButtonWrapperContentMode.ICON_TEXT;
+  });
+  public readonly shouldShowTitle: Signal<boolean> = computed(() => {
+    if (!this.hasTitle()) {
+      return false;
+    }
+
+    const mode = this.contentMode();
+    return mode === EButtonWrapperContentMode.TEXT || mode === EButtonWrapperContentMode.ICON_TEXT;
+  });
 
   public readonly EButtonWrapperVariant: typeof EButtonWrapperVariant = EButtonWrapperVariant;
+  public readonly EButtonWrapperContentMode: typeof EButtonWrapperContentMode =
+    EButtonWrapperContentMode;
 
   private readonly _disableOnLoading: Signal<boolean> | null = inject(DISABLE_ON_LOADING, {
     optional: true,

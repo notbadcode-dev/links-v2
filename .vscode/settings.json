@@ -75,6 +75,9 @@
   // Angular
   "angular.enable-strict-mode-prompt": false,
 
+  // Testing
+  "jest.enable": false,
+
   // Search
   "search.exclude": {
     "**/node_modules": true,

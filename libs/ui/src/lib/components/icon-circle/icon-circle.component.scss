@@ -1,10 +1,193 @@
 :host {
+  --ui-icon-circle-size: calc(var(--ui-space-6) + var(--ui-space-6));
+  --ui-icon-circle-icon-size: var(--ui-space-6);
+  --ui-icon-circle-cell-size: calc(var(--ui-space-6) + var(--ui-space-6));
+  --ui-icon-circle-menu-offset: 6px;
+
+  display: inline-flex;
+}
+
+:host ::ng-deep .icon-circle__trigger-button {
+  min-width: 0;
+  width: var(--ui-icon-circle-size);
+  height: var(--ui-icon-circle-size);
+  padding: 0;
+  border-radius: var(--ui-radius-full);
+  border: var(--ui-border-width) solid var(--ui-border-subtle);
+  background: var(--ui-color-surface);
+  line-height: 1;
+  transition:
+    border-color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    box-shadow var(--ui-transition-fast);
+}
+
+:host ::ng-deep .icon-circle__trigger-button .mdc-button__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host ::ng-deep .icon-circle__trigger-button:hover {
+  border-color: var(--ui-border-strong);
+  background: var(--ui-color-hover-muted);
+}
+
+:host ::ng-deep .mat-mdc-menu-panel.icon-circle__menu-panel {
+  min-width: 0;
+  margin-top: var(--ui-icon-circle-menu-offset) !important;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none !important;
+  overflow: visible;
+  --mat-menu-container-color: transparent;
+  --mat-menu-container-elevation-shadow: none;
+  --mat-menu-container-shape: 0;
+  animation: icon-circle-menu-in 140ms ease-out;
+  transform: none;
+}
+
+:host ::ng-deep .mat-mdc-menu-panel.icon-circle__menu-panel .mat-mdc-menu-content {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:host ::ng-deep .mat-mdc-menu-panel.icon-circle__menu-panel .mdc-menu-surface {
+  box-shadow: none !important;
+  background: transparent;
+}
+
+:host ::ng-deep .mat-mdc-menu-panel.icon-circle__menu-panel .mdc-list {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:host ::ng-deep .mat-mdc-menu-panel.dropdown-wrapper-menu.icon-circle__menu-panel.mat-menu-above {
+  margin-top: 0 !important;
+  margin-bottom: var(--ui-icon-circle-menu-offset) !important;
+  transform: none;
+}
+
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ui-icon-circle-size);
+  height: var(--ui-icon-circle-size);
+  border-radius: var(--ui-radius-full);
+
+  icon-wrapper {
+    width: var(--ui-icon-circle-icon-size);
+    height: var(--ui-icon-circle-icon-size);
+  }
+}
+
+.icon-circle__menu-grid {
+  --ui-menu-cell-size: var(--ui-icon-circle-cell-size);
+  width: calc(var(--ui-icon-circle-cell-size) * 5);
+}
+
+:host ::ng-deep .icon-circle__menu-grid .ui-menu-surface {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+:host ::ng-deep .icon-circle__menu-grid .ui-menu-surface--grid .ui-menu-option {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: var(--ui-color-surface);
+}
+
+:host ::ng-deep .icon-circle__menu-grid .ui-menu-surface--grid {
+  gap: var(--ui-border-width);
+  padding: 0;
+  background: var(--ui-border-subtle);
+}
+
+.icon-circle__option {
+  display: block;
+  width: 100%;
+  height: var(--ui-icon-circle-cell-size);
+  min-height: var(--ui-icon-circle-cell-size);
+}
+
+:host ::ng-deep .icon-circle__option button.mat-mdc-button-base {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(var(--ui-space-6) + var(--ui-space-6));
-  height: calc(var(--ui-space-6) + var(--ui-space-6));
-  border-radius: var(--ui-radius-full);
-  background-color: var(--ui-color-primary-soft-bg);
-  color: var(--ui-color-primary-soft-fg);
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  line-height: 1;
+  transition:
+    background-color var(--ui-transition-fast),
+    color var(--ui-transition-fast);
+}
+
+:host ::ng-deep .icon-circle__option button.mat-mdc-button-base .mat-mdc-button-touch-target {
+  top: 0;
+  height: 100%;
+}
+
+:host ::ng-deep .icon-circle__option button.mat-mdc-button-base:hover,
+:host ::ng-deep .icon-circle__option button.mat-mdc-button-base:focus-visible {
+  background: var(--ui-color-hover-muted);
+}
+
+:host ::ng-deep .icon-circle__option button.mat-mdc-button-base .mdc-button__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+}
+
+:host ::ng-deep .icon-circle__option .button-wrapper__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ui-icon-circle-icon-size);
+  height: var(--ui-icon-circle-icon-size);
+  margin: 0;
+  color: var(--ui-icon-circle-option-color, var(--ui-color-text));
+}
+
+:host ::ng-deep .icon-circle__option .button-wrapper__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 0;
+  margin: 0 auto;
+}
+
+:host ::ng-deep .icon-circle__option.ui-menu-option--active .button-wrapper__icon {
+  color: var(--ui-color-primary-600);
+}
+
+:host ::ng-deep .icon-circle__option.ui-menu-option--active button.mat-mdc-button-base {
+  background: var(--ui-color-primary-soft-bg);
+}
+
+@keyframes icon-circle-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

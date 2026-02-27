@@ -31,6 +31,7 @@ export const CUSTOM_ICONS_CONSTANTS = {
   },
   MATERIAL: {
     CLOSE: 'close',
+    DELETE: 'delete-animated',
     CHECK_CIRCLE: 'check_circle',
     ERROR: 'error',
     WARNING: 'warning',

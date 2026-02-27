@@ -104,3 +104,79 @@ body {
   filter: none;
   transform: translateY(0);
 }
+
+.mat-mdc-unelevated-button.mat-warn,
+.mat-mdc-raised-button.mat-warn {
+  background-color: var(--ui-color-button-warn) !important;
+  color: var(
+    --ui-color-button-warn-text-soft,
+    var(--ui-color-button-warn-text, var(--ui-color-button-warn-contrast))
+  ) !important;
+  transition:
+    background-color var(--ui-transition-fast),
+    filter var(--ui-transition-fast),
+    transform var(--ui-transition-fast);
+}
+
+.mat-mdc-unelevated-button.mat-warn:hover,
+.mat-mdc-raised-button.mat-warn:hover {
+  background-color: var(--ui-color-button-warn-hover) !important;
+  filter: none;
+  transform: translateY(-1px);
+}
+
+.mat-mdc-unelevated-button.mat-warn:active,
+.mat-mdc-raised-button.mat-warn:active {
+  background-color: var(--ui-color-button-warn-active) !important;
+  filter: none;
+  transform: translateY(0);
+}
+
+.mat-mdc-outlined-button.mat-warn {
+  color: var(--ui-color-button-warn) !important;
+  border-color: var(--ui-color-button-warn) !important;
+}
+
+.mat-mdc-outlined-button.mat-warn:hover {
+  background-color: var(--ui-color-button-warn-soft) !important;
+}
+
+.mat-mdc-button.mat-warn {
+  color: var(--ui-color-button-warn) !important;
+}
+
+.mat-mdc-button.mat-warn:hover {
+  background-color: var(--ui-color-button-warn-soft) !important;
+}
+
+/* IconCircle: remove MatMenu outer visual layer and keep a single border on menu content */
+.cdk-overlay-pane .mat-mdc-menu-panel.icon-circle__menu-panel,
+.cdk-overlay-pane .mat-mdc-menu-panel.icon-circle__menu-panel.mdc-menu-surface {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  overflow: visible !important;
+}
+
+.cdk-overlay-pane .mat-mdc-menu-panel.icon-circle__menu-panel .mat-mdc-menu-content,
+.cdk-overlay-pane .mat-mdc-menu-panel.icon-circle__menu-panel .mdc-list {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.cdk-overlay-pane .mat-mdc-menu-panel.icon-circle__menu-panel .mat-mdc-menu-content {
+  border: var(--ui-border-width) solid var(--ui-border-subtle) !important;
+  border-radius: var(--ui-radius-md) !important;
+  background: var(--ui-color-surface) !important;
+  box-shadow: var(--ui-shadow-sm) !important;
+  overflow: hidden !important;
+}
+
+.cdk-overlay-pane .mat-mdc-menu-panel.icon-circle__menu-panel .mdc-menu-surface {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,11 @@
+<button-wrapper
+  [title]="effectiveButtonConfig().title"
+  [tooltip]="effectiveButtonConfig().tooltip"
+  [icon]="effectiveButtonConfig().icon"
+  [svgIcon]="effectiveButtonConfig().svgIcon"
+  [contentMode]="effectiveButtonConfig().contentMode"
+  [variant]="effectiveButtonConfig().variant"
+  [color]="effectiveButtonConfig().color"
+  [disabled]="disabled()"
+  (clicked)="onDeleteClick()"
+/>

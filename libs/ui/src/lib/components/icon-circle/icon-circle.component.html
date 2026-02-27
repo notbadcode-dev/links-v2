@@ -1,1 +1,38 @@
-<ng-content />
+<dropdown-wrapper
+  [disabled]="disabled()"
+  [tooltip]="tooltip()"
+  customClass="icon-circle__trigger-button"
+  menuClass="icon-circle__menu-panel"
+>
+  <span slot="trigger" class="icon-circle" [style.color]="iconColor()">
+    @if (effectiveSelectedIcon(); as currentIcon) {
+      <icon-wrapper [svgIcon]="currentIcon" />
+    }
+  </span>
+
+  <ui-menu-surface
+    slot="content"
+    class="icon-circle__menu-grid"
+    [layout]="EMenuSurfaceLayout.GRID"
+    [columns]="5"
+    role="grid"
+  >
+    @for (iconName of availableIcons(); track $index) {
+      <button-wrapper
+        uiMenuOption
+        class="icon-circle__option"
+        [uiMenuOptionActive]="effectiveSelectedIcon() === iconName"
+        [attr.aria-selected]="effectiveSelectedIcon() === iconName"
+        role="gridcell"
+        [title]="iconName"
+        [tooltip]="iconName"
+        [svgIcon]="iconName"
+        [contentMode]="EButtonWrapperContentMode.ICON"
+        [variant]="EButtonWrapperVariant.BASIC"
+        [fullWidth]="true"
+        [style.--ui-icon-circle-option-color]="iconColor()"
+        (clicked)="onSelectIcon(iconName)"
+      />
+    }
+  </ui-menu-surface>
+</dropdown-wrapper>

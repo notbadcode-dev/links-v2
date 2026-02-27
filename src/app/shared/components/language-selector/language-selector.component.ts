@@ -11,6 +11,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { I18nService, ILanguage } from '@app/core/i18n';
 
+import { EMenuSurfaceLayout, MenuSurfaceComponent, UiMenuOptionDirective } from '@libs/components';
 import { IconWrapperComponent } from '@libs/wrappers/icon-wrapper/icon-wrapper.component';
 
 @Component({
@@ -18,10 +19,11 @@ import { IconWrapperComponent } from '@libs/wrappers/icon-wrapper/icon-wrapper.c
   standalone: true,
   templateUrl: './language-selector.component.html',
   styleUrl: './language-selector.component.scss',
-  imports: [IconWrapperComponent],
+  imports: [IconWrapperComponent, MenuSurfaceComponent, UiMenuOptionDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageSelectorComponent {
+  protected readonly _menuSurfaceLayoutEnum: typeof EMenuSurfaceLayout = EMenuSurfaceLayout;
   protected readonly _availableLanguages: readonly ILanguage[];
   protected readonly _currentLang: Signal<string>;
   protected readonly _isMenuOpen: WritableSignal<boolean> = signal(false);

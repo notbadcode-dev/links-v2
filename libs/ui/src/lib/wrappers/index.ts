@@ -1,5 +1,9 @@
 export { ButtonWrapperComponent } from './button-wrapper/button-wrapper.component';
-export { EButtonWrapperColor, EButtonWrapperVariant } from './button-wrapper/button-wrapper.enums';
+export {
+  EButtonWrapperColor,
+  EButtonWrapperContentMode,
+  EButtonWrapperVariant,
+} from './button-wrapper/button-wrapper.enums';
 export { CardWrapperComponent } from './card-wrapper/card-wrapper.component';
 export { ECardWrapperAlignHeader, ECardWrapperAppearance } from './card-wrapper/card-wrapper.enums';
 export { CheckboxWrapperComponent } from './checkbox-wrapper/checkbox-wrapper.component';
@@ -13,5 +17,13 @@ export { InputPasswordWrapperComponent } from './input-wrapper/input-password-wr
 export { InputTextWrapperComponent } from './input-wrapper/input-text-wrapper/input-text-wrapper.component';
 export { EInputTextWrapperType } from './input-wrapper/input-text-wrapper/input-text-wrapper.enums';
 export type { IInputTextWrapperConfig } from './input-wrapper/input-wrapper.types';
+export { DialogWrapperComponent } from './dialog-wrapper/dialog-wrapper.component';
+export { DialogWrapperService } from './dialog-wrapper/dialog-wrapper.service';
+export { EDialogWrapperContentType } from './dialog-wrapper/dialog-wrapper.enums';
+export type {
+  IDialogWrapperConfig,
+  IDialogWrapperOpenConfig,
+  TDialogWrapperAcceptCallback,
+} from './dialog-wrapper/dialog-wrapper.types';
 export { TreeWrapperComponent } from './tree-wrapper/tree-wrapper.component';
-export type { ITreeNode } from './tree-wrapper/tree-wrapper.types';
+export type { ITreeNode, ITreeWrapperConfig } from './tree-wrapper/tree-wrapper.types';

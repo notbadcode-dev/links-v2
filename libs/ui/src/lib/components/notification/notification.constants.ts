@@ -1,10 +1,10 @@
 import { ENotificationType } from './notification.enums';
 
 const NOTIFICATION_ICON_KEYS = {
-  SUCCESS: 'check_circle',
-  ERROR: 'error',
-  WARNING: 'warning',
-  INFO: 'info',
+  SUCCESS: 'notification-success',
+  ERROR: 'notification-error',
+  WARNING: 'notification-warning',
+  INFO: 'notification-info',
 } as const;
 
 export const NOTIFICATION_CONSTANTS = {

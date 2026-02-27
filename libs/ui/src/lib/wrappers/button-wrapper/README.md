@@ -8,7 +8,8 @@ extends: BaseDirective
 integrations:
   - { token: DISABLE_ON_LOADING, optional: true, description: Auto-disables during loading state }
 inputs:
-  - { name: title, type: string, required: true, description: Button label text }
+  - { name: title, type: string, required: false, default: "''", description: Button label text }
+  - { name: contentMode, type: EButtonWrapperContentMode, required: false, default: ICON_TEXT, description: Defines whether to render icon, text, or icon with text }
   - { name: variant, type: EButtonWrapperVariant, required: false, default: RAISED, description: Visual style }
   - { name: color, type: EButtonWrapperColor, required: false, default: PRIMARY, description: Material color theme }
   - { name: icon, type: "string | undefined", required: false, description: Material Icons name displayed before text }
@@ -22,6 +23,7 @@ outputs:
 enums:
   EButtonWrapperVariant: [RAISED, FLAT, STROKED, BASIC]
   EButtonWrapperColor: [PRIMARY, ACCENT, WARN]
+  EButtonWrapperContentMode: [ICON, TEXT, ICON_TEXT]
 ---
 
 # ButtonWrapperComponent
@@ -45,7 +47,8 @@ Encapsula `MatButton` con lógica adicional:
 
 | Input | Tipo | Requerido | Default | Descripción |
 |---|---|---|---|---|
-| `title` | `string` | ✅ | — | Texto visible del botón |
+| `title` | `string` | ❌ | `''` | Texto visible del botón |
+| `contentMode` | `EButtonWrapperContentMode` | ❌ | `ICON_TEXT` | Modo de contenido: solo icono, solo texto o ambos |
 | `variant` | `EButtonWrapperVariant` | ❌ | `RAISED` | Estilo visual del botón |
 | `color` | `EButtonWrapperColor` | ❌ | `PRIMARY` | Color Material |
 | `icon` | `string` | ❌ | — | Icono Material antes del texto |
@@ -66,6 +69,10 @@ Encapsula `MatButton` con lógica adicional:
 ### `EButtonWrapperColor`
 
 `PRIMARY` · `ACCENT` · `WARN`
+
+### `EButtonWrapperContentMode`
+
+`ICON` · `TEXT` · `ICON_TEXT`
 
 ## Uso
 

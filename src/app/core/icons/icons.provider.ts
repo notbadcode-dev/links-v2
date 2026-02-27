@@ -37,6 +37,7 @@ const ICONS_PATHS = {
   },
   MATERIAL: {
     CLOSE: 'assets/icons/material/close.svg',
+    DELETE: 'assets/icons/material/delete_animated.svg',
     CHECK_CIRCLE: 'assets/icons/material/check_circle.svg',
     ERROR: 'assets/icons/material/error.svg',
     WARNING: 'assets/icons/material/warning.svg',
@@ -146,6 +147,10 @@ const registerCustomIcons = (iconRegistry: MatIconRegistry, sanitizer: DomSaniti
   iconRegistry.addSvgIcon(
     CUSTOM_ICONS_CONSTANTS.MATERIAL.CLOSE,
     sanitizer.bypassSecurityTrustResourceUrl(ICONS_PATHS.MATERIAL.CLOSE),
+  );
+  iconRegistry.addSvgIcon(
+    CUSTOM_ICONS_CONSTANTS.MATERIAL.DELETE,
+    sanitizer.bypassSecurityTrustResourceUrl(ICONS_PATHS.MATERIAL.DELETE),
   );
   iconRegistry.addSvgIcon(
     CUSTOM_ICONS_CONSTANTS.MATERIAL.CHECK_CIRCLE,

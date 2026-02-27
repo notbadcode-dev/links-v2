@@ -1,0 +1,67 @@
+<nav [class]="rootClass()" [attr.aria-label]="effectiveConfig().ariaLabel">
+  @if (showBoundaryButtons()) {
+    <button-wrapper
+      class="ui-pagination-nav-btn"
+      [title]="''"
+      [tooltip]="'Go to first page'"
+      [icon]="'keyboard_double_arrow_left'"
+      [variant]="navigationVariant"
+      [color]="buttonColor"
+      [disabled]="isFirstPage()"
+      (clicked)="goToFirstPage()"
+    />
+  }
+
+  @if (showStepButtons()) {
+    <button-wrapper
+      class="ui-pagination-nav-btn"
+      [title]="''"
+      [tooltip]="'Go to previous page'"
+      [icon]="'chevron_left'"
+      [variant]="navigationVariant"
+      [color]="buttonColor"
+      [disabled]="isFirstPage()"
+      (clicked)="goToPreviousPage()"
+    />
+  }
+
+  <div class="ui-pagination-pages">
+    @for (page of visiblePages(); track page) {
+      <button-wrapper
+        class="ui-pagination-page"
+        [class.ui-pagination-page--active]="isActivePage(page)"
+        [title]="'' + page"
+        [variant]="pageVariant()"
+        [color]="buttonColor"
+        [disabled]="isActivePage(page)"
+        (clicked)="selectPage(page)"
+      />
+    }
+  </div>
+
+  @if (showStepButtons()) {
+    <button-wrapper
+      class="ui-pagination-nav-btn"
+      [title]="''"
+      [tooltip]="'Go to next page'"
+      [icon]="'chevron_right'"
+      [variant]="navigationVariant"
+      [color]="buttonColor"
+      [disabled]="isLastPage()"
+      (clicked)="goToNextPage()"
+    />
+  }
+
+  @if (showBoundaryButtons()) {
+    <button-wrapper
+      class="ui-pagination-nav-btn"
+      [title]="''"
+      [tooltip]="'Go to last page'"
+      [icon]="'keyboard_double_arrow_right'"
+      [variant]="navigationVariant"
+      [color]="buttonColor"
+      [disabled]="isLastPage()"
+      (clicked)="goToLastPage()"
+    />
+  }
+</nav>

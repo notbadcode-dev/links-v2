@@ -67,6 +67,15 @@ Convenciones aplicadas por ESLint/TypeScript y estándares actuales del repo.
 - Story tests con `@storybook/test-runner`:
   - usar `tags: ['interaction']` en stories con `play`;
   - mantener separación smoke vs interaction.
+  - validar historias con selector global de idioma (`locale`) en toolbar.
+
+## Storybook (Idioma)
+
+- Selector global de idioma configurado en `.storybook/preview.ts` (`globalTypes.locale`).
+- Toda story con texto visible debe ser compatible con `ES` y `EN`.
+- Formato recomendado para textos localizables en `args`/`props`: objeto por idioma:
+  - `{ es: 'Texto', en: 'Text' }`
+- Si se usa mapeo automático global de textos, mantener actualizado el diccionario en `.storybook/preview.ts`.
 
 ## Referencias
 

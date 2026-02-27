@@ -13,15 +13,20 @@ import type { Meta, StoryObj } from '@storybook/angular';
 interface INotificationServiceStoryMock {
   notifications: WritableSignal<INotification[]>;
   dismiss: (id: string) => void;
+  reset: () => void;
 }
 
 const createServiceMock = (initial: INotification[]): INotificationServiceStoryMock => {
   const notifications = signal<INotification[]>(initial);
+  const initialSnapshot = initial.map((notification) => ({ ...notification }));
 
   return {
     notifications,
     dismiss: (id: string): void => {
       notifications.update((current) => current.filter((notification) => notification.id !== id));
+    },
+    reset: (): void => {
+      notifications.set(initialSnapshot.map((notification) => ({ ...notification })));
     },
   };
 };
@@ -58,7 +63,48 @@ export const MultipleToasts: TStory = {
       moduleMetadata: {
         providers: [{ provide: NotificationService, useValue: serviceMock }],
       },
-      template: '<notification-container />',
+      props: {
+        resetToasts: () => serviceMock.reset(),
+      },
+      template: `
+        <div class="notification-container-story-demo">
+          <button class="notification-container-story-reset" type="button" (click)="resetToasts()">
+            Regenerar toasts
+          </button>
+          <notification-container />
+        </div>
+      `,
+      styles: [
+        `
+          .notification-container-story-demo {
+            position: relative;
+            min-height: 180px;
+            width: 100%;
+            overflow: visible;
+          }
+
+          .notification-container-story-reset {
+            margin-bottom: 12px;
+            border: 1px solid var(--ui-border-subtle);
+            background: var(--ui-color-surface);
+            color: var(--ui-color-text);
+            border-radius: var(--ui-radius-sm);
+            padding: 8px 12px;
+            cursor: pointer;
+          }
+
+          .notification-container-story-reset:hover {
+            background: var(--ui-color-surface-alt);
+          }
+
+          .notification-container-story-demo notification-container {
+            position: absolute !important;
+            left: 50% !important;
+            bottom: 0 !important;
+            transform: translateX(-50%) !important;
+          }
+        `,
+      ],
     };
   },
   play: async ({ canvasElement }) => {
@@ -96,7 +142,48 @@ export const SingleWarningToast: TStory = {
       moduleMetadata: {
         providers: [{ provide: NotificationService, useValue: serviceMock }],
       },
-      template: '<notification-container />',
+      props: {
+        resetToasts: () => serviceMock.reset(),
+      },
+      template: `
+        <div class="notification-container-story-demo">
+          <button class="notification-container-story-reset" type="button" (click)="resetToasts()">
+            Regenerar toasts
+          </button>
+          <notification-container />
+        </div>
+      `,
+      styles: [
+        `
+          .notification-container-story-demo {
+            position: relative;
+            min-height: 180px;
+            width: 100%;
+            overflow: visible;
+          }
+
+          .notification-container-story-reset {
+            margin-bottom: 12px;
+            border: 1px solid var(--ui-border-subtle);
+            background: var(--ui-color-surface);
+            color: var(--ui-color-text);
+            border-radius: var(--ui-radius-sm);
+            padding: 8px 12px;
+            cursor: pointer;
+          }
+
+          .notification-container-story-reset:hover {
+            background: var(--ui-color-surface-alt);
+          }
+
+          .notification-container-story-demo notification-container {
+            position: absolute !important;
+            left: 50% !important;
+            bottom: 0 !important;
+            transform: translateX(-50%) !important;
+          }
+        `,
+      ],
     };
   },
 };
