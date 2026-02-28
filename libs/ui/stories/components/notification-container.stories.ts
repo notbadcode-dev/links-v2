@@ -64,7 +64,9 @@ export const MultipleToasts: TStory = {
         providers: [{ provide: NotificationService, useValue: serviceMock }],
       },
       props: {
-        resetToasts: () => serviceMock.reset(),
+        resetToasts: () => {
+          serviceMock.reset();
+        },
       },
       template: `
         <div class="notification-container-story-demo">
@@ -143,7 +145,9 @@ export const SingleWarningToast: TStory = {
         providers: [{ provide: NotificationService, useValue: serviceMock }],
       },
       props: {
-        resetToasts: () => serviceMock.reset(),
+        resetToasts: () => {
+          serviceMock.reset();
+        },
       },
       template: `
         <div class="notification-container-story-demo">

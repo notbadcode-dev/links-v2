@@ -47,5 +47,14 @@
       "min_length": "Mínimo {{min}} caracteres",
       "password_mismatch": "Las contraseñas no coinciden"
     }
+  },
+  "dashboard": {
+    "sidebar": {
+      "title": "Estadísticas",
+      "loading": "Cargando...",
+      "error": "Error al cargar estadísticas",
+      "total_links": "Links",
+      "total_groups": "Grupos"
+    }
   }
 }

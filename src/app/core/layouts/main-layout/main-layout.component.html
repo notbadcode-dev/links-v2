@@ -3,10 +3,29 @@
     <aside class="right-sidebar">
       <div class="sidebar-content">
         <header class="sidebar-header">
-          <h3>Activity</h3>
+          <h3>{{ t('dashboard.sidebar.title') }}</h3>
         </header>
         <div class="sidebar-items">
-          <p class="empty-state">No recent activity</p>
+          @if (isLoadingTotals()) {
+            <div class="totals-loading">
+              <p>{{ t('dashboard.sidebar.loading') }}</p>
+            </div>
+          } @else if (totalsError()) {
+            <div class="totals-error">
+              <p>{{ t('dashboard.sidebar.error') }}</p>
+            </div>
+          } @else if (totals()) {
+            <div class="totals-container">
+              <div class="total-item">
+                <span class="total-label">{{ t('dashboard.sidebar.total_links') }}</span>
+                <span class="total-value">{{ totals()!.totalLinks }}</span>
+              </div>
+              <div class="total-item">
+                <span class="total-label">{{ t('dashboard.sidebar.total_groups') }}</span>
+                <span class="total-value">{{ totals()!.totalGroups }}</span>
+              </div>
+            </div>
+          }
         </div>
 
         <div class="sidebar-user">
