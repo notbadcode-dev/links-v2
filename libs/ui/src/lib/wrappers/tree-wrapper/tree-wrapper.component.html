@@ -6,7 +6,12 @@
 >
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
     <span class="tree-toggle-spacer" aria-hidden="true"></span>
-    <div class="node-content leaf" [class.node-content--selected]="isSelected(node)" [class.node-content--disabled]="node.disabled" (click)="onNodeClick(node)">
+    <div
+      class="node-content leaf"
+      [class.node-content--selected]="isSelected(node)"
+      [class.node-content--disabled]="node.disabled"
+      (click)="onNodeClick(node)"
+    >
       @if (node.icon) {
         <mat-icon class="node-icon">{{ node.icon }}</mat-icon>
       } @else {
@@ -29,7 +34,12 @@
       >
         <mat-icon class="mat-icon-rtl-mirror">{{ node.isExpanded ? expandedIcon() : collapsedIcon() }}</mat-icon>
       </button>
-      <div class="node-content branch" [class.node-content--selected]="isSelected(dataNode)" [class.node-content--disabled]="dataNode.disabled" (click)="onNodeClick(dataNode)">
+      <div
+        class="node-content branch"
+        [class.node-content--selected]="isSelected(dataNode)"
+        [class.node-content--disabled]="dataNode.disabled"
+        (click)="onNodeClick(dataNode)"
+      >
         @if (dataNode.icon) {
           <mat-icon class="node-icon">{{ dataNode.icon }}</mat-icon>
         } @else {

@@ -5,12 +5,7 @@
 
   <ui-page-body class="dialog-wrapper__content" [attr.data-size]="effectiveSize()">
     @if (effectiveContentTemplate()) {
-      <ng-container
-        *ngTemplateOutlet="
-          effectiveContentTemplate();
-          context: effectiveTemplateContext()
-        "
-      />
+      <ng-container *ngTemplateOutlet="effectiveContentTemplate(); context: effectiveTemplateContext()" />
     } @else if (effectiveContentType() === EDialogWrapperContentType.MESSAGE && effectiveMessage()) {
       <ui-inline-text class="dialog-wrapper__message">{{ effectiveMessage() }}</ui-inline-text>
     } @else {

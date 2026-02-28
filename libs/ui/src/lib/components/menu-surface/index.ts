@@ -1,1 +1,5 @@
-export { EMenuSurfaceLayout, MenuSurfaceComponent, UiMenuOptionDirective } from './menu-surface.component';
+export {
+  EMenuSurfaceLayout,
+  MenuSurfaceComponent,
+  UiMenuOptionDirective,
+} from './menu-surface.component';

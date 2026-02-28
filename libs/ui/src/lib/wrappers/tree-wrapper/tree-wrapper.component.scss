@@ -21,7 +21,9 @@
     padding: var(--ui-space-1) var(--ui-space-2);
     border-radius: var(--ui-radius-sm);
     cursor: pointer;
-    transition: background-color var(--ui-transition-base), color var(--ui-transition-base);
+    transition:
+      background-color var(--ui-transition-base),
+      color var(--ui-transition-base);
 
     &:hover {
       background: var(--ui-color-hover-muted);

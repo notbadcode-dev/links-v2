@@ -47,5 +47,14 @@
       "min_length": "Minimum {{min}} characters required",
       "password_mismatch": "Passwords do not match"
     }
+  },
+  "dashboard": {
+    "sidebar": {
+      "title": "Statistics",
+      "loading": "Loading...",
+      "error": "Error loading statistics",
+      "total_links": "Links",
+      "total_groups": "Groups"
+    }
   }
 }
